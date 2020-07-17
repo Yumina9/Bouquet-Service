@@ -36,13 +36,13 @@ const Typography = ({ type, color, fontWeight, children }: TypographyType) => {
   const fontWeightMap = useMemo(() => {
     switch (fontWeight) {
       case 'bold':
-        return 400;
+        return '400';
       case 'medium':
-        return 500;
+        return '500';
       case 'bold':
-        return 700;
+        return '700';
       default:
-        return 400;
+        return '400';
     }
   }, [fontWeight]);
   return (
