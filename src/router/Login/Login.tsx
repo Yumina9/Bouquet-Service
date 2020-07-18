@@ -1,8 +1,8 @@
 import React from 'react';
 import LoginForm from '../../components/login/LoginForm';
 
-const SellerHeader = () => {
+const Login = () => {
   return <LoginForm />;
 };
 
-export default SellerHeader;
+export default Login;

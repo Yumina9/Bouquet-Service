@@ -1,7 +1,12 @@
 import React from 'react';
+import { MiniHeader } from '../../components/header/MiniHeader';
 
 const SellerMain = () => {
-  return <div>판매자 메인 페이지입니다.</div>;
+  return (
+    <div>
+      <MiniHeader />
+    </div>
+  );
 };
 
 export default SellerMain;

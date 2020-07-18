@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Form } from './Form';
 
 const SignUpForm = () => {
   return (
@@ -17,8 +17,3 @@ const SignUpForm = () => {
 };
 
 export default SignUpForm;
-
-const Form = styled.div`
-  display: flex;
-  justify-content: center;
-`;

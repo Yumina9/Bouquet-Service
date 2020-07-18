@@ -5,10 +5,10 @@ import { typography } from '../lib/typographys';
 type StyledType = {
   fontWeight: string;
   color: string;
+  type: string;
 };
 
 type TypographyType = StyledType & {
-  type: string;
   children: React.ReactNode;
 };
 
