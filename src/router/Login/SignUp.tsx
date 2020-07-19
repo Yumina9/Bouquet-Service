@@ -1,8 +1,8 @@
 import React from 'react';
 import SignUpForm from '../../components/login/SignUpForm';
 
-const SellerHeader = () => {
+const SignUp = () => {
   return <SignUpForm />;
 };
 
-export default SellerHeader;
+export default SignUp;
