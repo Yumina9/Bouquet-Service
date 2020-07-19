@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
-import { typography } from '../lib/typographys';
+import { typography } from '../lib/styles/typographys';
 
 type StyledType = {
   fontWeight: string;
@@ -35,7 +35,7 @@ const Typography = ({ type, color, fontWeight, children }: TypographyType) => {
   }, [type]);
   const fontWeightMap = useMemo(() => {
     switch (fontWeight) {
-      case 'bold':
+      case 'light':
         return '400';
       case 'medium':
         return '500';
