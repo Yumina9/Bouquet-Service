@@ -13,10 +13,5 @@ export const FlowerCard = () => {
 };
 
 const CardBox = styled.div`
-  /* width: 100%; */
-  /* width: 33.33.%;
-  height: 100%;
-  margin: 10px; */
-  /* max-width: 150px;
-  max-height: 150px; */
+  margin: 7px;
 `;

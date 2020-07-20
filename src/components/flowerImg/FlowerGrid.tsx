@@ -23,8 +23,3 @@ const GridBox = styled.span`
   gap: 1px 1px;
   grid-template-areas: '. . .' '. . .';
 `;
-
-const Box = styled.span`
-  /* display: grid;
-  grid-area: column; */
-`;
