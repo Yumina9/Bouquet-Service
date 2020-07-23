@@ -10,6 +10,7 @@ const Header = () => {
   width: 100%;
   padding: 20px 0;
   border: 1px solid;
+  background-color: gray;
 `
 
   return (
