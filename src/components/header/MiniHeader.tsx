@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       flexGrow: 1,
     },
+
     header: {
       backgroundColor: palette.color5,
     },
@@ -22,6 +23,13 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       flexGrow: 1,
+      fontFamily: "'Lobster'",
+    },
+    icon: {
+      fontSize: '3rem',
+    },
+    menu: {
+      fontSize: '1.5rem',
     },
   })
 );
@@ -44,8 +52,8 @@ export const MiniHeader = () => {
     <div className={classes.root}>
       <AppBar className={classes.header} position="static">
         <Toolbar>
-          <Typography variant="h4" className={classes.title}>
-            꽃다발 주문제작 서비스
+          <Typography variant="h3" className={classes.title}>
+            Flamingo
           </Typography>
           {auth && (
             <div>
@@ -56,7 +64,7 @@ export const MiniHeader = () => {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                <AccountCircle className={classes.icon} />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -73,8 +81,12 @@ export const MiniHeader = () => {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem className={classes.menu} onClick={handleClose}>
+                  Profile
+                </MenuItem>
+                <MenuItem className={classes.menu} onClick={handleClose}>
+                  My account
+                </MenuItem>
               </Menu>
             </div>
           )}
