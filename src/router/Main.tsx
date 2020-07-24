@@ -1,13 +1,12 @@
 import React from 'react';
-import Header from '../components/header/Header';
+import BuyerMain from './Buyer/BuyerMain';
 
 const Main = () => {
   return (
     <div>
-      <Header />
-      
+      <BuyerMain />
     </div>
-  )
+  );
 };
 
 export default Main;
