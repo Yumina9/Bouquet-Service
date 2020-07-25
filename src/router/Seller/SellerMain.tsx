@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { MiniHeader } from '../../components/header/MiniHeader';
 import SellerHeader from '../../components/header/SellerHeader';
+import FlowerList from '../../components/flowerImg/FlowerList';
 
 const SellerMain = () => {
   return (
@@ -10,6 +11,7 @@ const SellerMain = () => {
       <Block>
         <SellerHeader />
       </Block>
+      <FlowerList />
     </div>
   );
 };
