@@ -42,3 +42,14 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+<hr />
+```
+yarn add react-naver-maps
+```
+React Naver Maps 패키지 설치
+```
+yarn remove react-naver-maps
+```
+React Naver Maps 패키지 삭제
