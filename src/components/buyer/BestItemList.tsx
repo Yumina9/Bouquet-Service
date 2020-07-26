@@ -8,12 +8,14 @@ const BestItemList = () => {
 
     const GridBox = styled.span`
         width: 100%;
+        height: 500px;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr;
-        gap: 2%;
+        gap: 1fr;
         grid-template-areas: '. . .' '. . .';
     `;
+    
 
     return (
         <div>
@@ -24,7 +26,11 @@ const BestItemList = () => {
                 <FlowerCard />
                 <FlowerCard />
                 <FlowerCard />
+                <FlowerCard />
+                <FlowerCard />
             </GridBox>
+            
+            
         </div>
     );
 };
