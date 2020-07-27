@@ -1,14 +1,14 @@
 import React from 'react';
 import Header from '../../components/header/Header';
 import BestItemList from '../../components/buyer/BestItemList';
-import CustomAndMap from '../../components/buyer/CustomAndMap';
+import CustomSelect from '../../components/buyer/CustomSelect';
 
 const BuyerMain = () => {
     return (
         <div>
             <Header />
             <BestItemList />
-            <CustomAndMap />
+            <CustomSelect />
         </div>
     );
 };
