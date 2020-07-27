@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import Bouquet from './Bouquet';
-import axios from 'axios';
 
 export type FlowerType = {
   id: number;
   name: string;
   img: string;
-  mean: string;
-  color: string;
+  description: string;
+  color?: string;
 };
 
 const FlowerList = () => {
@@ -18,9 +18,15 @@ const FlowerList = () => {
   }, []);
   return (
     <List>
-      {flowers.map(({ id, name, img, mean, color }) => {
+      {flowers.map(({ id, name, img, description, color }) => {
         return (
-          <Bouquet id={id} name={name} img={img} mean={mean} color={color} />
+          <Bouquet
+            id={id}
+            name={name}
+            img={img}
+            description={description}
+            color={color}
+          />
         );
       })}
     </List>
