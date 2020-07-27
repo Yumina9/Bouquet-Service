@@ -6,6 +6,7 @@ import SignUp from '../router/Login/SignUp';
 import Main from '../router/Main';
 import BuyerMain from '../router/Buyer/BuyerMain';
 import BuyerMyPage from '../router/Buyer/BuyerMyPage';
+import Custom from '../router/Seller/Custom';
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
         <Route path="/buyermain" component={BuyerMain} />
         <Route path="/buyermypage" component={BuyerMyPage} />
         <Route path="/sellermain" component={SellerMain} />
+        <Route path="/custom" component={Custom} />
         <Route path="/login" component={Login} />
         <Route paht="/signup" component={SignUp} />
       </Switch>
