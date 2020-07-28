@@ -11,17 +11,19 @@ const CustomSelect = () => {
     const CustomSelect = styled.div`
             width: 100%;
             height: 500px;
-            float: left;
         `;
        
     return (  
         <div>
             <CustomSelect>
                 <CustomSelectForm>
+                    <div>
                     <Typography type="H5" color={palette.color2} fontWeight="bold">
                         직접 꽃다발은 선택하시겠습니까?
                     </Typography>
-                    <Button color={palette.color4} bgColor={palette.color3}>직접 선택하기</Button>    
+                    </div>
+                    <div>
+                    <Button color={palette.color4} bgColor={palette.color3}>직접 선택하기</Button>  </div>  
                 </CustomSelectForm>
                 <CustomSelectForm>
                     <NaverAPIMap />

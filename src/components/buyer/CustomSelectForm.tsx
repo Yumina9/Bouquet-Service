@@ -10,10 +10,11 @@ export const CustomSelectForm = ({children}: CustomFormProps) => {
 };
 
 const CustomBlock = styled.div`
+    display: flex;
     text-align: center;
     width: 50%;
     float:left;
-    height: 100%;
     overflow: hidden;
+    justify-content:center;
     
 `;
