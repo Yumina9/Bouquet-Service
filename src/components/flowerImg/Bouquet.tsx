@@ -53,47 +53,50 @@ const Bouquet: React.FC<FlowerType> = ({ name, img, description, color }) => {
 
   return (
     <>
-      <Link to="/custom" style={{ color: 'inherit', textDecoration: 'none' }}>
-        <Box>
-          <Card className={classes.root}>
-            <CardHeader
-              action={
-                <IconButton aria-label="settings">
-                  <MoreVertIcon />
-                </IconButton>
-              }
-              title={name}
-              subheader="언제 올렸을까요?"
-            />
+      <Box>
+        <Card className={classes.root}>
+          <CardHeader
+            action={
+              <IconButton aria-label="settings">
+                <MoreVertIcon />
+              </IconButton>
+            }
+            title={name}
+            subheader="언제 올렸을까요?"
+          />
+          <Link
+            to="/explanation"
+            style={{ color: 'inherit', textDecoration: 'none' }}
+          >
             <CardMedia className={classes.media} image={img} title={name} />
-            <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon />
-              </IconButton>
+          </Link>
+          <CardActions disableSpacing>
+            <IconButton aria-label="add to favorites">
+              <FavoriteIcon />
+            </IconButton>
 
-              <IconButton
-                className={clsx(classes.expand, {
-                  [classes.expandOpen]: expanded,
-                })}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show more"
-              >
-                <ExpandMoreIcon />
-              </IconButton>
-            </CardActions>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-              <CardContent>
-                <Typography type="H7" color={palette.color4} fontWeight="light">
-                  {color
-                    ? `${color}${name}는 ${description}라는 의미를 가지고 있습니다.`
-                    : `${description}`}
-                </Typography>
-              </CardContent>
-            </Collapse>
-          </Card>
-        </Box>
-      </Link>
+            <IconButton
+              className={clsx(classes.expand, {
+                [classes.expandOpen]: expanded,
+              })}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="show more"
+            >
+              <ExpandMoreIcon />
+            </IconButton>
+          </CardActions>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <CardContent>
+              <Typography type="H7" color={palette.color4} fontWeight="light">
+                {color
+                  ? `${color}${name}는 ${description}라는 의미를 가지고 있습니다.`
+                  : `${description}`}
+              </Typography>
+            </CardContent>
+          </Collapse>
+        </Card>
+      </Box>
     </>
   );
 };
