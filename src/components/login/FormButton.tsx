@@ -4,19 +4,15 @@ import styled from 'styled-components';
 type FormProps = {
   children: React.ReactNode;
 };
-export const Form = ({ children }: FormProps) => {
+export const FormButton = ({ children }: FormProps) => {
   return <Block>{children}</Block>;
 };
 
 const Block = styled.form`
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  border: 1px solid grey;
-  width: 500px;
-  height: 500px;
-  margin: auto;
-  div {
-    text-align: center;
+  Button{
+      justify-content: center;
+      width: 100px;
   }
 `;
