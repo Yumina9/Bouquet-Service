@@ -2,9 +2,15 @@ import React, { useState } from 'react';
 import { Form } from './Form';
 import { FormButton } from './FormButton';
 import Button from '../common/Button';
+import PropsTypes from 'prop-types';
 
 const LoginForm = () => {
 
+  LoginForm.PropsTypes = {
+    userId: PropsTypes.string,
+    password: PropsTypes.string
+
+  }
   const [user, setUser] = useState({
     userId: "",
     password: ""
@@ -15,6 +21,19 @@ const LoginForm = () => {
     const changeUser = {...user, [e.target.name]: e.target.value };
     setUser(changeUser);
   };
+
+  const onKEyPressEnter = (e) => {
+    if(e.key === "Enter"){
+      onClickLoginButton();
+    }
+  };
+
+  const onClickLoginButton = (e) => {
+    setUser({
+      username: "",
+      password: ""
+    });
+  }
   
   return (
     <>
@@ -33,10 +52,13 @@ const LoginForm = () => {
           type="password"
           name="password"
           value={user.password}
+          onChange={onChangeUserId}
           placeholder="비밀번호를 입력하세요"
         />
         <FormButton>
-          <Button color="pink" bgColor="black">
+          <Button color="pink" bgColor="black"
+            onClick={onClickLoginButton}
+          >
             로그인
           </Button>
           <Button color="pink" bgColor="black">

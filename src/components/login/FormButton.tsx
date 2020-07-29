@@ -14,5 +14,7 @@ const Block = styled.form`
   Button{
       justify-content: center;
       width: 100px;
+      margin: 20px 10px;
+      border: 1px solid blue;
   }
 `;

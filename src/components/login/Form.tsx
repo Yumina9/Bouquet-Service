@@ -16,7 +16,7 @@ const Block = styled.form`
   width: 500px;
   height: 500px;
   margin: auto;
-  div {
+  div, p {
     text-align: center;
   }
 `;
