@@ -16,10 +16,6 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
     },
 
-    circle: {
-      backgroundColor: `${palette.color2}`,
-    },
-
     button: {
       marginTop: theme.spacing(1),
       marginRight: theme.spacing(1),

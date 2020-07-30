@@ -12,6 +12,7 @@ const Block = styled.button<BlockType>`
   background-color: ${(props) => props.bgColor || 'white'};
   border-radius: 5px;
   padding: 5px;
+  border: none;
 `;
 type ButtonType = BlockType & {
   children: React.ReactNode;

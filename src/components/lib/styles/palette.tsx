@@ -4,6 +4,8 @@ const palette = {
   color3: '#FFA7B3',
   color4: '#402A2D',
   color5: '#E596A1',
+  white: '#FFF',
+  black: '#111',
 } as const;
 
 export default palette;
