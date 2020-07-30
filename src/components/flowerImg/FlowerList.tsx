@@ -8,7 +8,7 @@ export type FlowerType = {
   name: string;
   img: string;
   description: string;
-  color?: string;
+  color: string;
 };
 
 const FlowerList = () => {
