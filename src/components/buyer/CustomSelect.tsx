@@ -9,7 +9,7 @@ import NaverAPIMap from './NaverAPIMap';
 const CustomSelect = () => {
 
     const CustomSelect = styled.div`
-            width: 100%;
+            margin: 0 10px;
             height: 500px;
         `;
        
