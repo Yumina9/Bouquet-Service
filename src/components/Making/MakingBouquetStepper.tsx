@@ -32,9 +32,9 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function getSteps() {
   return [
-    '꽃을 선택하셧습니다.',
+    '꽃다발을 선택하셧습니다.',
+    '꽃 선택',
     '꽃 수량 선택',
-    '꽃다발 선택',
     '포장지 색상, 리본 색상 선택',
   ];
 }
@@ -42,11 +42,11 @@ function getSteps() {
 function getStepContent(step: number) {
   switch (step) {
     case 0:
-      return `꽃을 선택하셧습니다.`;
+      return `꽃다발을 선택하셧습니다.`;
     case 1:
-      return `꽃의 수량을 선택하세요.`;
+      return '꽃을 선택하세요';
     case 2:
-      return '꽃다발을 선택하세요';
+      return `꽃의 수량을 선택하세요.`;
     case 3:
       return `포장지 색상과 리본 색상을 선택하세요`;
     default:
@@ -54,7 +54,7 @@ function getStepContent(step: number) {
   }
 }
 
-export default function CustomStepper() {
+export default function MakingBouquetStepper() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
