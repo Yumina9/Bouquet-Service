@@ -6,9 +6,11 @@ import SignUp from '../router/Login/SignUp';
 import Main from '../router/Main';
 import BuyerMain from '../router/Buyer/BuyerMain';
 import BuyerMyPage from '../router/Buyer/BuyerMyPage';
-import Making from '../router/Seller/Making';
-import Explanation from '../router/Seller/Explanation';
+import FlowerExplanation from '../router/Seller/FlowerExplanation';
+import BouquetExplanation from '../router/Seller/BouquetExplanation';
 import Confirmation from '../router/Seller/Confirmation';
+import FlowerMaking from '../router/Seller/FlowerMaking';
+import BouquetMaking from '../router/Seller/BouquetMaking';
 
 const Router = () => {
   return (
@@ -18,8 +20,10 @@ const Router = () => {
         <Route path="/buyermain" component={BuyerMain} />
         <Route path="/buyermypage" component={BuyerMyPage} />
         <Route path="/sellermain" component={SellerMain} />
-        <Route path="/making" component={Making} />
-        <Route path="/explanation/:id" component={Explanation} />
+        <Route path="/flower/:id" component={FlowerExplanation} />
+        <Route path="/bouquet/:id" component={BouquetExplanation} />
+        <Route path="/making/flower/:id" component={FlowerMaking} />
+        <Route path="/making/bouquet/:id" component={BouquetMaking} />
         <Route path="/confirmation" component={Confirmation} />
         <Route path="/login" component={Login} />
         <Route paht="/signup" component={SignUp} />
