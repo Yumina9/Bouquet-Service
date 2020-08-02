@@ -11,9 +11,15 @@ const BouquetList = () => {
   }, []);
   return (
     <List>
-      {bouquets.map(({ id, name, img, description }) => {
+      {bouquets.map(({ id, name, img, description, color }) => {
         return (
-          <Bouquet id={id} name={name} img={img} description={description} />
+          <Bouquet
+            id={id}
+            name={name}
+            img={img}
+            description={description}
+            color={color}
+          />
         );
       })}
     </List>

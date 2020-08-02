@@ -43,7 +43,13 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Bouquet: React.FC<FlowerType> = ({ name, img, description, color }) => {
+const Bouquet: React.FC<FlowerType> = ({
+  id,
+  name,
+  img,
+  description,
+  color,
+}) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -65,7 +71,7 @@ const Bouquet: React.FC<FlowerType> = ({ name, img, description, color }) => {
             subheader="언제 올렸을까요?"
           />
           <Link
-            to="/explanation"
+            to={`/explanation/${color ? 'flower' : 'bouquet'}/${id}`}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
             <CardMedia className={classes.media} image={img} title={name} />
