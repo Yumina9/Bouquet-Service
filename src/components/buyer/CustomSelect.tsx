@@ -24,7 +24,7 @@ const CustomSelect = () => {
           <div>
             <Button color={palette.color4} bgColor={palette.color3}>
               직접 선택하기
-            </Button>{' '}
+            </Button>
           </div>
         </CustomSelectForm>
         <CustomSelectForm>

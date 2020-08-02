@@ -1,8 +1,10 @@
-import React, {userState} from 'react';
+import React, { userState } from 'react';
 import { Form } from './Form';
+import { FormButton } from './FormButton';
+import Button from '../common/Button';
+import { Link } from 'react-router-dom';
 
 const SignUpForm = () => {
-
   // const [signUpUser, setSignUpUser] = useState({
   //   signUpUserName : "",
   //   signUpUserId: "",
@@ -11,7 +13,7 @@ const SignUpForm = () => {
   //   signUpUserPasswordCheck: ""
   // });
   return (
-    <Form action="/" method="POST">
+    <Form>
       <p>회원가입</p>
       <label>아이디</label>
       <input type="text" name="userId" placeholder="아이디를 입력하세요" />
@@ -24,16 +26,26 @@ const SignUpForm = () => {
       />
 
       <label>새 비밀번호 확인</label>
-      <input type="password" name="passwordCheck" placeholder="비밀번호 재입력" />
+      <input
+        type="password"
+        name="passwordCheck"
+        placeholder="비밀번호 재입력"
+      />
 
       <label>이메일</label>
       <input type="email" name="userEmail" placeholder="example@example.com" />
       <label>이름</label>
       <input type="text" name="userName" placeholder="이름을 입력하세요." />
-      <label>주소</label>
-      <input type="text" name="userAddress" placeholder="주소를 입력하세요." />
-      <label>휴대폰번호</label>
-      <input type="email" name="userEmail" placeholder="이메일을 입력하세요." />  
+      <FormButton>
+        <Button color="pink" bgColor="black">
+          회원가입
+        </Button>
+        <Link to="/main" color="pink">
+          <Button color="pink" bgColor="black">
+            취소
+          </Button>
+        </Link>
+      </FormButton>
     </Form>
   );
 };

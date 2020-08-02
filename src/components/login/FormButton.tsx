@@ -11,10 +11,9 @@ export const FormButton = ({ children }: FormProps) => {
 const Block = styled.form`
   display: flex;
   justify-content: center;
-  Button{
-      justify-content: center;
-      width: 100px;
-      margin: 20px 10px;
-      border: 1px solid blue;
+  Button {
+    justify-content: center;
+    width: 100px;
+    margin: 20px 10px;
   }
 `;
