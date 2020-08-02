@@ -7,6 +7,7 @@ import '../../index.css';
 const Header = ({title = 'Flamingo'}) => {
 
   const HeaderBox = styled.div`
+  margin-top: 10px;
   display: flex;
   width: 100%;
   background-color : #E596A1;
