@@ -40,9 +40,12 @@ const FlowerExplanation: React.FC<FlowerType> = () => {
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
             <Button color={palette.white} bgColor={palette.color3}>
-              주문하기
+              만들기
             </Button>
           </Link>
+          <Button color={palette.white} bgColor={palette.color3}>
+            주문하기
+          </Button>
         </span>
       </Block>
     </>
@@ -68,6 +71,9 @@ const Block = styled.div`
     font-size: 1.5rem;
     color: inherit;
     outline: none;
+  }
+  span {
+    float: left;
   }
 `;
 

@@ -12,10 +12,10 @@ import Typography from '../../components/common/Typography';
 const BouquetExplanation: React.FC<FlowerType> = () => {
   const { id } = useParams();
   const [bouquet, setBouquet] = useState<FlowerType>();
+
   useEffect(() => {
     axios.get(`/bouquets/${id}`).then(({ data }) => setBouquet(data));
   }, []);
-  console.log(bouquet);
 
   return (
     <>
@@ -35,6 +35,14 @@ const BouquetExplanation: React.FC<FlowerType> = () => {
         <span>
           <Link
             to={`/making/bouquet/${id}`}
+            style={{ color: 'inherit', textDecoration: 'none' }}
+          >
+            <Button color={palette.white} bgColor={palette.color3}>
+              만들기
+            </Button>
+          </Link>
+          <Link
+            to="/confirmation"
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
             <Button color={palette.white} bgColor={palette.color3}>
@@ -67,12 +75,17 @@ const Block = styled.div`
     color: inherit;
     outline: none;
     justify-content: right;
+    float: left;
+    margin: 5px;
+  }
+  span {
+    float: left;
   }
 `;
 
 const Detail = styled.div`
   display: flex;
-  padding: 50px;
+  padding: 30px;
   text-align: center;
   & > :first-child {
     flex: 5;
@@ -87,6 +100,8 @@ const Img = styled.img`
   width: 100%;
   margin: 50px;
   border-radius: 5px;
+  width: 410px;
+  height: 410px;
 `;
 
 const Description = styled.div`
