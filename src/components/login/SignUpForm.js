@@ -40,7 +40,7 @@ const SignUpForm = () => {
         <Button color="pink" bgColor="black">
           회원가입
         </Button>
-        <Link to="/main" color="pink">
+        <Link to="/" color="pink">
           <Button color="pink" bgColor="black">
             취소
           </Button>
