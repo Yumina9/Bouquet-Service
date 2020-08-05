@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -56,6 +56,7 @@ function getStepContent(step: number) {
 }
 
 export default function MakingFlowerStepper() {
+  const { id } = useParams();
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -110,7 +111,7 @@ export default function MakingFlowerStepper() {
             다시 선택하기
           </Button>
           <Link
-            to="/confirmation"
+            to={`/confirmation/${id}`}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
             <Button className={classes.button}>주문하기</Button>

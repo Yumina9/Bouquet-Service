@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -34,7 +34,7 @@ function getSteps() {
   return [
     '꽃다발을 선택하셧습니다.',
     '꽃 선택',
-    '꽃 수량 선택',
+    '꽃 수량 입력',
     '포장지 색상, 리본 색상 선택',
   ];
 }
@@ -46,7 +46,7 @@ function getStepContent(step: number) {
     case 1:
       return '꽃을 선택하세요';
     case 2:
-      return `꽃의 수량을 선택하세요.`;
+      return <input type="text" />;
     case 3:
       return `포장지 색상과 리본 색상을 선택하세요`;
     default:
@@ -54,7 +54,8 @@ function getStepContent(step: number) {
   }
 }
 
-export default function MakingBouquetStepper() {
+export default function MakingBouquetStepper({}) {
+  const { id } = useParams();
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -109,7 +110,7 @@ export default function MakingBouquetStepper() {
             다시 선택하기
           </Button>
           <Link
-            to="/confirmation"
+            to={`/confirmation/${id}`}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
             <Button className={classes.button}>주문하기</Button>
