@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MiniHeader } from '../../components/header/MiniHeader';
-import SellerHeader from '../../components/header/SellerHeader';
+import SellerInfo from '../../components/header/SellerInfo';
 import FlowerList from '../../components/flowerImg/FlowerList';
 import BouquetList from '../../components/flowerImg/BouquetList';
 import Typography from '../../components/common/Typography';
@@ -12,7 +12,7 @@ const SellerMain = () => {
     <div>
       <MiniHeader />
       <Block>
-        <SellerHeader />
+        <SellerInfo />
       </Block>
       <Block>
         <Typography type="H4" color={palette.color4} fontWeight="bold">
