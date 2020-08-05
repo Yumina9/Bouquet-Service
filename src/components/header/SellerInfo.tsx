@@ -7,7 +7,7 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import FacebookIcon from '@material-ui/icons/Facebook';
 
-const SellerHeader = () => {
+const SellerInfo = () => {
   return (
     <Box>
       <div>
@@ -15,8 +15,8 @@ const SellerHeader = () => {
           엘리제플라워
         </Typography>
         <Typography type="H7" color={palette.color4} fontWeight="light">
-          <p>플로리스트 : 유진 . 유주희</p>
           <p>Elysee flower boutique in korea since 2011</p>
+          <p>플로리스트 : 유진 . 유주희</p>
           <p>주소 : 청담동 19-36 ,1층</p>
           <p>
             <PhoneIphoneIcon fontSize="large" /> 02-545-5501
@@ -38,7 +38,7 @@ const SellerHeader = () => {
   );
 };
 
-export default SellerHeader;
+export default SellerInfo;
 
 const Box = styled.div`
   display: flex;
