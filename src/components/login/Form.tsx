@@ -12,11 +12,11 @@ const Block = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid grey;
   width: 500px;
   height: 500px;
   margin: auto;
-  div, p {
+  div,
+  p {
     text-align: center;
   }
 `;
