@@ -41,6 +41,7 @@ const LoginForm = () => {
           onChange={onChangeUserId}
           placeholder="아이디를 입력하세요"
         />
+        <input type="text" name="userId" placeholder="아이디를 입력하세요" />
         비밀번호 :
         <input
           type="password"
@@ -51,7 +52,13 @@ const LoginForm = () => {
           placeholder="비밀번호를 입력하세요"
         />
         <FormButton>
-          <Button color="pink" bgColor="black" onClick={onLogin}>
+          <Button
+            color="pink"
+            bgColor="black"
+            onClick={onLogin}
+            placeholder="비밀번호를 입력하세요"
+          />
+          <Button color="pink" bgColor="black">
             로그인
           </Button>
 

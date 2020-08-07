@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -81,12 +82,14 @@ export const MiniHeader = () => {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem className={classes.menu} onClick={handleClose}>
-                  Profile
-                </MenuItem>
-                <MenuItem className={classes.menu} onClick={handleClose}>
-                  My account
-                </MenuItem>
+                <Link
+                  to="/seller/mypage"
+                  style={{ color: 'inherit', textDecoration: 'none' }}
+                >
+                  <MenuItem className={classes.menu} onClick={handleClose}>
+                    MyPage
+                  </MenuItem>
+                </Link>
               </Menu>
             </div>
           )}
