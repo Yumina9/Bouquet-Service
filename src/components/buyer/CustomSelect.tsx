@@ -4,7 +4,7 @@ import Typography from '../common/Typography';
 import palette from '../lib/styles/palette';
 import styled from 'styled-components';
 import { CustomSelectForm } from './CustomSelectForm';
-import NaverMapAPI from './NaverMapAPI';
+import GoogleApiMap from './GoogleApiMap';
 
 const CustomSelect = () => {
   const CustomSelect = styled.div`
@@ -28,7 +28,7 @@ const CustomSelect = () => {
           </div>
         </CustomSelectForm>
         <CustomSelectForm>
-          <NaverMapAPI />
+          <GoogleApiMap />
         </CustomSelectForm>
       </CustomSelect>
     </div>
