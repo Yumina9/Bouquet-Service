@@ -1,31 +1,32 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../modules/member';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Form } from './Form';
 import { FormButton } from './FormButton';
 import Button from '../common/Button';
+// import { useSelector } from 'react-redux';
 
 const LoginForm = () => {
+  // const isLogin = useSelector((state) => state.member.isLogin);
   const [userId, setUserId] = useState('');
-  const [userPwd, setuserPwd] = useState('');
+  const [userPwd, setUserPwd] = useState('');
 
   const dispatch = useDispatch();
 
-  const onChangeUserId = (e) => {
+  const onUserIdChange = (e) => {
     setUserId(e.target.value);
+    console.log('아이디', userId);
   };
-  const onChangeUserPwd = (e) => {
-    setuserPwd(e.target.value);
+  const onUserPwdChange = (e) => {
+    setUserPwd(e.target.value);
+    console.log('비밀번호', userPwd);
   };
-
-  // const onKEyPressEnter = (e) => {
-  //   if (e.key === 'Enter') {
-  //     onClickLoginButton();
-  //   }
-  // };
 
   const onLogin = () => {
+    // debugger;
+    console.log(userId);
+    console.log(userPwd);
     dispatch(login(userId, userPwd));
   };
 
@@ -38,36 +39,44 @@ const LoginForm = () => {
           type="text"
           name="userId"
           value={userId}
-          onChange={onChangeUserId}
+          onChange={(e) => onUserIdChange(e)}
           placeholder="아이디를 입력하세요"
         />
-        <input type="text" name="userId" placeholder="아이디를 입력하세요" />
         비밀번호 :
         <input
           type="password"
           name="userPwd"
           value={userPwd}
-          onChange={onChangeUserPwd}
+          onChange={(e) => onUserPwdChange(e)}
           // onKeyPress={onKEyPressEnter}
           placeholder="비밀번호를 입력하세요"
         />
-        <FormButton>
-          <Button
-            color="pink"
-            bgColor="black"
-            onClick={onLogin}
-            placeholder="비밀번호를 입력하세요"
-          />
-          <Button color="pink" bgColor="black">
-            로그인
-          </Button>
-
-          <Link to={'/'} style={{ color: 'inherit', textDecoration: 'none' }}>
+        {/* <FormButton> */}
+        <button onClick={(e) => onLogin(e)}>
+          로그인
+          {/* <Link to={'/'}>로그인</Link> */}
+        </button>
+        {/* {isLogin.toString() == 'treu' ? (
+            <Button
+              color="pink"
+              bgColor="black"
+              onClick={onLogin}
+              placeholder="비밀번호를 입력하세요"
+            >
+              <Link to={'/'}>로그인</Link>
+            </Button>
+          ) : (
+            <p>아이디 혹은 비밀번호가 맞지 않습니다.</p>
+          )} */}
+        {/* <Link to={'/'}>
             <Button color="pink" bgColor="black">
               취소
             </Button>
-          </Link>
-        </FormButton>
+          </Link> */}
+        <Button color="pink" bgColor="black">
+          취소
+        </Button>
+        {/* </FormButton> */}
       </Form>
     </>
   );
