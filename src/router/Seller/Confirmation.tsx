@@ -7,6 +7,7 @@ import palette from '../../components/lib/styles/palette';
 import Button from '../../components/common/Button';
 import { useParams } from 'react-router-dom';
 import { BouquetType } from '../../components/flowerImg/FlowerList';
+import { Link } from 'react-router-dom';
 
 const Confirmation: React.FC<BouquetType> = () => {
   const { id } = useParams();
@@ -49,9 +50,14 @@ const Confirmation: React.FC<BouquetType> = () => {
             {`${info?.wrappingpaper_color}`}
           </Typography>
         </Order>
-        <Button color={palette.black} bgColor={palette.color3}>
-          뒤로가기
-        </Button>
+        <Link
+          to={`/bouquet/${id}`}
+          style={{ color: 'inherit', textDecoration: 'none' }}
+        >
+          <Button color={palette.black} bgColor={palette.color3}>
+            뒤로가기
+          </Button>
+        </Link>
         <Button color={palette.black} bgColor={palette.color3}>
           주문완료
         </Button>
