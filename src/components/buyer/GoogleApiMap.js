@@ -1,126 +1,119 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   GoogleMap,
   LoadScript,
-  Circle,
   Marker,
   InfoWindow,
 } from '@react-google-maps/api';
 
-const containerStyle = {
-  width: '100%',
-  height: '500px',
-};
+const GoogleApiMap = () => {
+  //Dynamically showing marker using Geolocation API
+  const [currentPosition, setCurrentPosition] = useState({});
 
-const center = {
-  lat: 37.4652876,
-  lng: 126.900341,
-};
-const positionList = [
-  {
-    title: '영플라워',
-    sellerName: '가나다',
-    lat: 37.4659376,
-    lng: 126.9047024,
-    // 영플라워
-  },
-  {
-    title: '물고기파는꽃집',
-    sellerName: '라마바',
-    lat: 37.4661635,
-    lng: 126.9020374,
-    // 물고기파는꽃집 37.4661635!4d126.9020374
-  },
-  {
-    title: '아미플로라',
-    sellerName: '사아자',
-    lat: 37.4630783,
-    lng: 126.9059344,
-    // 아미플로라 37.4630783!4d126.9059344
-  },
-  {
-    title: '꽃나드리',
-    sellerName: '차타카',
-    lat: 37.4612126,
-    lng: 126.8990913,
-    // 꽃나드리 37.4612126!4d126.8990913
-  },
-];
-const markerPositionList = positionList.map((item) => {
-  const onClick = () => {
-    console.log('click');
+  const success = (position) => {
+    const currentPosition = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+    };
+    setCurrentPosition(currentPosition);
+  };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(success);
+  });
+  // 마커정보 보여주기/사라지기
+  const [selected, setSelected] = useState({});
+  const onSelect = (item) => {
+    setSelected(item);
+  };
+  // 지도 스타일
+  const mapStyles = {
+    height: '500px',
+    width: '100%',
+  };
+
+  // 지도 센터
+  const defaultCenter = {
+    lat: 37.4652876,
+    lng: 126.900341,
+  };
+  // 마커 리스트
+  const locations = [
+    {
+      name: '영플라워',
+      sellername: '가나다',
+      location: {
+        lat: 37.4659376,
+        lng: 126.9047024,
+      },
+      // 영플라워
+    },
+    {
+      name: '물고기파는꽃집',
+      sellername: '라마바',
+      location: {
+        lat: 37.4661635,
+        lng: 126.9020374,
+      },
+      // 물고기파는꽃집 37.4661635!4d126.9020374
+    },
+    {
+      name: '아미플로라',
+      sellername: '사아자',
+      location: {
+        lat: 37.4630783,
+        lng: 126.9059344,
+      },
+      // 아미플로라 37.4630783!4d126.9059344
+    },
+    {
+      name: '꽃나드리',
+      sellername: '자차카',
+      location: {
+        lat: 37.4612126,
+        lng: 126.8990913,
+      },
+      // 꽃나드리 37.4612126!4d126.8990913
+    },
+  ];
+  const mapStyle = {
+    width: '100%',
   };
   return (
-    <Marker
-      key={item.id}
-      position={item}
-      onClick={(e) => {
-        // alert('Shop : ' + item.title + 'Florist : ' + item.sellerName); // 경고창으로 확인 완료
-        onClick();
-      }}
-      onMouseOver={(e) => {
-        console.log(item.title); //마우스 오버시 인포박스를 보여주고 싶은데 어떻게?
-      }}
-      onMouseOut={(e) => {
-        console.log('OK'); //마우스 아웃시 인포박스가 사라지기를
-      }}
-    />
+    <div style={mapStyle}>
+      <LoadScript googleMapsApiKey="AIzaSyAZsf_zeX02qdI-TRq2Vch0PXcRwHgT_90">
+        <GoogleMap
+          mapContainerStyle={mapStyles}
+          zoom={15}
+          center={currentPosition}
+        >
+          {locations.map((item) => {
+            return (
+              <Marker
+                key={item.name}
+                position={item.location}
+                onClick={() => onSelect(item)}
+              />
+            );
+          })}
+          {selected.location && (
+            <InfoWindow
+              position={selected.location}
+              clickable={true}
+              onCloseClick={() => setSelected({})}
+            >
+              {/* 따로 값을 줄 경우 나오지 않아서 하나에 다 넣은 상태 */}
+              <div>
+                Shop : {selected.name}
+                <br />
+                Florist : {selected.sellername}
+              </div>
+            </InfoWindow>
+          )}
+        </GoogleMap>
+      </LoadScript>
+    </div>
   );
-});
-
-const onLoad = (infoWindow) => {
-  console.log('infoWindow: ', infoWindow);
-};
-const options = { closeBoxURL: '', enableEventPropagation: true };
-
-const circleOptions = {
-  strokeColor: '#FF0000',
-  strokeOpacity: 0.8,
-  strokeWeight: 2,
-  fillColor: '#FF0000',
-  fillOpacity: 0.35,
-  clickable: false,
-  draggable: false,
-  editable: false,
-  visible: true,
-  radius: 70,
-  zIndex: 1,
-};
-const divStyle = {
-  background: `white`,
-  border: `1px solid #ccc`,
-  padding: 15,
 };
 
-{
-  /* <InfoWindow onLoad={onLoad} position={center}> //  마우스 오버시 보여주고 사라지는 것을 보여주고 싶은데...?
-          <div style={divStyle}>
-            <h1>InfoWindow</h1>
-          </div>
-        </InfoWindow> */
-}
-function GoogleApiMap() {
-  return (
-    <LoadScript googleMapsApiKey="AIzaSyAZsf_zeX02qdI-TRq2Vch0PXcRwHgT_90">
-      <GoogleMap
-        id="InfoBox-example"
-        mapContainerStyle={containerStyle}
-        zoom={15}
-        center={center}
-      >
-        <Circle
-          // optional
-          onLoad={onLoad}
-          // required
-          center={center}
-          // required
-          options={circleOptions}
-        />
-
-        {markerPositionList}
-      </GoogleMap>
-    </LoadScript>
-  );
-}
-
-export default React.memo(GoogleApiMap);
+export default GoogleApiMap;
