@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Typography from '../common/Typography';
@@ -67,11 +67,11 @@ const Bouquet: React.FC<FlowerType> = ({
                 <MoreVertIcon />
               </IconButton>
             }
-            title={name}
+            title={color ? `${color} ${name}` : `${name}`}
             subheader="언제 올렸을까요?"
           />
           <Link
-            to={`/explanation/${color ? 'flower' : 'bouquet'}/${id}`}
+            to={`/${color ? 'flower' : 'bouquet'}/${id}`}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
             <CardMedia className={classes.media} image={img} title={name} />
