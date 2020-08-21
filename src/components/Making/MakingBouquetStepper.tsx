@@ -14,6 +14,11 @@ const MakingBouquetStepper = ({}) => {
     axios.get(`/bouquets/${id}`).then(({ data }) => setBouquet(data));
   }, []);
   console.log(bouquet);
+  const [flowers, setFlowers] = useState<BouquetType[]>([]);
+  useEffect(() => {
+    axios.get('/flowers/').then(({ data }) => setFlowers(data));
+  }, []);
+  console.log(flowers);
 
   return (
     <>
@@ -26,10 +31,25 @@ const MakingBouquetStepper = ({}) => {
         </span>
         <span>
           <div>
+            <Typography type="H4" color={palette.color2} fontWeight="bold">
+              세부사항
+            </Typography>
+          </div>
+          <div>
             <Typography type="H6" color={palette.color4} fontWeight="bold">
               꽃 선택
             </Typography>
             <p>꽃을 선택하세요</p>
+            {flowers.map(({ img }) => {
+              return (
+                <>
+                  <img
+                    src={`${img}`}
+                    style={{ width: '100px', height: '100%' }}
+                  />
+                </>
+              );
+            })}
           </div>
           <div>
             <Typography type="H6" color={palette.color4} fontWeight="bold">
