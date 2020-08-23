@@ -11,6 +11,7 @@ import BouquetExplanation from '../router/Seller/BouquetExplanation';
 import Confirmation from '../router/Seller/Confirmation';
 import FlowerMaking from '../router/Seller/FlowerMaking';
 import BouquetMaking from '../router/Seller/BouquetMaking';
+import SellerMyPage from '../router/Seller/SellerMyPage';
 
 const Router = () => {
   return (
@@ -24,9 +25,10 @@ const Router = () => {
         <Route path="/bouquet/:id" component={BouquetExplanation} />
         <Route path="/making/flower/:id" component={FlowerMaking} />
         <Route path="/making/bouquet/:id" component={BouquetMaking} />
-        <Route path="/confirmation" component={Confirmation} />
+        <Route path="/confirmation/:id" component={Confirmation} />
         <Route path="/login" component={Login} />
-        <Route paht="/signup" component={SignUp} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/seller/mypage" component={SellerMyPage} />
       </Switch>
     </BrowserRouter>
   );

@@ -10,11 +10,7 @@ export const MakingList = () => {
   console.log(flowers);
   return (
     <>
-      <List>
-        {flowers.map((img) => {
-          return { img };
-        })}
-      </List>
+      <List></List>
     </>
   );
 };

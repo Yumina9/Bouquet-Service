@@ -27,7 +27,7 @@ const FlowerExplanation: React.FC<FlowerType> = () => {
           <Img src={`${flower?.img}`} />
           <Description>
             <Typography type="H4" color={palette.color4} fontWeight="bold">
-              {`${flower?.name}`}
+              {`${flower?.color} ${flower?.name}`}
             </Typography>
             <Typography type="H7" color={palette.color4} fontWeight="light">
               {`${flower?.description}`}
@@ -43,9 +43,6 @@ const FlowerExplanation: React.FC<FlowerType> = () => {
               만들기
             </Button>
           </Link>
-          <Button color={palette.white} bgColor={palette.color3}>
-            주문하기
-          </Button>
         </span>
       </Block>
     </>
@@ -91,9 +88,10 @@ const Detail = styled.div`
 `;
 
 const Img = styled.img`
-  width: 100%;
   margin: 50px;
   border-radius: 5px;
+  width: 410px;
+  height: 500px;
 `;
 
 const Description = styled.div`

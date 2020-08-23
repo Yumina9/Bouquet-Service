@@ -5,6 +5,7 @@ import Typography from '../common/Typography';
 import palette from '../lib/styles/palette';
 
 const ExplanationImage: React.FC<FlowerType> = ({
+  id,
   name,
   img,
   description,
@@ -15,6 +16,9 @@ const ExplanationImage: React.FC<FlowerType> = ({
       <Typography type="H4" color={palette.color4} fontWeight="bold">
         {name}
       </Typography>
+      <img src={img} />
+      {description}
+      {color}
     </Block>
   );
 };
