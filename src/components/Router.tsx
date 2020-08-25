@@ -6,11 +6,11 @@ import SignUp from '../router/Login/SignUp';
 import Main from '../router/Main';
 import BuyerMain from '../router/Buyer/BuyerMain';
 import BuyerMyPage from '../router/Buyer/BuyerMyPage';
-import FlowerExplanation from '../router/Seller/FlowerExplanation';
-import BouquetExplanation from '../router/Seller/BouquetExplanation';
-import Confirmation from '../router/Seller/Confirmation';
-import FlowerMaking from '../router/Seller/FlowerMaking';
-import BouquetMaking from '../router/Seller/BouquetMaking';
+import FlowerExplanation from '../router/Buyer/FlowerExplanation';
+import BouquetExplanation from '../router/Buyer/BouquetExplanation';
+import Confirmation from '../router/Buyer/Confirmation';
+import FlowerMaking from '../router/Buyer/FlowerMaking';
+import BouquetMaking from '../router/Buyer/BouquetMaking';
 import SellerMyPage from '../router/Seller/SellerMyPage';
 
 const Router = () => {
