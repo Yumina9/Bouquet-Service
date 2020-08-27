@@ -12,6 +12,8 @@ import Confirmation from '../router/Buyer/Confirmation';
 import FlowerMaking from '../router/Buyer/FlowerMaking';
 import BouquetMaking from '../router/Buyer/BouquetMaking';
 import SellerMyPage from '../router/Seller/SellerMyPage';
+import FlowerMore from '../router/Buyer/FlowerMore';
+import BouquetMore from '../router/Buyer/BouquetMore';
 
 const Router = () => {
   return (
@@ -29,6 +31,8 @@ const Router = () => {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/seller/mypage" component={SellerMyPage} />
+        <Route path="/flowermore" component={FlowerMore} />
+        <Route pthe="/bouquetmoer" component={BouquetMore} />
       </Switch>
     </BrowserRouter>
   );

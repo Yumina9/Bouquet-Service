@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { MiniHeader } from '../../components/header/MiniHeader';
 import SellerInfo from '../../components/header/SellerInfo';
 import FlowerList from '../../components/flowerImg/FlowerList';
@@ -18,12 +19,22 @@ const SellerMain = () => {
         <Typography type="H4" color={palette.color4} fontWeight="bold">
           꽃다발 리스트
         </Typography>
+        <Link to="/bouquetmore">
+          <Typography type="H7" color={palette.color4} fontWeight="bold">
+            더보기
+          </Typography>
+        </Link>
         <BouquetList />
       </Block>
       <Block>
         <Typography type="H4" color={palette.color4} fontWeight="bold">
           현재 보유 꽃 리스트
         </Typography>
+        <Link to="/bouquetmore">
+          <Typography type="H7" color={palette.color4} fontWeight="bold">
+            더보기
+          </Typography>
+        </Link>
         <FlowerList />
       </Block>
     </div>

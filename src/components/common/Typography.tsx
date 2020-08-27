@@ -54,49 +54,49 @@ const Typography = ({ type, color, fontWeight, children }: TypographyType) => {
 
 export default Typography;
 
-const H1 = styled.p<StyledType>`
+const H1 = styled.span<StyledType>`
   ${typography.H1};
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
 `;
 
-const H2 = styled.p<StyledType>`
+const H2 = styled.span<StyledType>`
   ${typography.H2};
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
 `;
 
-const H3 = styled.p<StyledType>`
+const H3 = styled.span<StyledType>`
   ${typography.H3};
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
 `;
 
-const H4 = styled.p<StyledType>`
+const H4 = styled.span<StyledType>`
   ${typography.H4};
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
 `;
 
-const H5 = styled.p<StyledType>`
+const H5 = styled.span<StyledType>`
   ${typography.H5};
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
 `;
 
-const H6 = styled.p<StyledType>`
+const H6 = styled.span<StyledType>`
   ${typography.H6};
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
 `;
 
-const H7 = styled.p<StyledType>`
+const H7 = styled.span<StyledType>`
   ${typography.H7};
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
 `;
 
-const Original = styled.p<StyledType>`
+const Original = styled.span<StyledType>`
   ${typography.Original};
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
