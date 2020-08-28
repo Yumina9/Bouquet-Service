@@ -19,7 +19,10 @@ const SellerMain = () => {
         <Typography type="H4" color={palette.color4} fontWeight="bold">
           꽃다발 리스트
         </Typography>
-        <Link to="/bouquetmore">
+        <Link
+          to="/bouquetmore"
+          style={{ color: 'inherit', textDecoration: 'none', float: 'right' }}
+        >
           <Typography type="H7" color={palette.color4} fontWeight="bold">
             더보기
           </Typography>
@@ -30,11 +33,14 @@ const SellerMain = () => {
         <Typography type="H4" color={palette.color4} fontWeight="bold">
           현재 보유 꽃 리스트
         </Typography>
-        <Link to="/bouquetmore">
-          <Typography type="H7" color={palette.color4} fontWeight="bold">
+        <Typography type="H7" color={palette.color4} fontWeight="bold">
+          <Link
+            to="/flowermore"
+            style={{ color: 'inherit', textDecoration: 'none', float: 'right' }}
+          >
             더보기
-          </Typography>
-        </Link>
+          </Link>
+        </Typography>
         <FlowerList />
       </Block>
     </div>
