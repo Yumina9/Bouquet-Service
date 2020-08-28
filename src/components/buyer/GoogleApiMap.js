@@ -29,7 +29,9 @@ const GoogleApiMap = () => {
   // 지도 스타일
   const mapStyles = {
     height: '500px',
-    width: '100%',
+    width: '50%',
+    overflow: 'hidden',
+    boxSizing: 'border-box',
   };
 
   // 지도 센터
