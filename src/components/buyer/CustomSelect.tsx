@@ -6,14 +6,13 @@ import styled from 'styled-components';
 import GoogleApiMap from './GoogleApiMap';
 import { Link } from 'react-router-dom';
 
+import SellerCard from './SellerCard';
+
 const CustomSelect = () => {
   const CustomSelect = {
     width: '100%',
     paddign: ' 0 10px',
     height: '500px',
-  };
-  const customFloat = {
-    float: 'left',
   };
   return (
     <div style={CustomSelect}>
@@ -39,12 +38,22 @@ const CustomSelect = () => {
                 borderRadius: '5px',
                 backgroundColor: '#FFA7B3',
                 border: 'none',
-                marginTop: '20px',
+                marginTop: '40px',
               }}
             >
               직접 선택하기
             </button>
           </Link>
+        </div>
+        <div
+          style={{
+            marginTop: '40px',
+          }}
+        >
+          <SellerCard />
+          <SellerCard />
+          <SellerCard />
+          <SellerCard />
         </div>
       </div>
 
