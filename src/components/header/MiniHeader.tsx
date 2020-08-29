@@ -54,7 +54,9 @@ export const MiniHeader = () => {
       <AppBar className={classes.header} position="static">
         <Toolbar>
           <Typography variant="h3" className={classes.title}>
-            Flamingo
+            <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
+              Flamingo
+            </Link>
           </Typography>
           {auth && (
             <div>
