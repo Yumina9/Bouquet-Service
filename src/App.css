@@ -2,3 +2,29 @@
   text-align: center;
   font-size: 10px;
 }
+.sliderBox {
+  height: 300px;
+  margin: 50px 0;
+  padding: 50px 0 0 100px;
+}
+.sliderBox > h3 {
+  border: 1p solid gray;
+}
+.sliderBg1 {
+  background-color: red;
+}
+.sliderBg2 {
+  background-color: orange;
+}
+.sliderBg3 {
+  background-color: yellow;
+}
+.sliderBg4 {
+  background-color: green;
+}
+.sliderBg5 {
+  background-color: blue;
+}
+.sliderBg6 {
+  background-color: purple;
+}
