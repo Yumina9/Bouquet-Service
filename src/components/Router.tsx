@@ -33,7 +33,7 @@ const Router = () => {
         <Route path="/signup" component={SignUp} />
         <Route path="/seller/mypage" component={SellerMyPage} />
         <Route path="/flowermore" component={FlowerMore} />
-        <Route path="/bouquetmoer" component={BouquetMore} />
+        <Route path="/bouquetmore" component={BouquetMore} />
         <Route path="/listadd" component={ListAdd} />
       </Switch>
     </BrowserRouter>

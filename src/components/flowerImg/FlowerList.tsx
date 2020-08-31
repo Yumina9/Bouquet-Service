@@ -21,7 +21,7 @@ export type BouquetType = FlowerType & {
 const FlowerList = () => {
   const [flowers, setFlowers] = useState<FlowerType[]>([]);
   useEffect(() => {
-    axios.get('/flowers').then(({ data }) => setFlowers(data));
+    axios.get('/flowers/?limit=3').then(({ data }) => setFlowers(data));
   }, []);
   console.log(flowers);
   return (

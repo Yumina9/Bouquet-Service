@@ -14,22 +14,25 @@ const BouquetMore = () => {
   return (
     <>
       <MiniHeader />
-      <Typography type="H3" color={palette.color4} fontWeight="bold">
-        제작 가능한 꽃다발 리스트
-      </Typography>
-      <List>
-        {bouquets.map(({ id, name, img, description, color }) => {
-          return (
-            <Bouquet
-              id={id}
-              name={name}
-              img={img}
-              description={description}
-              color={color}
-            />
-          );
-        })}
-      </List>
+      <div>
+        <Typography type="H3" color={palette.color4} fontWeight="bold">
+          제작 가능한 꽃다발 리스트
+        </Typography>
+
+        <List>
+          {bouquets.map(({ id, name, img, description, color }) => {
+            return (
+              <Bouquet
+                id={id}
+                name={name}
+                img={img}
+                description={description}
+                color={color}
+              />
+            );
+          })}
+        </List>
+      </div>
     </>
   );
 };
@@ -39,4 +42,6 @@ const List = styled.div`
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  margin: 20px;
+  padding: 20px;
 `;
