@@ -7,7 +7,7 @@ import { FlowerType } from './FlowerList';
 const BouquetList = () => {
   const [bouquets, setBouquets] = useState<FlowerType[]>([]);
   useEffect(() => {
-    axios.get('/bouquets').then(({ data }) => setBouquets(data));
+    axios.get('/bouquets/?limit=3').then(({ data }) => setBouquets(data));
   }, []);
   return (
     <List>
