@@ -1,0 +1,43 @@
+table {
+  font-size: 20px;
+}
+table th {
+  text-align: right;
+  line-height: 40px;
+}
+table caption {
+  text-align: left;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 50px;
+}
+.deliveryCaption {
+  width: 100%;
+  border-collapse: collapse;
+}
+.deliveryCaption > thead > tr {
+  width: 100%;
+}
+.deliveryCaption > thead > tr > th {
+  text-align: center;
+  border-bottom: 2px solid gray;
+}
+.deliveryCaption > thead > tr > th:first-child {
+  width: 70px;
+}
+.deliveryCaption > thead > tr > th:nth-child(2) {
+}
+.deliveryCaption > thead > tr > th:last-child {
+  width: 150px;
+}
+.deliveryCaption > tbody > tr {
+  line-height: 50px;
+  border-bottom: 1px solid gray;
+}
+.deliveryCaption > tbody > tr > td:first-child,
+.deliveryCaption > tbody > tr > td:last-child {
+  text-align: center;
+}
+.deliveryCaption > tbody > tr > td:nth-child(2) {
+  padding-left: 10px;
+}
