@@ -10,11 +10,14 @@ import Typography from '../common/Typography';
 const MakingBouquetStepper = ({}) => {
   const { id } = useParams();
   const [bouquet, setBouquet] = useState<BouquetType>();
+  const [flowers, setFlowers] = useState<BouquetType[]>([]);
+
   useEffect(() => {
     axios.get(`/bouquets/${id}`).then(({ data }) => setBouquet(data));
   }, []);
+
   console.log(bouquet);
-  const [flowers, setFlowers] = useState<BouquetType[]>([]);
+
   useEffect(() => {
     axios.get('/flowers/').then(({ data }) => setFlowers(data));
   }, []);
@@ -65,19 +68,6 @@ const MakingBouquetStepper = ({}) => {
           </div>
         </span>
       </Block>
-      <Link to="" style={{ color: 'inherit', textDecoration: 'none' }}>
-        <Button color={palette.white} bgColor={palette.color3}>
-          뒤로가기
-        </Button>
-      </Link>
-      <Link
-        to={`/confirmation/${id}`}
-        style={{ color: 'inherit', textDecoration: 'none' }}
-      >
-        <Button color={palette.white} bgColor={palette.color3}>
-          주문하기
-        </Button>
-      </Link>
     </>
   );
 };

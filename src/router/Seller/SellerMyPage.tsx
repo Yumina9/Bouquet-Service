@@ -9,7 +9,13 @@ const SellerMyPage = () => {
       <Info>
         <></>
         <Img src={require('../../image/user.png')} />
-        <div>정보</div>
+        <div>가게 이름</div>
+        <div>소개</div>
+        <div>이름</div>
+        <div>주소</div>
+        <div>번호</div>
+        <div>인스타그램 주소</div>
+        <div>페이스북 주소</div>
         <></>
       </Info>
     </>
