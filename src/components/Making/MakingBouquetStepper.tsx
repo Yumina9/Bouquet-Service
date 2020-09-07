@@ -10,11 +10,14 @@ import Typography from '../common/Typography';
 const MakingBouquetStepper = ({}) => {
   const { id } = useParams();
   const [bouquet, setBouquet] = useState<BouquetType>();
+  const [flowers, setFlowers] = useState<BouquetType[]>([]);
+
   useEffect(() => {
     axios.get(`/bouquets/${id}`).then(({ data }) => setBouquet(data));
   }, []);
+
   console.log(bouquet);
-  const [flowers, setFlowers] = useState<BouquetType[]>([]);
+
   useEffect(() => {
     axios.get('/flowers/').then(({ data }) => setFlowers(data));
   }, []);
