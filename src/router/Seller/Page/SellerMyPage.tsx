@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MiniHeader } from '../../components/header/MiniHeader';
+import { MiniHeader } from '../../../components/header/MiniHeader';
 
 const SellerMyPage = () => {
   return (
@@ -8,7 +8,7 @@ const SellerMyPage = () => {
       <MiniHeader />
       <Info>
         <></>
-        <Img src={require('../../image/user.png')} />
+        <Img src={require('../../../image/user.png')} />
         <div>가게 이름</div>
         <div>소개</div>
         <div>이름</div>

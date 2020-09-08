@@ -4,12 +4,14 @@ import { MiniHeader } from '../../components/header/MiniHeader';
 import axios from 'axios';
 import Bouquet from '../../components/flowerImg/Bouquet';
 import Typography from '../../components/common/Typography';
-import palette from '../../components/lib/styles/palette';
+import palette from '../../lib/styles/palette';
+import { useParams } from 'react-router-dom';
 
 const FlowerMore = () => {
+  const { id } = useParams();
   const [flowers, setFlowers] = useState([]);
   useEffect(() => {
-    axios.get('/flowers').then(({ data }) => setFlowers(data));
+    axios.get(`/shop/${id}/flowers`).then(({ data }) => setFlowers(data));
   }, []);
   return (
     <>
@@ -18,15 +20,9 @@ const FlowerMore = () => {
         보유 중인 꽃 리스트
       </Typography>
       <List>
-        {flowers.map(({ id, name, img, description, color }) => {
+        {flowers.map(({ id, name, img, description }) => {
           return (
-            <Bouquet
-              id={id}
-              name={name}
-              img={img}
-              description={description}
-              color={color}
-            />
+            <Bouquet id={id} name={name} img={img} description={description} />
           );
         })}
       </List>

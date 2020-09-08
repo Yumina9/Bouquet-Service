@@ -1,34 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import Bouquet from './Bouquet';
+import Flower, { FlowerType } from './Flower';
 
-export type FlowerType = {
-  id: number;
-  name: string;
-  img: string;
-  description: string;
-  color: string;
-};
-export type BouquetType = FlowerType & {
-  flower_name: string;
-  flower_color: string;
-  flower_count: number;
-  ribbon_color: string;
-  wrappingpaper_color: string;
-};
+interface FlowerListProps {
+  flowers: FlowerType[];
+}
 
-const FlowerList = () => {
-  const [flowers, setFlowers] = useState<FlowerType[]>([]);
-  useEffect(() => {
-    axios.get('/flowers/?limit=3').then(({ data }) => setFlowers(data));
-  }, []);
-  console.log(flowers);
+const FlowerList: React.FC<FlowerListProps> = ({ flowers }) => {
   return (
     <List>
       {flowers.map(({ id, name, img, description, color }) => {
         return (
-          <Bouquet
+          <Flower
             id={id}
             name={name}
             img={img}

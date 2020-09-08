@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../common/Button';
 import Typography from '../common/Typography';
-import palette from '../lib/styles/palette';
+import palette from '../../lib/styles/palette';
 import styled from 'styled-components';
 import GoogleApiMap from './GoogleApiMap';
 import { Link } from 'react-router-dom';

@@ -17,16 +17,12 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-export interface BouquetType {
+export interface FlowerType {
   id: number;
   name: string;
   img: string;
   description: string;
-  flower_name: string;
-  flower_color: string;
-  flower_count: number;
-  ribbon_color: string;
-  wrappingpaper_color: string;
+  color: string;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -54,10 +50,13 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Bouquet: React.FC<Pick<
-  BouquetType,
-  'id' | 'name' | 'img' | 'description'
->> = ({ id, name, img, description }) => {
+const Flower: React.FC<FlowerType> = ({
+  id,
+  name,
+  img,
+  description,
+  color,
+}) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -75,11 +74,11 @@ const Bouquet: React.FC<Pick<
                 <MoreVertIcon />
               </IconButton>
             }
-            title={`${name}`}
+            title={`${color} ${name}`}
             subheader="언제 올렸을까요?"
           />
           <Link
-            to={`/bouquet/${id}`}
+            to={`/flower/${id}`}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
             <CardMedia className={classes.media} image={img} title={name} />
@@ -103,7 +102,7 @@ const Bouquet: React.FC<Pick<
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
               <Typography type="H7" color={palette.color4} fontWeight="light">
-                {`${description}`}
+                {`${color}${name}는 ${description}라는 의미를 가지고 있습니다.`}
               </Typography>
             </CardContent>
           </Collapse>
@@ -113,7 +112,7 @@ const Bouquet: React.FC<Pick<
   );
 };
 
-export default Bouquet;
+export default Flower;
 
 const Box = styled.div`
   display: flex;

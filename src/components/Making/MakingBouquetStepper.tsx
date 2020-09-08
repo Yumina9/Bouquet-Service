@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
-import palette from '../lib/styles/palette';
+import palette from '../../lib/styles/palette';
 import Button from '../common/Button';
 import axios from 'axios';
-import { BouquetType } from '../flowerImg/FlowerList';
 import Typography from '../common/Typography';
+import { BouquetType } from '../flowerImg/Bouquet';
 
 const MakingBouquetStepper = ({}) => {
   const { id } = useParams();

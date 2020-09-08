@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
-import { typography } from '../lib/styles/typographys';
+import { typography } from '../../lib/styles/typographys';
 
 type StyledType = {
   fontWeight: string;

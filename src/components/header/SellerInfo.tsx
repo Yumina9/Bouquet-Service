@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Typography from '../common/Typography';
-import palette from '../lib/styles/palette';
+import palette from '../../lib/styles/palette';
 import { FlowerGrid } from '../flowerImg/FlowerGrid';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';

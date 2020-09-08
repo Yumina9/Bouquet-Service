@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { MiniHeader } from '../../components/header/MiniHeader';
-import { FlowerType } from '../../components/flowerImg/FlowerList';
 import Typography from '../../components/common/Typography';
-import palette from '../../components/lib/styles/palette';
+import palette from '../../lib/styles/palette';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import MakingBouquetStepper from '../../components/Making/MakingBouquetStepper';
 import Button from '../../components/common/Button';
+import { FlowerType } from '../../components/flowerImg/Flower';
 
 const BouquetMaking: React.FC<FlowerType> = () => {
   const { id } = useParams();

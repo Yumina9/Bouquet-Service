@@ -4,12 +4,14 @@ import { MiniHeader } from '../../components/header/MiniHeader';
 import axios from 'axios';
 import Bouquet from '../../components/flowerImg/Bouquet';
 import Typography from '../../components/common/Typography';
-import palette from '../../components/lib/styles/palette';
+import palette from '../../lib/styles/palette';
+import { useParams } from 'react-router-dom';
 
 const BouquetMore = () => {
+  const { id } = useParams();
   const [bouquets, setBouquets] = useState([]);
   useEffect(() => {
-    axios.get('/bouquets').then(({ data }) => setBouquets(data));
+    axios.get(`/shop/${id}/bouquets`).then(({ data }) => setBouquets(data));
   }, []);
   return (
     <>
@@ -20,14 +22,13 @@ const BouquetMore = () => {
         </Typography>
 
         <List>
-          {bouquets.map(({ id, name, img, description, color }) => {
+          {bouquets.map(({ id, name, img, description }) => {
             return (
               <Bouquet
                 id={id}
                 name={name}
                 img={img}
                 description={description}
-                color={color}
               />
             );
           })}

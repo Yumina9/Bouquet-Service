@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
-import { FlowerType } from '../../components/flowerImg/FlowerList';
 import { MiniHeader } from '../../components/header/MiniHeader';
 import Button from '../../components/common/Button';
-import palette from '../../components/lib/styles/palette';
+import palette from '../../lib/styles/palette';
 import ExplanationImage from '../../components/Making/ExplanationImage';
 import Typography from '../../components/common/Typography';
+import { FlowerType } from '../../components/flowerImg/Flower';
 
 const FlowerExplanation: React.FC<FlowerType> = () => {
   const { id } = useParams();

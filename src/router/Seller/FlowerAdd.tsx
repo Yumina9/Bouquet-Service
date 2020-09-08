@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Typography from '../../components/common/Typography';
-import palette from '../../components/lib/styles/palette';
+import palette from '../../lib/styles/palette';
 import { MiniHeader } from '../../components/header/MiniHeader';
 
 const InputMenus = [

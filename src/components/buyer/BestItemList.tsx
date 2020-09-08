@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlowerCard } from '../flowerImg/FlowerCard';
 import Typography from '../common/Typography';
-import palette from '../lib/styles/palette';
+import palette from '../../lib/styles/palette';
 import styled from 'styled-components';
 
 const BestItemList = () => {

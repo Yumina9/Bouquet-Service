@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FlowerType } from '../flowerImg/FlowerList';
 import Typography from '../common/Typography';
-import palette from '../lib/styles/palette';
+import palette from '../../lib/styles/palette';
+import { FlowerType } from '../flowerImg/Flower';
 
 export const MakingFlowerInfo = ({
   name,

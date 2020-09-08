@@ -4,10 +4,10 @@ import { Link, useParams } from 'react-router-dom';
 import { MiniHeader } from '../../components/header/MiniHeader';
 import MakingFlowerStepper from '../../components/Making/MakingFlowerStepper';
 import Typography from '../../components/common/Typography';
-import palette from '../../components/lib/styles/palette';
+import palette from '../../lib/styles/palette';
 import Button from '../../components/common/Button';
-import { FlowerType } from '../../components/flowerImg/FlowerList';
 import Axios from 'axios';
+import { FlowerType } from '../../components/flowerImg/Flower';
 
 const FlowerMaking = () => {
   const { id } = useParams();

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import palette from '../lib/styles/palette';
+import palette from '../../lib/styles/palette';
 import Button from '../common/Button';
-import { FlowerType } from '../flowerImg/FlowerList';
 import Axios from 'axios';
 import Typography from '../common/Typography';
 import { MakingFlowerInfo } from './MakingFlowerInfo';
+import { FlowerType } from '../flowerImg/Flower';
 
 export default function MakingFlowerStepper() {
   const { id } = useParams();
