@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlowerCard } from '../flowerImg/FlowerCard';
+import { MiniViewerCard } from '../flowerImg/MiniViewerCard';
 import Typography from '../common/Typography';
 import palette from '../../lib/styles/palette';
 import styled from 'styled-components';
@@ -21,11 +21,11 @@ const BestItemList = () => {
         Best Item
       </Typography>
       <GridBox>
-        <FlowerCard />
-        <FlowerCard />
-        <FlowerCard />
-        <FlowerCard />
-        <FlowerCard />
+        <MiniViewerCard />
+        <MiniViewerCard />
+        <MiniViewerCard />
+        <MiniViewerCard />
+        <MiniViewerCard />
       </GridBox>
     </div>
   );
