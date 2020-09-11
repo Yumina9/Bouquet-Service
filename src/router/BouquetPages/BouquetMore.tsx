@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { MiniHeader } from '../../components/header/MiniHeader';
+import MiniHeader from '../../components/header/MiniHeader';
 import axios from 'axios';
 import Bouquet from '../../components/flowerImg/Bouquet';
 import Typography from '../../components/common/Typography';

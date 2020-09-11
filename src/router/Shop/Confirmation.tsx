@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { MiniHeader } from '../../components/header/MiniHeader';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
 import Button from '../../components/common/Button';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { BouquetType } from '../../components/flowerImg/Bouquet';
+import MiniHeader from '../../components/header/MiniHeader';
 
 const Confirmation: React.FC<BouquetType> = () => {
   const { id } = useParams();

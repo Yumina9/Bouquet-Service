@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { MiniHeader } from '../../components/header/MiniHeader';
+import MiniHeader from '../../components/header/MiniHeader';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
 import { useParams } from 'react-router-dom';

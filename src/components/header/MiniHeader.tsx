@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const MiniHeader = () => {
+const MiniHeader = () => {
   const classes = useStyles();
   const auth = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -100,3 +100,5 @@ export const MiniHeader = () => {
     </div>
   );
 };
+
+export default MiniHeader;

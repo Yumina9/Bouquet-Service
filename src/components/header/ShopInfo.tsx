@@ -6,7 +6,8 @@ import { FlowerGrid } from '../flowerImg/FlowerGrid';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import { ShopType } from '../../router/Seller/Page/ShopMainPage';
+import { ShopType } from '../../router/Shop/ShopMainPage';
+
 
 interface ShopInfoListProps {
   shop: ShopType;

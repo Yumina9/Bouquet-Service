@@ -2,19 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
-import { MiniHeader } from '../../components/header/MiniHeader';
+import MiniHeader from '../../components/header/MiniHeader';
 
 const InputMenus = [
   {
-    title: '꽃 이름',
+    title: '꽃다발 이름',
     type: 'text',
   },
   {
-    title: '꽃말',
+    title: '꽃다발 상세 설명',
     type: 'textarea',
   },
   {
-    title: '꽃 피는 달',
+    title: '꽃다발 사진 첨부',
+    type: 'file',
+  },
+  {
+    title: '꽃 이름',
     type: 'text',
   },
   {
@@ -22,12 +26,20 @@ const InputMenus = [
     type: 'text',
   },
   {
-    title: '꽃 사진 첨부',
-    type: 'file',
+    title: '꽃 개수',
+    type: 'text',
+  },
+  {
+    title: '포장지 색상',
+    type: 'text',
+  },
+  {
+    title: '리본 색상',
+    type: 'text',
   },
 ];
 
-const FlowerAdd = () => {
+const BouquetAdd = () => {
   var count = InputMenus.length;
   console.log(count);
   const Menus = InputMenus.map(
@@ -50,7 +62,7 @@ const FlowerAdd = () => {
       <MiniHeader />
       <div>
         <Typography type="H3" color={palette.color4} fontWeight="bold">
-          꽃 추가하기
+          꽃다발 추가하기
         </Typography>
       </div>
       <div>
@@ -60,4 +72,4 @@ const FlowerAdd = () => {
   );
 };
 
-export default FlowerAdd;
+export default BouquetAdd;

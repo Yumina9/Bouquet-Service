@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
-import { MiniHeader } from '../../../components/header/MiniHeader';
-import BouquetList from '../../../components/flowerImg/BouquetList';
-import Typography from '../../../components/common/Typography';
-import palette from '../../../lib/styles/palette';
+
+import BouquetList from '../../components/flowerImg/BouquetList';
+import Typography from '../../components/common/Typography';
+import palette from '../../lib/styles/palette';
 import Axios from 'axios';
-import { BouquetType } from '../../../components/flowerImg/Bouquet';
-import { FlowerType } from '../../../components/flowerImg/Flower';
-import FlowerList from '../../../components/flowerImg/FlowerList';
-import ShopInfoBanner from '../../../components/header/ShopInfoBanner';
+import { BouquetType } from '../../components/flowerImg/Bouquet';
+import { FlowerType } from '../../components/flowerImg/Flower';
+import FlowerList from '../../components/flowerImg/FlowerList';
+import ShopInfoBanner from '../../components/header/ShopInfoBanner';
+import MiniHeader from '../../components/header/MiniHeader';
 
 export type ShopType = {
   id: number;

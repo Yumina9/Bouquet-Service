@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
-import { MiniHeader } from '../../components/header/MiniHeader';
+import MiniHeader from '../../components/header/MiniHeader';
 import MakingFlowerStepper from '../../components/Making/MakingFlowerStepper';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';

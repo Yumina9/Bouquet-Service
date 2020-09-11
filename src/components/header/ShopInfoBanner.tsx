@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FlowerGrid } from '../flowerImg/FlowerGrid';
-import { ShopType } from '../../router/Seller/Page/ShopMainPage';
+
 import ShopInfo from './ShopInfo';
+import { ShopType } from '../../router/Shop/ShopMainPage';
 
 interface ShopInfoListProps {
   shop: ShopType;

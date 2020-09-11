@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { MiniHeader } from '../../components/header/MiniHeader';
+import MiniHeader from '../../components/header/MiniHeader';
 import './buyerCss.css';
 import Grid from '@material-ui/core/Grid';
 

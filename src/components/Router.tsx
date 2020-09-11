@@ -1,22 +1,23 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import ShopMainPage from '../router/Seller/Page/ShopMainPage';
-import SellerMyPage from '../router/Seller/Page/SellerMyPage';
-
+import Main from '../router/Main';
+import FlowerMore from '../router/FlowerPages/FlowerMore';
+import BuyerMyPage from '../router/Buyer/BuyerMyPage';
+import ShopMainPage from '../router/Shop/ShopMainPage';
+import BouquetMore from '../router/BouquetPages/BouquetMore';
+import BuyerMain from '../router/Buyer/BuyerMain';
+import FlowerExplanation from '../router/FlowerPages/FlowerExplanation';
+import BouquetExplanation from '../router/BouquetPages/BouquetExplanation';
+import FlowerMaking from '../router/FlowerPages/FlowerMaking';
+import BouquetMaking from '../router/BouquetPages/BouquetMaking';
+import Confirmation from '../router/Shop/Confirmation';
 import Login from '../router/Login/Login';
 import SignUp from '../router/Login/SignUp';
-import Main from '../router/Main';
-import BuyerMain from '../router/Buyer/BuyerMain';
-import BuyerMyPage from '../router/Buyer/BuyerMyPage';
-import FlowerExplanation from '../router/Buyer/FlowerExplanation';
-import BouquetExplanation from '../router/Buyer/BouquetExplanation';
-import Confirmation from '../router/Buyer/Confirmation';
-import FlowerMaking from '../router/Buyer/FlowerMaking';
-import BouquetMaking from '../router/Buyer/BouquetMaking';
-import FlowerMore from '../router/Buyer/FlowerMore';
-import BouquetMore from '../router/Buyer/BouquetMore';
-import BouquetAdd from '../router/Seller/BouquetAdd';
-import FlowerAdd from '../router/Seller/FlowerAdd';
+import SellerMyPage from '../router/Shop/ShopMyPage';
+import BouquetAdd from '../router/BouquetPages/BouquetAdd';
+import FlowerAdd from '../router/FlowerPages/FlowerAdd';
+
+
 
 const Router = () => {
   return (
