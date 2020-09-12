@@ -11,6 +11,7 @@ import { FlowerType } from '../../components/flowerImg/Flower';
 import FlowerList from '../../components/flowerImg/FlowerList';
 import ShopInfoBanner from '../../components/header/ShopInfoBanner';
 import MiniHeader from '../../components/header/MiniHeader';
+import { Block } from '../../lib/styles/styled';
 
 export type ShopType = {
   id: number;
@@ -85,6 +86,3 @@ const ShopMainPage = () => {
 
 export default ShopMainPage;
 
-const Block = styled.div`
-  padding: 25px 100px;
-`;

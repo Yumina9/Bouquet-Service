@@ -6,11 +6,12 @@ import Button from '../common/Button';
 import axios from 'axios';
 import Typography from '../common/Typography';
 import { BouquetType } from '../flowerImg/Bouquet';
+import { FlowerType } from '../flowerImg/Flower';
 
 const MakingBouquetStepper = ({}) => {
   const { id } = useParams();
   const [bouquet, setBouquet] = useState<BouquetType>();
-  const [flowers, setFlowers] = useState<BouquetType[]>([]);
+  const [flowers, setFlowers] = useState<FlowerType[]>([]);
 
   useEffect(() => {
     axios.get(`/bouquets/${id}`).then(({ data }) => setBouquet(data));

@@ -6,6 +6,7 @@ import Bouquet from '../../components/flowerImg/Bouquet';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
 import { useParams } from 'react-router-dom';
+import { Block } from '../../lib/styles/styled';
 
 const FlowerMore = () => {
   const { id } = useParams();
@@ -16,6 +17,7 @@ const FlowerMore = () => {
   return (
     <>
       <MiniHeader />
+      <Block>
       <Typography type="H3" color={palette.color4} fontWeight="bold">
         보유 중인 꽃 리스트
       </Typography>
@@ -26,6 +28,7 @@ const FlowerMore = () => {
           );
         })}
       </List>
+      </Block>
     </>
   );
 };

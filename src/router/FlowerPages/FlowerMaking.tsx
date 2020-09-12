@@ -8,6 +8,7 @@ import palette from '../../lib/styles/palette';
 import Button from '../../components/common/Button';
 import Axios from 'axios';
 import { FlowerType } from '../../components/flowerImg/Flower';
+import { Block } from '../../lib/styles/styled';
 
 const FlowerMaking = () => {
   const { id } = useParams();
@@ -19,6 +20,7 @@ const FlowerMaking = () => {
   return (
     <>
       <MiniHeader />
+      <Block>
       <Body>
         <Typography type="H3" color={palette.color1} fontWeight="bold">
           Bouquet Making
@@ -35,6 +37,7 @@ const FlowerMaking = () => {
           </Button>
         </Link>
       </Body>
+      </Block>
     </>
   );
 };

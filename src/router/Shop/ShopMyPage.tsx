@@ -1,24 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 import MiniHeader from '../../components/header/MiniHeader';
+import { Block } from '../../lib/styles/styled';
 
 
 const SellerMyPage = () => {
   return (
     <>
       <MiniHeader />
-      <Info>
-        <></>
-        <Img src={require('../../image/user.png')} />
-        <div>가게 이름</div>
-        <div>소개</div>
-        <div>이름</div>
-        <div>주소</div>
-        <div>번호</div>
-        <div>인스타그램 주소</div>
-        <div>페이스북 주소</div>
-        <></>
-      </Info>
+      <Block>
+        <Info>
+          <>
+          <Img src={require('../../image/user.png')} />
+          <div>가게 이름</div>
+          <div>소개</div>
+          <div>이름</div>
+          <div>주소</div>
+          <div>번호</div>
+          <div>인스타그램 주소</div>
+          <div>페이스북 주소</div>
+          </>
+        </Info>
+      </Block>
     </>
   );
 };

@@ -9,6 +9,7 @@ import axios from 'axios';
 import MakingBouquetStepper from '../../components/Making/MakingBouquetStepper';
 import Button from '../../components/common/Button';
 import { FlowerType } from '../../components/flowerImg/Flower';
+import { Block } from '../../lib/styles/styled';
 
 const BouquetMaking: React.FC<FlowerType> = () => {
   const { id } = useParams();
@@ -20,28 +21,30 @@ const BouquetMaking: React.FC<FlowerType> = () => {
   return (
     <>
       <MiniHeader />
-      <Body>
-        <Typography type="H3" color={palette.color1} fontWeight="bold">
-          Bouquet Making
-        </Typography>
-        <MakingBouquetStepper />
-        <Link
-          to={`/bouquet/${id}`}
-          style={{ color: 'inherit', textDecoration: 'none' }}
-        >
-          <Button color={palette.white} bgColor={palette.color3}>
-            뒤로가기
-          </Button>
-        </Link>
-        <Link
-          to={`/confirmation/${id}`}
-          style={{ color: 'inherit', textDecoration: 'none' }}
-        >
-          <Button color={palette.white} bgColor={palette.color3}>
-            주문하기
-          </Button>
-        </Link>
-      </Body>
+      <Block>
+        <Body>
+          <Typography type="H3" color={palette.color1} fontWeight="bold">
+            Bouquet Making
+          </Typography>
+          <MakingBouquetStepper />
+          <Link
+            to={`/bouquet/${id}`}
+            style={{ color: 'inherit', textDecoration: 'none' }}
+          >
+            <Button color={palette.white} bgColor={palette.color3}>
+              뒤로가기
+            </Button>
+          </Link>
+          <Link
+            to={`/confirmation/${id}`}
+            style={{ color: 'inherit', textDecoration: 'none' }}
+          >
+            <Button color={palette.white} bgColor={palette.color3}>
+              주문하기
+            </Button>
+          </Link>
+        </Body>
+      </Block>
     </>
   );
 };

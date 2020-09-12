@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { BouquetType } from '../../components/flowerImg/Bouquet';
 import MiniHeader from '../../components/header/MiniHeader';
+import { Block } from '../../lib/styles/styled';
 
 const Confirmation: React.FC<BouquetType> = () => {
   const { id } = useParams();
@@ -19,57 +20,59 @@ const Confirmation: React.FC<BouquetType> = () => {
   return (
     <div>
       <MiniHeader />
-      <Body>
-        <Typography type="H3" color={palette.color1} fontWeight="bold">
-          주문 확인
-        </Typography>
-        <br />
-        <Order>
-          <Typography type="H5" color={palette.color4} fontWeight="bold">
-            꽃 종류
+      <Block>
+        <Body>
+          <Typography type="H3" color={palette.color1} fontWeight="bold">
+            주문 확인
           </Typography>
-          <p />
-          <Typography type="H7" color={palette.black} fontWeight="light">
-            {`${info?.flower_color} ${info?.flower_name}`}
-          </Typography>
-          <p />
-          <Typography type="H5" color={palette.color4} fontWeight="bold">
-            꽃 수량
-          </Typography>
-          <p />
-          <Typography type="H7" color={palette.black} fontWeight="light">
-            {`${info?.flower_count}송이`}
-          </Typography>
-          <p />
-          <Typography type="H5" color={palette.color4} fontWeight="bold">
-            꽃다발 종류
-          </Typography>
-          <p />
-          <Typography type="H7" color={palette.black} fontWeight="light">
-            {`${info?.name}`}
-          </Typography>
-          <p />
-          <Typography type="H5" color={palette.color4} fontWeight="bold">
-            리본, 포장지 색상
-          </Typography>
-          <p />
-          <Typography type="H7" color={palette.black} fontWeight="light">
-            리본 : {`${info?.ribbon_color}`} | 포장지 :
-            {`${info?.wrappingpaper_color}`}
-          </Typography>
-        </Order>
-        <Link
-          to={`/bouquet/${id}`}
-          style={{ color: 'inherit', textDecoration: 'none' }}
-        >
+          <br />
+          <Order>
+            <Typography type="H5" color={palette.color4} fontWeight="bold">
+              꽃 종류
+            </Typography>
+            <p />
+            <Typography type="H7" color={palette.black} fontWeight="light">
+              {`${info?.flower_color} ${info?.flower_name}`}
+            </Typography>
+            <p />
+            <Typography type="H5" color={palette.color4} fontWeight="bold">
+              꽃 수량
+            </Typography>
+            <p />
+            <Typography type="H7" color={palette.black} fontWeight="light">
+              {`${info?.flower_count}송이`}
+            </Typography>
+            <p />
+            <Typography type="H5" color={palette.color4} fontWeight="bold">
+              꽃다발 종류
+            </Typography>
+            <p />
+            <Typography type="H7" color={palette.black} fontWeight="light">
+              {`${info?.name}`}
+            </Typography>
+            <p />
+            <Typography type="H5" color={palette.color4} fontWeight="bold">
+              리본, 포장지 색상
+            </Typography>
+            <p />
+            <Typography type="H7" color={palette.black} fontWeight="light">
+              리본 : {`${info?.ribbon_color}`} | 포장지 :
+              {`${info?.wrappingpaper_color}`}
+            </Typography>
+          </Order>
+          <Link
+            to={`/bouquet/${id}`}
+            style={{ color: 'inherit', textDecoration: 'none' }}
+          >
+            <Button color={palette.black} bgColor={palette.color3}>
+              뒤로가기
+            </Button>
+          </Link>
           <Button color={palette.black} bgColor={palette.color3}>
-            뒤로가기
+            주문완료
           </Button>
-        </Link>
-        <Button color={palette.black} bgColor={palette.color3}>
-          주문완료
-        </Button>
-      </Body>
+        </Body>
+      </Block>
     </div>
   );
 };

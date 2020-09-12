@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
 import MiniHeader from '../../components/header/MiniHeader';
+import { Block } from '../../lib/styles/styled';
 
 const InputMenus = [
   {
@@ -60,14 +61,16 @@ const BouquetAdd = () => {
   return (
     <>
       <MiniHeader />
-      <div>
-        <Typography type="H3" color={palette.color4} fontWeight="bold">
-          꽃다발 추가하기
-        </Typography>
-      </div>
-      <div>
-        <tbody>{Menus}</tbody>
-      </div>
+      <Block>
+        <div>
+          <Typography type="H3" color={palette.color4} fontWeight="bold">
+            꽃다발 추가하기
+          </Typography>
+        </div>
+        <div>
+          <tbody>{Menus}</tbody>
+        </div>
+      </Block>
     </>
   );
 };

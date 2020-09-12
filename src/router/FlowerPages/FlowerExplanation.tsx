@@ -8,6 +8,7 @@ import palette from '../../lib/styles/palette';
 import ExplanationImage from '../../components/Making/ExplanationImage';
 import Typography from '../../components/common/Typography';
 import { FlowerType } from '../../components/flowerImg/Flower';
+import { Block } from '../../lib/styles/styled';
 
 const FlowerExplanation: React.FC<FlowerType> = () => {
   const { id } = useParams();
@@ -23,27 +24,29 @@ const FlowerExplanation: React.FC<FlowerType> = () => {
     <>
       <MiniHeader />
       <Block>
-        <Detail>
-          <Img src={`${flower?.img}`} />
-          <Description>
-            <Typography type="H4" color={palette.color4} fontWeight="bold">
-              {`${flower?.color} ${flower?.name}`}
-            </Typography>
-            <Typography type="H7" color={palette.color4} fontWeight="light">
-              {`${flower?.description}`}
-            </Typography>
-          </Description>
-        </Detail>
-        <span>
-          <Link
-            to={`/making/flower/${id}`}
-            style={{ color: 'inherit', textDecoration: 'none' }}
-          >
-            <Button color={palette.white} bgColor={palette.color3}>
-              만들기
-            </Button>
-          </Link>
-        </span>
+        <Box>
+          <Detail>
+            <Img src={`${flower?.img}`} />
+            <Description>
+              <Typography type="H4" color={palette.color4} fontWeight="bold">
+                {`${flower?.color} ${flower?.name}`}
+              </Typography>
+              <Typography type="H7" color={palette.color4} fontWeight="light">
+                {`${flower?.description}`}
+              </Typography>
+            </Description>
+          </Detail>
+          <span>
+            <Link
+              to={`/making/flower/${id}`}
+              style={{ color: 'inherit', textDecoration: 'none' }}
+            >
+              <Button color={palette.white} bgColor={palette.color3}>
+                만들기
+              </Button>
+            </Link>
+          </span>
+        </Box>
       </Block>
     </>
   );
@@ -51,7 +54,7 @@ const FlowerExplanation: React.FC<FlowerType> = () => {
 
 export default FlowerExplanation;
 
-const Block = styled.div`
+const Box = styled.div`
   display: flex;
   padding: 50px;
   flex-direction: column;
