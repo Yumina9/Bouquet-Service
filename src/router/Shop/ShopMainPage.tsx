@@ -9,9 +9,10 @@ import Axios from 'axios';
 import { BouquetType } from '../../components/flowerImg/Bouquet';
 import { FlowerType } from '../../components/flowerImg/Flower';
 import FlowerList from '../../components/flowerImg/FlowerList';
-import ShopInfoBanner from '../../components/header/ShopInfoBanner';
+import ShopInfoBanner from '../../components/Shop/ShopInfoBanner';
 import MiniHeader from '../../components/header/MiniHeader';
 import { Block } from '../../lib/styles/styled';
+import { ShopReview } from '../../components/Shop/ShopReview';
 
 export type ShopType = {
   id: number;
@@ -78,6 +79,9 @@ const ShopMainPage = () => {
             </Typography>
             <FlowerList flowers={shop.flowers} />
           </Block>
+          <Block>
+            <ShopReview />
+          </Block>
         </>
       )}
     </div>
@@ -85,4 +89,3 @@ const ShopMainPage = () => {
 };
 
 export default ShopMainPage;
-
