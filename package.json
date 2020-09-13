@@ -39,12 +39,24 @@
     "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx}"
   },
   "eslintConfig": {
-    "extends": "react-app"
-  },
+    "extends": ["react-app",
+      "airbnb",
+      "prettier"],
+    "parser":"babel-eslint",
+    "rules": {
+      "react/jsx-filename-extension":0,
+      "import/no-name-as-default-member": 0,
+      "import/no-unresolved":0,
+      "import/prefer-default-export":0,
+      "no-underscore-dangle":0,
+      "no-console":0,
+      "react/forbid-prop-types":0
+    },
+    "env":{"browser":true}  },
   "browserslist": {
     "production": [
       ">0.2%",
-      "not dead",
+      "not dead", 
       "not op_mini all"
     ],
     "development": [
