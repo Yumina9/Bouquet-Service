@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) =>
     avatar: {
       backgroundColor: red[500],
     },
-  })
+  }),
 );
 
 const Bouquet: React.FC<Pick<
@@ -115,10 +115,10 @@ const Bouquet: React.FC<Pick<
 
 export default Bouquet;
 
-const Box = styled.div`
+const Box = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 300px;
   margin: 10px;
 `;

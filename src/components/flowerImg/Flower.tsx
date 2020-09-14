@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme: Theme) =>
     avatar: {
       backgroundColor: red[500],
     },
-  })
+  }),
 );
 
 const Flower: React.FC<FlowerType> = ({
@@ -114,10 +114,10 @@ const Flower: React.FC<FlowerType> = ({
 
 export default Flower;
 
-const Box = styled.div`
+const Box = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 300px;
   margin: 10px;
 `;

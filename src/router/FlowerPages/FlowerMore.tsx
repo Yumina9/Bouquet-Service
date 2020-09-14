@@ -18,16 +18,21 @@ const FlowerMore = () => {
     <>
       <MiniHeader />
       <Block>
-      <Typography type="H3" color={palette.color4} fontWeight="bold">
-        보유 중인 꽃 리스트
-      </Typography>
-      <List>
-        {flowers.map(({ id, name, img, description }) => {
-          return (
-            <Bouquet id={id} name={name} img={img} description={description} />
-          );
-        })}
-      </List>
+        <Typography type="H3" color={palette.color4} fontWeight="bold">
+          보유 중인 꽃 리스트
+        </Typography>
+        <List>
+          {flowers.map(({ id, name, img, description }) => {
+            return (
+              <Bouquet
+                id={id}
+                name={name}
+                img={img}
+                description={description}
+              />
+            );
+          })}
+        </List>
       </Block>
     </>
   );
@@ -37,6 +42,7 @@ export default FlowerMore;
 
 const List = styled.div`
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px;
+  padding: 20px;
 `;

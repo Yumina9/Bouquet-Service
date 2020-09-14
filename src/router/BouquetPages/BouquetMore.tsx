@@ -40,10 +40,10 @@ const BouquetMore = () => {
 };
 
 export default BouquetMore;
+
 const List = styled.div`
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
+  flex-wrap: wrap;
   margin: 20px;
   padding: 20px;
 `;
