@@ -5,6 +5,7 @@ import {
   Marker,
   InfoWindow,
 } from '@react-google-maps/api';
+import styled from 'styled-components';
 
 const GoogleApiMap = () => {
   //Dynamically showing marker using Geolocation API
@@ -17,7 +18,18 @@ const GoogleApiMap = () => {
     };
     setCurrentPosition(currentPosition);
   };
-
+  const CenterPoint = styled.div`
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    z-index: 2;
+    font-size: 2rem;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  `;
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success);
   });
@@ -29,7 +41,7 @@ const GoogleApiMap = () => {
   // 지도 스타일
   const mapStyles = {
     height: '500px',
-    width: '50%',
+    width: '100%',
     overflow: 'hidden',
     boxSizing: 'border-box',
   };
@@ -89,6 +101,7 @@ const GoogleApiMap = () => {
           zoom={15}
           center={currentPosition}
         >
+          <CenterPoint />
           {locations.map((item) => {
             return (
               <Marker

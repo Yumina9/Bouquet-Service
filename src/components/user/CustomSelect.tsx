@@ -10,13 +10,11 @@ import SellerCard from './SellerCard';
 
 const CustomSelect = () => {
   const CustomSelect = {
-    width: '100%',
-    paddign: ' 0 10px',
     height: '500px',
   };
   return (
     <div style={CustomSelect}>
-      <div style={{ float: 'left', width: '50%', textAlign: 'center' }}>
+      <div style={{ textAlign: 'center' }}>
         <Typography type="H5" color={palette.color2} fontWeight="bold">
           직접 꽃다발은 선택하시겠습니까?
         </Typography>
@@ -56,8 +54,6 @@ const CustomSelect = () => {
           <SellerCard />
         </div>
       </div>
-
-      <GoogleApiMap />
     </div>
   );
 };

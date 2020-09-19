@@ -1,10 +1,10 @@
 import React from 'react';
-import BuyerMain from './Buyer/BuyerMain';
+import UserMain from './User/UserMain';
 
 const Main = () => {
   return (
     <div>
-      <BuyerMain />
+      <UserMain />
     </div>
   );
 };
