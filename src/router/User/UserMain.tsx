@@ -1,9 +1,9 @@
 import React from 'react';
 import MiniHeader from '../../components/header/MiniHeader';
 import MainInfo from '../../components/header/MainInfo';
-import BestItemList from '../../components/buyer/BestItemList';
-import CustomSelect from '../../components/buyer/CustomSelect';
-
+import BestItemList from '../../components/user/BestItemList';
+import CustomSelect from '../../components/user/CustomSelect';
+import CustomContainer from '../../components/user/CustomContainer';
 const BuyerMain = () => {
   return (
     <div>
@@ -11,7 +11,7 @@ const BuyerMain = () => {
 
       <MainInfo />
       <BestItemList />
-      <CustomSelect />
+      <CustomContainer />
     </div>
   );
 };

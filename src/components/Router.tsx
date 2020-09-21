@@ -2,10 +2,10 @@ import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Main from '../router/Main';
 import FlowerMore from '../router/FlowerPages/FlowerMore';
-import BuyerMyPage from '../router/Buyer/BuyerMyPage';
+import BuyerMyPage from '../router/User/BuyerMyPage';
 import ShopMainPage from '../router/Shop/ShopMainPage';
 import BouquetMore from '../router/BouquetPages/BouquetMore';
-import BuyerMain from '../router/Buyer/BuyerMain';
+import UserMain from '../router/User/UserMain';
 import FlowerExplanation from '../router/FlowerPages/FlowerExplanation';
 import BouquetExplanation from '../router/BouquetPages/BouquetExplanation';
 import FlowerMaking from '../router/FlowerPages/FlowerMaking';
@@ -17,8 +17,6 @@ import SellerMyPage from '../router/Shop/ShopMyPage';
 import BouquetAdd from '../router/BouquetPages/BouquetAdd';
 import FlowerAdd from '../router/FlowerPages/FlowerAdd';
 
-
-
 const Router = () => {
   return (
     <BrowserRouter>
@@ -27,7 +25,7 @@ const Router = () => {
         <Route exact path="/shop/:id" component={ShopMainPage} />
         <Route path="/shop/:id/flowers" component={FlowerMore} />
         <Route path="/shop/:id/bouquets" component={BouquetMore} />
-        <Route path="/buyermain" component={BuyerMain} />
+        <Route path="/usermain" component={UserMain} />
         <Route path="/buyermypage" component={BuyerMyPage} />
         <Route path="/flower/:id" component={FlowerExplanation} />
         <Route path="/bouquet/:id" component={BouquetExplanation} />
