@@ -7,60 +7,46 @@ import axios from 'axios';
 import Typography from '../common/Typography';
 import { BouquetType } from '../flowerImg/Bouquet';
 import { FlowerType } from '../flowerImg/Flower';
+import { Dropdown } from '../common/Dropdown';
 
 const MakingBouquetStepper = ({}) => {
   const { id } = useParams();
   const [bouquet, setBouquet] = useState<BouquetType>();
-  const [flowers, setFlowers] = useState<FlowerType[]>([]);
 
   useEffect(() => {
     axios.get(`/bouquets/${id}`).then(({ data }) => setBouquet(data));
   }, []);
 
-  console.log(bouquet);
-
-  useEffect(() => {
-    axios.get('/flowers/').then(({ data }) => setFlowers(data));
-  }, []);
-  console.log(flowers);
-
   return (
     <>
       <Block>
         <span>
-          <img src={`${bouquet?.img}`} style={{ width: '400px' }} />
-          <Typography type="H5" color={palette.color4} fontWeight="middle">
-            {`${bouquet?.name}`}
-          </Typography>
+          <img src={`${bouquet?.img}`} style={{ width: '600px' }} />
         </span>
+
         <span>
-          <div>
+          <div style={{ borderBottom: '1px solid lightgray' }}>
             <Typography type="H4" color={palette.color2} fontWeight="bold">
-              세부사항
+              {`${bouquet?.name}`}
             </Typography>
           </div>
-          <div>
-            <Typography type="H6" color={palette.color4} fontWeight="bold">
-              꽃 선택
+          <div style={{ borderBottom: '1px solid lightgray' }}>
+            <Typography type="H7" color={palette.gray} fontWeight="medium">
+              {`${bouquet?.description}`}
             </Typography>
-            <p>꽃을 선택하세요</p>
-            {flowers.map(({ img }) => {
-              return (
-                <>
-                  <img
-                    src={`${img}`}
-                    style={{ width: '100px', height: '100%' }}
-                  />
-                </>
-              );
-            })}
           </div>
+
+          <div style={{ margin: '20px' }}>
+            <Dropdown />
+          </div>
+
           <div>
             <Typography type="H6" color={palette.color4} fontWeight="bold">
               꽃 수량 입력
             </Typography>
             <input type="text" />
           </div>
+
           <div>
             <Typography type="H6" color={palette.color4} fontWeight="bold">
               포장지 색상, 리본 색상 선택
