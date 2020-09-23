@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
     menu: {
       fontSize: '1.5rem',
     },
-  })
+  }),
 );
 
 const MiniHeader = () => {

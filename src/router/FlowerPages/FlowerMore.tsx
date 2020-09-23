@@ -5,8 +5,9 @@ import axios from 'axios';
 import Bouquet from '../../components/flowerImg/Bouquet';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Block } from '../../lib/styles/styled';
+import { ShopType } from '../Shop/ShopMainPage';
 
 const FlowerMore = () => {
   const { id } = useParams();
@@ -14,10 +15,22 @@ const FlowerMore = () => {
   useEffect(() => {
     axios.get(`/shop/${id}/flowers`).then(({ data }) => setFlowers(data));
   }, []);
+  const [shop, setShop] = useState<ShopType>();
+  useEffect(() => {
+    axios.get(`/shop/${id}/`).then(({ data }) => setShop(data));
+  }, []);
   return (
     <>
       <MiniHeader />
       <Block>
+        <Link
+          to={`/shop/${id}`}
+          style={{ color: 'inherit', textDecoration: 'none' }}
+        >
+          <Typography type="H4" color={palette.color3} fontWeight="medium">
+            {shop?.name}
+          </Typography>
+        </Link>
         <Typography type="H3" color={palette.color4} fontWeight="bold">
           보유 중인 꽃 리스트
         </Typography>
