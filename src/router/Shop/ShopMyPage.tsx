@@ -51,16 +51,27 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function ClippedDrawer() {
+  type Information = { e: string };
   const classes = useStyles();
 
-  const Panel = ({ e }: number) => {
+  const Panel = ({ e }: Information) => {
     switch (e) {
-      case 1:
+      case '1':
         return <>내정보</>;
         break;
-      case 2:
+      case '2':
+        return <>보유 꽃다발</>;
         break;
-      case 3:
+      case '3':
+        return <>보유 꽃</>;
+        break;
+      case '4':
+        return <>현재 주문 목록</>;
+        break;
+      case '5':
+        return <>주문 완료 목록</>;
+        break;
+      default:
         break;
     }
   };
@@ -90,19 +101,47 @@ export default function ClippedDrawer() {
           <>
             <Divider />
             <ButtonItem
-              value="1"
+              value={1}
               onClick={() => {
-                Panel(1);
+                Panel('1');
               }}
             >
               내 정보
             </ButtonItem>
             <Divider />
-            <ButtonItem value={2}>보유 꽃다발</ButtonItem>
-            <ButtonItem value={3}>보유 꽃</ButtonItem>
+            <ButtonItem
+              value={2}
+              onClick={() => {
+                Panel('2');
+              }}
+            >
+              보유 꽃다발
+            </ButtonItem>
+            <ButtonItem
+              value={3}
+              onClick={() => {
+                Panel(3);
+              }}
+            >
+              보유 꽃
+            </ButtonItem>
             <Divider />
-            <ButtonItem value={4}>현재 주문 목록</ButtonItem>
-            <ButtonItem value={5}>주문 완료 목록</ButtonItem>
+            <ButtonItem
+              value={4}
+              onClick={() => {
+                Panel(4);
+              }}
+            >
+              현재 주문 목록
+            </ButtonItem>
+            <ButtonItem
+              value={5}
+              onClick={() => {
+                Panel(5);
+              }}
+            >
+              주문 완료 목록
+            </ButtonItem>
             <Divider />
           </>
         </div>
