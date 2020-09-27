@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Tabs, TabList, Tab, TabPanel } from 'react-tabs';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -17,6 +16,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import { Link } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
 import Button from '../../components/common/Button';
+import { Panel, PanelType } from '../../components/Shop/Panel';
 
 const drawerWidth = 240;
 
@@ -51,30 +51,9 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function ClippedDrawer() {
-  type Information = { e: string };
+  // type Information = { e: string };
   const classes = useStyles();
-
-  const Panel = ({ e }: Information) => {
-    switch (e) {
-      case '1':
-        return <>내정보</>;
-        break;
-      case '2':
-        return <>보유 꽃다발</>;
-        break;
-      case '3':
-        return <>보유 꽃</>;
-        break;
-      case '4':
-        return <>현재 주문 목록</>;
-        break;
-      case '5':
-        return <>주문 완료 목록</>;
-        break;
-      default:
-        break;
-    }
-  };
+  const [type, setType] = useState<PanelType>(PanelType.PROFILE);
 
   return (
     <div className={classes.root}>
@@ -100,46 +79,21 @@ export default function ClippedDrawer() {
         <div className={classes.drawerContainer}>
           <>
             <Divider />
-            <ButtonItem
-              value={1}
-              onClick={() => {
-                Panel('1');
-              }}
-            >
+            <ButtonItem onClick={() => setType(PanelType.PROFILE)}>
               내 정보
             </ButtonItem>
             <Divider />
-            <ButtonItem
-              value={2}
-              onClick={() => {
-                Panel('2');
-              }}
-            >
+            <ButtonItem onClick={() => setType(PanelType.BOUQUET)}>
               보유 꽃다발
             </ButtonItem>
-            <ButtonItem
-              value={3}
-              onClick={() => {
-                Panel(3);
-              }}
-            >
+            <ButtonItem onClick={() => setType(PanelType.FLOWER)}>
               보유 꽃
             </ButtonItem>
             <Divider />
-            <ButtonItem
-              value={4}
-              onClick={() => {
-                Panel(4);
-              }}
-            >
+            <ButtonItem onClick={() => setType(PanelType.CURRENT_ORDER)}>
               현재 주문 목록
             </ButtonItem>
-            <ButtonItem
-              value={5}
-              onClick={() => {
-                Panel(5);
-              }}
-            >
+            <ButtonItem onClick={() => setType(PanelType.FINISHED_ORDER)}>
               주문 완료 목록
             </ButtonItem>
             <Divider />
@@ -148,6 +102,7 @@ export default function ClippedDrawer() {
       </Drawer>
       <main className={classes.content}>
         <Toolbar />
+        <Panel type={type} />
       </main>
     </div>
   );
