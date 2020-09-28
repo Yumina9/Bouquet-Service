@@ -1,5 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import { MyInfoPanel } from './Panel/MyInfoPanel';
+import { FlowerListPanel } from './Panel/FlowerListPanel';
+import { BouquetListPanel } from './Panel/BouquetListPanel';
+import { CurrentOrderPanel } from './Panel/CurrentOrderPanel';
+import { FinishOrderPanel } from './Panel/FinishOrderPanel';
 
 // FLOW
 export enum PanelType {
@@ -13,18 +17,14 @@ export enum PanelType {
 export const Panel = ({ type }: { type: PanelType }) => {
   switch (type) {
     case PanelType.PROFILE:
-      return <>내 정보</>;
+      return <MyInfoPanel />;
     case PanelType.BOUQUET:
-      return (
-        <>
-          <h1>꽃다발 패널</h1>
-        </>
-      );
+      return <BouquetListPanel />;
     case PanelType.FLOWER:
-      return <>꽃</>;
+      return <FlowerListPanel />;
     case PanelType.CURRENT_ORDER:
-      return <>현재 주문 목록</>;
+      return <CurrentOrderPanel />;
     case PanelType.FINISHED_ORDER:
-      return <>주문 완료 목록</>;
+      return <FinishOrderPanel />;
   }
 };
