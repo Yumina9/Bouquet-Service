@@ -13,7 +13,7 @@ import BouquetMaking from '../router/BouquetPages/BouquetMaking';
 import Confirmation from '../router/Shop/Confirmation';
 import Login from '../router/Login/Login';
 import SignUp from '../router/Login/SignUp';
-import SellerMyPage from '../router/Shop/ShopMyPage';
+import ShopMyPage from '../router/Shop/ShopMyPage';
 import BouquetAdd from '../router/BouquetPages/BouquetAdd';
 import FlowerAdd from '../router/FlowerPages/FlowerAdd';
 
@@ -34,7 +34,7 @@ const Router = () => {
         <Route path="/confirmation/:id" component={Confirmation} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
-        <Route path="/seller/mypage" component={SellerMyPage} />
+        <Route path="/shop/:id/mypage" component={ShopMyPage} />
         <Route path="/bouquetadd" component={BouquetAdd} />
         <Route path="/floweradd" component={FlowerAdd} />
       </Switch>
