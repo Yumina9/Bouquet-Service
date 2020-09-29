@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -13,10 +13,12 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
 import Button from '../../components/common/Button';
 import { Panel, PanelType } from '../../components/Shop/Panel';
+import Axios from 'axios';
+import { ShopType } from './ShopMainPage';
 
 const drawerWidth = 240;
 
@@ -50,7 +52,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function ClippedDrawer() {
+export default function ShopMyPage() {
   // type Information = { e: string };
   const classes = useStyles();
   const [type, setType] = useState<PanelType>(PanelType.PROFILE);
