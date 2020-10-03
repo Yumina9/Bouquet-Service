@@ -12,10 +12,19 @@ import { Dropdown } from '../common/Dropdown';
 const MakingBouquetStepper = ({}) => {
   const { id } = useParams();
   const [bouquet, setBouquet] = useState<BouquetType>();
+  const [amount, setAmount] = useState(1);
 
   useEffect(() => {
     axios.get(`/bouquets/${id}`).then(({ data }) => setBouquet(data));
   }, []);
+
+  const increaseAmount = () => {
+    setAmount(amount + 1);
+  };
+
+  const decreaseAmount = () => {
+    setAmount(amount - 1);
+  };
 
   return (
     <>
@@ -44,7 +53,13 @@ const MakingBouquetStepper = ({}) => {
             <Typography type="H6" color={palette.color4} fontWeight="bold">
               꽃 수량 입력
             </Typography>
-            <input type="text" />
+            <form>
+              <Typography type="H4" color={palette.black} fontWeight="bold">
+                {amount}
+              </Typography>
+              <button onClick={increaseAmount}>+</button>&nbsp;
+              <button onClick={decreaseAmount}>-</button>
+            </form>
           </div>
 
           <div>
