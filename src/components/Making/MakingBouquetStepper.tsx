@@ -9,20 +9,22 @@ import { BouquetType } from '../flowerImg/Bouquet';
 import { FlowerType } from '../flowerImg/Flower';
 import { Dropdown } from '../common/Dropdown';
 
-const MakingBouquetStepper = ({}) => {
-  const { id } = useParams();
-  const [bouquet, setBouquet] = useState<BouquetType>();
+const MakingBouquetStepper: React.FC<BouquetType> = ({
+  img,
+  name,
+  description,
+}) => {
   const [amount, setAmount] = useState(1);
 
-  useEffect(() => {
-    axios.get(`/bouquets/${id}`).then(({ data }) => setBouquet(data));
-  }, []);
+  const increaseAmount = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
 
-  const increaseAmount = () => {
     setAmount(amount + 1);
   };
 
-  const decreaseAmount = () => {
+  const decreaseAmount = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+
     setAmount(amount - 1);
   };
 
@@ -30,18 +32,18 @@ const MakingBouquetStepper = ({}) => {
     <>
       <Block>
         <span>
-          <img src={`${bouquet?.img}`} style={{ width: '600px' }} />
+          <img src={`${img}`} style={{ width: '600px' }} />
         </span>
 
         <span>
           <div style={{ borderBottom: '1px solid lightgray' }}>
             <Typography type="H4" color={palette.color2} fontWeight="bold">
-              {`${bouquet?.name}`}
+              {`${name}`}
             </Typography>
           </div>
           <div style={{ borderBottom: '1px solid lightgray' }}>
             <Typography type="H7" color={palette.gray} fontWeight="medium">
-              {`${bouquet?.description}`}
+              {`${description}`}
             </Typography>
           </div>
 

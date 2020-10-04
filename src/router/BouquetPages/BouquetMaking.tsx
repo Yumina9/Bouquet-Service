@@ -8,16 +8,23 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import MakingBouquetStepper from '../../components/Making/MakingBouquetStepper';
 import Button from '../../components/common/Button';
-import { FlowerType } from '../../components/flowerImg/Flower';
 import { Block } from '../../lib/styles/styled';
+import { BouquetType } from '../../components/flowerImg/Bouquet';
 
-const BouquetMaking: React.FC<FlowerType> = () => {
+const BouquetMaking: React.FC<{}> = () => {
   const { id } = useParams();
-  const [bouquet, setBouquet] = useState<FlowerType>();
+
+  // 여기는 bouquet인데 왜 FlowerType?
+  const [bouquet, setBouquet] = useState<BouquetType>();
+
   useEffect(() => {
     axios.get(`/bouquets/${id}`).then(({ data }) => setBouquet(data));
   }, []);
-  console.log(bouquet);
+
+  if (!bouquet) {
+    return <h1>Loading..</h1>;
+  }
+
   return (
     <>
       <MiniHeader />
@@ -26,7 +33,8 @@ const BouquetMaking: React.FC<FlowerType> = () => {
           <Typography type="H3" color={palette.color1} fontWeight="bold">
             Bouquet Making
           </Typography>
-          <MakingBouquetStepper />
+          {/* 여기 MakingBouquetSteepr 호출  */}
+          <MakingBouquetStepper {...bouquet} />
           <Link
             to={`/bouquet/${id}`}
             style={{ color: 'inherit', textDecoration: 'none' }}
