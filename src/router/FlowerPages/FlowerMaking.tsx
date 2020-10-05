@@ -21,22 +21,23 @@ const FlowerMaking = () => {
     <>
       <MiniHeader />
       <Block>
-      <Body>
-        <Typography type="H3" color={palette.color1} fontWeight="bold">
-          Bouquet Making
-        </Typography>
-        <MakingFlowerStepper />
-        <Link to={`/flower/${id}`}>
-          <Button color={palette.white} bgColor={palette.color3}>
-            뒤로가기
-          </Button>
-        </Link>
-        <Link to="">
-          <Button color={palette.white} bgColor={palette.color3}>
-            주문하기
-          </Button>
-        </Link>
-      </Body>
+        <Body>
+          <Typography type="H3" color={palette.color1} fontWeight="bold">
+            Bouquet Making
+          </Typography>
+          {flower && <MakingFlowerStepper {...flower} />}{' '}
+          {/* MakingFlowerStepper에 flower가 처음에 빈 객체이기 때문에 있을 경우에만 렌더링 */}
+          <Link to={`/flower/${id}`}>
+            <Button color={palette.white} bgColor={palette.color3}>
+              뒤로가기
+            </Button>
+          </Link>
+          <Link to="">
+            <Button color={palette.white} bgColor={palette.color3}>
+              주문하기
+            </Button>
+          </Link>
+        </Body>
       </Block>
     </>
   );

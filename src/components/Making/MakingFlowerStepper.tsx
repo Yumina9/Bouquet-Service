@@ -8,30 +8,21 @@ import Typography from '../common/Typography';
 import { BouquetType } from '../flowerImg/Bouquet';
 import { FlowerType } from '../flowerImg/Flower';
 
-const MakingBouquetStepper = ({}) => {
+const MakingFlowerStepper: React.FC<FlowerType> = ({ img, name }) => {
   const { id } = useParams();
   const [bouquets, setBouquets] = useState<BouquetType[]>([]);
-  const [flower, setFlower] = useState<FlowerType>();
 
-  useEffect(() => {
-    axios.get(`/flower/${id}`).then(({ data }) => setFlower(data));
-  }, []);
-
-  
   useEffect(() => {
     axios.get('/bouquets/').then(({ data }) => setBouquets(data));
   }, []);
 
-  console.log(flower);
-  console.log(bouquets);
-  
   return (
     <>
       <Block>
         <span>
-          <img src={`${flower?.img}`} style={{ width: '400px' }} />
+          <img src={`${img}`} style={{ width: '400px' }} />
           <Typography type="H5" color={palette.color4} fontWeight="middle">
-            {`${flower?.name}`}
+            {`${name}`}
           </Typography>
         </span>
         <span>
@@ -74,7 +65,7 @@ const MakingBouquetStepper = ({}) => {
   );
 };
 
-export default MakingBouquetStepper;
+export default MakingFlowerStepper;
 
 const Block = styled.div`
   display: flex;
