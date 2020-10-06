@@ -4,12 +4,16 @@ import { FlowerListPanel } from './Panel/FlowerListPanel';
 import { BouquetListPanel } from './Panel/BouquetListPanel';
 import { CurrentOrderPanel } from './Panel/CurrentOrderPanel';
 import { FinishOrderPanel } from './Panel/FinishOrderPanel';
+import { BouquetAddPanel } from './Panel/BouquetAddPanel';
+import { FlowerAddPanel } from './Panel/FlowerAddPanel';
 
 // FLOW
 export enum PanelType {
   PROFILE = 'PROFILE',
   BOUQUET = 'BOUQUET',
   FLOWER = 'FLOWER',
+  ADDBOUQUET = 'ADDBOUQUET',
+  ADDFLOWER = 'ADDFLOWER',
   CURRENT_ORDER = 'CURRENT_ORDER',
   FINISHED_ORDER = 'FINISHED_ORDER',
 }
@@ -22,6 +26,10 @@ export const Panel = ({ type }: { type: PanelType }) => {
       return <BouquetListPanel />;
     case PanelType.FLOWER:
       return <FlowerListPanel />;
+    case PanelType.ADDBOUQUET:
+      return <BouquetAddPanel />;
+    case PanelType.ADDFLOWER:
+      return <FlowerAddPanel />;
     case PanelType.CURRENT_ORDER:
       return <CurrentOrderPanel />;
     case PanelType.FINISHED_ORDER:

@@ -92,6 +92,13 @@ export default function ShopMyPage() {
               보유 꽃
             </ButtonItem>
             <Divider />
+            <ButtonItem onClick={() => setType(PanelType.ADDBOUQUET)}>
+              꽃다발 추가
+            </ButtonItem>
+            <ButtonItem onClick={() => setType(PanelType.ADDFLOWER)}>
+              꽃 추가
+            </ButtonItem>
+            <Divider />
             <ButtonItem onClick={() => setType(PanelType.CURRENT_ORDER)}>
               현재 주문 목록
             </ButtonItem>

@@ -14,8 +14,6 @@ import Confirmation from '../router/Shop/Confirmation';
 import Login from '../router/Login/Login';
 import SignUp from '../router/Login/SignUp';
 import ShopMyPage from '../router/Shop/ShopMyPage';
-import BouquetAdd from '../router/BouquetPages/BouquetAdd';
-import FlowerAdd from '../router/FlowerPages/FlowerAdd';
 
 const Router = () => {
   return (
@@ -34,9 +32,7 @@ const Router = () => {
         <Route path="/confirmation/:id" component={Confirmation} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
-        <Route path="/shop/:id/mypage" component={ShopMyPage} />
-        <Route path="/bouquetadd" component={BouquetAdd} />
-        <Route path="/floweradd" component={FlowerAdd} />
+        <Route exact path="/shop/:id/mypage" component={ShopMyPage} />
       </Switch>
     </BrowserRouter>
   );
