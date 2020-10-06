@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const MiniHeader = () => {
+  const { id } = useParams();
   const classes = useStyles();
   const auth = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -85,7 +86,7 @@ const MiniHeader = () => {
                 onClose={handleClose}
               >
                 <Link
-                  to="/seller/mypage"
+                  to={`/shop/${id}/mypage`}
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
                   <MenuItem className={classes.menu} onClick={handleClose}>
