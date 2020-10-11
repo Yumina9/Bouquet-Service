@@ -21,18 +21,35 @@ const Router = () => {
       <Switch>
         <Route exact path="/" component={Main} />
         <Route exact path="/shop/:id" component={ShopMainPage} />
-        <Route path="/shop/:id/flowers" component={FlowerMore} />
-        <Route path="/shop/:id/bouquets" component={BouquetMore} />
+        <Route path="/shop/:id/mypage" component={ShopMyPage} />
+        <Route exact path="/shop/:id/flowers" component={FlowerMore} />
+        <Route exact path="/shop/:id/bouquets" component={BouquetMore} />
+        <Route
+          exact
+          path="/shop/:shop_id/flower/:flower_id"
+          component={FlowerExplanation}
+        />
+        <Route
+          exact
+          path="/shop/:shop_id/bouquet/:bouquet_id"
+          component={BouquetExplanation}
+        />
+        <Route
+          path="/shop/:shop_id/flower/:id/making"
+          component={FlowerMaking}
+        />
+        <Route
+          path="/shop/:shop_id/bouquet/:bouquet_id/making"
+          component={BouquetMaking}
+        />
+        <Route
+          path="/shop/:shop_id/bouquet/:bouquet_id/confirmation"
+          component={Confirmation}
+        />
         <Route path="/usermain" component={UserMain} />
         <Route path="/buyermypage" component={BuyerMyPage} />
-        <Route path="/flower/:id" component={FlowerExplanation} />
-        <Route path="/bouquet/:id" component={BouquetExplanation} />
-        <Route path="/making/flower/:id" component={FlowerMaking} />
-        <Route path="/making/bouquet/:id" component={BouquetMaking} />
-        <Route path="/confirmation/:id" component={Confirmation} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
-        <Route exact path="/shop/:id/mypage" component={ShopMyPage} />
       </Switch>
     </BrowserRouter>
   );
