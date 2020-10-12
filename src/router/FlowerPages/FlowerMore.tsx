@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import MiniHeader from '../../components/header/MiniHeader';
 import axios from 'axios';
-import Bouquet from '../../components/flowerImg/Bouquet';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
 import { useParams, Link } from 'react-router-dom';
 import { Block } from '../../lib/styles/styled';
 import { ShopType } from '../Shop/ShopMainPage';
+import Flower from '../../components/flowerImg/Flower';
 
 const FlowerMore = () => {
   const { id } = useParams();
@@ -35,13 +35,15 @@ const FlowerMore = () => {
           보유 중인 꽃 리스트
         </Typography>
         <List>
-          {flowers.map(({ id, name, img, description }) => {
+          {flowers.map(({ id, name, img, description, color }) => {
             return (
-              <Bouquet
+              <Flower
                 id={id}
                 name={name}
                 img={img}
                 description={description}
+                color={color}
+                shopId={id}
               />
             );
           })}
