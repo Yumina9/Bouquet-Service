@@ -7,6 +7,7 @@ import UserMain from '../router/User/UserMain';
 import Confirmation from '../router/Shop/Confirmation';
 import Login from '../router/Login/LoginPage';
 import SignUp from '../router/Login/SignUp';
+import Logout from '../components/login/Logout';
 import ShopMyPage from '../router/Shop/ShopMyPage';
 import FlowerMorePage from '../router/FlowerPages/FlowerMorePage';
 import BouquetMorePage from '../router/BouquetPages/BouquetMorePage';
@@ -55,6 +56,7 @@ const Router = () => {
         <Route path="/buyermypage" component={BuyerMyPage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
+        <Route path="/logout" component={Logout} />
       </Switch>
     </BrowserRouter>
   );
