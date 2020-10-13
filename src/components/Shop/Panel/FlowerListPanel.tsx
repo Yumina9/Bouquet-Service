@@ -20,9 +20,7 @@ export const FlowerListPanel = () => {
       <Typography type="H4" color={palette.color3} fontWeight="bold">
         현재 보유 중인 꽃 리스트
       </Typography>
-      <Button color={palette.white} bgColor={palette.color3}>
-        추가하기
-      </Button>
+
       <FlowerList>
         {flowers.map(({ id, name, img, description, color }) => {
           return (
