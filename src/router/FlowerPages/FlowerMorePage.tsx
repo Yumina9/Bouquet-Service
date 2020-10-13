@@ -7,10 +7,10 @@ import palette from '../../lib/styles/palette';
 import { useParams, Link } from 'react-router-dom';
 import { Block } from '../../lib/styles/styled';
 import { ShopType } from '../Shop/ShopMainPage';
-import Flower from '../../components/flowerImg/Flower';
+import Flower, { FlowerType } from '../../components/flowerImg/Flower';
 
-const FlowerMore = () => {
-  const { id } = useParams();
+const FlowerMorePage = () => {
+  const { id } = useParams<{ id: string }>();
   const [flowers, setFlowers] = useState([]);
   useEffect(() => {
     axios.get(`/shop/${id}/flowers`).then(({ data }) => setFlowers(data));
@@ -35,16 +35,11 @@ const FlowerMore = () => {
           보유 중인 꽃 리스트
         </Typography>
         <List>
-          {flowers.map(({ id, name, img, description, color }) => {
+          {flowers.map((flower: FlowerType) => {
             return (
-              <Flower
-                id={id}
-                name={name}
-                img={img}
-                description={description}
-                color={color}
-                shopId={id}
-              />
+              <Link to={`/shop/${id}/flower/${flower.id}`}>
+                <Flower {...flower} />
+              </Link>
             );
           })}
         </List>
@@ -53,7 +48,7 @@ const FlowerMore = () => {
   );
 };
 
-export default FlowerMore;
+export default FlowerMorePage;
 
 const List = styled.div`
   display: flex;

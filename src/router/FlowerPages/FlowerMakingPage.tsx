@@ -6,17 +6,12 @@ import MakingFlowerStepper from '../../components/Making/MakingFlowerStepper';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
 import Button from '../../components/common/Button';
-import Axios from 'axios';
-import { FlowerType } from '../../components/flowerImg/Flower';
 import { Block } from '../../lib/styles/styled';
+import useFlowerMakingPage from './hooks/useFlowerMakingPage';
 
-const FlowerMaking = () => {
-  const { id } = useParams();
+const FlowerMakingPage = () => {
+  const { flowerId, flower } = useFlowerMakingPage();
 
-  const [flower, setFlower] = useState<FlowerType>();
-  useEffect(() => {
-    Axios.get(`/flowers/${id}`).then(({ data }) => setFlower(data)); // setState -> state 변경 -> rerender -> 데이터가 반영된 새로운 화면이 그려진다.
-  }, []);
   return (
     <>
       <MiniHeader />
@@ -27,7 +22,7 @@ const FlowerMaking = () => {
           </Typography>
           {flower && <MakingFlowerStepper {...flower} />}{' '}
           {/* MakingFlowerStepper에 flower가 처음에 빈 객체이기 때문에 있을 경우에만 렌더링 */}
-          <Link to={`/flower/${id}`}>
+          <Link to={`/flower/${flowerId}`}>
             <Button color={palette.white} bgColor={palette.color3}>
               뒤로가기
             </Button>
@@ -43,7 +38,7 @@ const FlowerMaking = () => {
   );
 };
 
-export default FlowerMaking;
+export default FlowerMakingPage;
 
 const Body = styled.div`
   display: flex-reverse;

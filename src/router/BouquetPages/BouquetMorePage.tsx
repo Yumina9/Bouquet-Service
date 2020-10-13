@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import MiniHeader from '../../components/header/MiniHeader';
 import axios from 'axios';
-import Bouquet from '../../components/flowerImg/Bouquet';
+import Bouquet, { BouquetType } from '../../components/flowerImg/Bouquet';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
 import { useParams, Link } from 'react-router-dom';
 import { Block } from '../../lib/styles/styled';
 import { ShopType } from '../Shop/ShopMainPage';
 
-const BouquetMore = () => {
-  const { id } = useParams();
+const BouquetMorePage = () => {
+  const { id } = useParams<{ id: string }>();
   const [bouquets, setBouquets] = useState([]);
   useEffect(() => {
     axios.get(`/shop/${id}/bouquets`).then(({ data }) => setBouquets(data));
@@ -40,15 +40,14 @@ const BouquetMore = () => {
         </Typography>
 
         <List>
-          {bouquets.map(({ id, name, img, description }) => {
+          {bouquets.map((bouquet: BouquetType) => {
             return (
-              <Bouquet
-                id={id}
-                name={name}
-                img={img}
-                description={description}
-                shopId={id}
-              />
+              <Link
+                to={`/shop/${id}/bouquet/${bouquet.id}`}
+                style={{ color: 'inherit', textDecoration: 'none' }}
+              >
+                <Bouquet {...bouquet} />
+              </Link>
             );
           })}
         </List>
@@ -57,7 +56,7 @@ const BouquetMore = () => {
   );
 };
 
-export default BouquetMore;
+export default BouquetMorePage;
 
 const List = styled.div`
   display: flex;
