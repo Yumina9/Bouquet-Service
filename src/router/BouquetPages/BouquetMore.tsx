@@ -47,6 +47,7 @@ const BouquetMore = () => {
                 name={name}
                 img={img}
                 description={description}
+                shopId={id}
               />
             );
           })}
