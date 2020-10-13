@@ -7,7 +7,7 @@ import axios from 'axios';
 import Typography from '../common/Typography';
 import { BouquetType } from '../flowerImg/Bouquet';
 import { FlowerType } from '../flowerImg/Flower';
-import { Dropdown } from '../common/Dropdown';
+import { Dropdown } from '../Dropdown/Dropdown';
 
 const MakingBouquetStepper: React.FC<BouquetType> = ({
   img,
@@ -48,7 +48,7 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
           </div>
 
           <div style={{ margin: '20px' }}>
-            <Dropdown />
+            {/* <Dropdown  /> */}
           </div>
 
           <div>

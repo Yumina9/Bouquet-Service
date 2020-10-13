@@ -13,8 +13,8 @@ import BouquetMaking from '../router/BouquetPages/BouquetMaking';
 import Confirmation from '../router/Shop/Confirmation';
 import Login from '../router/Login/Login';
 import SignUp from '../router/Login/SignUp';
+import Logout from '../components/login/Logout';
 import ShopMyPage from '../router/Shop/ShopMyPage';
-
 const Router = () => {
   return (
     <BrowserRouter>
@@ -50,6 +50,7 @@ const Router = () => {
         <Route path="/buyermypage" component={BuyerMyPage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
+        <Route path="/logout" component={Logout} />
       </Switch>
     </BrowserRouter>
   );
