@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Main from '../router/Main';
-import BuyerMyPage from '../router/User/BuyerMyPage';
+import UserMyPage from '../router/User/UserMyPage';
 import ShopMainPage from '../router/Shop/ShopMainPage';
 import UserMain from '../router/User/UserMain';
 import OrderConfirmPage from '../router/Shop/OrderConfirmPage';
@@ -21,13 +21,10 @@ const Router = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Main} />
-
-        {/* shop page */}
+        {/* shop page */}s
         <Route exact path="/shop/:id" component={ShopMainPage} />
-
         {/* FIXME:  id 지우고 로그인된 토큰으로 본인 정보만 가져오기 */}
         <Route path="/shop/:id/mypage" component={ShopMyPage} />
-
         <Route exact path="/shop/:id/flowers" component={FlowerMorePage} />
         <Route exact path="/shop/:id/bouquets" component={BouquetMorePage} />
         <Route
@@ -53,7 +50,7 @@ const Router = () => {
           component={OrderConfirmPage}
         />
         <Route path="/usermain" component={UserMain} />
-        <Route path="/buyermypage" component={BuyerMyPage} />
+        <Route path="/usermypage" component={UserMyPage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/logout" component={Logout} />

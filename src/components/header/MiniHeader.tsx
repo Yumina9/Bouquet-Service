@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Link, useParams } from 'react-router-dom';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -9,6 +10,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import palette from '../../lib/styles/palette';
+import {getUserToken, isUserAuthenticated} from "../login/authUtils";
+import { login } from '../../modules/member';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -50,6 +53,10 @@ const MiniHeader = () => {
     setAnchorEl(null);
   };
 
+  // const loginUser = getUserToken();
+  
+  
+
   return (
     <div className={classes.root}>
       <AppBar className={classes.header} position="static">
@@ -87,6 +94,7 @@ const MiniHeader = () => {
               >
                 <Link
                   to={`/shop/${id}/mypage`}
+                  
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
                   <MenuItem className={classes.menu} onClick={handleClose}>
@@ -94,6 +102,24 @@ const MiniHeader = () => {
                   </MenuItem>
                 </Link>
               </Menu>
+              <div>
+                
+                {isUserAuthenticated() == false ? (
+                  <div>
+                    <Link to={"/"}>Logo</Link> |<Link to={"/login"}>로그인</Link>|
+                    <Link to={"/signup"}>회원가입</Link>
+                    <br></br>
+                  </div>
+                ) : (
+                  <div>
+                    <Link to={"/"}>Logo</Link> |
+                    <Link to={"/usermypage"}>님 프로필</Link> |
+                    {/* <Link to={"/usermypage"}>{loginUser.username}님 프로필</Link> | */}
+                    <Link to={"/logout"}>로그아웃</Link>
+                    <br></br>
+                  </div>
+                )}
+              </div>
             </div>
           )}
         </Toolbar>
