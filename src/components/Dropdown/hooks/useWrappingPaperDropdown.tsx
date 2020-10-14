@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { WrappingPaperType } from '../../flowerImg/WrappingPaper';
 import { UseDropdownProps } from '../Dropdown';
+import { WrappingPaperDropdownProps } from '../WrappingPaperDropdown';
 
 export default function useWrappingPaperDropdown({
-  onReserveChange,
-}: UseDropdownProps) {
+  onWrappingPaperDropdownChange,
+}: WrappingPaperDropdownProps) {
   const [wrappingPapers, setWrappingpapers] = useState<WrappingPaperType[]>([]);
   const [selected, setSelected] = useState<string | undefined>('');
   const { shop_id: shopId } = useParams<{ shop_id: string }>();
@@ -28,7 +29,7 @@ export default function useWrappingPaperDropdown({
     const selectedWrappingPaper = wrappingPapers[wrappingPaperIndex];
     setSelected(event.target.value as string);
 
-    onReserveChange({ wrappingPaper: selectedWrappingPaper });
+    onWrappingPaperDropdownChange(selectedWrappingPaper);
   };
   return {
     wrappingPapers,

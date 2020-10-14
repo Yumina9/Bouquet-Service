@@ -11,17 +11,20 @@ import { WrappingPaperType } from '../flowerImg/WrappingPaper';
 import useMakingBouquetStepper from './hooks/useMakingBouquetStepper';
 import { WrappingPaperDropdown } from '../Dropdown/WrappingPaperDropdown';
 import { RibbonDropdown } from '../Dropdown/RibbonDropdown';
+import { FlowerType } from '../flowerImg/Flower';
+import { RibbonType } from '../flowerImg/Ribbon';
 
 const MakingBouquetStepper: React.FC<BouquetType> = ({
   img,
   name,
   description,
+  bouquet_paper_price,
 }) => {
   const {
     amount,
     setAmount,
     setReserve,
-    totalPrice,
+    resultPrice,
     reserve,
   } = useMakingBouquetStepper();
 
@@ -36,10 +39,20 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
 
     setAmount(amount - 1);
   };
-  const onReserveChange = (e: any) => {
-    setReserve({ ...reserve, [e.target.name]: e.target.value });
+
+  const onFlowerDropdownChange = (flower: FlowerType) => {
+    setReserve({ ...reserve, flower });
   };
-  console.log('reserve', reserve);
+
+  const onWrappingPaperDropdownChange = (wrappingPaper: WrappingPaperType) => {
+    setReserve({ ...reserve, wrappingPaper });
+  };
+
+  const onRibbonDropdownChange = (ribbon: RibbonType) => {
+    setReserve({ ...reserve, ribbon });
+  };
+
+  console.log(reserve);
   return (
     <>
       <Block>
@@ -67,13 +80,15 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
                     color={palette.color4}
                     fontWeight="bold"
                   >
-                    꽃 수량 입력
+                    꽃 선택
                   </Typography>
                 </div>
               </th>
               <th>
                 <div style={{ margin: '20px' }}>
-                  <FlowerDropdown onReserveChange={onReserveChange} />
+                  <FlowerDropdown
+                    onFlowerDropdownChange={onFlowerDropdownChange}
+                  />
                 </div>
               </th>
             </tr>
@@ -101,7 +116,11 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
               </th>
               <th>
                 <div style={{ margin: '20px' }}>
-                  <WrappingPaperDropdown onReserveChange={onReserveChange} />
+                  <WrappingPaperDropdown
+                    onWrappingPaperDropdownChange={
+                      onWrappingPaperDropdownChange
+                    }
+                  />
                 </div>
               </th>
             </tr>
@@ -113,7 +132,9 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
               </th>
               <th>
                 <div style={{ margin: '20px' }}>
-                  <RibbonDropdown onReserveChange={onReserveChange} />
+                  <RibbonDropdown
+                    onRibbonDropdownChange={onRibbonDropdownChange}
+                  />
                 </div>
               </th>
             </tr>
@@ -123,7 +144,11 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
                   금액
                 </Typography>
               </th>
-              <th>{totalPrice}</th>
+              <th>
+                <Typography type="H6" color={palette.color4} fontWeight="light">
+                  {resultPrice + bouquet_paper_price}원
+                </Typography>
+              </th>
             </tr>
           </tbody>
         </span>

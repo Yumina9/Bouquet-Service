@@ -2,16 +2,21 @@ import React from 'react';
 import { Dropdown } from './Dropdown';
 import Select from '@material-ui/core/Select';
 import useFlowerDropdown from './hooks/useFlowerDropdown';
+import { FlowerType } from '../flowerImg/Flower';
 
-export const FlowerDropdown: React.FC<{
-  onReserveChange: any;
-}> = ({ onReserveChange }) => {
-  const { flowers, handleChange, selected } = useFlowerDropdown(
-    onReserveChange,
-  );
+export type FlowerDropdownProps = {
+  onFlowerDropdownChange: (flower: FlowerType) => void;
+};
+
+export const FlowerDropdown: React.FC<FlowerDropdownProps> = ({
+  onFlowerDropdownChange,
+}) => {
+  const { flowers, handleChange, selected } = useFlowerDropdown({
+    onFlowerDropdownChange,
+  });
 
   return (
-    <Dropdown description={'꽃다발 선택'}>
+    <Dropdown description={'꽃 선택'}>
       <Select
         native
         value={selected}
