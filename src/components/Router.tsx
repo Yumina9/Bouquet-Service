@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Main from '../router/Main';
 import FlowerMore from '../router/FlowerPages/FlowerMore';
-import BuyerMyPage from '../router/User/BuyerMyPage';
+import UserMyPage from '../router/User/UserMyPage';
 import ShopMainPage from '../router/Shop/ShopMainPage';
 import BouquetMore from '../router/BouquetPages/BouquetMore';
 import UserMain from '../router/User/UserMain';
@@ -47,7 +47,7 @@ const Router = () => {
           component={Confirmation}
         />
         <Route path="/usermain" component={UserMain} />
-        <Route path="/buyermypage" component={BuyerMyPage} />
+        <Route path="/usermypage" component={UserMyPage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/logout" component={Logout} />

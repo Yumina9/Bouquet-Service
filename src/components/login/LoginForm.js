@@ -13,6 +13,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { Cookies } from 'react-cookie';
+import { getUserToken } from './authUtils';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -39,6 +41,7 @@ export default function SignIn() {
 	const initialFormData = Object.freeze({
 		email: '',
 		password: '',
+		username: '',
 	});
 
 	const [formData, updateFormData] = useState(initialFormData);
@@ -58,15 +61,37 @@ export default function SignIn() {
 			.post(`token/`, {
 				email: formData.email,
 				password: formData.password,
+				username: formData.username,
+				
 			})
+			
 			.then((res) => {
 				localStorage.setItem('access_token', res.data.access);
 				localStorage.setItem('refresh_token', res.data.refresh);
+				//API 요청하는 콜마다 헤더에 accessToken 담아 보낻록
 				axiosInstance.defaults.headers['Authorization'] =
 					'JWT ' + localStorage.getItem('access_token');
 				history.push('/');
 			});
 	};
+
+	// const apiUrl = "http://localhost:8000/api/token/";
+
+    // axiosInstance
+    //   .post(apiUrl, formData)
+    //   .then((response) => {
+    //     console.log("호출결과:", response.data);
+    //     const token = response.data.token;
+
+    //     //쿠키로 서버에서 제공한 토큰정보를 usertoken 쿠키로 브라우저에 저장한다.
+    //     let cookies = new Cookies();
+    //     cookies.set("usertoken", token, { path: "/" });
+    //     window.location = "/";
+    //   })
+    //   .catch((response) => {
+    //     console.error(response);
+    //   });
+ 
 
 	const classes = useStyles();
 

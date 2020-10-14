@@ -43,7 +43,6 @@ const FlowerMore = () => {
                 img={img}
                 description={description}
                 color={color}
-                shopId={id}
               />
             );
           })}
