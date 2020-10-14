@@ -27,6 +27,7 @@ export interface BouquetType {
   flower_count: number;
   ribbon_color: string;
   wrappingpaper_color: string;
+  bouquet_paper_price: number;
 }
 
 const useStyles = makeStyles((theme: Theme) =>

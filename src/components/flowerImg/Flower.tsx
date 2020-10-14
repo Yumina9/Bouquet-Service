@@ -23,6 +23,7 @@ export interface FlowerType {
   img: string;
   description: string;
   color: string;
+  price: number;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -50,13 +51,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Flower: React.FC<FlowerType> = ({
-  id,
-  name,
-  img,
-  description,
-  color,
-}) => {
+const Flower: React.FC<FlowerType> = ({ ...flowers }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -74,14 +69,18 @@ const Flower: React.FC<FlowerType> = ({
                 <MoreVertIcon />
               </IconButton>
             }
-            title={`${color} ${name}`}
+            title={`${flowers.color} ${flowers.name}`}
             subheader="언제 올렸을까요?"
           />
           <Link
-            to={`/flower/${id}`}
+            to={`flower/${flowers.id}/`}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
-            <CardMedia className={classes.media} image={img} title={name} />
+            <CardMedia
+              className={classes.media}
+              image={flowers.img}
+              title={flowers.name}
+            />
           </Link>
           <CardActions disableSpacing>
             <IconButton aria-label="add to favorites">
@@ -102,7 +101,7 @@ const Flower: React.FC<FlowerType> = ({
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
               <Typography type="H7" color={palette.color4} fontWeight="light">
-                {`${color}${name}는 ${description}라는 의미를 가지고 있습니다.`}
+                {`${flowers.color}${flowers.name}는 ${flowers.description}라는 의미를 가지고 있습니다.`}
               </Typography>
             </CardContent>
           </Collapse>
