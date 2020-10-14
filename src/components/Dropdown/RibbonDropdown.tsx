@@ -2,13 +2,18 @@ import React from 'react';
 import { Dropdown } from './Dropdown';
 import { Select } from '@material-ui/core';
 import useRibbonDropdown from './hooks/useRibbonDropdown';
+import { RibbonType } from '../flowerImg/Ribbon';
 
-export const RibbonDropdown: React.FC<{
-  onReserveChange: any;
-}> = ({ onReserveChange }) => {
-  const { ribbons, selected, handleChange } = useRibbonDropdown(
-    onReserveChange,
-  );
+export type RibbonDropdownProps = {
+  onRibbonDropdownChange: (ribbon: RibbonType) => void;
+};
+
+export const RibbonDropdown: React.FC<RibbonDropdownProps> = ({
+  onRibbonDropdownChange,
+}) => {
+  const { ribbons, selected, handleChange } = useRibbonDropdown({
+    onRibbonDropdownChange,
+  });
   return (
     <Dropdown description={'리본 선택'}>
       <Select

@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { RibbonType } from '../../flowerImg/Ribbon';
 import { UseDropdownProps } from '../Dropdown';
+import { RibbonDropdownProps } from '../RibbonDropdown';
 
 export default function useRibbonDropdown({
-  onReserveChange,
-}: UseDropdownProps) {
+  onRibbonDropdownChange,
+}: RibbonDropdownProps) {
   const [ribbons, setRibbons] = useState<RibbonType[]>([]);
   const [selected, setSelected] = useState<string | undefined>();
   const { shop_id: shopId } = useParams<{ shop_id: string }>();
@@ -27,7 +28,7 @@ export default function useRibbonDropdown({
     const selectedRibbon = ribbons[ribbonIndex];
 
     setSelected(event.target.value as string);
-    onReserveChange({ ribbon: selectedRibbon });
+    onRibbonDropdownChange(selectedRibbon);
   };
   return {
     ribbons,
