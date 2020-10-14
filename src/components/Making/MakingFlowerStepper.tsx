@@ -9,7 +9,7 @@ import { BouquetType } from '../flowerImg/Bouquet';
 import { FlowerType } from '../flowerImg/Flower';
 
 const MakingFlowerStepper: React.FC<FlowerType> = ({ img, name }) => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const [bouquets, setBouquets] = useState<BouquetType[]>([]);
 
   useEffect(() => {
