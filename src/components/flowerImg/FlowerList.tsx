@@ -10,16 +10,8 @@ interface FlowerListProps {
 const FlowerList: React.FC<FlowerListProps> = ({ flowers }) => {
   return (
     <List>
-      {flowers.map(({ id, name, img, description, color }) => {
-        return (
-          <Flower
-            id={id}
-            name={name}
-            img={img}
-            description={description}
-            color={color}
-          />
-        );
+      {flowers.map(({ ...flowers }) => {
+        return <Flower {...flowers} />;
       })}
     </List>
   );

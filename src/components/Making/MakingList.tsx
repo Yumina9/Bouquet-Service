@@ -6,7 +6,7 @@ export const MakingList = () => {
   const [flowers, setFlowers] = useState([]);
   useEffect(() => {
     axios.get('/flowers').then(({ data }) => setFlowers(data));
-  });
+  }, []);
   console.log(flowers);
   return (
     <>

@@ -22,16 +22,8 @@ export const FlowerListPanel = () => {
       </Typography>
 
       <FlowerList>
-        {flowers.map(({ id, name, img, description, color }) => {
-          return (
-            <Flower
-              id={id}
-              name={name}
-              img={img}
-              description={description}
-              color={color}
-            />
-          );
+        {flowers.map(({ ...flowers }) => {
+          return <Flower {...flowers} />;
         })}
       </FlowerList>
     </>
