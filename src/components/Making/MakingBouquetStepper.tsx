@@ -6,15 +6,24 @@ import Button from '../common/Button';
 import axios from 'axios';
 import Typography from '../common/Typography';
 import { BouquetType } from '../flowerImg/Bouquet';
-import { FlowerType } from '../flowerImg/Flower';
-import { Dropdown } from '../Dropdown/Dropdown';
+import { FlowerDropdown } from '../Dropdown/FlowerDropdown';
+import { WrappingPaperType } from '../flowerImg/WrappingPaper';
+import useMakingBouquetStepper from './hooks/useMakingBouquetStepper';
+import { WrappingPaperDropdown } from '../Dropdown/WrappingPaperDropdown';
+import { RibbonDropdown } from '../Dropdown/RibbonDropdown';
 
 const MakingBouquetStepper: React.FC<BouquetType> = ({
   img,
   name,
   description,
 }) => {
-  const [amount, setAmount] = useState(1);
+  const {
+    amount,
+    setAmount,
+    setReserve,
+    totalPrice,
+    reserve,
+  } = useMakingBouquetStepper();
 
   const increaseAmount = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -27,7 +36,10 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
 
     setAmount(amount - 1);
   };
-
+  const onReserveChange = (e: any) => {
+    setReserve({ ...reserve, [e.target.name]: e.target.value });
+  };
+  console.log('reserve', reserve);
   return (
     <>
       <Block>
@@ -46,30 +58,74 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
               {`${description}`}
             </Typography>
           </div>
-
-          <div style={{ margin: '20px' }}>
-            {/* <Dropdown  /> */}
-          </div>
-
-          <div>
-            <Typography type="H6" color={palette.color4} fontWeight="bold">
-              꽃 수량 입력
-            </Typography>
-            <form>
-              <Typography type="H4" color={palette.black} fontWeight="bold">
-                {amount}
-              </Typography>
-              <button onClick={increaseAmount}>+</button>&nbsp;
-              <button onClick={decreaseAmount}>-</button>
-            </form>
-          </div>
-
-          <div>
-            <Typography type="H6" color={palette.color4} fontWeight="bold">
-              포장지 색상, 리본 색상 선택
-            </Typography>
-            <p>포장지 색상과 리본 색상을 선택하세요</p>
-          </div>
+          <tbody>
+            <tr>
+              <th>
+                <div>
+                  <Typography
+                    type="H6"
+                    color={palette.color4}
+                    fontWeight="bold"
+                  >
+                    꽃 수량 입력
+                  </Typography>
+                </div>
+              </th>
+              <th>
+                <div style={{ margin: '20px' }}>
+                  <FlowerDropdown onReserveChange={onReserveChange} />
+                </div>
+              </th>
+            </tr>
+            <tr>
+              <th>
+                <Typography type="H6" color={palette.color4} fontWeight="bold">
+                  꽃 수량 입력
+                </Typography>
+              </th>
+              <th>
+                <form>
+                  <Typography type="H4" color={palette.black} fontWeight="bold">
+                    {amount}
+                  </Typography>
+                  <button onClick={increaseAmount}>+</button>&nbsp;
+                  <button onClick={decreaseAmount}>-</button>
+                </form>
+              </th>
+            </tr>
+            <tr>
+              <th>
+                <Typography type="H6" color={palette.color4} fontWeight="bold">
+                  포장지 선택
+                </Typography>
+              </th>
+              <th>
+                <div style={{ margin: '20px' }}>
+                  <WrappingPaperDropdown onReserveChange={onReserveChange} />
+                </div>
+              </th>
+            </tr>
+            <tr>
+              <th>
+                <Typography type="H6" color={palette.color4} fontWeight="bold">
+                  리본선택
+                </Typography>
+              </th>
+              <th>
+                <div style={{ margin: '20px' }}>
+                  <RibbonDropdown onReserveChange={onReserveChange} />
+                </div>
+              </th>
+            </tr>
+            <tr>
+              <th>
+                <Typography type="H6" color={palette.color4} fontWeight="bold">
+                  금액
+                </Typography>
+              </th>
+              <th>{totalPrice}</th>
+            </tr>
+          </tbody>
         </span>
       </Block>
     </>

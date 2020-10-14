@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
+import { FlowerType } from '../flowerImg/Flower';
+import { WrappingPaperType } from '../flowerImg/WrappingPaper';
+import { RibbonType } from '../flowerImg/Ribbon';
+
+export type UseDropdownProps = {
+  onReserveChange: React.Dispatch<
+    React.SetStateAction<{
+      flower?: FlowerType;
+      wrappingPaper?: WrappingPaperType;
+      ribbon?: RibbonType;
+    } | null>
+  >;
+};
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,13 +35,6 @@ export const Dropdown: React.FC<{
   children: any; // TODO: Fix Type
 }> = ({ description, children }) => {
   const classes = useStyles();
-  const [state, setState] = React.useState<{
-    age: string | number;
-    name: string;
-  }>({
-    age: '',
-    name: 'hai',
-  });
 
   return (
     <>

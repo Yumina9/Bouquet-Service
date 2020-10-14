@@ -2,30 +2,26 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import MiniHeader from '../../components/header/MiniHeader';
 import axios from 'axios';
-import Bouquet from '../../components/flowerImg/Bouquet';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
 import { useParams, Link } from 'react-router-dom';
 import { Block } from '../../lib/styles/styled';
 import { ShopType } from '../Shop/ShopMainPage';
+import Flower, { FlowerType } from '../../components/flowerImg/Flower';
 
-const BouquetMore = () => {
-  const { id } = useParams();
-  const [bouquets, setBouquets] = useState([]);
+const FlowerMorePage = () => {
+  const { id } = useParams<{ id: string }>();
+  const [flowers, setFlowers] = useState([]);
   useEffect(() => {
-    axios.get(`/shop/${id}/bouquets`).then(({ data }) => setBouquets(data));
+    axios.get(`/shop/${id}/flowers`).then(({ data }) => setFlowers(data));
   }, []);
-
   const [shop, setShop] = useState<ShopType>();
   useEffect(() => {
     axios.get(`/shop/${id}/`).then(({ data }) => setShop(data));
   }, []);
-  console.log(shop?.name);
-
   return (
     <>
       <MiniHeader />
-
       <Block>
         <Link
           to={`/shop/${id}`}
@@ -36,18 +32,14 @@ const BouquetMore = () => {
           </Typography>
         </Link>
         <Typography type="H3" color={palette.color4} fontWeight="bold">
-          제작 가능한 꽃다발 리스트
+          보유 중인 꽃 리스트
         </Typography>
-
         <List>
-          {bouquets.map(({ id, name, img, description }) => {
+          {flowers.map((flower: FlowerType) => {
             return (
-              <Bouquet
-                id={id}
-                name={name}
-                img={img}
-                description={description}
-              />
+              <Link to={`/shop/${id}/flower/${flower.id}`}>
+                <Flower {...flower} />
+              </Link>
             );
           })}
         </List>
@@ -56,7 +48,7 @@ const BouquetMore = () => {
   );
 };
 
-export default BouquetMore;
+export default FlowerMorePage;
 
 const List = styled.div`
   display: flex;

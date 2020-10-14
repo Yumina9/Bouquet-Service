@@ -10,20 +10,27 @@ import MakingBouquetStepper from '../../components/Making/MakingBouquetStepper';
 import Button from '../../components/common/Button';
 import { Block } from '../../lib/styles/styled';
 import { BouquetType } from '../../components/flowerImg/Bouquet';
+import { RouteComponentProps } from 'react-router-dom';
 
-const BouquetMaking: React.FC<{}> = () => {
-  const { id } = useParams();
+const BouquetMakingPage = ({ history }: RouteComponentProps) => {
+  const { shop_id: shopId, bouquet_id: bouquetId } = useParams<{
+    shop_id: string;
+    bouquet_id: string;
+  }>();
 
-  // 여기는 bouquet인데 왜 FlowerType?
   const [bouquet, setBouquet] = useState<BouquetType>();
 
   useEffect(() => {
-    axios.get(`/bouquets/${id}`).then(({ data }) => setBouquet(data));
+    axios.get(`/bouquets/${bouquetId}`).then(({ data }) => setBouquet(data));
   }, []);
 
   if (!bouquet) {
     return <h1>Loading..</h1>;
   }
+
+  const goBack = () => {
+    history.goBack();
+  };
 
   return (
     <>
@@ -35,16 +42,17 @@ const BouquetMaking: React.FC<{}> = () => {
           </Typography>
           {/* 여기 MakingBouquetSteepr 호출  */}
           <MakingBouquetStepper {...bouquet} />
-          <Link
-            to={`/bouquet/${id}`}
-            style={{ color: 'inherit', textDecoration: 'none' }}
+
+          <Button
+            color={palette.white}
+            bgColor={palette.color3}
+            onClick={goBack}
           >
-            <Button color={palette.white} bgColor={palette.color3}>
-              뒤로가기
-            </Button>
-          </Link>
+            뒤로가기
+          </Button>
+
           <Link
-            to={`/confirmation/${id}`}
+            to={`/shop/${shopId}/bouquet/${bouquetId}/confirmation`}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
             <Button color={palette.white} bgColor={palette.color3}>
@@ -57,7 +65,7 @@ const BouquetMaking: React.FC<{}> = () => {
   );
 };
 
-export default BouquetMaking;
+export default BouquetMakingPage;
 
 const Body = styled.div`
   display: flex-reverse;

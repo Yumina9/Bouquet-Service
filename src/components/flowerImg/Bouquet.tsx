@@ -54,10 +54,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Bouquet: React.FC<Pick<
-  BouquetType,
-  'id' | 'name' | 'img' | 'description'
->> = ({ id, name, img, description }) => {
+const Bouquet: React.FC<BouquetType> = ({ id, name, img, description }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -79,7 +76,7 @@ const Bouquet: React.FC<Pick<
             subheader="언제 올렸을까요?"
           />
           <Link
-            to={`/bouquet/${id}`}
+            to={`bouquet/${id}/`}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
             <CardMedia className={classes.media} image={img} title={name} />

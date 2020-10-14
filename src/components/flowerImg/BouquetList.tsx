@@ -11,10 +11,8 @@ type BuquetListPropsType = {
 const BouquetList = ({ bouquets }: BuquetListPropsType) => {
   return (
     <List>
-      {bouquets.map(({ id, name, img, description }) => {
-        return (
-          <Bouquet id={id} name={name} img={img} description={description} />
-        );
+      {bouquets.map((bouquet: BouquetType) => {
+        return <Bouquet {...bouquet} />;
       })}
     </List>
   );
