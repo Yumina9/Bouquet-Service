@@ -4,7 +4,7 @@ import Main from '../router/Main';
 import BuyerMyPage from '../router/User/BuyerMyPage';
 import ShopMainPage from '../router/Shop/ShopMainPage';
 import UserMain from '../router/User/UserMain';
-import Confirmation from '../router/Shop/Confirmation';
+import OrderConfirmPage from '../router/Shop/OrderConfirmPage';
 import Login from '../router/Login/LoginPage';
 import SignUp from '../router/Login/SignUp';
 import Logout from '../components/login/Logout';
@@ -49,8 +49,8 @@ const Router = () => {
           component={BouquetMakingPage}
         />
         <Route
-          path="/shop/:shop_id/bouquet/:bouquet_id/confirmation"
-          component={Confirmation}
+          path="/shop/:shop_id/OrderConfirm/:bouquet_id"
+          component={OrderConfirmPage}
         />
         <Route path="/usermain" component={UserMain} />
         <Route path="/buyermypage" component={BuyerMyPage} />
