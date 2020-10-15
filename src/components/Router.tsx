@@ -5,7 +5,6 @@ import UserMyPage from '../router/User/UserMyPage';
 import ShopMainPage from '../router/Shop/ShopMainPage';
 import UserMain from '../router/User/UserMain';
 import OrderConfirmPage from '../router/Shop/OrderConfirmPage';
-import Login from '../router/Login/Login';
 import SignUp from '../router/Login/SignUp';
 import Logout from '../components/login/Logout';
 import ShopMyPage from '../router/Shop/ShopMyPage';
@@ -15,6 +14,7 @@ import FlowerExplanationPage from '../router/FlowerPages/FlowerExplanationPage';
 import BouquetExplanationPage from '../router/BouquetPages/BouquetExplanationPage';
 import BouquetMakingPage from '../router/BouquetPages/BouquetMakingPage';
 import FlowerMakingPage from '../router/FlowerPages/FlowerMakingPage';
+import LoginPage from '../router/Login/LoginPage';
 
 const Router = () => {
   return (
@@ -45,13 +45,14 @@ const Router = () => {
           path="/shop/:shop_id/bouquet/:bouquet_id/making"
           component={BouquetMakingPage}
         />
+        {/* 주문확인 -> 만들기 -> 주문하기, 주문하기 */}
         <Route
           path="/shop/:shop_id/orderConfirm/:id/:type"
           component={OrderConfirmPage}
         />
         <Route path="/usermain" component={UserMain} />
         <Route path="/usermypage" component={UserMyPage} />
-        <Route path="/login" component={Login} />
+        <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignUp} />
         <Route path="/logout" component={Logout} />
       </Switch>
