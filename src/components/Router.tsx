@@ -5,7 +5,7 @@ import UserMyPage from '../router/User/UserMyPage';
 import ShopMainPage from '../router/Shop/ShopMainPage';
 import UserMain from '../router/User/UserMain';
 import OrderConfirmPage from '../router/Shop/OrderConfirmPage';
-import Login from '../router/Login/LoginPage';
+import Login from '../router/Login/Login';
 import SignUp from '../router/Login/SignUp';
 import Logout from '../components/login/Logout';
 import ShopMyPage from '../router/Shop/ShopMyPage';
