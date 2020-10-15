@@ -6,6 +6,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import Button from '../common/Button';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
@@ -92,7 +93,7 @@ const MiniHeader = () => {
                 open={open}
                 onClose={handleClose}
               >
-                <Link
+                {/* <Link
                   to={`/shop/${id}/mypage`}
                   
                   style={{ color: 'inherit', textDecoration: 'none' }}
@@ -100,26 +101,28 @@ const MiniHeader = () => {
                   <MenuItem className={classes.menu} onClick={handleClose}>
                     MyPage
                   </MenuItem>
-                </Link>
-              </Menu>
-              <div>
-                
+                </Link> */}
                 {isUserAuthenticated() == false ? (
                   <div>
-                    <Link to={"/"}>Logo</Link> |<Link to={"/login"}>로그인</Link>|
-                    <Link to={"/signup"}>회원가입</Link>
-                    <br></br>
+                    <Link to={"/login"} style={{ color: 'inherit', textDecoration: 'none' }}>
+                      <MenuItem className={classes.menu} onClick={handleClose}>로그인</MenuItem>
+                    </Link>
+                    <Link to={"/signup"} style={{ color: 'inherit', textDecoration: 'none' }}>
+                      <MenuItem className={classes.menu} onClick={handleClose}>회원가입</MenuItem>
+                    </Link>
                   </div>
                 ) : (
                   <div>
-                    <Link to={"/"}>Logo</Link> |
-                    <Link to={"/usermypage"}>님 프로필</Link> |
-                    {/* <Link to={"/usermypage"}>{loginUser.username}님 프로필</Link> | */}
-                    <Link to={"/logout"}>로그아웃</Link>
-                    <br></br>
+                    <Link to={"/logout"} style={{ color: 'inherit', textDecoration: 'none' }}>
+                      <MenuItem className={classes.menu} onClick={handleClose}>로그아웃</MenuItem>
+                    </Link>
+                    <Link to={"/usermypage"} style={{ color: 'inherit', textDecoration: 'none' }}>
+                      <MenuItem className={classes.menu} onClick={handleClose}>마이페이지</MenuItem>
+                    </Link>
                   </div>
                 )}
-              </div>
+              </Menu>
+              
             </div>
           )}
         </Toolbar>
