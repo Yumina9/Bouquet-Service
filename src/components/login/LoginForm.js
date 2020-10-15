@@ -75,24 +75,6 @@ export default function SignIn() {
 			});
 	};
 
-	// const apiUrl = "http://localhost:8000/api/token/";
-
-    // axiosInstance
-    //   .post(apiUrl, formData)
-    //   .then((response) => {
-    //     console.log("호출결과:", response.data);
-    //     const token = response.data.token;
-
-    //     //쿠키로 서버에서 제공한 토큰정보를 usertoken 쿠키로 브라우저에 저장한다.
-    //     let cookies = new Cookies();
-    //     cookies.set("usertoken", token, { path: "/" });
-    //     window.location = "/";
-    //   })
-    //   .catch((response) => {
-    //     console.error(response);
-    //   });
- 
-
 	const classes = useStyles();
 
 	return (
