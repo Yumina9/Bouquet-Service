@@ -46,7 +46,7 @@ const Router = () => {
           component={BouquetMakingPage}
         />
         <Route
-          path="/shop/:shop_id/OrderConfirm/:bouquet_id"
+          path="/shop/:shop_id/orderConfirm/:id/:type"
           component={OrderConfirmPage}
         />
         <Route path="/usermain" component={UserMain} />

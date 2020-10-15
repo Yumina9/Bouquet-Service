@@ -48,7 +48,7 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
               </Button>
             </Link>
             <Link
-              to={`/confirmation`}
+              to={`/shop/${shop_id}/orderConfirm/${bouquet_id}/finished`}
               style={{ color: 'inherit', textDecoration: 'none' }}
             >
               <Button color={palette.white} bgColor={palette.color3}>

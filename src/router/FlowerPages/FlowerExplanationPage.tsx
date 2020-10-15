@@ -38,7 +38,7 @@ const FlowerExplanationPage: React.FC<FlowerType> = () => {
           </Detail>
           <span>
             <Link
-              to={`/making/flower/${id}`}
+              to={`making`}
               style={{ color: 'inherit', textDecoration: 'none' }}
             >
               <Button color={palette.white} bgColor={palette.color3}>
