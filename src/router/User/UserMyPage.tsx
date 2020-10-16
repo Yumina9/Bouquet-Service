@@ -1,21 +1,44 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import MiniHeader from '../../components/header/MiniHeader';
 import './buyerCss.css';
 import Grid from '@material-ui/core/Grid';
+import axios from '../../components/login/axios';
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getUserToken } from '../../components/login/authUtils';
+
+type userInfoType ={
+  id : number;
+  username: string;
+  firstname: string;
+  email: string;
+}
 
 const UserMyPage = () => {
+
+  const [userInfo, setUserInfo] = useState<userInfoType>();
+
+  useEffect(()=>{
+    axios.get(`/user/users/1`).then(({data})=>setUserInfo(data));
+  },[])
+  
+  
+
   return (
     <div>
       <MiniHeader />
       <BuyerInfo>
         <UserImage src={require('../../image/user.png')} />
         <UserInfomation>
+        
           <table>
             <tbody>
               <tr>
+                
                 <th>성명 : </th>
-                <td>홍길동</td>
+                <td>{userInfo?.username}</td>
+                
               </tr>
               <tr>
                 <th>전화 : </th>
@@ -23,7 +46,7 @@ const UserMyPage = () => {
               </tr>
               <tr>
                 <th>이메일 : </th>
-                <td>test@test.com</td>
+                <td>{userInfo?.email}</td>
               </tr>
               <tr>
                 <th>주소 : </th>

@@ -13,6 +13,11 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+
+import FormHelperText from '@material-ui/core/FormHelperText';
+
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -40,6 +45,7 @@ export default function SignUp() {
 		email: '',
 		username: '',
 		password: '',
+		user_choice: '',
 	});
 
 	const [formData, updateFormData] = useState(initialFormData);
@@ -57,20 +63,37 @@ export default function SignUp() {
 		console.log(formData);
 
 		axiosInstance
-			.post(`user/create/`, {
+			.post(`users/create/`, {
 				email: formData.email,
 				username: formData.username,
 				password: formData.password,
+				user_choice: formData.user_choice,
 			})
 			.then((res) => {
 				history.push('/login');
-				console.log(res);
-				console.log(res.data);
+				console.log("로그인", res);
+				console.log("로그인 데이터",res.data);
 			});
+			
 	};
 
 	const classes = useStyles();
 
+	// 체크박스
+	const [state, setState] = React.useState({
+		gilad: true,
+		jason: false,
+		antoine: false,
+	  });
+	const checkChange = (event) => {
+		setState({ ...state, [event.target.name]: event.target.checked });
+		updateFormData({
+			...formData,
+			// Trimming any whitespace
+			[event.target.name]: event.target.value.trim(),
+		});
+	  };
+	const { gilad, jason, antoine } = state;
 	return (
 		<Container component="main" maxWidth="xs">
 			<CssBaseline />
@@ -80,6 +103,11 @@ export default function SignUp() {
 					Sign up
 				</Typography>
 				<form className={classes.form} noValidate>
+
+					{/* 유저 타입 선택 */}
+					
+					<input type="radio" onChange={checkChange} name="user_choice" value="U" />고객
+					<input type="radio" onChange={checkChange} name="user_choice" value="S" />판매
 					<Grid container spacing={2}>
 						<Grid item xs={12}>
 							<TextField
@@ -87,7 +115,7 @@ export default function SignUp() {
 								required
 								fullWidth
 								id="email"
-								label="Email Address"
+								label="ex) example@example.com"
 								name="email"
 								autoComplete="email"
 								onChange={handleChange}
@@ -99,7 +127,7 @@ export default function SignUp() {
 								required
 								fullWidth
 								id="username"
-								label="Username"
+								label="성함"
 								name="username"
 								autoComplete="username"
 								onChange={handleChange}
@@ -111,19 +139,20 @@ export default function SignUp() {
 								required
 								fullWidth
 								name="password"
-								label="Password"
+								label="비밀번호"
 								type="password"
 								id="password"
 								autoComplete="current-password"
 								onChange={handleChange}
 							/>
 						</Grid>
+						{/* 이메일 프로모션, 업데이트 정보받는 체크박스
 						<Grid item xs={12}>
 							<FormControlLabel
 								control={<Checkbox value="allowExtraEmails" color="primary" />}
 								label="I want to receive inspiration, marketing promotions and updates via email."
 							/>
-						</Grid>
+						</Grid> */}
 					</Grid>
 					<Button
 						type="submit"
@@ -133,12 +162,12 @@ export default function SignUp() {
 						className={classes.submit}
 						onClick={handleSubmit}
 					>
-						Sign Up
+						로그인
 					</Button>
 					<Grid container justify="flex-end">
 						<Grid item>
 							<Link href="/login" variant="body2">
-								Already have an account? Sign in
+								로그인
 							</Link>
 						</Grid>
 					</Grid>
