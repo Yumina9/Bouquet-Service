@@ -13,11 +13,13 @@ import Menu from '@material-ui/core/Menu';
 import palette from '../../lib/styles/palette';
 import {getUserToken, isUserAuthenticated} from "../login/authUtils";
 
+import axios from 'axios';
 import axiosInstance from '../login/axios';
 
 // 가져올 데이터 타입 정의
 type choiceUserType = {
   id: number;
+  username: string;
   user_choice: string;
 }
 
@@ -63,7 +65,8 @@ const MiniHeader = () => {
 
   const[userChoice, setUserChoice] = useState<choiceUserType>();
   useEffect(() => {
-    axiosInstance.get('/user/users/5/').then(({data}) => setUserChoice(data));
+    axios.get(`/user/users`).then(({data}) => setUserChoice(data));
+    console.log("유저 초이스11", userChoice);
   },[]);
   console.log("유저 초이스", userChoice?.user_choice);
   
@@ -77,6 +80,7 @@ const MiniHeader = () => {
               Flamingo
             </Link>
           </Typography>
+          <div>{userChoice?.username}님 환영합니다.</div>
           {auth && (
             <div>
               <IconButton
@@ -142,7 +146,7 @@ const MiniHeader = () => {
                       
                     </div>
                   : <div>
-                      <Link to={`/shop/${id}/mypage`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                      <Link to={`/shopmypage`} style={{ color: 'inherit', textDecoration: 'none' }}>
                         <MenuItem className={classes.menu} onClick={handleClose}>마이페이지</MenuItem>
                       </Link>
                       <Link to={"/logout"} style={{ color: 'inherit', textDecoration: 'none' }}>

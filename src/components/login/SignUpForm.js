@@ -46,6 +46,9 @@ export default function SignUp() {
 		username: '',
 		password: '',
 		user_choice: '',
+		user_phone: '',
+		zip_code: '',
+		user_address: '',
 	});
 
 	const [formData, updateFormData] = useState(initialFormData);
@@ -68,6 +71,9 @@ export default function SignUp() {
 				username: formData.username,
 				password: formData.password,
 				user_choice: formData.user_choice,
+				user_phone: formData.user_phone,
+				zip_code: formData.zip_code,
+				user_address: formData.user_address,
 			})
 			.then((res) => {
 				history.push('/login');
@@ -138,6 +144,42 @@ export default function SignUp() {
 								variant="outlined"
 								required
 								fullWidth
+								id="user_phone"
+								label="전화번호"
+								name="user_phone"
+								autoComplete="user_phone"
+								onChange={handleChange}
+							/>
+						</Grid>
+						<Grid item xs={12}>
+							<TextField
+								variant="outlined"
+								required
+								fullWidth
+								id="zip_code"
+								label="우편번호"
+								name="zip_code"
+								autoComplete="zip_code"
+								onChange={handleChange}
+							/>
+						</Grid>
+						<Grid item xs={12}>
+							<TextField
+								variant="outlined"
+								required
+								fullWidth
+								id="user_address"
+								label="주소"
+								name="user_address"
+								autoComplete="user_address"
+								onChange={handleChange}
+							/>
+						</Grid>
+						<Grid item xs={12}>
+							<TextField
+								variant="outlined"
+								required
+								fullWidth
 								name="password"
 								label="비밀번호"
 								type="password"
@@ -162,7 +204,7 @@ export default function SignUp() {
 						className={classes.submit}
 						onClick={handleSubmit}
 					>
-						로그인
+						회원가입
 					</Button>
 					<Grid container justify="flex-end">
 						<Grid item>

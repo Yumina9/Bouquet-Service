@@ -13,6 +13,8 @@ type userInfoType ={
   username: string;
   firstname: string;
   email: string;
+  user_phone: string;
+  user_address: string;
 }
 
 const UserMyPage = () => {
@@ -20,7 +22,12 @@ const UserMyPage = () => {
   const [userInfo, setUserInfo] = useState<userInfoType>();
 
   useEffect(()=>{
-    axios.get(`/user/users/1`).then(({data})=>setUserInfo(data));
+    console.log(userInfo?.id);
+    axios.get(`/user/users/${userInfo?.id}`).then(({data})=>{setUserInfo(data);
+       console.log("유저초이스 마이페이지", data?.user_choice);
+      //  console.log(id);
+      });
+    
   },[])
   
   
@@ -42,7 +49,7 @@ const UserMyPage = () => {
               </tr>
               <tr>
                 <th>전화 : </th>
-                <td>010 - 1234 - 5678</td>
+                <td>{userInfo?.user_phone}</td>
               </tr>
               <tr>
                 <th>이메일 : </th>
@@ -50,7 +57,7 @@ const UserMyPage = () => {
               </tr>
               <tr>
                 <th>주소 : </th>
-                <td>서울시 서울구 서울동 123번길 45-6, 서울빌라 506동 301호</td>
+                <td>{userInfo?.user_address}</td>
               </tr>
             </tbody>
           </table>
