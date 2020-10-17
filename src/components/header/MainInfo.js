@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
-import '../../App.css';
+import '../../App.less';
 import Button from '../common/Button';
 const MainInfo = () => {
   const settings = {
