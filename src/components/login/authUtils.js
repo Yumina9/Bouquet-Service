@@ -16,6 +16,7 @@ const setCookieExpire = () => {
 //사용자 인증여부(토큰보유여부)
 const isUserAuthenticated = () => {
   const userToken = getUserToken();
+  
 
   if (userToken == null) {
     //인증이 안된 상태

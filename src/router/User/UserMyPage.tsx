@@ -1,33 +1,63 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import MiniHeader from '../../components/header/MiniHeader';
 import './buyerCss.css';
 import Grid from '@material-ui/core/Grid';
+import axios from '../../components/login/axios';
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getUserToken } from '../../components/login/authUtils';
+
+type userInfoType ={
+  id : number;
+  username: string;
+  firstname: string;
+  email: string;
+  user_phone: string;
+  user_address: string;
+}
 
 const UserMyPage = () => {
+
+  const [userInfo, setUserInfo] = useState<userInfoType>();
+
+  useEffect(()=>{
+    console.log(userInfo?.id);
+    axios.get(`/user/users/${userInfo?.id}`).then(({data})=>{setUserInfo(data);
+       console.log("유저초이스 마이페이지", data?.user_choice);
+      //  console.log(id);
+      });
+    
+  },[])
+  
+  
+
   return (
     <div>
       <MiniHeader />
       <BuyerInfo>
         <UserImage src={require('../../image/user.png')} />
         <UserInfomation>
+        
           <table>
             <tbody>
               <tr>
+                
                 <th>성명 : </th>
-                <td>홍길동</td>
+                <td>{userInfo?.username}</td>
+                
               </tr>
               <tr>
                 <th>전화 : </th>
-                <td>010 - 1234 - 5678</td>
+                <td>{userInfo?.user_phone}</td>
               </tr>
               <tr>
                 <th>이메일 : </th>
-                <td>test@test.com</td>
+                <td>{userInfo?.email}</td>
               </tr>
               <tr>
                 <th>주소 : </th>
-                <td>서울시 서울구 서울동 123번길 45-6, 서울빌라 506동 301호</td>
+                <td>{userInfo?.user_address}</td>
               </tr>
             </tbody>
           </table>

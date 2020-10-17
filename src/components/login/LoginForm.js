@@ -56,7 +56,7 @@ export default function SignIn() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
 
     axiosInstance
       .post(`token/`, {
@@ -76,23 +76,6 @@ export default function SignIn() {
       });
   };
 
-  // const apiUrl = "http://localhost:8000/api/token/";
-
-  // axiosInstance
-  //   .post(apiUrl, formData)
-  //   .then((response) => {
-  //     console.log("호출결과:", response.data);
-  //     const token = response.data.token;
-
-  //     //쿠키로 서버에서 제공한 토큰정보를 usertoken 쿠키로 브라우저에 저장한다.
-  //     let cookies = new Cookies();
-  //     cookies.set("usertoken", token, { path: "/" });
-  //     window.location = "/";
-  //   })
-  //   .catch((response) => {
-  //     console.error(response);
-  //   });
-
   const classes = useStyles();
 
   return (
@@ -110,7 +93,7 @@ export default function SignIn() {
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label="이메일"
             name="email"
             autoComplete="email"
             autoFocus
@@ -122,16 +105,17 @@ export default function SignIn() {
             required
             fullWidth
             name="password"
-            label="Password"
+            label="비밀번호"
             type="password"
             id="password"
             autoComplete="current-password"
             onChange={handleChange}
           />
+          {/* 정보기억
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
-          />
+          /> */}
           <Button
             type="submit"
             fullWidth
@@ -140,17 +124,18 @@ export default function SignIn() {
             className={classes.submit}
             onClick={handleSubmit}
           >
-            Sign In
+            로그인
           </Button>
           <Grid container>
+            {/* 비밀번호 확읺는 링크
             <Grid item xs>
               <Link href="#" variant="body2">
                 Forgot password?
               </Link>
-            </Grid>
+            </Grid> */}
             <Grid item>
               <Link href="/signup" variant="body2">
-                {"Don't have an account? Sign Up"}
+                {"회원가입하기"}
               </Link>
             </Grid>
           </Grid>
