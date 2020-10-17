@@ -9,18 +9,48 @@ import ExplanationImage from '../../components/Making/ExplanationImage';
 import Typography from '../../components/common/Typography';
 import { BouquetType } from '../../components/flowerImg/Bouquet';
 import { Block } from '../../lib/styles/styled';
+import useOrderConfirmForm from '../../components/OrderConfirm/hooks/useOrderConfirmForm';
+import { FlowerType } from '../../components/flowerImg/Flower';
+import useBouquetExplanation from './hooks/useBouquetExplanation';
+import { useDispatch } from 'react-redux';
+import { insertOrderData } from '../../modules/order';
 
 const BouquetExplanationPage: React.FC<BouquetType> = () => {
-  const { shop_id, bouquet_id } = useParams<{
-    shop_id: string;
-    bouquet_id: string;
-  }>();
-
-  const [bouquet, setBouquet] = useState<BouquetType>();
-
+  const { setOrder } = useOrderConfirmForm();
+  const {
+    bouquet,
+    bouquet_id,
+    shop_id,
+    flowerName,
+    wrappingPaperName,
+    ribbonName,
+  } = useBouquetExplanation();
   useEffect(() => {
-    axios.get(`/bouquets/${bouquet_id}`).then(({ data }) => setBouquet(data));
-  }, []);
+    setOrder({
+      bouquet: bouquet?.name,
+      flower: flowerName,
+      flower_count: bouquet?.flower_count,
+      wrappingPaper: wrappingPaperName,
+      ribbon: ribbonName,
+    });
+  }, [bouquet]);
+
+  const dispatch = useDispatch();
+
+  dispatch(
+    insertOrderData({
+      bouquet: bouquet?.name,
+      flower: flowerName,
+      flower_count: bouquet?.flower_count,
+      wrappingPaper: wrappingPaperName,
+      ribbon: ribbonName,
+      resultPrice: bouquet?.resultPrice,
+    }),
+  );
+
+  if (!bouquet) {
+    return <h1>Loading..</h1>;
+  }
 
   return (
     <>
@@ -48,7 +78,7 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
               </Button>
             </Link>
             <Link
-              to={`/shop/${shop_id}/orderConfirm/${bouquet_id}/finished`}
+              to={`/shop/${shop_id}/orderConfirm/${bouquet_id}`}
               style={{ color: 'inherit', textDecoration: 'none' }}
             >
               <Button color={palette.white} bgColor={palette.color3}>

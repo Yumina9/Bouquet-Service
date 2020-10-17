@@ -13,6 +13,10 @@ import { WrappingPaperDropdown } from '../Dropdown/WrappingPaperDropdown';
 import { RibbonDropdown } from '../Dropdown/RibbonDropdown';
 import { FlowerType } from '../flowerImg/Flower';
 import { RibbonType } from '../flowerImg/Ribbon';
+import { BouquetDropdown } from '../Dropdown/BouquetDropdown';
+import useOrderConfirmForm from '../OrderConfirm/hooks/useOrderConfirmForm';
+import { useDispatch } from 'react-redux';
+import { insertOrderData } from '../../modules/order';
 
 const MakingBouquetStepper: React.FC<BouquetType> = ({
   img,
@@ -21,23 +25,21 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
   bouquet_paper_price,
 }) => {
   const {
-    amount,
-    setAmount,
+    flower_count,
+    setFlowerCount,
     setReserve,
     resultPrice,
     reserve,
   } = useMakingBouquetStepper();
 
-  const increaseAmount = (e: React.MouseEvent<HTMLElement>) => {
+  const increaseFlowerCount = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
-
-    setAmount(amount + 1);
+    setFlowerCount(flower_count + 1);
   };
 
-  const decreaseAmount = (e: React.MouseEvent<HTMLElement>) => {
+  const decreaseFlowerCount = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
-
-    setAmount(amount - 1);
+    setFlowerCount(flower_count - 1);
   };
 
   const onFlowerDropdownChange = (flower: FlowerType) => {
@@ -51,8 +53,23 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
   const onRibbonDropdownChange = (ribbon: RibbonType) => {
     setReserve({ ...reserve, ribbon });
   };
+  console.log('reserve.flower', reserve?.flower);
+  const dispatch = useDispatch();
+
+  dispatch(
+    insertOrderData({
+      bouquet: name,
+      flower: reserve?.flower?.name,
+      flower_count: flower_count,
+      wrappingPaper: reserve?.wrappingPaper?.name,
+      ribbon: reserve?.ribbon?.name,
+      resultPrice: resultPrice + bouquet_paper_price,
+    }),
+  );
 
   console.log(reserve);
+  console.log('여기는 MakingBouquetStepper');
+
   return (
     <>
       <Block>
@@ -101,10 +118,10 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
               <th>
                 <form>
                   <Typography type="H4" color={palette.black} fontWeight="bold">
-                    {amount}
+                    {flower_count}
                   </Typography>
-                  <button onClick={increaseAmount}>+</button>&nbsp;
-                  <button onClick={decreaseAmount}>-</button>
+                  <button onClick={increaseFlowerCount}>+</button>&nbsp;
+                  <button onClick={decreaseFlowerCount}>-</button>
                 </form>
               </th>
             </tr>

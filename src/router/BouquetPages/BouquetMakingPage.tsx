@@ -1,36 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import MiniHeader from '../../components/header/MiniHeader';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import MakingBouquetStepper from '../../components/Making/MakingBouquetStepper';
 import Button from '../../components/common/Button';
 import { Block } from '../../lib/styles/styled';
-import { BouquetType } from '../../components/flowerImg/Bouquet';
-import { RouteComponentProps } from 'react-router-dom';
+import useBouquetMakingPage from './hooks/useBouquetMakingPage';
 
-const BouquetMakingPage = ({ history }: RouteComponentProps) => {
-  const { shop_id: shopId, bouquet_id: bouquetId } = useParams<{
-    shop_id: string;
-    bouquet_id: string;
-  }>();
-
-  const [bouquet, setBouquet] = useState<BouquetType>();
-
-  useEffect(() => {
-    axios.get(`/bouquets/${bouquetId}`).then(({ data }) => setBouquet(data));
-  }, []);
+const BouquetMakingPage = () => {
+  const { bouquet, bouquetId, shopId } = useBouquetMakingPage();
+  let history = useHistory();
 
   if (!bouquet) {
     return <h1>Loading..</h1>;
   }
-
-  const goBack = () => {
-    history.goBack();
-  };
 
   return (
     <>
@@ -41,18 +26,18 @@ const BouquetMakingPage = ({ history }: RouteComponentProps) => {
             Bouquet Making
           </Typography>
           {/* 여기 MakingBouquetSteepr 호출  */}
-          <MakingBouquetStepper {...bouquet} />
+          {bouquet && <MakingBouquetStepper {...bouquet} />}
 
           <Button
             color={palette.white}
             bgColor={palette.color3}
-            onClick={goBack}
+            onClick={() => history.goBack()}
           >
             뒤로가기
           </Button>
 
           <Link
-            to={`/shop/${shopId}/bouquet/${bouquetId}/confirmation`}
+            to={`/shop/${shopId}/orderConfirm/${bouquetId}`}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
             <Button color={palette.white} bgColor={palette.color3}>
