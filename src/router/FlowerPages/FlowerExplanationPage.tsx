@@ -9,15 +9,10 @@ import ExplanationImage from '../../components/Making/ExplanationImage';
 import Typography from '../../components/common/Typography';
 import { FlowerType } from '../../components/flowerImg/Flower';
 import { Block } from '../../lib/styles/styled';
+import useFlowerMakingPage from './hooks/useFlowerMakingPage';
 
 const FlowerExplanationPage: React.FC<FlowerType> = () => {
-  const { id } = useParams();
-
-  const [flower, setFlower] = useState<FlowerType>();
-  useEffect(() => {
-    axios.get(`/flowers/${id}`).then(({ data }) => setFlower(data)); // setState -> state 변경 -> rerender -> 데이터가 반영된 새로운 화면이 그려진다.
-  }, []);
-
+  const { flower } = useFlowerMakingPage();
   console.log(flower);
 
   return (
