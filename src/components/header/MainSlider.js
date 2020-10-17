@@ -2,7 +2,10 @@ import React from 'react';
 import Slider from 'react-slick';
 import '../../App.less';
 import Button from '../common/Button';
-const MainInfo = () => {
+import mainBanner1 from '../../image/mainBanner1.jpg';
+import mainBanner2 from '../../image/mainBanner2.jpg';
+import mainBanner3 from '../../image/mainBanner3.jpg';
+const MainSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -17,6 +20,7 @@ const MainInfo = () => {
     <div>
       <Slider {...settings}>
         <div className="sliderBox sliderBg1">
+          
           <h3>Content Title1</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -40,33 +44,9 @@ const MainInfo = () => {
           </p>
           <Button>Click</Button>
         </div>
-        <div className="sliderBox sliderBg4">
-          <h3>Content Title4</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore
-          </p>
-          <Button>Click</Button>
-        </div>
-        <div className="sliderBox sliderBg5">
-          <h3>Content Title5</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore
-          </p>
-          <Button>Click</Button>
-        </div>
-        <div className="sliderBox sliderBg6">
-          <h3>Content Title6</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore
-          </p>
-          <Button>Click</Button>
-        </div>
       </Slider>
     </div>
   );
 };
 
-export default MainInfo;
+export default MainSlider;
