@@ -1,10 +1,10 @@
 import React from 'react';
-// import './App.css';
+import './App.less';
 import Router from './components/Router';
-import { getUserToken } from "./components/login/authUtils";
-import axios from "axios";
+import { getUserToken } from './components/login/authUtils';
+import axios from 'axios';
 
-axios.defaults.headers.common["Authorization"] = `Token ${getUserToken()}`;
+axios.defaults.headers.common['Authorization'] = `Token ${getUserToken()}`;
 function App() {
   return <Router />;
 }
