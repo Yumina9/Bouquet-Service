@@ -10,11 +10,18 @@ import { BouquetType } from '../../components/flowerImg/Bouquet';
 import MiniHeader from '../../components/header/MiniHeader';
 import { Block } from '../../lib/styles/styled';
 import { OrderConfirmForm } from '../../components/OrderConfirm/OrderConfirmForm';
-import { MadeOrder } from '../../components/OrderConfirm/MadeOrder';
-import { OrderNow } from '../../components/OrderConfirm/OrderNow';
 
 const OrderConfirmPage = () => {
   let history = useHistory();
+
+  // id, type
+  // STEP 1. useOrder에서 axios로 bouquet 정보 패치하기
+  // 여기 id가 부켓아이디인데 왜 이걸루 데이터 패치안해오귱
+  const { id, type } = useParams<{
+    id: string;
+    type: string;
+  }>();
+
   return (
     <div>
       <MiniHeader />
@@ -25,12 +32,9 @@ const OrderConfirmPage = () => {
           </Typography>
           <br />
 
-          {OrderNow == undefined ? <MadeOrder /> : <OrderNow />}
+          <OrderConfirmForm />
           <br />
-          {/* <Link
-            to={`/bouquet/${id}`}
-            style={{ color: 'inherit', textDecoration: 'none' }}
-          > */}
+
           <Button
             color={palette.black}
             bgColor={palette.color3}
@@ -38,7 +42,7 @@ const OrderConfirmPage = () => {
           >
             뒤로가기
           </Button>
-          {/* </Link> */}
+
           <Button color={palette.black} bgColor={palette.color3}>
             주문완료
           </Button>

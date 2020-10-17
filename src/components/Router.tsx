@@ -47,7 +47,7 @@ const Router = () => {
         />
         {/* 주문확인 -> 만들기 -> 주문하기, 주문하기 */}
         <Route
-          path="/shop/:shop_id/orderConfirm/:id/:type"
+          path="/shop/:shop_id/orderConfirm/:id"
           component={OrderConfirmPage}
         />
         <Route path="/usermain" component={UserMain} />
