@@ -27,8 +27,10 @@ export const RibbonDropdown: React.FC<RibbonDropdownProps> = ({
         }}
       >
         <option aria-label="None" value="" />
-        {ribbons?.map(({ id, name }) => (
-          <option value={id}>{name}</option>
+        {ribbons?.map(({ id, name, price }) => (
+          <option value={id}>
+            {name} (+{price})
+          </option>
         ))}
       </Select>
     </Dropdown>

@@ -21,15 +21,17 @@ export const BouquetDropdown: React.FC<BouquetDropdownProps> = ({
         native
         value={selected}
         onChange={handleChange}
-        label="flower"
+        label="bouquet"
         inputProps={{
-          name: 'flower',
+          name: 'bouquet',
           id: 'outlined-age-native-simple',
         }}
       >
         <option aria-label="None" value="" />
-        {bouquets?.map(({ id, name }) => (
-          <option value={id}>{name}</option>
+        {bouquets?.map(({ id, name, bouquet_paper_price }) => (
+          <option value={id}>
+            {name} (+{bouquet_paper_price})
+          </option>
         ))}
       </Select>
     </Dropdown>
