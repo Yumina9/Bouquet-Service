@@ -91,7 +91,62 @@ export default function SignUp() {
 			[event.target.name]: event.target.value.trim(),
 		});
 	  };
-	const { gilad, jason, antoine } = state;
+  const { gilad, jason, antoine } = state;
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [username, setUserName] = useState("")
+  const [confirmPassword, setconfirmPassword] = useState("")
+
+  const onEmailHandler = (event) => {
+    setEmail(event.currentTarget.value)
+}
+
+const onPasswordHandler = (event) => {
+    setPassword(event.currentTarget.value)
+}
+
+const onNameHandler = (event) => {
+  setUserName(event.currentTarget.value)
+}
+
+const onconfirmPasswordHandler = (event) => {
+    setconfirmPassword(event.currentTarget.value)
+}
+
+const hasError = passwordEntered =>
+    password.length < 5 ? true : false;
+
+const hasNotSameError = passwordEntered =>
+    password != confirmPassword ? true : false;    
+
+const onSubmitHandler = (event) => {
+    event.preventDefault(); // 아무 동작 안하고 버튼만 눌러도 리프레쉬 되는 것을 막는다
+
+    if(password !== confirmPassword){
+        return alert('비밀번호와 비밀번호 확인은 같아야 합니다.')
+    }
+
+    let body = {
+        email: email,
+        password: password,
+        username: username,
+    }
+    dispatch(registerUser(body))
+        .then(response =>{
+            if(response.payload.success){
+                alert('회원가입이 완료되었습니다!');
+                props.history.push('/login') // react 에서의 페이지 이동 코드
+            } else{
+                alert('Error!!');
+            }
+        })
+    // 완료가 잘 되었을 경우 이동
+}  
+
+
+
+
 	return (
 		<Container component="main" maxWidth="xs">
 			<CssBaseline />
@@ -100,7 +155,7 @@ export default function SignUp() {
 				<Typography component="h1" variant="h5">
 					Sign up
 				</Typography>
-				<form className={classes.form} noValidate>
+				<form className={classes.form} noValidate onSubmit={onSubmitHandler}>
 
 					{/* 유저 타입 선택 */}
 					
@@ -116,7 +171,8 @@ export default function SignUp() {
 								label="ex) example@example.com"
 								name="email"
 								autoComplete="email"
-								onChange={handleChange}
+                // onChange={handleChange}
+                onChange={onEmailHandler}
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -127,8 +183,9 @@ export default function SignUp() {
 								id="username"
 								label="성함"
 								name="username"
-								autoComplete="username"
-								onChange={handleChange}
+                autoComplete="username"
+                onChange={onNameHandler}
+								// onChange={handleChange}
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -173,11 +230,29 @@ export default function SignUp() {
 								required
 								fullWidth
 								name="password"
-								label="비밀번호"
+								label="비밀번호(다섯글자이상 필수)"
 								type="password"
 								id="password"
-								autoComplete="current-password"
+                autoComplete="current-password"
+                error={hasError('password')}
 								onChange={handleChange}
+							/>
+						</Grid>
+            <Grid item xs={12}>
+							<TextField
+								variant="outlined"
+								required
+								fullWidth
+								name="confirmPassword"
+								label="비밀번호 확인"
+								type="password"
+								id="confirmPassword"
+                autoComplete="current-password"
+                error={hasNotSameError('confirmPassword')}
+                onChange={handleChange}
+                helperText={
+                  hasNotSameError('confirmPassword') ? "입력한 비밀번호와 일치하지 않습니다." : null
+                }
 							/>
 						</Grid>
 						{/* 이메일 프로모션, 업데이트 정보받는 체크박스

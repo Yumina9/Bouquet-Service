@@ -1,75 +1,78 @@
-//전역 회원정보 및 로그인  정보  관리 리덕스 모듈
+import { Cookies } from "react-cookie";
+const MEMBER_INSERT = "MEMBER_INSERT";
+const MEMBER_LOGIN = "MEMBER_LOGIN";
 
-//1.액션 타입정의
-const MEMBER_INSERT = 'MEMBER_INSERT';
-const MEMBER_LOGIN = 'MEMBER_LOGIN';
-
-//2.액션 생성함수 정의
-
-//단일 사용자 정보를 저장하기 위한 액션 생성함수
-//컴포넌트에서 단일 회원정보(member)를 전달받아 리듀서함수에 전달한다.
+//액션 생성 함수 정의
 export const insertMember = (member) => ({
   type: MEMBER_INSERT,
-  member: member, //화면에서 받은 신규 회원정보를 member이란 속성이름으로 전달한다.
+  member,
 });
-
-export const login = (memberId, memberPwd) => ({
+export const login = (email, password) => ({
   type: MEMBER_LOGIN,
-  memberId: memberId,
-  memberPwd: memberPwd,
+  email,
+  password,
 });
 
-//3.리듀서 함수 기능 정의
-//Step1: 해당 리듀서에서 관리하는 전역데이터 구조를 정의하고 초기값을 세팅한다.
-//Step2: 액션 타입에 따라 화면에서 액션생성함수를 통해 전달된 값으로 전역데이터 값을 변경적용한다.
-
-//리듀서에서 관리하는 전역데이터 구조를 정의하고 초기값을 세팅한다.
 const initialState = {
   members: [
     {
-      memberId: 'test1',
-      memberPwd: 'test1',
-      name: 'test1',
-      email: 'test1@test.co.kr',
+      name: "test1",
+      email: "test1@gmail.com",
+      password: "test1",
+      mobile: "010-1111-1111",
     },
     {
-      memberId: 'test2',
-      memberPwd: 'test2',
-      name: 'test2',
-      email: 'test2@test.co.kr',
+      name: "test2",
+      email: "test2@gmail.com",
+      password: "test2",
+      mobile: "010-2222-2222",
+    },
+    {
+      name: "test3",
+      email: "test3@gmail.com",
+      password: "test3",
+      mobile: "010-3333-3333",
     },
   ],
-  loginUser: {},
-  isLogin: false,
+  loginMember: {},
 };
 
 //리듀서 함수 정의
-//리듀서함수의 첫번쨰 파라메터는 해당 리듀서 함수에서 관리하는 전역상태값을 세팅합니다.
-//리듀서함수의 두번쨰 파라메터는 액션생성함수에 의해서 전달되는 화면에서 전달해오는 데이터 값
-function member(state = initialState, action) {
+const member = (memberState = initialState, action) => {
+  const setSession = (member) => {
+    let cookies = new Cookies();
+    if (member) cookies.set("member", JSON.stringify(member), { path: "/" });
+    else {
+      cookies.remove("member");
+    }
+  };
+
   switch (action.type) {
     case MEMBER_INSERT:
-      return { ...state, members: state.members.concat(action.member) };
+      return {
+        ...memberState,
+        members: memberState.members.concat(action.member),
+      };
     case MEMBER_LOGIN:
-      //아이디/암호가 동일한 사용자 배열 조회
-      var loginMember = state.members.filter(
-        (user) =>
-          user.memberId === action.memberId &&
-          user.memberPwd === action.memberPwd
+      const loginMember = memberState.members.filter(
+        (member) =>
+          member.email == action.email && member.password == action.password
       );
-
-      if (loginMember.length == 1) {
-        console.log('리덕스 로그인 일치 사용자:', loginMember[0]);
-        //동일 사용자 있으면 해당 사용자 정보로 로그인 상태 및 로그인 사용자 정보 갱신
-        return { ...state, loginUser: loginMember[0], isLogin: true };
+      if (loginMember.length === 1) {
+        setSession(loginMember[0]);
+        return {
+          ...memberState,
+          loginMember: loginMember,
+        };
       } else {
-        //동일 사용자가 없으면 로그인 실패
-        return { ...state, loginUser: {}, isLogin: false };
+        let cookies = new Cookies();
+        cookies.remove("member");
+        console.log("로그인 실패");
+        return memberState;
       }
     default:
-      return state;
+      return memberState;
   }
-}
+};
 
-//리듀서 함수 모듈 내보내기
 export default member;
