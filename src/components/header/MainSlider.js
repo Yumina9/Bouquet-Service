@@ -1,8 +1,8 @@
 import React from 'react';
 import Slider from 'react-slick';
-import '../../App.css';
+import '../../App.less';
 import Button from '../common/Button';
-const MainInfo = () => {
+const MainSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -17,6 +17,7 @@ const MainInfo = () => {
     <div>
       <Slider {...settings}>
         <div className="sliderBox sliderBg1">
+          
           <h3>Content Title1</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -40,33 +41,9 @@ const MainInfo = () => {
           </p>
           <Button>Click</Button>
         </div>
-        <div className="sliderBox sliderBg4">
-          <h3>Content Title4</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore
-          </p>
-          <Button>Click</Button>
-        </div>
-        <div className="sliderBox sliderBg5">
-          <h3>Content Title5</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore
-          </p>
-          <Button>Click</Button>
-        </div>
-        <div className="sliderBox sliderBg6">
-          <h3>Content Title6</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore
-          </p>
-          <Button>Click</Button>
-        </div>
       </Slider>
     </div>
   );
 };
 
-export default MainInfo;
+export default MainSlider;

@@ -26,8 +26,10 @@ export const WrappingPaperDropdown: React.FC<WrappingPaperDropdownProps> = ({
         }}
       >
         <option aria-label="None" value="" />
-        {wrappingPapers?.map(({ id, name }) => (
-          <option value={id}>{name}</option>
+        {wrappingPapers?.map(({ id, name, price }) => (
+          <option value={id}>
+            {name} (+{price})
+          </option>
         ))}
       </Select>
     </Dropdown>

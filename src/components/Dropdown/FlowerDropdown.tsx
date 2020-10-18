@@ -28,8 +28,10 @@ export const FlowerDropdown: React.FC<FlowerDropdownProps> = ({
         }}
       >
         <option aria-label="None" value="" />
-        {flowers?.map(({ id, name }) => (
-          <option value={id}>{name}</option>
+        {flowers?.map(({ id, name, price }) => (
+          <option value={id}>
+            {name} (+{price})
+          </option>
         ))}
       </Select>
     </Dropdown>

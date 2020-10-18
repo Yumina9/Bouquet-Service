@@ -1,39 +1,44 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import palette from '../../lib/styles/palette';
 import Typography from '../common/Typography';
-import { BouquetType } from '../flowerImg/Bouquet';
+import useMakingBouquetStepper from '../Making/hooks/useMakingFlowerStepper';
+import useOrderConfirmForm from './hooks/useOrderConfirmForm';
+import { OrderAction } from '../../modules/order';
+import { RootState } from '../../modules';
 
-export type infoProps = {
-  info: BouquetType;
-};
+export const OrderConfirmForm = () => {
+  console.log('여기는 OrderConfirmForm');
+  const { order } = useOrderConfirmForm();
+  console.log(order);
+  console.log('order.bouquet', order?.bouquet);
+  const OrderData = useSelector((state: RootState) => state?.order);
+  console.log('OrderData', OrderData);
 
-export const OrderConfirmForm = ({ info }: infoProps) => {
   return (
     <>
       <Body>
         <Typography type="H5" color={palette.color4} fontWeight="bold">
-          꽃 종류
+          꽃다발 종류
         </Typography>
         <p />
         <Typography type="H7" color={palette.black} fontWeight="light">
-          {`${info?.flower_color} ${info?.flower_name}`}
+          {OrderData?.orderItems?.bouquet}
         </Typography>
+        <p />
+        <Typography type="H5" color={palette.color4} fontWeight="bold">
+          꽃 종류
+        </Typography>
+        <p />
+        {OrderData?.orderItems?.flower}
         <p />
         <Typography type="H5" color={palette.color4} fontWeight="bold">
           꽃 수량
         </Typography>
         <p />
         <Typography type="H7" color={palette.black} fontWeight="light">
-          {`${info?.flower_count}송이`}
-        </Typography>
-        <p />
-        <Typography type="H5" color={palette.color4} fontWeight="bold">
-          꽃다발 종류
-        </Typography>
-        <p />
-        <Typography type="H7" color={palette.black} fontWeight="light">
-          {`${info?.name}`}
+          {OrderData?.orderItems?.flower_count}송이
         </Typography>
         <p />
         <Typography type="H5" color={palette.color4} fontWeight="bold">
@@ -41,8 +46,16 @@ export const OrderConfirmForm = ({ info }: infoProps) => {
         </Typography>
         <p />
         <Typography type="H7" color={palette.black} fontWeight="light">
-          리본 : {`${info?.ribbon_color}`} | 포장지 :
-          {`${info?.wrappingpaper_color}`}
+          리본 :{OrderData?.orderItems?.ribbon} | 포장지 :
+          {OrderData?.orderItems?.wrappingPaper}
+        </Typography>
+        <p />
+        <Typography type="H5" color={palette.color4} fontWeight="bold">
+          금액
+        </Typography>
+        <p />
+        <Typography type="H7" color={palette.black} fontWeight="light">
+          {OrderData?.orderItems?.resultPrice}원
         </Typography>
       </Body>
     </>

@@ -16,18 +16,21 @@ import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { FlowerType } from './Flower';
+import { RibbonType } from './Ribbon';
+import { WrappingPaperType } from './WrappingPaper';
 
 export interface BouquetType {
   id: number;
   name: string;
   img: string;
   description: string;
-  flower_name: string;
-  flower_color: string;
+  flower: FlowerType[];
   flower_count: number;
-  ribbon_color: string;
-  wrappingpaper_color: string;
+  ribbon: RibbonType[];
+  wrappingpaper: WrappingPaperType[];
   bouquet_paper_price: number;
+  resultPrice: number;
 }
 
 const useStyles = makeStyles((theme: Theme) =>

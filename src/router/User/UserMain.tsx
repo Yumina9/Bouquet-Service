@@ -1,6 +1,6 @@
 import React from 'react';
 import MiniHeader from '../../components/header/MiniHeader';
-import MainInfo from '../../components/header/MainInfo';
+import MainSlider from '../../components/header/MainSlider';
 import BestItemList from '../../components/user/BestItemList';
 import CustomSelect from '../../components/user/CustomSelect';
 import CustomContainer from '../../components/user/CustomContainer';
@@ -9,7 +9,7 @@ const BuyerMain = () => {
     <div>
       <MiniHeader />
 
-      <MainInfo />
+      <MainSlider />
       <BestItemList />
       <CustomContainer />
     </div>

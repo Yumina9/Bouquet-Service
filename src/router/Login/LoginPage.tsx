@@ -2,7 +2,7 @@ import React from 'react';
 import LoginForm from '../../components/login/LoginForm';
 import MiniHeader from '../../components/header/MiniHeader';
 
-const Login = () => {
+const LoginPage = () => {
   return (
     <>
       <MiniHeader />
@@ -11,4 +11,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;
