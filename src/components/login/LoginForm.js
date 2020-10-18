@@ -6,16 +6,11 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { Cookies } from 'react-cookie';
-import { getUserToken } from './authUtils';
-import apiClient from '../../lib/api/apiClient';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -42,7 +37,6 @@ export default function SignIn() {
   const initialFormData = Object.freeze({
     email: '',
     password: '',
-    username: '', // TODO: Remove
   });
 
   const [formData, updateFormData] = useState(initialFormData);
@@ -56,22 +50,15 @@ export default function SignIn() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(formData);
-
-<<<<<<< HEAD
-	const classes = useStyles();
-=======
     axiosInstance
       .post(`token/`, {
         email: formData.email,
         password: formData.password,
-        username: formData.username, // TODO: Remove
       })
 
       .then((res) => {
         localStorage.setItem('access_token', res.data.access);
         localStorage.setItem('refresh_token', res.data.refresh);
-        //API 요청하는 콜마다 헤더에 accessToken 담아 보낻록
         axiosInstance.defaults.headers['Authorization'] =
           'JWT ' + localStorage.getItem('access_token');
 
@@ -80,7 +67,6 @@ export default function SignIn() {
   };
 
   const classes = useStyles();
->>>>>>> master
 
   return (
     <Container component="main" maxWidth="xs">

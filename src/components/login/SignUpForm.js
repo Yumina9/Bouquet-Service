@@ -6,18 +6,12 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
-
-import FormHelperText from '@material-ui/core/FormHelperText';
-
+import palette from '../../lib/styles/palette';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -47,8 +41,8 @@ export default function SignUp() {
 		password: '',
 		user_choice: '',
 		user_phone: '',
-		zip_code: '',
-		user_address: '',
+		// zip_code: '',
+		// user_address: '', // 시연을 위해 감춤
 	});
 
 	const [formData, updateFormData] = useState(initialFormData);
@@ -72,13 +66,11 @@ export default function SignUp() {
 				password: formData.password,
 				user_choice: formData.user_choice,
 				user_phone: formData.user_phone,
-				zip_code: formData.zip_code,
-				user_address: formData.user_address,
+				// zip_code: formData.zip_code,
+				// user_address: formData.user_address,
 			})
 			.then((res) => {
 				history.push('/login');
-				console.log("로그인", res);
-				console.log("로그인 데이터",res.data);
 			});
 			
 	};
@@ -151,7 +143,7 @@ export default function SignUp() {
 								onChange={handleChange}
 							/>
 						</Grid>
-						<Grid item xs={12}>
+						{/* <Grid item xs={12}>
 							<TextField
 								variant="outlined"
 								required
@@ -174,7 +166,7 @@ export default function SignUp() {
 								autoComplete="user_address"
 								onChange={handleChange}
 							/>
-						</Grid>
+						</Grid> */}
 						<Grid item xs={12}>
 							<TextField
 								variant="outlined"
