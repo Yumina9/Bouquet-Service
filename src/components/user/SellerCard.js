@@ -90,7 +90,7 @@ export default function RecipeReviewCard() {
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Method:</Typography>
           <Typography paragraph>
@@ -120,7 +120,7 @@ export default function RecipeReviewCard() {
             serve.
           </Typography>
         </CardContent>
-      </Collapse>
+      </Collapse> */}
     </Card>
   );
 }

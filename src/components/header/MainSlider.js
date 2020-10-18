@@ -2,9 +2,6 @@ import React from 'react';
 import Slider from 'react-slick';
 import '../../App.less';
 import Button from '../common/Button';
-import mainBanner1 from '../../image/mainBanner1.jpg';
-import mainBanner2 from '../../image/mainBanner2.jpg';
-import mainBanner3 from '../../image/mainBanner3.jpg';
 const MainSlider = () => {
   const settings = {
     dots: true,
