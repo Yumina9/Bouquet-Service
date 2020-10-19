@@ -12,6 +12,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useDispatch } from 'react-redux'
+import { ThemeProvider } from "@material-ui/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
+
 const useStyles = makeStyles((theme) => ({
 	paper: {
 		marginTop: theme.spacing(8),
@@ -148,145 +151,152 @@ const onSubmitHandler = (event) => {
 }  
 
 
-
+const theme = createMuiTheme({
+	palette: {
+		primary: { main: "#FFA7B3" },
+	},
+});
 
 	return (
-		<Container component="main" maxWidth="xs">
-			<CssBaseline />
-			<div className={classes.paper}>
-				<Avatar className={classes.avatar}></Avatar>
-				<Typography component="h1" variant="h5">
-					Sign up
-				</Typography>
-				<form className={classes.form} noValidate onSubmit={onSubmitHandler}>
+		<ThemeProvider theme={theme}>
+			<Container component="main" maxWidth="xs">
+				<CssBaseline />
+				<div className={classes.paper}>
+					<Avatar className={classes.avatar}></Avatar>
+					<Typography component="h1" variant="h5">
+						Sign up
+					</Typography>
+					<form className={classes.form} noValidate onSubmit={onSubmitHandler}>
 
-					{/* 유저 타입 선택 */}
+						{/* 유저 타입 선택 */}
+						
+						<input type="radio" onChange={checkChange} name="user_choice" value="U" />고객
+						<input type="radio" onChange={checkChange} name="user_choice" value="S" />판매
+						<Grid container spacing={2}>
+							<Grid item xs={12}>
+								<TextField
+									variant="outlined"
+									required
+									fullWidth
+									id="email"
+									label="ex) example@example.com"
+									name="email"
+									autoComplete="email"
+									onChange={handleChange}
+					// onChange={onEmailHandler}
 					
-					<input type="radio" onChange={checkChange} name="user_choice" value="U" />고객
-					<input type="radio" onChange={checkChange} name="user_choice" value="S" />판매
-					<Grid container spacing={2}>
-						<Grid item xs={12}>
-							<TextField
-								variant="outlined"
-								required
-								fullWidth
-								id="email"
-								label="ex) example@example.com"
-								name="email"
-								autoComplete="email"
-								onChange={handleChange}
-                // onChange={onEmailHandler}
-                
-							/>
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									variant="outlined"
+									required
+									fullWidth
+									id="username"
+									label="성함"
+									name="username"
+									autoComplete="username"
+									// onChange={onNameHandler}
+									onChange={handleChange}
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									variant="outlined"
+									required
+									fullWidth
+									id="user_phone"
+									label="전화번호"
+									name="user_phone"
+									autoComplete="user_phone"
+									onChange={handleChange}
+								/>
+							</Grid>
+							{/* <Grid item xs={12}>
+								<TextField
+									variant="outlined"
+									required
+									fullWidth
+									id="zip_code"
+									label="우편번호"
+									name="zip_code"
+									autoComplete="zip_code"
+									onChange={handleChange}
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									variant="outlined"
+									required
+									fullWidth
+									id="user_address"
+									label="주소"
+									name="user_address"
+									autoComplete="user_address"
+									onChange={handleChange}
+								/>
+							</Grid> */}
+							<Grid item xs={12}>
+								<TextField
+									variant="outlined"
+									required
+									fullWidth
+									name="password"
+									label="비밀번호(다섯글자이상 필수)"
+									type="password"
+									id="password"
+									autoComplete="current-password"
+									error={hasError('password')}
+									onChange={handleChange}
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									variant="outlined"
+									required
+									fullWidth
+									name="confirmPassword"
+									label="비밀번호 확인"
+									type="password"
+									id="confirmPassword"
+									autoComplete="current-password"
+									error={hasNotSameError('confirmPassword')}
+									onChange={handleChange}
+									helperText={
+										hasNotSameError('confirmPassword') ? "입력한 비밀번호와 일치하지 않습니다." : null
+									}
+								/>
+							</Grid>
+							{/* 이메일 프로모션, 업데이트 정보받는 체크박스
+							<Grid item xs={12}>
+								<FormControlLabel
+									control={<Checkbox value="allowExtraEmails" color="primary" />}
+									label="I want to receive inspiration, marketing promotions and updates via email."
+								/>
+							</Grid> */}
 						</Grid>
-						<Grid item xs={12}>
-							<TextField
-								variant="outlined"
-								required
-								fullWidth
-								id="username"
-								label="성함"
-								name="username"
-								autoComplete="username"
-								// onChange={onNameHandler}
-								onChange={handleChange}
-							/>
+						<Button
+							type="submit"
+							fullWidth
+							variant="contained"
+							color="primary"
+							className={classes.submit}
+							onClick={handleSubmit}
+							onSubmit={onSubmitHandler}
+							style={{color: 'white'}}
+						>
+							회원가입
+						</Button>
+						<Grid container justify="flex-end">
+							<Grid item>
+								<Link href="/login" variant="body2">
+									로그인
+								</Link>
+							</Grid>
 						</Grid>
-						<Grid item xs={12}>
-							<TextField
-								variant="outlined"
-								required
-								fullWidth
-								id="user_phone"
-								label="전화번호"
-								name="user_phone"
-								autoComplete="user_phone"
-								onChange={handleChange}
-							/>
-						</Grid>
-						{/* <Grid item xs={12}>
-							<TextField
-								variant="outlined"
-								required
-								fullWidth
-								id="zip_code"
-								label="우편번호"
-								name="zip_code"
-								autoComplete="zip_code"
-								onChange={handleChange}
-							/>
-						</Grid>
-						<Grid item xs={12}>
-							<TextField
-								variant="outlined"
-								required
-								fullWidth
-								id="user_address"
-								label="주소"
-								name="user_address"
-								autoComplete="user_address"
-								onChange={handleChange}
-							/>
-						</Grid> */}
-						<Grid item xs={12}>
-							<TextField
-								variant="outlined"
-								required
-								fullWidth
-								name="password"
-								label="비밀번호(다섯글자이상 필수)"
-								type="password"
-								id="password"
-								autoComplete="current-password"
-								error={hasError('password')}
-								onChange={handleChange}
-							/>
-						</Grid>
-						<Grid item xs={12}>
-							<TextField
-								variant="outlined"
-								required
-								fullWidth
-								name="confirmPassword"
-								label="비밀번호 확인"
-								type="password"
-								id="confirmPassword"
-								autoComplete="current-password"
-								error={hasNotSameError('confirmPassword')}
-								onChange={handleChange}
-								helperText={
-									hasNotSameError('confirmPassword') ? "입력한 비밀번호와 일치하지 않습니다." : null
-								}
-							/>
-						</Grid>
-						{/* 이메일 프로모션, 업데이트 정보받는 체크박스
-						<Grid item xs={12}>
-							<FormControlLabel
-								control={<Checkbox value="allowExtraEmails" color="primary" />}
-								label="I want to receive inspiration, marketing promotions and updates via email."
-							/>
-						</Grid> */}
-					</Grid>
-					<Button
-						type="submit"
-						fullWidth
-						variant="contained"
-						color="primary"
-						className={classes.submit}
-            onClick={handleSubmit}
-            onSubmit={onSubmitHandler}
-					>
-						회원가입
-					</Button>
-					<Grid container justify="flex-end">
-						<Grid item>
-							<Link href="/login" variant="body2">
-								로그인
-							</Link>
-						</Grid>
-					</Grid>
-				</form>
-			</div>
-		</Container>
+					</form>
+				</div>
+			</Container>
+		</ThemeProvider>
 	);
 }
