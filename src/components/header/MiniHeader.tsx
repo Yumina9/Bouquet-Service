@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Link, useParams } from 'react-router-dom';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
@@ -11,7 +11,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import palette from '../../lib/styles/palette';
-import {getUserToken, isUserAuthenticated} from "../login/authUtils";
+import { getUserToken, isUserAuthenticated } from '../login/authUtils';
 
 import axios from 'axios';
 import axiosInstance from '../login/axios';
@@ -21,7 +21,7 @@ type choiceUserType = {
   id: number;
   username: string;
   user_choice: string;
-}
+};
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -63,14 +63,13 @@ const MiniHeader = () => {
     setAnchorEl(null);
   };
 
-  const[userChoice, setUserChoice] = useState<choiceUserType>();
+  const [userChoice, setUserChoice] = useState<choiceUserType>();
   useEffect(() => {
-    axios.get(`/user/users`).then(({data}) => setUserChoice(data));
-    console.log("유저 초이스11", userChoice);
-  },[]);
-  console.log("유저 초이스", userChoice?.user_choice);
-  
-  
+    axiosInstance.get(`user/me`).then(({ data }) => setUserChoice(data));
+    console.log('유저 초이스11', userChoice);
+  }, []);
+  console.log('유저 초이스', userChoice?.user_choice);
+
   return (
     <div className={classes.root}>
       <AppBar className={classes.header} position="static">
@@ -118,45 +117,73 @@ const MiniHeader = () => {
                 </Link> */}
                 {isUserAuthenticated() == false ? (
                   <div>
-                    <Link to={"/login"} style={{ color: 'inherit', textDecoration: 'none' }}>
-                      <MenuItem className={classes.menu} onClick={handleClose}>로그인</MenuItem>
+                    <Link
+                      to={'/login'}
+                      style={{ color: 'inherit', textDecoration: 'none' }}
+                    >
+                      <MenuItem className={classes.menu} onClick={handleClose}>
+                        로그인
+                      </MenuItem>
                     </Link>
-                    <Link to={"/signup"} style={{ color: 'inherit', textDecoration: 'none' }}>
-                      <MenuItem className={classes.menu} onClick={handleClose}>회원가입</MenuItem>
+                    <Link
+                      to={'/signup'}
+                      style={{ color: 'inherit', textDecoration: 'none' }}
+                    >
+                      <MenuItem className={classes.menu} onClick={handleClose}>
+                        회원가입
+                      </MenuItem>
                     </Link>
                   </div>
-                // ) : (
-                  //  <div>
-                  //     <Link to={"/usermypage"} style={{ color: 'inherit', textDecoration: 'none' }}>
-                  //       <MenuItem className={classes.menu} onClick={handleClose}>마이페이지</MenuItem>
-                  //     </Link>
-                  //     <Link to={"/logout"} style={{ color: 'inherit', textDecoration: 'none' }}>
-                  //       <MenuItem className={classes.menu} onClick={handleClose}>로그아웃</MenuItem>
-                  //     </Link>
-                      
-                  //   </div>
-                ) : ( userChoice?.user_choice == 'U'
-                  ? <div>
-                      <Link to={"/usermypage"} style={{ color: 'inherit', textDecoration: 'none' }}>
-                        <MenuItem className={classes.menu} onClick={handleClose}>마이페이지</MenuItem>
-                      </Link>
-                      <Link to={"/logout"} style={{ color: 'inherit', textDecoration: 'none' }}>
-                        <MenuItem className={classes.menu} onClick={handleClose}>로그아웃</MenuItem>
-                      </Link>
-                      
-                    </div>
-                  : <div>
-                      <Link to={`/shopmypage`} style={{ color: 'inherit', textDecoration: 'none' }}>
-                        <MenuItem className={classes.menu} onClick={handleClose}>마이페이지</MenuItem>
-                      </Link>
-                      <Link to={"/logout"} style={{ color: 'inherit', textDecoration: 'none' }}>
-                        <MenuItem className={classes.menu} onClick={handleClose}>로그아웃</MenuItem>
-                      </Link>
-                      
-                    </div>
+                ) : // ) : (
+                //  <div>
+                //     <Link to={"/usermypage"} style={{ color: 'inherit', textDecoration: 'none' }}>
+                //       <MenuItem className={classes.menu} onClick={handleClose}>마이페이지</MenuItem>
+                //     </Link>
+                //     <Link to={"/logout"} style={{ color: 'inherit', textDecoration: 'none' }}>
+                //       <MenuItem className={classes.menu} onClick={handleClose}>로그아웃</MenuItem>
+                //     </Link>
+
+                //   </div>
+                userChoice?.user_choice == 'U' ? (
+                  <div>
+                    <Link
+                      to={'/usermypage'}
+                      style={{ color: 'inherit', textDecoration: 'none' }}
+                    >
+                      <MenuItem className={classes.menu} onClick={handleClose}>
+                        마이페이지
+                      </MenuItem>
+                    </Link>
+                    <Link
+                      to={'/logout'}
+                      style={{ color: 'inherit', textDecoration: 'none' }}
+                    >
+                      <MenuItem className={classes.menu} onClick={handleClose}>
+                        로그아웃
+                      </MenuItem>
+                    </Link>
+                  </div>
+                ) : (
+                  <div>
+                    <Link
+                      to={`/mypage`}
+                      style={{ color: 'inherit', textDecoration: 'none' }}
+                    >
+                      <MenuItem className={classes.menu} onClick={handleClose}>
+                        마이페이지
+                      </MenuItem>
+                    </Link>
+                    <Link
+                      to={'/logout'}
+                      style={{ color: 'inherit', textDecoration: 'none' }}
+                    >
+                      <MenuItem className={classes.menu} onClick={handleClose}>
+                        로그아웃
+                      </MenuItem>
+                    </Link>
+                  </div>
                 )}
               </Menu>
-              
             </div>
           )}
         </Toolbar>
