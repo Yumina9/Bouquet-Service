@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import palette from '../../lib/styles/palette';
+import { useDispatch } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function SignUp() {
+export default function SignUp(props) {
 	const history = useHistory();
 	const initialFormData = Object.freeze({
 		email: '',
@@ -60,7 +60,7 @@ export default function SignUp() {
 		console.log(formData);
 
 		axiosInstance
-			.post(`users/create/`, {
+			.post(`user/create/`, {
 				email: formData.email,
 				username: formData.username,
 				password: formData.password,
@@ -70,7 +70,8 @@ export default function SignUp() {
 				// user_address: formData.user_address,
 			})
 			.then((res) => {
-				history.push('/login');
+        history.push('/login');
+        alert("회원가입이 완료되었습니다.");
 			});
 			
 	};
@@ -127,21 +128,21 @@ const onSubmitHandler = (event) => {
         return alert('비밀번호와 비밀번호 확인은 같아야 합니다.')
     }
 
-    let body = {
-        email: email,
-        password: password,
-        username: username,
-    }
-    dispatch(registerUser(body))
-        .then(response =>{
-            if(response.payload.success){
-                alert('회원가입이 완료되었습니다!');
-                props.history.push('/login') // react 에서의 페이지 이동 코드
-            } else{
-                alert('Error!!');
-            }
-        })
-    // 완료가 잘 되었을 경우 이동
+    // let body = {
+    //     email: email,
+    //     password: password,
+    //     username: username,
+    // }
+    // dispatch(registerUser(body))
+    //     .then(response =>{
+    //         if(response.payload.success){
+    //             alert('회원가입이 완료되었습니다!');
+    //             props.history.push('/login') // react 에서의 페이지 이동 코드
+    //         } else{
+    //             alert('Error!!');
+    //         }
+    //     })
+    // // 완료가 잘 되었을 경우 이동
 }  
 
 
@@ -239,14 +240,14 @@ const onSubmitHandler = (event) => {
 							/>
 						</Grid>
             <Grid item xs={12}>
-							<TextField
-								variant="outlined"
-								required
-								fullWidth
-								name="confirmPassword"
-								label="비밀번호 확인"
-								type="password"
-								id="confirmPassword"
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="confirmPassword"
+                label="비밀번호 확인"
+                type="password"
+                id="confirmPassword"
                 autoComplete="current-password"
                 error={hasNotSameError('confirmPassword')}
                 onChange={handleChange}
@@ -269,7 +270,8 @@ const onSubmitHandler = (event) => {
 						variant="contained"
 						color="primary"
 						className={classes.submit}
-						onClick={handleSubmit}
+            onClick={handleSubmit}
+            onSubmit={onSubmitHandler}
 					>
 						회원가입
 					</Button>

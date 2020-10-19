@@ -79,7 +79,12 @@ const MiniHeader = () => {
               <span style={{ color: 'white' }}>Flamingo</span>
             </Link>
           </Typography>
-          <div>{userChoice?.username}님 환영합니다.</div>
+          {isUserAuthenticated() == true ?(
+            <div>{userChoice?.username}님 환영합니다.</div>
+          ):(
+            <div></div>
+          )}
+          
           {auth && (
             <div>
               <IconButton
