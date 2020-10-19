@@ -21,10 +21,9 @@ const Router = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Main} />
-        {/* shop page */}s
         <Route exact path="/shop/:id" component={ShopMainPage} />
-        {/* FIXME:  id 지우고 로그인된 토큰으로 본인 정보만 가져오기 */}
         <Route path="/mypage" component={ShopMyPage} />
+        {/* <Route exact path="/shop" component={ShopListPage} /> */}
         <Route exact path="/shop/:id/flowers" component={FlowerMorePage} />
         <Route exact path="/shop/:id/bouquets" component={BouquetMorePage} />
         <Route
