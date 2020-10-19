@@ -76,13 +76,6 @@ export default function SignUp(props) {
       
 }
 
-
-
-
-
-
-
-  
 	const classes = useStyles();
 
 	// 체크박스

@@ -63,9 +63,7 @@ const MiniHeader = () => {
   const [userChoice, setUserChoice] = useState<choiceUserType>();
   useEffect(() => {
     axiosInstance.get(`user/me`).then(({ data }) => setUserChoice(data));
-    console.log('유저 초이스11', userChoice);
   }, []);
-  console.log('유저 초이스', userChoice?.username);
 
   return (
     <div className={classes.root}>
