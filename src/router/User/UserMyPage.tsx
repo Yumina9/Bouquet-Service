@@ -2,11 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import MiniHeader from '../../components/header/MiniHeader';
 import './buyerCss.css';
-import Grid from '@material-ui/core/Grid';
 import axios from '../../components/login/axios';
-import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { getUserToken } from '../../components/login/authUtils';
 
 type userInfoType ={
   id : number;
@@ -23,8 +19,8 @@ const UserMyPage = () => {
 
   useEffect(()=>{
     console.log(userInfo?.id);
-    axios.get(`/user/users/${userInfo?.id}`).then(({data})=>{setUserInfo(data);
-       console.log("유저초이스 마이페이지", data?.user_choice);
+    axios.get(`/user/me`).then(({data})=>{setUserInfo(data);
+       console.log("유저초이스 마이페이지", userInfo?.username);
       //  console.log(id);
       });
     
@@ -55,10 +51,10 @@ const UserMyPage = () => {
                 <th>이메일 : </th>
                 <td>{userInfo?.email}</td>
               </tr>
-              <tr>
+              {/* <tr>
                 <th>주소 : </th>
                 <td>{userInfo?.user_address}</td>
-              </tr>
+              </tr> */}
             </tbody>
           </table>
         </UserInfomation>

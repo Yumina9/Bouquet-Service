@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react';
-
 import { Link, useParams } from 'react-router-dom';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import Button from '../common/Button';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import palette from '../../lib/styles/palette';
-import { getUserToken, isUserAuthenticated } from '../login/authUtils';
+import { isUserAuthenticated } from '../login/authUtils';
 
-import axios from 'axios';
 import axiosInstance from '../login/axios';
 
 // 가져올 데이터 타입 정의
@@ -68,7 +65,7 @@ const MiniHeader = () => {
     axiosInstance.get(`user/me`).then(({ data }) => setUserChoice(data));
     console.log('유저 초이스11', userChoice);
   }, []);
-  console.log('유저 초이스', userChoice?.user_choice);
+  console.log('유저 초이스', userChoice?.username);
 
   return (
     <div className={classes.root}>
@@ -111,15 +108,7 @@ const MiniHeader = () => {
                 open={open}
                 onClose={handleClose}
               >
-                {/* <Link
-                  to={`/shop/${id}/mypage`}
-                  
-                  style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                  <MenuItem className={classes.menu} onClick={handleClose}>
-                    MyPage
-                  </MenuItem>
-                </Link> */}
+                
                 {isUserAuthenticated() == false ? (
                   <div>
                     <Link
@@ -139,16 +128,7 @@ const MiniHeader = () => {
                       </MenuItem>
                     </Link>
                   </div>
-                ) : // ) : (
-                //  <div>
-                //     <Link to={"/usermypage"} style={{ color: 'inherit', textDecoration: 'none' }}>
-                //       <MenuItem className={classes.menu} onClick={handleClose}>마이페이지</MenuItem>
-                //     </Link>
-                //     <Link to={"/logout"} style={{ color: 'inherit', textDecoration: 'none' }}>
-                //       <MenuItem className={classes.menu} onClick={handleClose}>로그아웃</MenuItem>
-                //     </Link>
-
-                //   </div>
+                ) : 
                 userChoice?.user_choice == 'U' ? (
                   <div>
                     <Link

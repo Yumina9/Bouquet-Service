@@ -12,7 +12,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useDispatch } from 'react-redux'
-
 const useStyles = makeStyles((theme) => ({
 	paper: {
 		marginTop: theme.spacing(8),
@@ -73,9 +72,17 @@ export default function SignUp(props) {
         history.push('/login');
         alert("회원가입이 완료되었습니다.");
 			});
-			
-	};
+      
+      
+}
 
+
+
+
+
+
+
+  
 	const classes = useStyles();
 
 	// 체크박스
@@ -94,9 +101,9 @@ export default function SignUp(props) {
 	  };
   const { gilad, jason, antoine } = state;
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [username, setUserName] = useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUserName] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("")
 
   const onEmailHandler = (event) => {
@@ -122,11 +129,13 @@ const hasNotSameError = passwordEntered =>
     password != confirmPassword ? true : false;    
 
 const onSubmitHandler = (event) => {
-    event.preventDefault(); // 아무 동작 안하고 버튼만 눌러도 리프레쉬 되는 것을 막는다
-
-    if(password !== confirmPassword){
-        return alert('비밀번호와 비밀번호 확인은 같아야 합니다.')
-    }
+  event.preventDefault(); // 아무 동작 안하고 버튼만 눌러도 리프레쉬 되는 것을 막는다
+  // if(user_phone.length != 13) {
+  //   alert("번호를 다시 입력해주세요.");
+  // }
+  if(password !== confirmPassword){
+      return alert('비밀번호와 비밀번호 확인은 같아야 합니다.')
+  }
 
     // let body = {
     //     email: email,
@@ -172,8 +181,9 @@ const onSubmitHandler = (event) => {
 								label="ex) example@example.com"
 								name="email"
 								autoComplete="email"
-                // onChange={handleChange}
-                onChange={onEmailHandler}
+								onChange={handleChange}
+                // onChange={onEmailHandler}
+                
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -184,9 +194,9 @@ const onSubmitHandler = (event) => {
 								id="username"
 								label="성함"
 								name="username"
-                autoComplete="username"
-                onChange={onNameHandler}
-								// onChange={handleChange}
+								autoComplete="username"
+								// onChange={onNameHandler}
+								onChange={handleChange}
 							/>
 						</Grid>
 						<Grid item xs={12}>
@@ -234,26 +244,26 @@ const onSubmitHandler = (event) => {
 								label="비밀번호(다섯글자이상 필수)"
 								type="password"
 								id="password"
-                autoComplete="current-password"
-                error={hasError('password')}
+								autoComplete="current-password"
+								error={hasError('password')}
 								onChange={handleChange}
 							/>
 						</Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="confirmPassword"
-                label="비밀번호 확인"
-                type="password"
-                id="confirmPassword"
-                autoComplete="current-password"
-                error={hasNotSameError('confirmPassword')}
-                onChange={handleChange}
-                helperText={
-                  hasNotSameError('confirmPassword') ? "입력한 비밀번호와 일치하지 않습니다." : null
-                }
+						<Grid item xs={12}>
+							<TextField
+								variant="outlined"
+								required
+								fullWidth
+								name="confirmPassword"
+								label="비밀번호 확인"
+								type="password"
+								id="confirmPassword"
+								autoComplete="current-password"
+								error={hasNotSameError('confirmPassword')}
+								onChange={handleChange}
+								helperText={
+									hasNotSameError('confirmPassword') ? "입력한 비밀번호와 일치하지 않습니다." : null
+								}
 							/>
 						</Grid>
 						{/* 이메일 프로모션, 업데이트 정보받는 체크박스
