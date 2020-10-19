@@ -75,6 +75,7 @@ function order(state = initialState, action) {
   switch (action.type) {
     case INSERT_ORDER_DATA:
       return {
+        ...state,
         orderItems: {
           bouquet: action.bouquet,
           flower: action.flower,
