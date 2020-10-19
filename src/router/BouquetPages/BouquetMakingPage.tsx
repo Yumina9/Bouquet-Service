@@ -10,8 +10,7 @@ import { Block } from '../../lib/styles/styled';
 import useBouquetMakingPage from './hooks/useBouquetMakingPage';
 
 const BouquetMakingPage = () => {
-  const { bouquet, bouquetId, shopId } = useBouquetMakingPage();
-  let history = useHistory();
+  const { bouquet } = useBouquetMakingPage();
 
   if (!bouquet) {
     return <h1>Loading..</h1>;
@@ -27,23 +26,6 @@ const BouquetMakingPage = () => {
           </Typography>
           {/* 여기 MakingBouquetSteepr 호출  */}
           {bouquet && <MakingBouquetStepper {...bouquet} />}
-
-          <Button
-            color={palette.white}
-            bgColor={palette.color3}
-            onClick={() => history.goBack()}
-          >
-            뒤로가기
-          </Button>
-
-          <Link
-            to={`/shop/${shopId}/orderConfirm/${bouquetId}`}
-            style={{ color: 'inherit', textDecoration: 'none' }}
-          >
-            <Button color={palette.white} bgColor={palette.color3}>
-              주문하기
-            </Button>
-          </Link>
         </Body>
       </Block>
     </>
