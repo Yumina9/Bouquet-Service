@@ -70,7 +70,6 @@ const Flower: React.FC<FlowerType> = ({ ...flowers }) => {
               </IconButton>
             }
             title={`${flowers.color} ${flowers.name}`}
-            subheader="언제 올렸을까요?"
           />
           <Link
             to={`flower/${flowers.id}/`}
