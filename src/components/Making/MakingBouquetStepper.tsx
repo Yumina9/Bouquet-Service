@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Link, useParams } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
-import Button from '../common/Button';
-import axios from 'axios';
 import Typography from '../common/Typography';
 import { BouquetType } from '../flowerImg/Bouquet';
 import { FlowerDropdown } from '../Dropdown/FlowerDropdown';
@@ -13,16 +10,18 @@ import { WrappingPaperDropdown } from '../Dropdown/WrappingPaperDropdown';
 import { RibbonDropdown } from '../Dropdown/RibbonDropdown';
 import { FlowerType } from '../flowerImg/Flower';
 import { RibbonType } from '../flowerImg/Ribbon';
-import { BouquetDropdown } from '../Dropdown/BouquetDropdown';
-import useOrderConfirmForm from '../OrderConfirm/hooks/useOrderConfirmForm';
 import { useDispatch } from 'react-redux';
 import { insertOrderData } from '../../modules/order';
+import Button from '../common/Button';
+import { Link, useHistory } from 'react-router-dom';
 
 const MakingBouquetStepper: React.FC<BouquetType> = ({
+  id,
   img,
   name,
   description,
   bouquet_paper_price,
+  shops,
 }) => {
   const {
     flower_count,
@@ -31,6 +30,7 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
     resultPrice,
     reserve,
   } = useMakingBouquetStepper();
+  const history = useHistory();
 
   const increaseFlowerCount = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -77,7 +77,7 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
           <img src={`${img}`} style={{ width: '600px' }} />
         </span>
 
-        <span>
+        <div>
           <div style={{ borderBottom: '1px solid lightgray' }}>
             <Typography type="H4" color={palette.color2} fontWeight="bold">
               {`${name}`}
@@ -168,7 +168,26 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
               </th>
             </tr>
           </tbody>
-        </span>
+
+          <ButtonWrapper>
+            <Button
+              color={palette.white}
+              bgColor={palette.color3}
+              onClick={() => history.goBack()}
+            >
+              뒤로가기
+            </Button>
+
+            <Link
+              to={`/shop/${shops}/orderConfirm/${id}`}
+              style={{ color: 'inherit', textDecoration: 'none' }}
+            >
+              <Button color={palette.white} bgColor={palette.color3}>
+                주문하기
+              </Button>
+            </Link>
+          </ButtonWrapper>
+        </div>
       </Block>
     </>
   );
@@ -189,5 +208,15 @@ const Block = styled.div`
 
   & > :last-child {
     flex: 5;
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+
+  & > button {
+    left: 10px;
+    margin-right: 10px;
   }
 `;

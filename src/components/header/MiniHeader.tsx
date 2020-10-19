@@ -65,7 +65,7 @@ const MiniHeader = () => {
 
   const [userChoice, setUserChoice] = useState<choiceUserType>();
   useEffect(() => {
-    axios.get(`/user/users`).then(({ data }) => setUserChoice(data));
+    axiosInstance.get(`user/me`).then(({ data }) => setUserChoice(data));
     console.log('유저 초이스11', userChoice);
   }, []);
   console.log('유저 초이스', userChoice?.user_choice);
@@ -171,7 +171,7 @@ const MiniHeader = () => {
                 ) : (
                   <div>
                     <Link
-                      to={`/shopmypage`}
+                      to={`/mypage`}
                       style={{ color: 'inherit', textDecoration: 'none' }}
                     >
                       <MenuItem className={classes.menu} onClick={handleClose}>

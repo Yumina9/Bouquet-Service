@@ -31,6 +31,7 @@ export interface BouquetType {
   wrappingpaper: WrappingPaperType[];
   bouquet_paper_price: number;
   resultPrice: number;
+  shops: number;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -77,7 +78,6 @@ const Bouquet: React.FC<BouquetType> = ({ id, name, img, description }) => {
               </IconButton>
             }
             title={`${name}`}
-            subheader="언제 올렸을까요?"
           />
           <Link
             to={`bouquet/${id}/`}
