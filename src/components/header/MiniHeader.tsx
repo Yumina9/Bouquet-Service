@@ -76,7 +76,7 @@ const MiniHeader = () => {
         <Toolbar>
           <Typography variant="h3" className={classes.title}>
             <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
-              Flamingo
+              <span style={{ color: 'white' }}>Flamingo</span>
             </Link>
           </Typography>
           <div>{userChoice?.username}님 환영합니다.</div>
