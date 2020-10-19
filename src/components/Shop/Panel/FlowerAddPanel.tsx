@@ -30,31 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const InputMenus = [
-  {
-    title: '꽃 이름',
-    type: 'text',
-  },
-  {
-    title: '꽃말',
-    type: 'textarea',
-  },
-  {
-    title: '꽃 피는 달',
-    type: 'text',
-  },
-  {
-    title: '꽃 색상',
-    type: 'text',
-  },
-  {
-    title: '꽃 사진 첨부',
-    type: 'file',
-  },
-];
-
 export const FlowerAddPanel = () => {
-  var count = InputMenus.length;
   const {
     flower_count,
     setFlowerCount,
@@ -63,8 +39,6 @@ export const FlowerAddPanel = () => {
     reserve,
   } = useMakingFlowerStepper();
   const styles = useBorderedInputBaseStyles();
-
-  console.log(count);
 
   return (
     <>
