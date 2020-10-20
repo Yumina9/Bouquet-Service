@@ -64,16 +64,17 @@ export default function Header() {
     <>
       <AppBar className={classes.header} position="relative">
         <Toolbar>
-          
           <Typography
             className={classes.title}
             variant="h3"
             color="inherit"
             noWrap
           >
+            <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
             Flamingo 🌹
+            </Link>
           </Typography>
-
+          
           {/* <Typography variant="h4" color="inherit" noWrap align={'right'}>
             {user ? (
               <>
@@ -145,7 +146,7 @@ export default function Header() {
             )}
           </Typography> */}
           {isUserAuthenticated() == true ?(
-            <div>{userChoice?.username}님 환영합니다.</div>
+            <div style={{fontSize:'15px'}}>{userChoice?.username}님 환영합니다.</div>
           ):(
             <div></div>
           )}
