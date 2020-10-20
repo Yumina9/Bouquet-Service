@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
-import MiniHeader from '../../components/header/MiniHeader';
+import Header from '../../components/header/Header';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
 import MakingBouquetStepper from '../../components/Making/MakingBouquetStepper';
@@ -18,7 +18,7 @@ const BouquetMakingPage = () => {
 
   return (
     <>
-      <MiniHeader />
+      <Header />
       <Block>
         <Body>
           <Typography type="H3" color={palette.color1} fontWeight="bold">

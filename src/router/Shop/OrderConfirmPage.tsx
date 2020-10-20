@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
 import { OrderDataParams } from '../../modules/order';
 import axiosInstance from '../../components/login/axios';
+import Header from '../../components/header/Header';
 
 const useStylesO = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,6 +42,7 @@ const useStylesT = makeStyles((theme: Theme) =>
       justifyContent: 'center',
       width: 400,
       backgroundColor: '#ecf0f1',
+      border: '1px solid pink',
     },
     control: {
       padding: theme.spacing(2),
@@ -95,12 +97,20 @@ const OrderConfirmPage = () => {
 
   return (
     <div>
-      <MiniHeader />
+      <Header />
       <Block>
         <Body>
-          <OrderConfirmForm />
-          <br />
-          <div>
+          <Paper
+            className={classesTool.paper}
+            style={{ border: '1px solid blue', height: 'inherit' }}
+          >
+            <Typography type="H3" color={palette.color1} fontWeight="bold">
+              주문 확인
+            </Typography>
+            <Paper className={classesOrder.paper}>
+              <OrderConfirmForm />
+            </Paper>
+            <br />
             <Button
               color={palette.black}
               bgColor={palette.color3}
@@ -115,7 +125,7 @@ const OrderConfirmPage = () => {
             >
               주문완료
             </Button>
-          </div>
+          </Paper>
         </Body>
       </Block>
     </div>

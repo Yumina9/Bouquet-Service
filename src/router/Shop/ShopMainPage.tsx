@@ -10,7 +10,7 @@ import { BouquetType } from '../../components/flowerImg/Bouquet';
 import { FlowerType } from '../../components/flowerImg/Flower';
 import FlowerList from '../../components/flowerImg/FlowerList';
 import ShopInfoBanner from '../../components/Shop/ShopInfoBanner';
-import MiniHeader from '../../components/header/MiniHeader';
+import Header from '../../components/header/Header';
 import { Block } from '../../lib/styles/styled';
 import { ShopReview } from '../../components/Shop/ShopReview';
 import { useSelector } from 'react-redux';
@@ -43,7 +43,7 @@ const ShopMainPage = () => {
 
   return (
     <div>
-      <MiniHeader />
+      <Header />
       {shop && (
         <>
           <Block>

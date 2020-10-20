@@ -1,12 +1,12 @@
 import React from 'react';
 import SignUpForm from '../../components/login/SignUpForm';
 
-import MiniHeader from '../../components/header/MiniHeader';
+import Header from '../../components/header/Header';
 
 const SignUp = () => {
   return (
     <>
-      <MiniHeader />
+      <Header />
       <SignUpForm />
       
     </>

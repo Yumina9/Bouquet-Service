@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import MiniHeader from '../../components/header/MiniHeader';
+import Header from '../../components/header/Header';
 import axios from 'axios';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
@@ -21,7 +21,7 @@ const FlowerMorePage = () => {
   }, []);
   return (
     <>
-      <MiniHeader />
+      <Header />
       <Block>
         <Link
           to={`/shop/${id}`}

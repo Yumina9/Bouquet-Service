@@ -18,7 +18,7 @@ export const OrderConfirmData = () => {
 
   return (
     <>
-      <Typography type="H5" color={palette.color4} fontWeight="bold">
+      <Typography type="H5" color={palette.color4} fontWeight="bold" >
         꽃다발 종류
       </Typography>
 

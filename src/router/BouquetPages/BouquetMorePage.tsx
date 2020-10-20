@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import MiniHeader from '../../components/header/MiniHeader';
+import Header from '../../components/header/Header';
 import axios from 'axios';
 import Bouquet, { BouquetType } from '../../components/flowerImg/Bouquet';
 import Typography from '../../components/common/Typography';
@@ -24,7 +24,7 @@ const BouquetMorePage = () => {
 
   return (
     <>
-      <MiniHeader />
+      <Header />
 
       <Block>
         <Link

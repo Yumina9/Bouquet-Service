@@ -10,7 +10,7 @@ import Divider from '@material-ui/core/Divider';
 import { Link, useParams } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
 import { Panel, PanelType } from '../../components/Shop/Panel';
-import MiniHeader from '../../components/header/MiniHeader';
+import Header from '../../components/header/Header';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
 
@@ -58,7 +58,7 @@ export default function ShopMyPage() {
 
   return (
     <>
-      <MiniHeader />
+      <Header />
       <div className={classes.root}>
         <CssBaseline />
         <Drawer
