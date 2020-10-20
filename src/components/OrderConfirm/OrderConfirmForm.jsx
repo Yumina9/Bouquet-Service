@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 12,
     minWidth: 256,
     textAlign: 'center',
+    justifyContent: 'center',
   },
   header: {
     textAlign: 'center',
@@ -49,12 +50,12 @@ export const OrderConfirmForm = React.memo(function PricingCard() {
         <Card className={classes.root}>
           <CardHeader title="주문 확인" className={classes.header} />
           <Divider variant="middle" />
+          <Divider variant="middle" />
           {/* <Typography variant="h4" align="center">
             주문 정보
           </Typography> */}
 
           <CardContent>
-            <Divider variant="middle" />
             <div className={classes.list}>
               <OrderConfirmData />
             </div>
