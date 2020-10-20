@@ -15,12 +15,14 @@ import BouquetExplanationPage from '../router/BouquetPages/BouquetExplanationPag
 import BouquetMakingPage from '../router/BouquetPages/BouquetMakingPage';
 import FlowerMakingPage from '../router/FlowerPages/FlowerMakingPage';
 import LoginPage from '../router/Login/LoginPage';
+import ShopMorePage from '../router/Shop/ShopMorePage';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Main} />
+        <Route exact path="/shops/" component={ShopMorePage} />
         <Route exact path="/shop/:id" component={ShopMainPage} />
         <Route path="/mypage" component={ShopMyPage} />
         {/* <Route exact path="/shop" component={ShopListPage} /> */}
@@ -28,12 +30,12 @@ const Router = () => {
         <Route exact path="/shop/:id/bouquets" component={BouquetMorePage} />
         <Route
           exact
-          path="/shop/:shop_id/flower/:flower_id"
+          path="/shop/:shop_id/flower/:flower_id/"
           component={FlowerExplanationPage}
         />
         <Route
           exact
-          path="/shop/:shop_id/bouquet/:bouquet_id"
+          path="/shop/:shop_id/bouquet/:bouquet_id/"
           component={BouquetExplanationPage}
         />
         <Route
