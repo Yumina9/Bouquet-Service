@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
-import MiniHeader from '../../components/header/MiniHeader';
+import Header from '../../components/header/Header';
 import Button from '../../components/common/Button';
 import palette from '../../lib/styles/palette';
 import ExplanationImage from '../../components/Making/ExplanationImage';
@@ -17,7 +17,7 @@ const FlowerExplanationPage: React.FC<FlowerType> = () => {
 
   return (
     <>
-      <MiniHeader />
+      <Header />
       <Block>
         <Box>
           <Detail>

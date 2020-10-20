@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MiniHeader from '../header/MiniHeader';
+import Header from '../header/Header';
 import { Block } from '../../lib/styles/styled';
 import palette from '../../lib/styles/palette';
 import Typography from '../common/Typography';

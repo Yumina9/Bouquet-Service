@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import MiniHeader from '../../components/header/MiniHeader';
+import Header from '../../components/header/Header';
 import './buyerCss.css';
 import axios from '../../components/login/axios';
 
@@ -30,7 +30,7 @@ const UserMyPage = () => {
 
   return (
     <div>
-      <MiniHeader />
+      <Header />
       <BuyerInfo>
         <UserImage src={require('../../image/user.png')} />
         <UserInfomation>

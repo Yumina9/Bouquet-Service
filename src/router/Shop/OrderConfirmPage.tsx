@@ -4,7 +4,7 @@ import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
 import Button from '../../components/common/Button';
 import { useHistory, useParams } from 'react-router-dom';
-import MiniHeader from '../../components/header/MiniHeader';
+import Header from '../../components/header/Header';
 import { Block } from '../../lib/styles/styled';
 import { OrderConfirmForm } from '../../components/OrderConfirm/OrderConfirmForm';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
@@ -19,12 +19,15 @@ const useStylesO = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
+      
     },
     paper: {
       display: 'flex',
       width: 300,
       textAlign: 'center',
       backgroundColor: '#bdc3c7',
+      
+      
     },
     control: {
       padding: theme.spacing(2),
@@ -41,6 +44,7 @@ const useStylesT = makeStyles((theme: Theme) =>
       justifyContent: 'center',
       width: 400,
       backgroundColor: '#ecf0f1',
+      border: '1px solid pink',
     },
     control: {
       padding: theme.spacing(2),
@@ -62,14 +66,14 @@ const OrderConfirmPage = () => {
 
   return (
     <div>
-      <MiniHeader />
+      <Header />
       <Block>
         <Body>
-          <Paper className={classesTool.paper}>
+          <Paper className={classesTool.paper} style={{border: '1px solid blue', height: 'inherit'}}>
             <Typography type="H3" color={palette.color1} fontWeight="bold">
               주문 확인
             </Typography>
-            <Paper className={classesOrder.paper}>
+            <Paper className={classesOrder.paper} >
               <OrderConfirmForm />
             </Paper>
             <br />
@@ -112,6 +116,6 @@ const Body = styled.span`
     float: left;
   }
   div {
-    float: left;
+    
   }
 `;

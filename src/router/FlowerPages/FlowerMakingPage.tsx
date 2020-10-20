@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
-import MiniHeader from '../../components/header/MiniHeader';
+import Header from '../../components/header/Header';
 import MakingFlowerStepper from '../../components/Making/MakingFlowerStepper';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
@@ -19,7 +19,7 @@ const FlowerMakingPage = () => {
 
   return (
     <>
-      <MiniHeader />
+      <Header />
       <Block>
         <Body>
           <Typography type="H3" color={palette.color1} fontWeight="bold">
