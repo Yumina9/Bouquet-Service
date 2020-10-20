@@ -8,14 +8,22 @@ import palette from '../../../lib/styles/palette';
 import Button from '../../common/Button';
 import { PanelForm } from '../PanelForm';
 import { PanelBlock } from '../../../lib/styles/styled';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../modules';
+import axiosInstance from '../../login/axios';
 
 export const FlowerListPanel = () => {
-  const { id } = useParams();
   const [flowers, setFlowers] = useState<FlowerType[]>([]);
+
+  const user = useSelector((state: RootState) => state?.user.user);
+
   useEffect(() => {
-    Axios.get(`/shop/${id}/flowers`).then(({ data }) => setFlowers(data));
-  }, []);
-  console.log(flowers);
+    Axios.get(`/shop/${user.shop}/flowers`).then(function (response) {
+      setFlowers(response.data);
+      console.log('flowersinfo', flowers);
+    });
+    console.log('user.shop', user?.shop);
+  }, [user]);
 
   return (
     <>

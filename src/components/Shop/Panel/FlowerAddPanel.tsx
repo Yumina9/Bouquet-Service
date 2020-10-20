@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Typography from '../../common/Typography';
 import palette from '../../../lib/styles/palette';
@@ -19,6 +19,7 @@ import { useBorderedInputBaseStyles } from '@mui-treasury/styles/inputBase/borde
 import { PanelForm } from '../PanelForm';
 import useMakingFlowerStepper from '../../Making/hooks/useMakingFlowerStepper';
 import { BouquetType } from '../../flowerImg/Bouquet';
+import Axios from 'axios';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -40,6 +41,30 @@ export const FlowerAddPanel = () => {
   } = useMakingFlowerStepper();
   const styles = useBorderedInputBaseStyles();
 
+  const [flower, setFlower] = useState<{
+    name?: string;
+    description: string;
+    color: string;
+    img: string;
+    price: 0;
+  } | null>(null);
+
+  const onFlowerChange = (e: FlowerType) => {
+    // setFlower({ ...flower, [e.target.name] : e.target.value});
+    console.log('e', e);
+  };
+
+  const onDataSave = () => {
+    Axios.post(`/flowers/flower`, flower)
+      .then((response) => {
+        console.log('등록완료데이터 : ', response.data);
+        alert('등록완료');
+      })
+      .catch((response) => {
+        console.error(response);
+      });
+  };
+
   return (
     <>
       <PanelBlock>
@@ -54,6 +79,9 @@ export const FlowerAddPanel = () => {
               <InputBase
                 classes={styles}
                 placeholder={'꽃 이름을 입력하세요'}
+                name="name"
+                value={flower?.name}
+                // onChange={(e) => onFlowerChange(e)}
               />
               {/* <Input
           placeholder="꽃 이름을 입력하세요"
@@ -106,7 +134,11 @@ export const FlowerAddPanel = () => {
                 inputProps={{ 'aria-label': 'description' }}
               />
             </Typography>
-            <Button color={palette.black} bgColor={palette.color3}>
+            <Button
+              color={palette.black}
+              bgColor={palette.color3}
+              onClick={() => onDataSave()}
+            >
               추가하기
             </Button>
           </>

@@ -91,7 +91,7 @@ export default function ShopMyPage() {
                   보유 꽃
                 </a>
               </ButtonItem>
-              <Divider />
+              {/* <Divider />
               <ButtonItem onClick={() => setType(PanelType.ADDBOUQUET)}>
                 <a>
                   <Icon src={require('../../image/flowers.png')} />
@@ -111,7 +111,7 @@ export default function ShopMyPage() {
               <ButtonItem onClick={() => setType(PanelType.FINISHED_ORDER)}>
                 <Icon src={require('../../image/menu.png')} />
                 주문 완료 목록
-              </ButtonItem>
+              </ButtonItem> */}
               <Divider />
             </>
           </div>
