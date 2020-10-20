@@ -6,7 +6,9 @@ export const login = (user) => ({
 });
 
 const initialState = {
-  user: null,
+  user: {
+    shop: '',
+  },
 };
 
 function user(state = initialState, action) {
