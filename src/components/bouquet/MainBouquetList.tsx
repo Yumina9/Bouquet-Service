@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '100%',
   },
   cardContent: {
     flexGrow: 1,
@@ -65,7 +65,7 @@ export default function MainBouquetList() {
               </CardContent>
               <CardActions className={classes.viewSection}>
                 <Link
-                  to={`/shop/${bouquet.shops}/bouquet/${bouquet.id}`}
+                  to={`/shop/${bouquet.shops}/bouquet/${bouquet.id}/`}
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
                   <Button
