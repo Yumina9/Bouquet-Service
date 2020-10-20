@@ -1,4 +1,3 @@
-import { RibbonType } from '../components/flowerImg/Ribbon';
 // const cBouquet = document.querySelector('bouquet');
 // const cFlower = document.querySelector('flower');
 // const cFlower_count = document.querySelector('flower_count');
@@ -12,14 +11,12 @@ import { RibbonType } from '../components/flowerImg/Ribbon';
 // const RIBBON = 'RIBBON' as const;
 // const RESULTPRICE = 'RESULTPRICE' as const;
 
-import { WrappingPaperType } from '../components/flowerImg/WrappingPaper';
-
 export interface OrderDataParams {
   bouquet?: string | undefined;
-  flower?: string[] | string | undefined;
+  flower?: string | undefined;
   flower_count?: number | undefined;
-  wrappingPaper?: string[] | string | undefined;
-  ribbon?: string[] | string | undefined;
+  wrappingPaper?: string | undefined;
+  ribbon?: string | undefined;
   resultPrice?: number | undefined;
 }
 
@@ -63,7 +60,7 @@ export type OrderAction = ReturnType<typeof insertOrderData>;
 export const initialState: OrderState = {
   orderItems: {
     bouquet: '',
-    flower: '',
+    flower: '홀리몰리~~',
     flower_count: 1,
     wrappingPaper: '',
     ribbon: '',
