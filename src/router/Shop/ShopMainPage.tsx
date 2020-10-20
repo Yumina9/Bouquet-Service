@@ -13,6 +13,9 @@ import ShopInfoBanner from '../../components/Shop/ShopInfoBanner';
 import MiniHeader from '../../components/header/MiniHeader';
 import { Block } from '../../lib/styles/styled';
 import { ShopReview } from '../../components/Shop/ShopReview';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../modules';
+import axiosInstance from '../../components/login/axios';
 
 export type ShopType = {
   id: number;
@@ -28,12 +31,15 @@ export type ShopType = {
 };
 
 const ShopMainPage = () => {
-  const { id } = useParams();
+  const user = useSelector((state: RootState) => state?.user.user);
   const [shop, setShop] = useState<ShopType>();
   useEffect(() => {
-    Axios.get(`/shop/${id}/`).then(({ data }) => setShop(data));
-  }, []);
-  console.log('shop', shop);
+    Axios.get(`/shop/${user.shop}/`).then(function (response) {
+      setShop(response.data);
+      console.log('shopinfo', shop);
+    });
+    console.log('user.shop', user?.shop);
+  }, [user]);
 
   return (
     <div>
@@ -48,7 +54,7 @@ const ShopMainPage = () => {
               꽃다발 리스트
             </Typography>
             <Link
-              to={`/shop/${id}/bouquets`}
+              to={`/shop/${user.shop}/bouquets`}
               style={{
                 color: 'inherit',
                 textDecoration: 'none',
@@ -67,7 +73,7 @@ const ShopMainPage = () => {
             </Typography>
             <Typography type="H7" color={palette.color4} fontWeight="bold">
               <Link
-                to={`/shop/${id}/flowers`}
+                to={`/shop/${user.shop}/flowers`}
                 style={{
                   color: 'inherit',
                   textDecoration: 'none',
