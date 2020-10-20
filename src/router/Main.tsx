@@ -14,6 +14,7 @@ import UserMain from './User/UserMain';
 import Header from '../components/header/Header';
 import MainBouquetList from '../components/bouquet/MainBouquetList';
 import palette from '../lib/styles/palette';
+import { useHistory } from 'react-router-dom';
 
 const Main = () => {
   return (
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundSize: 'cover',
       height: '100%',
       position: 'absolute',
-      top: '0px',
+      top: '64px',
       right: '0px',
       bottom: '0px',
       left: '0px',
@@ -78,6 +79,7 @@ const useStyles = makeStyles((theme) => ({
 
 export function Album() {
   const classes = useStyles();
+  const history = useHistory();
 
   return (
     <>
@@ -112,6 +114,9 @@ export function Album() {
                     className={classes.button}
                     variant="contained"
                     color="primary"
+                    onClick={() => {
+                      history.push(`/shops/`);
+                    }}
                   >
                     Explore flower Shop
                   </Button>
