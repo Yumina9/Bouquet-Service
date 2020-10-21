@@ -10,15 +10,22 @@ import Typography from '../../components/common/Typography';
 import { FlowerType } from '../../components/flowerImg/Flower';
 import { Block } from '../../lib/styles/styled';
 import useFlowerMakingPage from './hooks/useFlowerMakingPage';
+import { GoShopMain } from '../../components/Shop/GoShopMain';
 
 const FlowerExplanationPage: React.FC<FlowerType> = () => {
-  const { flower } = useFlowerMakingPage();
+  const { shop_id, flower_id: flowerId } = useParams<{
+    shop_id: string;
+    flower_id: string;
+  }>();
+
+  const { flower } = useFlowerMakingPage(flowerId);
   console.log(flower);
 
   return (
     <>
       <Header />
       <Block>
+        <GoShopMain />
         <Box>
           <Detail>
             <Img src={`${flower?.img}`} />

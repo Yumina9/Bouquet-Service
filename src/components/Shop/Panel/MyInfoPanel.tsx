@@ -13,15 +13,19 @@ import { CurrentOrderPanel } from './CurrentOrderPanel';
 
 export const MyInfoPanel = () => {
   const user = useSelector((state: RootState) => state?.user.user);
-
+  const shopinfo = useSelector((state: RootState) => state?.shop.shop);
   const [shop, setShop] = useState<ShopType>();
   useEffect(() => {
-    Axios.get(`/shop/${user.shop}/`).then(function (response) {
+    axiosInstance.get(`/shop/my`).then(function (response) {
+      // Redux에 user -> shop
+
       setShop(response.data);
       console.log('shopinfo', shop);
     });
     console.log('user.shop', user?.shop);
   }, [user]);
+  console.log('shopinfo', shopinfo);
+  console.log('user', user);
 
   return (
     <>
@@ -30,21 +34,21 @@ export const MyInfoPanel = () => {
           <MyInfo>
             <div>
               <Typography type="H4" color={palette.black} fontWeight="medium">
-                🌷{shop?.name}
+                🌷{user?.shop?.name}
               </Typography>
               <Typography type="H7" color={palette.black} fontWeight="light">
-                📖 {shop?.description}
+                📖 {user?.shop?.description}
               </Typography>
             </div>
             <div>
               <Typography type="H7" color={palette.gray} fontWeight="light">
-                👤 {shop?.florist}
+                👤 {user?.shop?.florist}
               </Typography>
               <Typography type="H7" color={palette.black} fontWeight="light">
-                🧭 {shop?.location}
+                🧭 {user?.shop?.location}
               </Typography>
               <Typography type="H7" color={palette.black} fontWeight="light">
-                📞 {shop?.phone}
+                📞 {user?.shop?.phone}
               </Typography>
             </div>
           </MyInfo>

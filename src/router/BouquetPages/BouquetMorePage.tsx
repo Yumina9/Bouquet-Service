@@ -8,17 +8,21 @@ import palette from '../../lib/styles/palette';
 import { useParams, Link } from 'react-router-dom';
 import { Block } from '../../lib/styles/styled';
 import { ShopType } from '../Shop/ShopMainPage';
+import Axios from 'axios';
 
 const BouquetMorePage = () => {
-  const { id } = useParams<{ id: string }>();
+  const { shop_id } = useParams<{ shop_id: string }>();
   const [bouquets, setBouquets] = useState([]);
   useEffect(() => {
-    axios.get(`/shop/${id}/bouquets`).then(({ data }) => setBouquets(data));
+    Axios.get(`/shop/${shop_id}/bouquets`).then(({ data }) =>
+      setBouquets(data),
+    );
   }, []);
+  console.log('bouquets', bouquets);
 
   const [shop, setShop] = useState<ShopType>();
   useEffect(() => {
-    axios.get(`/shop/${id}/`).then(({ data }) => setShop(data));
+    Axios.get(`/shop/${shop_id}/`).then(({ data }) => setShop(data));
   }, []);
   console.log(shop?.name);
 
@@ -28,7 +32,7 @@ const BouquetMorePage = () => {
 
       <Block>
         <Link
-          to={`/shop/${id}`}
+          to={`/shop/${shop_id}`}
           style={{ color: 'inherit', textDecoration: 'none' }}
         >
           <Typography type="H4" color={palette.color3} fontWeight="medium">
@@ -43,7 +47,7 @@ const BouquetMorePage = () => {
           {bouquets.map((bouquet: BouquetType) => {
             return (
               <Link
-                to={`/shop/${id}/bouquet/${bouquet.id}`}
+                to={`/shop/${shop_id}/bouquet/${bouquet.id}`}
                 style={{ color: 'inherit', textDecoration: 'none' }}
               >
                 <Bouquet {...bouquet} />

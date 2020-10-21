@@ -10,21 +10,21 @@ import { ShopType } from '../Shop/ShopMainPage';
 import Flower, { FlowerType } from '../../components/flowerImg/Flower';
 
 const FlowerMorePage = () => {
-  const { id } = useParams<{ id: string }>();
+  const { shop_id } = useParams<{ shop_id: string }>();
   const [flowers, setFlowers] = useState([]);
   useEffect(() => {
-    axios.get(`/shop/${id}/flowers`).then(({ data }) => setFlowers(data));
+    axios.get(`/shop/${shop_id}/flowers`).then(({ data }) => setFlowers(data));
   }, []);
   const [shop, setShop] = useState<ShopType>();
   useEffect(() => {
-    axios.get(`/shop/${id}/`).then(({ data }) => setShop(data));
+    axios.get(`/shop/${shop_id}/`).then(({ data }) => setShop(data));
   }, []);
   return (
     <>
       <Header />
       <Block>
         <Link
-          to={`/shop/${id}`}
+          to={`/shop/${shop_id}`}
           style={{ color: 'inherit', textDecoration: 'none' }}
         >
           <Typography type="H4" color={palette.color3} fontWeight="medium">
@@ -37,7 +37,7 @@ const FlowerMorePage = () => {
         <List>
           {flowers.map((flower: FlowerType) => {
             return (
-              <Link to={`/shop/${id}/flower/${flower.id}`}>
+              <Link to={`/shop/${shop_id}/flower/${flower.id}`}>
                 <Flower {...flower} />
               </Link>
             );

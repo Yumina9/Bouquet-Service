@@ -56,16 +56,17 @@ const MakingFlowerStepper: React.FC<FlowerType> = ({
 
   const dispatch = useDispatch();
 
-  dispatch(
-    insertOrderData({
-      bouquet: reserve?.bouquet?.name,
-      flower: name,
-      flower_count: flower_count,
-      wrappingPaper: reserve?.wrappingPaper?.name,
-      ribbon: reserve?.ribbon?.name,
-      resultPrice: resultPrice + price * flower_count,
-    }),
-  );
+  // dispatch(
+  //   insertOrderData({
+  //     bouquet: reserve?.bouquet?.name,
+  //     flower: undefined,
+  //     flower_count: flower_count,
+  //     wrappingPaper: reserve?.wrappingPaper?.name,
+  //     ribbon: reserve?.ribbon?.name,
+  //     resultPrice: resultPrice + price * flower_count,
+  //   }),
+  // );
+
   return (
     <>
       <Block>

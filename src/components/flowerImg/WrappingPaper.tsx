@@ -50,8 +50,8 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const WrappingPaper: React.FC<
-  Pick<WrappingPaperType, 'id' | 'name' | 'img' | 'price'> & { shopId: number }
-> = ({ id, name, img, price, shopId }) => {
+  Pick<WrappingPaperType, 'id' | 'name' | 'img' | 'price'> & { shop_id: number }
+> = ({ id, name, img, price, shop_id }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 

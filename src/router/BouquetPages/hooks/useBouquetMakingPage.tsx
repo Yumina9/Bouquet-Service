@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { BouquetType } from '../../../components/flowerImg/Bouquet';
 
 export default function useBouquetMakingPage() {
-  const { shop_id: shopId, bouquet_id: bouquetId } = useParams<{
+  const { shop_id, bouquet_id: bouquetId } = useParams<{
     shop_id: string;
     bouquet_id: string;
   }>();
@@ -15,5 +15,5 @@ export default function useBouquetMakingPage() {
     Axios.get(`/bouquets/${bouquetId}`).then(({ data }) => setBouquet(data));
   }, []);
 
-  return { shopId, bouquetId, bouquet };
+  return { shop_id, bouquetId, bouquet };
 }

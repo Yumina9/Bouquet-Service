@@ -12,9 +12,10 @@ import Paper from '@material-ui/core/Paper';
 import Axios from 'axios';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
-import { OrderDataParams } from '../../modules/order';
+// import { OrderDataParams } from '../../modules/order';
 import axiosInstance from '../../components/login/axios';
 import Header from '../../components/header/Header';
+import { GoShopMain } from '../../components/Shop/GoShopMain';
 
 const useStylesO = makeStyles((theme: Theme) =>
   createStyles({
@@ -57,19 +58,18 @@ const OrderConfirmPage = () => {
 
   const OrderData = useSelector((state: RootState) => state?.order);
 
-  const data = {
-    ...OrderData,
-    shop_id: 1,
-    // user_id: 1,
-  };
+  console.log(OrderData);
 
-  const onDataSave = () => {
-    console.log('datadata', data);
+  const onOrder = () => {
     axiosInstance
-      .post(`http://localhost:8000/bouquet_order/`, data, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      .post(`http://localhost:8000/bouquet_order/`, {
+        bouquet_id: OrderData.bouquet.id,
+        flower_id: OrderData.flower.id,
+        shop_id: OrderData.bouquet.shops,
+        flower_count: OrderData.flower_count,
+        resultPrice: OrderData.resultPrice,
+        ribbon: OrderData.ribbon,
+        wrappingPaper: OrderData.wrappingPaper,
       })
       .then((response) => {
         console.log('주문완료데이터:', response.data);
@@ -79,6 +79,7 @@ const OrderConfirmPage = () => {
         console.error(response);
       });
   };
+
   //   Axios({
   //     method: 'post',
   //     url: `http://localhost:8000/bouquet_order/`,
@@ -99,18 +100,18 @@ const OrderConfirmPage = () => {
     <div>
       <Header />
       <Block>
+        <GoShopMain />
         <Body>
-          <Paper
+          {/* <Paper
             className={classesTool.paper}
             style={{ border: '1px solid blue', height: 'inherit' }}
-          >
-            <Typography type="H3" color={palette.color1} fontWeight="bold">
-              주문 확인
-            </Typography>
-            <Paper className={classesOrder.paper}>
-              <OrderConfirmForm />
-            </Paper>
-            <br />
+          > */}
+          <Typography type="H3" color={palette.color1} fontWeight="bold">
+            주문 확인
+          </Typography>
+          <OrderConfirmForm />
+          <br />
+          <span style={{ justifyContent: 'center' }}>
             <Button
               color={palette.black}
               bgColor={palette.color3}
@@ -121,11 +122,12 @@ const OrderConfirmPage = () => {
             <Button
               color={palette.black}
               bgColor={palette.color3}
-              onClick={() => onDataSave()}
+              onClick={() => onOrder()}
             >
               주문완료
             </Button>
-          </Paper>
+          </span>
+          {/* </Paper> */}
         </Body>
       </Block>
     </div>

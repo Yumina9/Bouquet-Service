@@ -2,11 +2,14 @@ import * as React from 'react';
 import { DataGrid, ColDef, ValueGetterParams } from '@material-ui/data-grid';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../modules';
+import { BouquetType } from '../../flowerImg/Bouquet';
+import { FlowerType } from '../../flowerImg/Flower';
+import Axios from 'axios';
 
 type BouquetOrderType = {
   id?: number | undefined;
-  bouquet?: string | undefined;
-  flower?: string | undefined;
+  bouquet?: BouquetType | undefined;
+  flower?: FlowerType | undefined;
   flower_count?: number | undefined;
   price?: number | undefined;
   ribbon?: string | undefined;
@@ -31,6 +34,9 @@ export const CurrentOrderPanel = () => {
   const [orderList, setOrderList] = React.useState<
     BouquetOrderType | undefined
   >();
+  React.useEffect(() => {
+    // Axios.get(`/bouquet_order/${user.shop}/orderlist`).then((data)=>setOrderList(data))
+  }, []);
 
   const userBouquetOrder: BouquetOrderType | undefined = user?.bouquet_order;
   console.log('악', userBouquetOrder);

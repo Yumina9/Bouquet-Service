@@ -5,40 +5,36 @@ import palette from '../../lib/styles/palette';
 import Typography from '../common/Typography';
 import useMakingBouquetStepper from '../Making/hooks/useMakingFlowerStepper';
 import useOrderConfirmForm from './hooks/useOrderConfirmForm';
-import { OrderAction } from '../../modules/order';
+// import { OrderAction } from '../../modules/order';
 import { RootState } from '../../modules';
 
 export const OrderConfirmData = () => {
-  console.log('여기는 OrderConfirmData');
   const { order } = useOrderConfirmForm();
-  console.log(order);
-  console.log('order.bouquet', order?.bouquet);
   const OrderData = useSelector((state: RootState) => state?.order);
-  console.log('OrderData', OrderData);
 
   return (
     <>
-      <Typography type="H5" color={palette.color4} fontWeight="bold" >
+      <Typography type="H5" color={palette.color4} fontWeight="bold">
         꽃다발 종류
       </Typography>
 
       <p />
       <Typography type="H7" color={palette.black} fontWeight="light">
-        {OrderData?.orderItems?.bouquet}
+        {OrderData?.bouquet}
       </Typography>
       <p />
       <Typography type="H5" color={palette.color4} fontWeight="bold">
         꽃 종류
       </Typography>
       <p />
-      {OrderData?.orderItems?.flower}
+      {OrderData?.flower}
       <p />
       <Typography type="H5" color={palette.color4} fontWeight="bold">
         꽃 수량
       </Typography>
       <p />
       <Typography type="H7" color={palette.black} fontWeight="light">
-        {OrderData?.orderItems?.flower_count}송이
+        {OrderData?.flower_count}송이
       </Typography>
       <p />
       <Typography type="H5" color={palette.color4} fontWeight="bold">
@@ -46,8 +42,7 @@ export const OrderConfirmData = () => {
       </Typography>
       <p />
       <Typography type="H7" color={palette.black} fontWeight="light">
-        리본 :{OrderData?.orderItems?.ribbon} | 포장지 :
-        {OrderData?.orderItems?.wrappingPaper}
+        리본 :{OrderData?.ribbon} | 포장지 :{OrderData?.wrappingPaper}
       </Typography>
       <p />
       <Typography type="H5" color={palette.color4} fontWeight="bold">
@@ -55,7 +50,7 @@ export const OrderConfirmData = () => {
       </Typography>
       <p />
       <Typography type="H7" color={palette.black} fontWeight="light">
-        {OrderData?.orderItems?.resultPrice}원
+        {OrderData?.resultPrice}원
       </Typography>
     </>
   );

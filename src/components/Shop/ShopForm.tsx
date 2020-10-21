@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -9,43 +10,54 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { ShopType } from '../../router/Shop/ShopMainPage';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import Axios from 'axios';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 250,
+    margin: '30px',
   },
   media: {
-    height: 140,
+    height: 170,
+    width: 250,
   },
 });
 
-export default function ShopForm({ id, name, description }: ShopType) {
+export default function ShopForm({ id, name, img, description }: ShopType) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {name}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {description}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Link to={`/shop/${id}/`}>
-          <Button size="small" color="primary">
-            바로가기
-          </Button>
-        </Link>
-      </CardActions>
-    </Card>
+    <Form>
+      <Grid container spacing={4}>
+        {/* {shops &&
+          shops.map((shop) => ( */}
+        {/* <Grid item key={shop.id} xs={12} sm={6} md={4}> */}
+        <Card className={classes.root}>
+          <CardActionArea>
+            <CardMedia className={classes.media} image={img} title={name} />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {name}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {description}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Link to={`/shop/${id}/`}>
+              <Button size="small" color="primary">
+                바로가기
+              </Button>
+            </Link>
+          </CardActions>
+        </Card>
+        {/* </Grid> */}
+        {/* ))} */}
+      </Grid>
+    </Form>
   );
 }
+
+const Form = styled.div``;

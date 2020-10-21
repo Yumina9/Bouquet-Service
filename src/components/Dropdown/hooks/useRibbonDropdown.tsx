@@ -10,9 +10,9 @@ export default function useRibbonDropdown({
 }: RibbonDropdownProps) {
   const [ribbons, setRibbons] = useState<RibbonType[]>([]);
   const [selected, setSelected] = useState<string | undefined>();
-  const { shop_id: shopId } = useParams<{ shop_id: string }>();
+  const { shop_id } = useParams<{ shop_id: string }>();
   useEffect(() => {
-    Axios.get(`/shop/${shopId}/ribbons`).then(({ data }) => setRibbons(data));
+    Axios.get(`/shop/${shop_id}/ribbons`).then(({ data }) => setRibbons(data));
   }, []);
 
   console.log(ribbons);

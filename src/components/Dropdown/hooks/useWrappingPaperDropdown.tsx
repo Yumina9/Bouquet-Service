@@ -10,10 +10,10 @@ export default function useWrappingPaperDropdown({
 }: WrappingPaperDropdownProps) {
   const [wrappingPapers, setWrappingpapers] = useState<WrappingPaperType[]>([]);
   const [selected, setSelected] = useState<string | undefined>('');
-  const { shop_id: shopId } = useParams<{ shop_id: string }>();
+  const { shop_id } = useParams<{ shop_id: string }>();
 
   useEffect(() => {
-    Axios.get(`/shop/${shopId}/wrappingPapers`).then(({ data }) =>
+    Axios.get(`/shop/${shop_id}/wrappingPapers`).then(({ data }) =>
       setWrappingpapers(data),
     );
   }, []);
