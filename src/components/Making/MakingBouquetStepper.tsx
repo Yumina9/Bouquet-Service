@@ -214,12 +214,21 @@ const Block = styled.div`
   }
 `;
 
+const FlowerCountPlusMinus = styled.span`
+  display: flex;
+  justify-content: center;
+`;
+
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
 
-  & > button {
-    left: 10px;
-    margin-right: 10px;
+  Button {
+    padding: 14px 50px;
+    font-size: 1.5rem;
+    color: inherit;
+    outline: none;
+    float: left;
+    margin: 5px;
   }
 `;
