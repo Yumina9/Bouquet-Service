@@ -30,12 +30,27 @@ const FlowerExplanationPage: React.FC<FlowerType> = () => {
           <Detail>
             <Img src={`${flower?.img}`} />
             <Description>
-              <Typography type="H4" color={palette.color4} fontWeight="bold">
-                {`${flower?.color} ${flower?.name}`}
-              </Typography>
-              <Typography type="H7" color={palette.color4} fontWeight="light">
-                {`${flower?.description}`}
-              </Typography>
+              <div>
+                <p style={{ margin: '10px' }}>
+                  <Typography
+                    type="H4"
+                    color={palette.color4}
+                    fontWeight="bold"
+                  >
+                    {`${flower?.color} ${flower?.name}`}
+                  </Typography>
+                  <Typography
+                    type="H7"
+                    color={palette.color4}
+                    fontWeight="light"
+                  >
+                    {`${flower?.description}`}
+                  </Typography>
+                </p>
+              </div>
+              <p>
+                <h2>상품 금액 : {flower?.price} 원</h2>
+              </p>
             </Description>
           </Detail>
           <span>
@@ -104,11 +119,15 @@ const Description = styled.div`
   padding: 50px;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
   & > :first-child {
-    flex: 2;
+    flex: 8;
   }
 
   & > :last-child {
-    flex: 8;
+    flex: 1;
+    span {
+      justify-content: center;
+    }
   }
 `;
