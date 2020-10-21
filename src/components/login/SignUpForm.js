@@ -126,29 +126,10 @@ const hasNotSameError = passwordEntered =>
 
 const onSubmitHandler = (event) => {
   event.preventDefault(); // 아무 동작 안하고 버튼만 눌러도 리프레쉬 되는 것을 막는다
-  // if(user_phone.length != 13) {
-  //   alert("번호를 다시 입력해주세요.");
-  // }
-  if(password !== confirmPassword){
-      return alert('비밀번호와 비밀번호 확인은 같아야 합니다.')
-  }
-
-    // let body = {
-    //     email: email,
-    //     password: password,
-    //     username: username,
-    // }
-    // dispatch(registerUser(body))
-    //     .then(response =>{
-    //         if(response.payload.success){
-    //             alert('회원가입이 완료되었습니다!');
-    //             props.history.push('/login') // react 에서의 페이지 이동 코드
-    //         } else{
-    //             alert('Error!!');
-    //         }
-    //     })
-    // // 완료가 잘 되었을 경우 이동
+  
 }  
+
+
 
 
 const theme = createMuiTheme({
@@ -179,7 +160,7 @@ const theme = createMuiTheme({
 									required
 									fullWidth
 									id="email"
-									label="ex) example@example.com"
+									label="이메일을 입력하세요."
 									name="email"
 									autoComplete="email"
 									onChange={handleChange}
@@ -242,11 +223,11 @@ const theme = createMuiTheme({
 									required
 									fullWidth
 									name="password"
-									label="비밀번호(다섯글자이상 필수)"
+									label="비밀번호"
 									type="password"
 									id="password"
 									autoComplete="current-password"
-									error={hasError('password')}
+									onSubmitHandler={onSubmitHandler}
 									onChange={handleChange}
 								/>
 							</Grid>
@@ -260,6 +241,7 @@ const theme = createMuiTheme({
 									type="password"
 									id="confirmPassword"
 									autoComplete="current-password"
+									error={hasError('password')}
 									error={hasNotSameError('confirmPassword')}
 									onChange={handleChange}
 									helperText={

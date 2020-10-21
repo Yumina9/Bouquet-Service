@@ -1,5 +1,4 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, {useEffect} from 'react';
 import Typography from '../../common/Typography';
 import palette from '../../../lib/styles/palette';
 import { PanelBlock } from '../../../lib/styles/styled';
@@ -13,12 +12,12 @@ import { WrappingPaperDropdown } from '../../Dropdown/WrappingPaperDropdown';
 import { RibbonDropdown } from '../../Dropdown/RibbonDropdown';
 import { WrappingPaperType } from '../../flowerImg/WrappingPaper';
 import { RibbonType } from '../../flowerImg/Ribbon';
-import Box from '@material-ui/core/Box';
 import InputBase from '@material-ui/core/InputBase';
 import { useBorderedInputBaseStyles } from '@mui-treasury/styles/inputBase/bordered';
 import { PanelForm } from '../PanelForm';
-
-const useStyles = makeStyles((theme: Theme) =>
+// import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       flexGrow: 1,
@@ -58,6 +57,9 @@ export const BouquetAddPanel = () => {
     setReserve({ ...reserve, ribbon });
   };
 
+  useEffect(() => {
+    console.log("useEffect TEST");
+  }, [])
   return (
     <>
       <PanelBlock>

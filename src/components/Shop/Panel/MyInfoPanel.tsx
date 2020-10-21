@@ -10,6 +10,7 @@ import axiosInstance from '../../login/axios';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../modules';
 import { CurrentOrderPanel } from './CurrentOrderPanel';
+import { Link } from 'react-router-dom';
 
 export const MyInfoPanel = () => {
   const user = useSelector((state: RootState) => state?.user.user);
@@ -48,6 +49,10 @@ export const MyInfoPanel = () => {
               </Typography>
             </div>
           </MyInfo>
+          {/* <button>
+            <Link to="/shop/:id/shopdetail">수정</Link>
+          </button> */}
+          
         </PanelForm>
         <PanelForm title="주문 목록">
           <CurrentOrderPanel />
