@@ -4,6 +4,11 @@ import Header from '../../components/header/Header';
 import './buyerCss.css';
 import axios from '../../components/login/axios';
 
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Footer from '../Footer';
 type userInfoType ={
   id : number;
   username: string;
@@ -12,6 +17,29 @@ type userInfoType ={
   user_phone: string;
   user_address: string;
 }
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      flexGrow: 1,
+      maxWidth: '1200px',
+      margin: '0 auto',
+      marginTop: '100px',
+      textAlign: 'center',
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+      fontSize: '20px',
+      justifyContent: 'center',
+      boxShadow: 'none',
+    },
+    userImg: {
+      margin: '0 auto',
+    }
+  }),
+);
 
 const UserMyPage = () => {
 
@@ -25,69 +53,56 @@ const UserMyPage = () => {
       });
     
   },[])
-  
+
+  const classes = useStyles();
   
 
   return (
     <div>
       <Header />
-      <BuyerInfo>
-        <UserImage src={require('../../image/user.png')} />
-        <UserInfomation>
+      <div className={classes.root}>
         
-          <table>
-            <tbody>
-              <tr>
-                
-                <th>성명 : </th>
-                <td>{userInfo?.username}</td>
-                
-              </tr>
-              <tr>
-                <th>전화 : </th>
-                <td>{userInfo?.user_phone}</td>
-              </tr>
-              <tr>
-                <th>이메일 : </th>
-                <td>{userInfo?.email}</td>
-              </tr>
-              {/* <tr>
-                <th>주소 : </th>
-                <td>{userInfo?.user_address}</td>
-              </tr> */}
-            </tbody>
-          </table>
-        </UserInfomation>
-      </BuyerInfo>
-      <DeliveryList>
-        <table className="deliveryCaption">
-          <caption>배송목록</caption>
-          <thead>
-            <tr>
-              <th>NO</th>
-              <th>content</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>꽃다말 외 4</td>
-              <td>2020. 04. 20</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>꽃다말 외 4</td>
-              <td>2020. 04. 20</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>꽃다말 외 4</td>
-              <td>2020. 04. 20</td>
-            </tr>
-          </tbody>
-        </table>
-      </DeliveryList>
+        
+        <Grid container spacing={3}>
+          <Grid item xs={12} >
+            <Paper className={classes.paper} style={{background: '#f1f2f3', paddingTop: '50px'}}>
+              <p><UserImage src={require('../../image/user.png')} /></p>
+              <p className={classes.paper}>성명 : {userInfo?.username}</p>
+              <p className={classes.paper}>전화 : {userInfo?.user_phone}</p>
+              <p className={classes.paper}>이메일 : {userInfo?.email}</p>
+            </Paper>
+            
+          </Grid>
+        </Grid>
+        
+        <Typography variant="h3" gutterBottom style={{marginTop: '50px'}}>
+          주문 내역
+        </Typography>
+        <Grid container spacing={1}>
+          <Grid item xs>
+            <Paper className={classes.paper}>Number</Paper>
+          </Grid>
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>Content</Paper>
+          </Grid>
+          <Grid item xs>
+            <Paper className={classes.paper}>Date</Paper>
+          </Grid>
+        </Grid>
+        <hr style={{border: '2px solid #555'}} />
+        <Grid container spacing={1}>
+          <Grid item xs>
+            <Paper className={classes.paper}>1</Paper>
+          </Grid>
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>벌룬꽃다발 외</Paper>
+          </Grid>
+          <Grid item xs>
+            <Paper className={classes.paper}>2020. 10. 20</Paper>
+          </Grid>
+        </Grid>
+      </div>
+      <Footer />
     </div>
   );
 };
@@ -103,7 +118,6 @@ const UserImage = styled.img`
   width: 200px;
   height: 200px;
   margin: auto 0;
-  margin-right: 100px;
 `;
 const UserInfomation = styled.div`
   padding: 30px 0;

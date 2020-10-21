@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
+// import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import Header from '../../components/header/Header';
 import Button from '../../components/common/Button';
 import palette from '../../lib/styles/palette';
-import ExplanationImage from '../../components/Making/ExplanationImage';
+// import ExplanationImage from '../../components/Making/ExplanationImage';
 import Typography from '../../components/common/Typography';
 import { BouquetType } from '../../components/flowerImg/Bouquet';
 import { Block } from '../../lib/styles/styled';
-import useOrderConfirmForm from '../../components/OrderConfirm/hooks/useOrderConfirmForm';
-import { FlowerType } from '../../components/flowerImg/Flower';
+// import useOrderConfirmForm from '../../components/OrderConfirm/hooks/useOrderConfirmForm';
+// import { FlowerType } from '../../components/flowerImg/Flower';
 import useBouquetExplanation from './hooks/useBouquetExplanation';
 import { useDispatch } from 'react-redux';
 import { insertOrderData } from '../../modules/order';
 
-import { ShopType } from '../Shop/ShopMainPage';
+// import { ShopType } from '../Shop/ShopMainPage';
 import { GoShopMain } from '../../components/Shop/GoShopMain';
 const BouquetExplanationPage: React.FC<BouquetType> = () => {
   // shop/:shop_id/bouquet/:bouquet_id
@@ -48,15 +48,15 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
   if (!bouquet) {
     return <h1>Loading..</h1>;
   }
-  console.log('shop_id', shop_id);
+  // console.log('shop_id', shop_id);
   return (
     <>
       <Header />
-      <Block>
+      <Block >
         {bouquet && (
           <>
             <GoShopMain />
-            <Box>
+            <Box style={{background: '#f1f2f3'}}>
               <Detail>
                 <Img src={`${bouquet?.img}`} />
                 <Description>

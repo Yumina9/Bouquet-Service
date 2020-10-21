@@ -74,7 +74,7 @@ const MakingBouquetStepper: React.FC<BouquetStepperProps> = ({
 
   return (
     <>
-      <Block>
+      <Block >
         <span>
           <img src={`${bouquet.img}`} style={{ width: '600px' }} />
         </span>
