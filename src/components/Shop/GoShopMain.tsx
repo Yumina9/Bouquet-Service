@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import { ShopType } from '../../router/Shop/ShopMainPage';
 import Typography from '../common/Typography';
+import axiosInstance from '../login/axios';
 
 export const GoShopMain = () => {
   const { shop_id } = useParams<{
@@ -12,7 +13,7 @@ export const GoShopMain = () => {
   }>();
   const [shop, setShop] = useState<ShopType>();
   useEffect(() => {
-    Axios.get(`/shop/${shop_id}/`).then(({ data }) => setShop(data));
+    axiosInstance.get(`/shop/${shop_id}/`).then(({ data }) => setShop(data));
   }, []);
   return (
     <Link

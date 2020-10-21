@@ -1,9 +1,8 @@
-import Axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { WrappingPaperType } from '../../flowerImg/WrappingPaper';
-import { UseDropdownProps } from '../Dropdown';
 import { WrappingPaperDropdownProps } from '../WrappingPaperDropdown';
+import { WrappingPaperType } from '../../flowerImg/WrappingPaper';
+import axiosInstance from '../../login/axios';
 
 export default function useWrappingPaperDropdown({
   onWrappingPaperDropdownChange,
@@ -13,9 +12,9 @@ export default function useWrappingPaperDropdown({
   const { shop_id } = useParams<{ shop_id: string }>();
 
   useEffect(() => {
-    Axios.get(`/shop/${shop_id}/wrappingPapers`).then(({ data }) =>
-      setWrappingpapers(data),
-    );
+    axiosInstance
+      .get(`/shop/${shop_id}/wrappingPapers`)
+      .then(({ data }) => setWrappingpapers(data));
   }, []);
 
   const handleChange = (

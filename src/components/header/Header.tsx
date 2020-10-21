@@ -1,8 +1,9 @@
 import palette from '../../lib/styles/palette';
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import {
   AppBar,
+  Avatar,
   Button,
   IconButton,
   makeStyles,
@@ -21,6 +22,7 @@ type choiceUserType = {
   id: number;
   username: string;
   user_choice: string;
+  profile_img: string;
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -71,10 +73,10 @@ export default function Header() {
             noWrap
           >
             <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
-            Flamingo 🌹
+              Flamingo 🌹
             </Link>
           </Typography>
-          
+
           {/* <Typography variant="h4" color="inherit" noWrap align={'right'}>
             {user ? (
               <>
@@ -145,9 +147,11 @@ export default function Header() {
               </>
             )}
           </Typography> */}
-          {isUserAuthenticated() == true ?(
-            <div style={{fontSize:'15px'}}>{userChoice?.username}님 환영합니다.</div>
-          ):(
+          {isUserAuthenticated() == true ? (
+            <div style={{ fontSize: '15px' }}>
+              {userChoice?.username}님 환영합니다.
+            </div>
+          ) : (
             <div></div>
           )}
           {auth && (
@@ -159,7 +163,11 @@ export default function Header() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle className={classes.icon} />
+                {userChoice?.profile_img ? (
+                  <Avatar alt="Remy Sharp" src={userChoice?.profile_img} />
+                ) : (
+                  <AccountCircle className={classes.icon} />
+                )}
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -176,7 +184,6 @@ export default function Header() {
                 open={open}
                 onClose={handleClose}
               >
-                
                 {isUserAuthenticated() == false ? (
                   <div>
                     <Link
@@ -196,8 +203,7 @@ export default function Header() {
                       </MenuItem>
                     </Link>
                   </div>
-                ) : 
-                userChoice?.user_choice == 'U' ? (
+                ) : userChoice?.user_choice == 'U' ? (
                   <div>
                     <Link
                       to={'/usermypage'}
@@ -239,7 +245,6 @@ export default function Header() {
               </Menu>
             </div>
           )}
-
         </Toolbar>
       </AppBar>
     </>

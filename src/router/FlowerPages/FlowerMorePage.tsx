@@ -1,30 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import Header from '../../components/header/Header';
-import axios from 'axios';
-import Typography from '../../components/common/Typography';
-import palette from '../../lib/styles/palette';
-import { useParams, Link } from 'react-router-dom';
-import { Block } from '../../lib/styles/styled';
-import { ShopType } from '../Shop/ShopMainPage';
+import axiosInstance from '../../components/login/axios';
 import Flower, { FlowerType } from '../../components/flowerImg/Flower';
+import Header from '../../components/header/Header';
+import palette from '../../lib/styles/palette';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import Typography from '../../components/common/Typography';
+import { Block } from '../../lib/styles/styled';
+import { Link, useParams } from 'react-router-dom';
+import { ShopType } from '../Shop/ShopMainPage';
 
 const FlowerMorePage = () => {
-  const { shop_id } = useParams<{ shop_id: string }>();
+  const { id } = useParams<{ id: string }>();
+
   const [flowers, setFlowers] = useState([]);
   useEffect(() => {
-    axios.get(`/shop/${shop_id}/flowers`).then(({ data }) => setFlowers(data));
+    axiosInstance
+      .get(`/shop/${id}/flowers`)
+      .then(({ data }) => setFlowers(data));
   }, []);
+
   const [shop, setShop] = useState<ShopType>();
   useEffect(() => {
-    axios.get(`/shop/${shop_id}/`).then(({ data }) => setShop(data));
+    axiosInstance.get(`/shop/${id}/`).then(({ data }) => setShop(data));
   }, []);
+
   return (
     <>
       <Header />
       <Block>
         <Link
-          to={`/shop/${shop_id}`}
+          to={`/shop/${id}`}
           style={{ color: 'inherit', textDecoration: 'none' }}
         >
           <Typography type="H4" color={palette.color3} fontWeight="medium">
@@ -37,7 +42,7 @@ const FlowerMorePage = () => {
         <List>
           {flowers.map((flower: FlowerType) => {
             return (
-              <Link to={`/shop/${shop_id}/flower/${flower.id}`}>
+              <Link to={`/shop/${id}/flower/${flower.id}`}>
                 <Flower {...flower} />
               </Link>
             );

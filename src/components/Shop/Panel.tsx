@@ -14,7 +14,6 @@ export enum PanelType {
   FLOWER = 'FLOWER',
   ADDBOUQUET = 'ADDBOUQUET',
   ADDFLOWER = 'ADDFLOWER',
-  CURRENT_ORDER = 'CURRENT_ORDER',
   FINISHED_ORDER = 'FINISHED_ORDER',
 }
 
@@ -30,8 +29,6 @@ export const Panel = ({ type }: { type: PanelType }) => {
       return <BouquetAddPanel />;
     case PanelType.ADDFLOWER:
       return <FlowerAddPanel />;
-    case PanelType.CURRENT_ORDER:
-      return <CurrentOrderPanel />;
     case PanelType.FINISHED_ORDER:
       return <FinishOrderPanel />;
   }

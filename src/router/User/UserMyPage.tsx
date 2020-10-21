@@ -1,32 +1,28 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../../components/header/Header';
 import './buyerCss.css';
 import axios from '../../components/login/axios';
+import axiosInstance from '../../components/login/axios';
 
-type userInfoType ={
-  id : number;
+type userInfoType = {
+  id: number;
   username: string;
   firstname: string;
   email: string;
   user_phone: string;
   user_address: string;
-}
+};
 
 const UserMyPage = () => {
-
   const [userInfo, setUserInfo] = useState<userInfoType>();
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(userInfo?.id);
-    axios.get(`/user/me`).then(({data})=>{setUserInfo(data);
-       console.log("유저초이스 마이페이지", userInfo?.username);
-      //  console.log(id);
-      });
-    
-  },[])
-  
-  
+    axiosInstance.get(`/user/me`).then(({ data }) => {
+      setUserInfo(data);
+    });
+  }, []);
 
   return (
     <div>
@@ -34,14 +30,11 @@ const UserMyPage = () => {
       <BuyerInfo>
         <UserImage src={require('../../image/user.png')} />
         <UserInfomation>
-        
           <table>
             <tbody>
               <tr>
-                
                 <th>성명 : </th>
                 <td>{userInfo?.username}</td>
-                
               </tr>
               <tr>
                 <th>전화 : </th>

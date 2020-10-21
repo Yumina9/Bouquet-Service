@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
-import Axios from 'axios';
-import Flower, { FlowerType } from '../../flowerImg/Flower';
-import Typography from '../../common/Typography';
-import palette from '../../../lib/styles/palette';
-import Button from '../../common/Button';
-import { PanelForm } from '../PanelForm';
-import { PanelBlock } from '../../../lib/styles/styled';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../modules';
 import axiosInstance from '../../login/axios';
+import Flower, { FlowerType } from '../../flowerImg/Flower';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { PanelBlock } from '../../../lib/styles/styled';
+import { PanelForm } from '../PanelForm';
+import { RootState } from '../../../modules';
+import { useSelector } from 'react-redux';
 
 export const FlowerListPanel = () => {
   const [flowers, setFlowers] = useState<FlowerType[]>([]);
@@ -18,11 +13,9 @@ export const FlowerListPanel = () => {
   const user = useSelector((state: RootState) => state?.user.user);
 
   useEffect(() => {
-    Axios.get(`/shop/${user.shop}/flowers`).then(function (response) {
+    axiosInstance.get(`/shop/${user.shop}/flowers`).then(function (response) {
       setFlowers(response.data);
-      console.log('flowersinfo', flowers);
     });
-    console.log('user.shop', user?.shop);
   }, [user]);
 
   return (

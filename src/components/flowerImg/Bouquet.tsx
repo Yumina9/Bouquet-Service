@@ -62,7 +62,8 @@ const useStyles = makeStyles((theme: Theme) =>
 const Bouquet: React.FC<BouquetType> = ({ id, name, img, description }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  const { shop_id } = useParams<{ shop_id: string }>();
+  // const { shop_id } = useParams<{ shop_id: string }>();
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };

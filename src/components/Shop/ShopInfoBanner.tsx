@@ -4,40 +4,57 @@ import { FlowerGrid } from '../flowerImg/FlowerGrid';
 
 import ShopInfo from './ShopInfo';
 import { ShopType } from '../../router/Shop/ShopMainPage';
+import { createStyles, makeStyles, Theme } from '@material-ui/core';
 
 interface ShopInfoListProps {
   shop: ShopType;
 }
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      width: '100%',
+      '& > *': {
+        margin: theme.spacing(1),
+        width: '100%',
+        // height: theme.spacing(16),
+      },
+    },
+  }),
+);
+
 const ShopInfoBanner = ({ shop }: ShopInfoListProps) => {
+  const classes = useStyles();
+  const flowers = shop.flowers;
+
   return (
-    <Box>
-      <div>
+    <div className={classes.root}>
+      <ShopInfoPanel>
         <ShopInfo shop={shop} />
-      </div>
-      <div>
-        <FlowerGrid />
-      </div>
-    </Box>
+        <FlowerGrid flowers={flowers} />
+      </ShopInfoPanel>
+    </div>
   );
 };
 
 export default ShopInfoBanner;
 
-const Box = styled.div`
-  display: flex;
-  align-items: center;
+const ShopInfoPanel = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @media (max-width: 768px) {
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+  }
+
   width: 100%;
-
-  & > div {
-    margin: 5px;
-  }
-
-  & > :first-child {
-    flex: 4;
-  }
-
-  & > :last-child {
-    flex: 6;
-  }
+  margin-top: 10px;
+  padding: 30px;
+  border-radius: 10px;
+  -webkit-box-shadow: 6px 4px 13px 5px rgba(148, 148, 148, 1);
+  -moz-box-shadow: 6px 4px 13px 5px rgba(148, 148, 148, 1);
+  box-shadow: 6px 4px 13px 5px rgba(148, 148, 148, 1);
 `;

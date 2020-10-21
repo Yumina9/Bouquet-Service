@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
 import Axios from 'axios';
 import Bouquet, { BouquetType } from '../../flowerImg/Bouquet';
-import Typography from '../../common/Typography';
-import palette from '../../../lib/styles/palette';
-import Button from '../../common/Button';
-import { PanelForm } from '../PanelForm';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { PanelBlock } from '../../../lib/styles/styled';
-import { useSelector } from 'react-redux';
+import { PanelForm } from '../PanelForm';
 import { RootState } from '../../../modules';
+import { useSelector } from 'react-redux';
 import axiosInstance from '../../login/axios';
 
 export const BouquetListPanel = () => {
@@ -17,11 +13,13 @@ export const BouquetListPanel = () => {
   const user = useSelector((state: RootState) => state?.user.user);
 
   useEffect(() => {
-    Axios.get(`/shop/${user.shop}/bouquets`).then(function (response) {
-      setBouquets(response.data);
-      console.log('flowersinfo', bouquets);
-    });
-    console.log('user.shop', user?.shop);
+    if (user) {
+      axiosInstance
+        .get(`/shop/${user.shop}/bouquets`)
+        .then(function (response) {
+          setBouquets(response.data);
+        });
+    }
   }, [user]);
 
   return (

@@ -48,7 +48,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function ShopMyPage() {
-  // type Information = { e: string };
   const classes = useStyles();
   const [type, setType] = useState<PanelType>(PanelType.PROFILE);
 

@@ -1,3 +1,8 @@
+import axiosInstance from '../login/axios';
+import palette from '../../lib/styles/palette';
+import React, { useEffect, useState } from 'react';
+import { BouquetType } from '../flowerImg/Bouquet';
+import { Link } from 'react-router-dom';
 import {
   Button,
   Card,
@@ -8,10 +13,6 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core';
-import Axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { BouquetType } from '../flowerImg/Bouquet';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -35,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   viewButton: {
     fontSize: '1.3rem',
+    color: `${palette.color3}`,
   },
 }));
 
@@ -43,7 +45,9 @@ export default function MainBouquetList() {
   const [bouquets, setBouquets] = useState<BouquetType[] | undefined>();
 
   useEffect(() => {
-    Axios.get('/bouquets').then((response) => setBouquets(response.data));
+    axiosInstance
+      .get('/bouquets')
+      .then((response) => setBouquets(response.data));
   }, []);
 
   return (

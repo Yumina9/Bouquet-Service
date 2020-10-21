@@ -1,61 +1,74 @@
+import axiosInstance from '../../login/axios';
+import palette from '../../../lib/styles/palette';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Axios from 'axios';
-import { ShopType } from '../../../router/Shop/ShopMainPage';
 import Typography from '../../common/Typography';
-import palette from '../../../lib/styles/palette';
-import { PanelForm } from '../PanelForm';
-import { PanelBlock } from '../../../lib/styles/styled';
-import axiosInstance from '../../login/axios';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../modules';
 import { CurrentOrderPanel } from './CurrentOrderPanel';
+import { PanelBlock } from '../../../lib/styles/styled';
+import { PanelForm } from '../PanelForm';
+import { ShopType } from '../../../router/Shop/ShopMainPage';
 
 export const MyInfoPanel = () => {
-  const user = useSelector((state: RootState) => state?.user.user);
-  const shopinfo = useSelector((state: RootState) => state?.shop.shop);
   const [shop, setShop] = useState<ShopType>();
+
   useEffect(() => {
     axiosInstance.get(`/shop/my`).then(function (response) {
       // Redux에 user -> shop
-
       setShop(response.data);
-      console.log('shopinfo', shop);
     });
-    console.log('user.shop', user?.shop);
-  }, [user]);
-  console.log('shopinfo', shopinfo);
-  console.log('user', user);
+  }, []);
 
   return (
     <>
       <PanelBlock>
-        <PanelForm title="내 Shop 정보">
-          <MyInfo>
-            <div>
-              <Typography type="H4" color={palette.black} fontWeight="medium">
-                🌷{user?.shop?.name}
-              </Typography>
-              <Typography type="H7" color={palette.black} fontWeight="light">
-                📖 {user?.shop?.description}
-              </Typography>
-            </div>
-            <div>
-              <Typography type="H7" color={palette.gray} fontWeight="light">
-                👤 {user?.shop?.florist}
-              </Typography>
-              <Typography type="H7" color={palette.black} fontWeight="light">
-                🧭 {user?.shop?.location}
-              </Typography>
-              <Typography type="H7" color={palette.black} fontWeight="light">
-                📞 {user?.shop?.phone}
-              </Typography>
-            </div>
-          </MyInfo>
-        </PanelForm>
-        <PanelForm title="주문 목록">
-          <CurrentOrderPanel />
-        </PanelForm>
+        {shop ? (
+          <>
+            <PanelForm title="내 Shop 정보">
+              <MyInfo>
+                <div>
+                  <Typography
+                    type="H4"
+                    color={palette.black}
+                    fontWeight="medium"
+                  >
+                    🌷{shop?.name}
+                  </Typography>
+                  <Typography
+                    type="H7"
+                    color={palette.black}
+                    fontWeight="light"
+                  >
+                    📖 {shop?.description}
+                  </Typography>
+                </div>
+                <div>
+                  <Typography type="H7" color={palette.gray} fontWeight="light">
+                    👤 {shop?.florist}
+                  </Typography>
+                  <Typography
+                    type="H7"
+                    color={palette.black}
+                    fontWeight="light"
+                  >
+                    🧭 {shop?.location}
+                  </Typography>
+                  <Typography
+                    type="H7"
+                    color={palette.black}
+                    fontWeight="light"
+                  >
+                    📞 {shop?.phone}
+                  </Typography>
+                </div>
+              </MyInfo>
+            </PanelForm>
+            <PanelForm title="주문 목록">
+              <CurrentOrderPanel orders={shop.bouquet_order} />
+            </PanelForm>
+          </>
+        ) : (
+          <h1>Loading...</h1>
+        )}
       </PanelBlock>
     </>
   );
