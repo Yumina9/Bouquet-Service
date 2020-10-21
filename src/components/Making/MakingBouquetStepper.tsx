@@ -15,13 +15,14 @@ import { insertOrderData } from '../../modules/order';
 import Button from '../common/Button';
 import { Link, useHistory } from 'react-router-dom';
 
-const MakingBouquetStepper: React.FC<BouquetType> = ({
-  id,
-  img,
-  name,
-  description,
-  bouquet_paper_price,
-  shops,
+type BouquetStepperProps = {
+  bouquet: BouquetType;
+  shop_id: string;
+};
+
+const MakingBouquetStepper: React.FC<BouquetStepperProps> = ({
+  bouquet,
+  shop_id,
 }) => {
   const {
     flower_count,
@@ -30,6 +31,7 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
     resultPrice,
     reserve,
   } = useMakingBouquetStepper();
+
   const history = useHistory();
 
   const increaseFlowerCount = (e: React.MouseEvent<HTMLElement>) => {
@@ -53,39 +55,39 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
   const onRibbonDropdownChange = (ribbon: RibbonType) => {
     setReserve({ ...reserve, ribbon });
   };
-  console.log('reserve.flower', reserve?.flower);
   const dispatch = useDispatch();
 
-  dispatch(
-    insertOrderData({
-      bouquet: name,
-      flower: reserve?.flower?.name,
-      flower_count: flower_count,
-      wrappingPaper: reserve?.wrappingPaper?.name,
-      ribbon: reserve?.ribbon?.name,
-      resultPrice: resultPrice + bouquet_paper_price,
-    }),
-  );
-
-  console.log(reserve);
-  console.log('여기는 MakingBouquetStepper');
+  useEffect(() => {
+    // 꽃다발 선택, 꽃 선택
+    dispatch(
+      insertOrderData({
+        bouquet,
+        flower: reserve?.flower || null,
+        flower_count: flower_count,
+        wrappingPaper: reserve?.wrappingPaper?.name,
+        ribbon: reserve?.ribbon?.name,
+        resultPrice: resultPrice + bouquet.bouquet_paper_price,
+        shop_id: bouquet.shops,
+      }),
+    );
+  }, [reserve, flower_count, resultPrice]);
 
   return (
     <>
       <Block>
         <span>
-          <img src={`${img}`} style={{ width: '600px' }} />
+          <img src={`${bouquet.img}`} style={{ width: '600px' }} />
         </span>
 
         <div>
           <div style={{ borderBottom: '1px solid lightgray' }}>
             <Typography type="H4" color={palette.color2} fontWeight="bold">
-              {`${name}`}
+              {`${bouquet.name}`}
             </Typography>
           </div>
           <div style={{ borderBottom: '1px solid lightgray' }}>
             <Typography type="H7" color={palette.gray} fontWeight="medium">
-              {`${description}`}
+              {`${bouquet.description}`}
             </Typography>
           </div>
           <tbody>
@@ -163,7 +165,7 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
               </th>
               <th>
                 <Typography type="H6" color={palette.color4} fontWeight="light">
-                  {resultPrice + bouquet_paper_price}원
+                  {resultPrice + bouquet.bouquet_paper_price}원
                 </Typography>
               </th>
             </tr>
@@ -178,8 +180,9 @@ const MakingBouquetStepper: React.FC<BouquetType> = ({
               뒤로가기
             </Button>
 
+            {/* 여기 이상..? */}
             <Link
-              to={`/shop/${shops}/orderConfirm/${id}`}
+              to={'/orderConfirm'}
               style={{ color: 'inherit', textDecoration: 'none' }}
             >
               <Button color={palette.white} bgColor={palette.color3}>

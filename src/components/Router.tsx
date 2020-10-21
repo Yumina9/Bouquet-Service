@@ -23,11 +23,15 @@ const Router = () => {
       <Switch>
         <Route exact path="/" component={Main} />
         <Route exact path="/shops/" component={ShopMorePage} />
-        <Route exact path="/shop/:id" component={ShopMainPage} />
+        <Route exact path="/shop/:shop_id/" component={ShopMainPage} />
         <Route path="/mypage" component={ShopMyPage} />
         {/* <Route exact path="/shop" component={ShopListPage} /> */}
-        <Route exact path="/shop/:id/flowers" component={FlowerMorePage} />
-        <Route exact path="/shop/:id/bouquets" component={BouquetMorePage} />
+        <Route exact path="/shop/:shop_id/flowers" component={FlowerMorePage} />
+        <Route
+          exact
+          path="/shop/:shop_id/bouquets"
+          component={BouquetMorePage}
+        />
         <Route
           exact
           path="/shop/:shop_id/flower/:flower_id/"
@@ -48,7 +52,7 @@ const Router = () => {
         />
         {/* 주문확인 -> 만들기 -> 주문하기, 주문하기 */}
         <Route
-          path="/shop/:shop_id/orderConfirm/:id"
+          path="/shop/:shop_id/orderConfirm"
           component={OrderConfirmPage}
         />
         <Route path="/usermain" component={UserMain} />

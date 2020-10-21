@@ -50,8 +50,8 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const Ribbon: React.FC<
-  Pick<RibbonType, 'id' | 'name' | 'img' | 'price'> & { shopId: number }
-> = ({ id, name, img, price, shopId }) => {
+  Pick<RibbonType, 'id' | 'name' | 'img' | 'price'> & { shop_id: number }
+> = ({ id, name, img, price, shop_id }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 

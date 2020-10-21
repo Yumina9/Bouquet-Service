@@ -150,7 +150,7 @@ export const FlowerAddPanel = () => {
               onChange={(e) => onReserveChange(e)}
             />
 
-            {/* <Typography type="H5" color={palette.color4} fontWeight="bold">매장선택</Typography>
+            <Typography type="H5" color={palette.color4} fontWeight="bold">매장선택</Typography>
             <TextField 
               id="outlined-basic"
               label="매장선택"
@@ -158,7 +158,7 @@ export const FlowerAddPanel = () => {
               name="shops_id"
               value={reserve.shops_id}
               onChange={(e) => onReserveChange(e)}
-            /> */}
+            />
           </form>
             <Button
               color={palette.black}

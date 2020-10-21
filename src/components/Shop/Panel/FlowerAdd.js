@@ -12,6 +12,7 @@ const FlowerAdd = () => {
         color: '',
         img: '',
         price: '',
+        shops_id: '',
     })
     
     const onReserveChange = (e) => {

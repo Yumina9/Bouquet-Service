@@ -19,6 +19,7 @@ import axiosInstance from '../../components/login/axios';
 
 export type ShopType = {
   id: number;
+  img: string;
   bouquets: BouquetType[];
   flowers: FlowerType[];
   name: string;
@@ -32,15 +33,17 @@ export type ShopType = {
 
 const ShopMainPage = () => {
   const user = useSelector((state: RootState) => state?.user.user);
+  const { shop_id } = useParams<{ shop_id: string }>();
   const [shop, setShop] = useState<ShopType>();
   useEffect(() => {
-    Axios.get(`/shop/${user.shop}/`).then(function (response) {
+    Axios.get(`/shop/${shop_id}/`).then(function (response) {
       setShop(response.data);
-      console.log('shopinfo', shop);
     });
     console.log('user.shop', user?.shop);
   }, [user]);
 
+  console.log('shop', shop);
+  console.log('shop_id', shop_id);
   return (
     <div>
       <Header />
@@ -54,7 +57,7 @@ const ShopMainPage = () => {
               꽃다발 리스트
             </Typography>
             <Link
-              to={`/shop/${user.shop}/bouquets`}
+              to={`/shop/${shop_id}/bouquets`}
               style={{
                 color: 'inherit',
                 textDecoration: 'none',
@@ -73,7 +76,7 @@ const ShopMainPage = () => {
             </Typography>
             <Typography type="H7" color={palette.color4} fontWeight="bold">
               <Link
-                to={`/shop/${user.shop}/flowers`}
+                to={`/shop/${shop_id}/flowers`}
                 style={{
                   color: 'inherit',
                   textDecoration: 'none',
@@ -85,9 +88,9 @@ const ShopMainPage = () => {
             </Typography>
             <FlowerList flowers={shop.flowers} />
           </Block>
-          <Block>
+          {/* <Block>
             <ShopReview />
-          </Block>
+          </Block> */}
         </>
       )}
     </div>

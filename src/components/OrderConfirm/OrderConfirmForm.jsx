@@ -41,14 +41,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const OrderConfirmForm = React.memo(function PricingCard() {
+export const OrderConfirmForm = () => {
   const classes = useStyles();
+
+  console.log();
 
   return (
     <>
       <Body>
         <Card className={classes.root}>
-          <CardHeader title="주문 확인" className={classes.header} />
+          <CardHeader title="주문 목록" className={classes.header} />
           <Divider variant="middle" />
           <Divider variant="middle" />
           {/* <Typography variant="h4" align="center">
@@ -74,7 +76,7 @@ export const OrderConfirmForm = React.memo(function PricingCard() {
       </Body>
     </>
   );
-});
+};
 
 const Body = styled.div`
   display: flex-reverse;

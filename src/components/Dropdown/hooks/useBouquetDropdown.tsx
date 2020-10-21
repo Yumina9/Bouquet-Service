@@ -9,7 +9,7 @@ import { FlowerDropdownProps } from '../FlowerDropdown';
 export default function useBouquetDropdown({
   onBouquetDropdownChange,
 }: BouquetDropdownProps) {
-  const { shop_id: shopId } = useParams<{
+  const { shop_id } = useParams<{
     shop_id: string;
   }>();
 
@@ -17,7 +17,7 @@ export default function useBouquetDropdown({
   const [selected, setSelected] = useState<string | undefined>();
 
   useEffect(() => {
-    Axios.get(`/shop/${shopId}/bouquets`).then(({ data }) => {
+    Axios.get(`/shop/${shop_id}/bouquets`).then(({ data }) => {
       setBouquets(data);
     });
   }, []);

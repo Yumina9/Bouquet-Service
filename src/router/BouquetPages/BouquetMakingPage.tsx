@@ -8,9 +8,10 @@ import MakingBouquetStepper from '../../components/Making/MakingBouquetStepper';
 import Button from '../../components/common/Button';
 import { Block } from '../../lib/styles/styled';
 import useBouquetMakingPage from './hooks/useBouquetMakingPage';
+import { GoShopMain } from '../../components/Shop/GoShopMain';
 
 const BouquetMakingPage = () => {
-  const { bouquet } = useBouquetMakingPage();
+  const { bouquet, shop_id } = useBouquetMakingPage();
 
   if (!bouquet) {
     return <h1>Loading..</h1>;
@@ -20,12 +21,15 @@ const BouquetMakingPage = () => {
     <>
       <Header />
       <Block>
+        <GoShopMain />
         <Body>
           <Typography type="H3" color={palette.color1} fontWeight="bold">
             Bouquet Making
           </Typography>
           {/* 여기 MakingBouquetSteepr 호출  */}
-          {bouquet && <MakingBouquetStepper {...bouquet} />}
+          {bouquet && (
+            <MakingBouquetStepper bouquet={bouquet} shop_id={shop_id} />
+          )}
         </Body>
       </Block>
     </>
