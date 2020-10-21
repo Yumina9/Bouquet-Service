@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import MiniHeader from '../../components/header/MiniHeader';
 import axios from 'axios';
-import Typography from '../../components/common/Typography';
+import Header from '../../components/header/Header';
 import palette from '../../lib/styles/palette';
-import { useParams, Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import ShopForm from '../../components/Shop/ShopForm';
+import styled from 'styled-components';
+import Typography from '../../components/common/Typography';
 import { Block } from '../../lib/styles/styled';
 import { ShopType } from '../Shop/ShopMainPage';
-import Flower, { FlowerType } from '../../components/flowerImg/Flower';
-import Header from '../../components/header/Header';
-import ShopForm from '../../components/Shop/ShopForm';
+import axiosInstance from '../../components/login/axios';
 
 const ShopMorePage = () => {
   const [shops, setShop] = useState([]);
+
   useEffect(() => {
-    axios.get(`/shops/`).then(({ data }) => setShop(data));
+    axiosInstance.get(`/shop/list`).then(({ data }) => setShop(data));
   }, []);
-  console.log(shops);
+
   return (
     <>
       <Header />

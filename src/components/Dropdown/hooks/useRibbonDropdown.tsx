@@ -1,8 +1,7 @@
-import Axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { RibbonType } from '../../flowerImg/Ribbon';
-import { UseDropdownProps } from '../Dropdown';
+import axiosInstance from '../../login/axios';
 import { RibbonDropdownProps } from '../RibbonDropdown';
 
 export default function useRibbonDropdown({
@@ -12,7 +11,9 @@ export default function useRibbonDropdown({
   const [selected, setSelected] = useState<string | undefined>();
   const { shop_id } = useParams<{ shop_id: string }>();
   useEffect(() => {
-    Axios.get(`/shop/${shop_id}/ribbons`).then(({ data }) => setRibbons(data));
+    axiosInstance
+      .get(`/shop/${shop_id}/ribbons`)
+      .then(({ data }) => setRibbons(data));
   }, []);
 
   console.log(ribbons);

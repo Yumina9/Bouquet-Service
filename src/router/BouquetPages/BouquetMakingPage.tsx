@@ -1,13 +1,11 @@
+import Header from '../../components/header/Header';
+import MakingBouquetStepper from '../../components/Making/MakingBouquetStepper';
+import palette from '../../lib/styles/palette';
 import React from 'react';
 import styled from 'styled-components';
-import { Link, useHistory } from 'react-router-dom';
-import Header from '../../components/header/Header';
 import Typography from '../../components/common/Typography';
-import palette from '../../lib/styles/palette';
-import MakingBouquetStepper from '../../components/Making/MakingBouquetStepper';
-import Button from '../../components/common/Button';
-import { Block } from '../../lib/styles/styled';
 import useBouquetMakingPage from './hooks/useBouquetMakingPage';
+import { Block } from '../../lib/styles/styled';
 import { GoShopMain } from '../../components/Shop/GoShopMain';
 
 const BouquetMakingPage = () => {

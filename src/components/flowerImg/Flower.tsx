@@ -61,7 +61,7 @@ const Flower: React.FC<FlowerType> = ({ ...flowers }) => {
 
   return (
     <>
-      <Box>
+      <Box >
         <Card className={classes.root}>
           <CardHeader
             action={

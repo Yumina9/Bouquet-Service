@@ -1,13 +1,9 @@
-import {
-  createStyles,
-  GridList,
-  GridListTile,
-  makeStyles,
-  Theme,
-} from '@material-ui/core';
 import React from 'react';
-import styled from 'styled-components';
-import { FlowerType } from './Flower';
+import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+
+import { FlowerType } from '../flowerImg/Flower';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,7 +21,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export const FlowerGrid = ({ flowers }: { flowers: FlowerType[] }) => {
+export default function ShopFlowerImageGrid({
+  flowers,
+}: {
+  flowers: FlowerType[];
+}) {
   const classes = useStyles();
 
   return (
@@ -39,4 +39,4 @@ export const FlowerGrid = ({ flowers }: { flowers: FlowerType[] }) => {
       </GridList>
     </div>
   );
-};
+}

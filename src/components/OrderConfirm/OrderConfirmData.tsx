@@ -14,44 +14,48 @@ export const OrderConfirmData = () => {
 
   return (
     <>
-      <Typography type="H5" color={palette.color4} fontWeight="bold">
-        꽃다발 종류
-      </Typography>
+      {OrderData ? (
+        <>
+          <Typography type="H5" color={palette.color4} fontWeight="bold">
+            꽃다발 종류
+          </Typography>
 
-      <p />
-      <Typography type="H7" color={palette.black} fontWeight="light">
-        {OrderData?.bouquet}
-      </Typography>
-      <p />
-      <Typography type="H5" color={palette.color4} fontWeight="bold">
-        꽃 종류
-      </Typography>
-      <p />
-      {OrderData?.flower}
-      <p />
-      <Typography type="H5" color={palette.color4} fontWeight="bold">
-        꽃 수량
-      </Typography>
-      <p />
-      <Typography type="H7" color={palette.black} fontWeight="light">
-        {OrderData?.flower_count}송이
-      </Typography>
-      <p />
-      <Typography type="H5" color={palette.color4} fontWeight="bold">
-        리본, 포장지
-      </Typography>
-      <p />
-      <Typography type="H7" color={palette.black} fontWeight="light">
-        리본 :{OrderData?.ribbon} | 포장지 :{OrderData?.wrappingPaper}
-      </Typography>
-      <p />
-      <Typography type="H5" color={palette.color4} fontWeight="bold">
-        금액
-      </Typography>
-      <p />
-      <Typography type="H7" color={palette.black} fontWeight="light">
-        {OrderData?.resultPrice}원
-      </Typography>
+          <p />
+          <Typography type="H7" color={palette.black} fontWeight="light">
+            {OrderData?.bouquet.name}
+          </Typography>
+          <p />
+          <Typography type="H5" color={palette.color4} fontWeight="bold">
+            꽃 종류
+          </Typography>
+          <p />
+          {OrderData?.flower}
+          <p />
+          <Typography type="H5" color={palette.color4} fontWeight="bold">
+            꽃 수량
+          </Typography>
+          <p />
+          <Typography type="H7" color={palette.black} fontWeight="light">
+            {OrderData?.flower_count}송이
+          </Typography>
+          <p />
+          <Typography type="H5" color={palette.color4} fontWeight="bold">
+            리본, 포장지
+          </Typography>
+          <p />
+          <Typography type="H7" color={palette.black} fontWeight="light">
+            리본 :{OrderData?.ribbon} | 포장지 :{OrderData?.wrappingPaper}
+          </Typography>
+          <p />
+          <Typography type="H5" color={palette.color4} fontWeight="bold">
+            금액
+          </Typography>
+          <p />
+          <Typography type="H7" color={palette.black} fontWeight="light">
+            {OrderData?.resultPrice}원
+          </Typography>
+        </>
+      ) : null}
     </>
   );
 };

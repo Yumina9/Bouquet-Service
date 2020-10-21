@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
 import Header from '../../components/header/Header';
@@ -10,6 +10,7 @@ import { Block } from '../../lib/styles/styled';
 import useBouquetExplanation from './hooks/useBouquetExplanation';
 import { useDispatch } from 'react-redux';
 import { insertOrderData } from '../../modules/order';
+
 import { GoShopMain } from '../../components/Shop/GoShopMain';
 
 const BouquetExplanationPage: React.FC<BouquetType> = () => {
@@ -18,8 +19,8 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
     shop_id: string;
     bouquet_id: string;
   }>();
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   const { bouquet } = useBouquetExplanation(bouquet_id);
 
   // 해당 페이지에 들어오면 주문 데이터에 해당 부켓 정보를 넣어준다.
@@ -43,7 +44,6 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
   if (!bouquet) {
     return <h1>Loading..</h1>;
   }
-  console.log('shop_id', shop_id);
   return (
     <>
       <Header />
@@ -51,7 +51,7 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
         {bouquet && (
           <>
             <GoShopMain />
-            <Box>
+            <Box style={{ background: '#f1f2f3' }}>
               <Detail>
                 <Img src={`${bouquet?.img}`} />
                 <Description>

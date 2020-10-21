@@ -74,7 +74,7 @@ const MakingBouquetStepper: React.FC<BouquetStepperProps> = ({
 
   return (
     <>
-      <Block>
+      <Block >
         <span>
           <img src={`${bouquet.img}`} style={{ width: '600px' }} />
         </span>
@@ -180,7 +180,6 @@ const MakingBouquetStepper: React.FC<BouquetStepperProps> = ({
               뒤로가기
             </Button>
 
-            {/* 여기 이상..? */}
             <Link
               to={'/orderConfirm'}
               style={{ color: 'inherit', textDecoration: 'none' }}

@@ -13,6 +13,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
+import Footer from '../../router/Footer';
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -140,6 +142,7 @@ export default function SignIn() {
           </form>
         </div>
       </Container>
+      
     </ThemeProvider>
   );
 }

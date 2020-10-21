@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { DataGrid, ColDef, ValueGetterParams } from '@material-ui/data-grid';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../modules';
+import { DataGrid, ColDef } from '@material-ui/data-grid';
 import { BouquetType } from '../../flowerImg/Bouquet';
 import { FlowerType } from '../../flowerImg/Flower';
-import Axios from 'axios';
+import styled from 'styled-components';
 
-type BouquetOrderType = {
+export type BouquetOrderType = {
   id?: number | undefined;
   bouquet?: BouquetType | undefined;
   flower?: FlowerType | undefined;
@@ -20,53 +18,52 @@ type BouquetOrderType = {
 
 const columns: ColDef[] = [
   { field: 'bouquet', headerName: '꽃다발', width: 150 },
-  { field: 'flower', headerName: '꽃', width: 150 },
-  { field: 'flowerCount', headerName: '꽃 수량', width: 70 },
+  { field: 'flower', headerName: '꽃', width: 200 },
+  { field: 'flowerCount', headerName: '꽃 수량', width: 200 },
   { field: 'ribbon', headerName: '리본', width: 150 },
   { field: 'wrappingPaper', headerName: '포장지', width: 150 },
-  { field: 'price', headerName: '금액', width: 70 },
+  { field: 'price', headerName: '금액', width: 150 },
 ];
 
-const rows = [];
+export const CurrentOrderPanel = ({
+  orders,
+}: {
+  orders: BouquetOrderType[];
+}) => {
+  console.log(orders);
 
-export const CurrentOrderPanel = () => {
-  const user = useSelector((state: RootState) => state?.user.user);
-  const [orderList, setOrderList] = React.useState<
-    BouquetOrderType | undefined
-  >();
-  React.useEffect(() => {
-    // Axios.get(`/bouquet_order/${user.shop}/orderlist`).then((data)=>setOrderList(data))
-  }, []);
+  const orderDto = orders.map((order) => ({
+    id: order.id as number,
+    bouquet: order.bouquet?.name as string,
+    flower: order.flower?.name as string,
+    flowerCount: order.flower_count,
+    ribbon: order.ribbon,
+    wrappingPaper: order.wrappingPaper,
+    price: order.price,
+  }));
 
-  const userBouquetOrder: BouquetOrderType | undefined = user?.bouquet_order;
-  console.log('악', userBouquetOrder);
-  // setOrderList({ ...orderList, userBouquetOrder });
-  // const orderItem = user?.bouquet_order.map(
-  //   ({ userBouquetOrder }) => {
-  //     return setOrderList({ ...orderList, userBouquetOrder  });
-  //   },
-  // );
-  // const rows: BouquetOrderType[]|undefined = [
-  //   {
-  //     bouquet: `${orderList?.bouquet}`,
-  //     flower: `${orderList?.flower}`,
-  //     flowerCount: `${orderList?.flower_count}`,
-  //     ribbon: `${orderList?.ribbon}`,
-  //     wrappingPaper: `${orderList?.wrappingPaper}`,
-  //     price: `${orderList?.price}`,
-  //   },
-  // ];
-  console.log(user?.bouquet_order);
   return (
-    <div style={{ height: 400, width: '100%' }}>
-      {user?.bouquet_order && (
+    <Block>
+      {orders && (
         <DataGrid
-          rows={rows}
+          rows={orderDto}
           columns={columns}
           pageSize={5}
           checkboxSelection
         />
       )}
-    </div>
+    </Block>
   );
 };
+
+const Block = styled.div`
+  width: '100%';
+  height: 400px;
+
+  .MuiDataGrid-colCellTitle,
+  .MuiDataGrid-cell,
+  .MuiDataGrid-rowCount,
+  .MuiTablePagination-caption {
+    font-size: 1.5rem;
+  }
+`;

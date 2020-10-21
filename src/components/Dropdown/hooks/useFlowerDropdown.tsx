@@ -1,9 +1,8 @@
-import Axios from 'axios';
+import axiosInstance from '../../login/axios';
+import { FlowerDropdownProps } from '../FlowerDropdown';
+import { FlowerType } from '../../flowerImg/Flower';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { FlowerType } from '../../flowerImg/Flower';
-import { UseDropdownProps } from '../Dropdown';
-import { FlowerDropdownProps } from '../FlowerDropdown';
 
 export default function useFlowerDropdown({
   onFlowerDropdownChange,
@@ -16,7 +15,7 @@ export default function useFlowerDropdown({
   const [selected, setSelected] = useState<string | undefined>();
 
   useEffect(() => {
-    Axios.get(`/shop/${shop_id}/flowers`).then(({ data }) => {
+    axiosInstance.get(`/shop/${shop_id}/flowers`).then(({ data }) => {
       setFlowers(data);
     });
   }, []);

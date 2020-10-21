@@ -1,10 +1,8 @@
-import Axios from 'axios';
+import axiosInstance from '../../login/axios';
+import { BouquetDropdownProps } from '../BouquetDropdown';
+import { BouquetType } from '../../flowerImg/Bouquet';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { BouquetType } from '../../flowerImg/Bouquet';
-import { BouquetDropdownProps } from '../BouquetDropdown';
-import { UseDropdownProps } from '../Dropdown';
-import { FlowerDropdownProps } from '../FlowerDropdown';
 
 export default function useBouquetDropdown({
   onBouquetDropdownChange,
@@ -17,7 +15,7 @@ export default function useBouquetDropdown({
   const [selected, setSelected] = useState<string | undefined>();
 
   useEffect(() => {
-    Axios.get(`/shop/${shop_id}/bouquets`).then(({ data }) => {
+    axiosInstance.get(`/shop/${shop_id}/bouquets`).then(({ data }) => {
       setBouquets(data);
     });
   }, []);

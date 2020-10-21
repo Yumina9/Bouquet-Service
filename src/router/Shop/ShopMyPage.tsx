@@ -48,7 +48,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function ShopMyPage() {
-  // type Information = { e: string };
   const classes = useStyles();
   const [type, setType] = useState<PanelType>(PanelType.PROFILE);
 
@@ -91,7 +90,7 @@ export default function ShopMyPage() {
                   보유 꽃
                 </a>
               </ButtonItem>
-              {/* <Divider />
+              <Divider />
               <ButtonItem onClick={() => setType(PanelType.ADDBOUQUET)}>
                 <a>
                   <Icon src={require('../../image/flowers.png')} />
@@ -103,16 +102,6 @@ export default function ShopMyPage() {
                   <Icon src={require('../../image/flower.png')} />꽃 추가
                 </a>
               </ButtonItem>
-              <Divider />
-              <ButtonItem onClick={() => setType(PanelType.CURRENT_ORDER)}>
-                <Icon src={require('../../image/menu.png')} />
-                현재 주문 목록
-              </ButtonItem>
-              <ButtonItem onClick={() => setType(PanelType.FINISHED_ORDER)}>
-                <Icon src={require('../../image/menu.png')} />
-                주문 완료 목록
-              </ButtonItem> */}
-              <Divider />
             </>
           </div>
         </Drawer>
