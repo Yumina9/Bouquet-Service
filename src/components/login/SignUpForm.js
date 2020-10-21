@@ -15,12 +15,15 @@ import { useDispatch } from 'react-redux';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 
+import Paper from '@material-ui/core/Paper';
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    
   },
   avatar: {
     margin: theme.spacing(1),
@@ -33,6 +36,14 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  inputStyle: {
+    width: '40%',
+    float: 'rigth',
+    display: 'inline-block',
+    textAlign: 'center',
+    fontSize: '15px',
+    boxShadow: 'none'
+  }
 }));
 
 export default function SignUp(props) {
@@ -141,15 +152,25 @@ const theme = createMuiTheme({
 				<CssBaseline />
 				<div className={classes.paper}>
 					<Avatar className={classes.avatar}></Avatar>
-					<Typography component="h1" variant="h5">
+					<Typography component="h1" variant="h3">
 						Sign up
 					</Typography>
 					<form className={classes.form} noValidate onSubmit={onSubmitHandler}>
 
 						{/* 유저 타입 선택 */}
+						<Grid container spacing={3}>
+              <Grid item xs={6}>
+                <input type="radio" onChange={checkChange} name="user_choice" value="U" />
+                <Paper className={classes.inputStyle}>고객</Paper>
+                
+              </Grid>
+              <Grid item xs={6}>
+                <input type="radio" onChange={checkChange} name="user_choice" value="S" />
+                <Paper className={classes.inputStyle}>판매</Paper>
+                
+              </Grid>
+            </Grid>
 						
-						<input type="radio" onChange={checkChange} name="user_choice" value="U" />고객
-						<input type="radio" onChange={checkChange} name="user_choice" value="S" />판매
 						<Grid container spacing={2}>
 							<Grid item xs={12}>
 								<TextField
