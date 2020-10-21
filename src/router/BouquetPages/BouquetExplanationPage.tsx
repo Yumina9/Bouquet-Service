@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import Header from '../../components/header/Header';
 import Button from '../../components/common/Button';
 import palette from '../../lib/styles/palette';
-import ExplanationImage from '../../components/Making/ExplanationImage';
 import Typography from '../../components/common/Typography';
 import { BouquetType } from '../../components/flowerImg/Bouquet';
 import { Block } from '../../lib/styles/styled';
-import useOrderConfirmForm from '../../components/OrderConfirm/hooks/useOrderConfirmForm';
-import { FlowerType } from '../../components/flowerImg/Flower';
 import useBouquetExplanation from './hooks/useBouquetExplanation';
 import { useDispatch } from 'react-redux';
 import { insertOrderData } from '../../modules/order';
-
-import { ShopType } from '../Shop/ShopMainPage';
 import { GoShopMain } from '../../components/Shop/GoShopMain';
+
 const BouquetExplanationPage: React.FC<BouquetType> = () => {
   // shop/:shop_id/bouquet/:bouquet_id
   const { shop_id, bouquet_id } = useParams<{
@@ -60,29 +55,36 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
               <Detail>
                 <Img src={`${bouquet?.img}`} />
                 <Description>
-                  <Typography
-                    type="H4"
-                    color={palette.color4}
-                    fontWeight="bold"
-                  >
-                    {`${bouquet?.name}`}
-                  </Typography>
-                  <Typography
-                    type="H7"
-                    color={palette.color4}
-                    fontWeight="light"
-                  >
-                    {`${bouquet?.description}`}
-                  </Typography>
-
-                  {/* TODO: 컴포넌트로 분리하여 부켓에 사용된 꽃 목록 이쁘게 나타내기 */}
-                  {/* 부켓에 사용된 꽃 목록 */}
-                  <h4>
-                    {bouquet.flower.map((f) => (
-                      <>#{f.name} </>
-                    ))}
-                  </h4>
                   <div>
+                    <p style={{ margin: '10px' }}>
+                      <Typography
+                        type="H4"
+                        color={palette.color4}
+                        fontWeight="bold"
+                      >
+                        {`${bouquet?.name}`}
+                      </Typography>
+                      <Typography
+                        type="H7"
+                        color={palette.color4}
+                        fontWeight="light"
+                      >
+                        {`${bouquet?.description}`}
+                      </Typography>
+                      <h4>
+                        {bouquet.flower.map((f) => (
+                          <>#{f.name} </>
+                        ))}
+                        {bouquet.wrappingpaper.map((w) => (
+                          <>#{w.name}</>
+                        ))}
+                      </h4>
+                    </p>
+                  </div>
+                  <p>
+                    <h2>상품 금액 : {bouquet.resultPrice} 원</h2>
+                  </p>
+                  <span>
                     <Link
                       to={`making`}
                       style={{ color: 'inherit', textDecoration: 'none' }}
@@ -99,7 +101,7 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
                         주문하기
                       </Button>
                     </Link>
-                  </div>
+                  </span>
                 </Description>
               </Detail>
             </Box>
@@ -117,24 +119,19 @@ const Box = styled.div`
   padding: 0, 20px;
   flex-direction: column;
   text-align: center;
-  & > :first-child {
-    flex: 8;
-  }
-
-  & > :last-child {
-    flex: 2;
-  }
   Button {
     padding: 14px 50px;
     font-size: 1.5rem;
     color: inherit;
     outline: none;
-    justify-content: right;
     float: left;
     margin: 5px;
   }
   span {
-    float: left;
+    display: flex;
+    flex-direction: row;
+    /* float: left; */
+    justify-content: center;
   }
 `;
 
@@ -163,17 +160,22 @@ const Description = styled.div`
   padding: 50px;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
   & > :first-child {
-    flex: 2;
+    flex: 8;
   }
 
   & > :last-child {
-    flex: 8;
+    flex: 1;
+    span {
+      justify-content: center;
+    }
   }
   h4 {
     color: ${palette.color3};
   }
-  div {
-    flex-direction: ;
-  }
+`;
+
+const Icon = styled.img`
+  width: 25px;
 `;
