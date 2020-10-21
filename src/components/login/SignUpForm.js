@@ -119,7 +119,7 @@ export default function SignUp(props) {
   const hasError = (passwordEntered) => (password.length < 5 ? true : false);
 
   const hasNotSameError = (passwordEntered) =>
-    password != confirmPassword ? true : false;
+    password !== confirmPassword ? true : false;
 
   const onSubmitHandler = (event) => {
     event.preventDefault(); // 아무 동작 안하고 버튼만 눌러도 리프레쉬 되는 것을 막는다
