@@ -43,7 +43,6 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
   if (!bouquet) {
     return <h1>Loading..</h1>;
   }
-
   return (
     <>
       <Header />
@@ -51,7 +50,7 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
         {bouquet && (
           <>
             <GoShopMain />
-            <Box>
+            <Box style={{ background: '#f1f2f3' }}>
               <Detail>
                 <Img src={`${bouquet?.img}`} />
                 <Description>
@@ -167,8 +166,5 @@ const Description = styled.div`
   }
   h4 {
     color: ${palette.color3};
-  }
-  div {
-    flex-direction: ;
   }
 `;

@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const MiniHeader = () => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const classes = useStyles();
   const auth = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -74,12 +74,12 @@ const MiniHeader = () => {
               <span style={{ color: 'white' }}>Flamingo</span>
             </Link>
           </Typography>
-          {isUserAuthenticated() == true ?(
+          {isUserAuthenticated() == true ? (
             <div>{userChoice?.username}님 환영합니다.</div>
-          ):(
+          ) : (
             <div></div>
           )}
-          
+
           {auth && (
             <div>
               <IconButton
@@ -106,7 +106,6 @@ const MiniHeader = () => {
                 open={open}
                 onClose={handleClose}
               >
-                
                 {isUserAuthenticated() == false ? (
                   <div>
                     <Link
@@ -126,8 +125,7 @@ const MiniHeader = () => {
                       </MenuItem>
                     </Link>
                   </div>
-                ) : 
-                userChoice?.user_choice == 'U' ? (
+                ) : userChoice?.user_choice == 'U' ? (
                   <div>
                     <Link
                       to={'/usermypage'}
