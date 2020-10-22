@@ -211,11 +211,11 @@ export default function SignUp() {
                   // error={hasError('password')}
                   error={hasNotSameError('confirmPassword')}
                   onChange={handleChange}
-                  helperText={
-                    hasNotSameError('confirmPassword')
-                      ? '입력한 비밀번호와 일치하지 않습니다.'
-                      : null
-                  }
+                  // helperText={
+                  //   hasNotSameError('confirmPassword')
+                  //     ? '입력한 비밀번호와 일치하지 않습니다.'
+                  //     : null
+                  // }
                 />
               </Grid>
             </Grid>
