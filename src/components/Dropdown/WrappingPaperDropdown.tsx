@@ -33,26 +33,5 @@ export const WrappingPaperDropdown: React.FC<WrappingPaperDropdownProps> = ({
         ))}
       </Select>
     </Dropdown>
-
-    // <>
-    //   <span
-    //     style={{
-    //       color: 'inherit',
-    //       textDecoration: 'none',
-    //       border: '0',
-    //       outline: '0',
-    //     }}
-    //   >
-    //     <Button
-    //       name={'wrappingPaper'}
-    //       value={name}
-    //       color="black"
-    //       bgColor="white"
-    //       onClick={onReserveChange}
-    //     >
-    //       {name}
-    //     </Button>
-    //   </span>
-    // </>
   );
 };

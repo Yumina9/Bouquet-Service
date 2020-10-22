@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import { Link, useParams } from 'react-router-dom';
-import palette from '../../lib/styles/palette';
 import { Panel, PanelType } from '../../components/Shop/Panel';
 import Header from '../../components/header/Header';
 import { useSelector } from 'react-redux';
@@ -21,10 +17,6 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       display: 'flex',
     },
-    // appBar: {
-    //   backgroundColor: palette.color5,
-    //   zIndex: theme.zIndex.drawer + 1,
-    // },
     drawer: {
       width: drawerWidth,
       flexShrink: 0,

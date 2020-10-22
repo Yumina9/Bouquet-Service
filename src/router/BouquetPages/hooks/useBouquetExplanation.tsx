@@ -3,7 +3,6 @@ import { BouquetType } from '../../../components/flowerImg/Bouquet';
 import { useEffect, useState } from 'react';
 
 export default function useBouquetExplanation(bouquetId: string) {
-  // shop/:shop_id/bouquet/:bouquet_id
   const [bouquet, setBouquet] = useState<BouquetType>();
 
   // bouquet을 조회한다.

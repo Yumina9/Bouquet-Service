@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
-import Button from '../common/Button';
-import axios from 'axios';
 import Typography from '../common/Typography';
 import { BouquetType } from '../flowerImg/Bouquet';
 import { FlowerType } from '../flowerImg/Flower';
@@ -14,7 +12,6 @@ import { BouquetDropdown } from '../Dropdown/BouquetDropdown';
 import { WrappingPaperDropdown } from '../Dropdown/WrappingPaperDropdown';
 import { RibbonDropdown } from '../Dropdown/RibbonDropdown';
 import { useDispatch } from 'react-redux';
-import { insertOrderData } from '../../modules/order';
 
 const MakingFlowerStepper: React.FC<FlowerType> = ({
   img,
@@ -55,18 +52,7 @@ const MakingFlowerStepper: React.FC<FlowerType> = ({
   };
 
   const dispatch = useDispatch();
-
-  // dispatch(
-  //   insertOrderData({
-  //     bouquet: reserve?.bouquet?.name,
-  //     flower: undefined,
-  //     flower_count: flower_count,
-  //     wrappingPaper: reserve?.wrappingPaper?.name,
-  //     ribbon: reserve?.ribbon?.name,
-  //     resultPrice: resultPrice + price * flower_count,
-  //   }),
-  // );
-
+  
   return (
     <>
       <Block>

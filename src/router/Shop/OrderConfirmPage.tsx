@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
 import Button from '../../components/common/Button';
 import { useHistory } from 'react-router-dom';
-import MiniHeader from '../../components/header/MiniHeader';
 import { Block } from '../../lib/styles/styled';
 import { OrderConfirmForm } from '../../components/OrderConfirm/OrderConfirmForm';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Axios from 'axios';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../modules';
-// import { OrderDataParams } from '../../modules/order';
 import axiosInstance from '../../components/login/axios';
 import Header from '../../components/header/Header';
 import { GoShopMain } from '../../components/Shop/GoShopMain';
@@ -80,32 +76,12 @@ const OrderConfirmPage = () => {
       });
   };
 
-  //   Axios({
-  //     method: 'post',
-  //     url: `http://localhost:8000/bouquet_order/`,
-  //     data: data,
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   })
-  //     .then((response) => {
-  //       console.log('호출 결과 :', response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('booking 오류', error);
-  //     });
-  // };
-
   return (
     <div>
       <Header />
       <Block>
         <GoShopMain />
         <Body>
-          {/* <Paper
-            className={classesTool.paper}
-            style={{ border: '1px solid blue', height: 'inherit' }}
-          > */}
           <Typography type="H3" color={palette.color1} fontWeight="bold">
             주문 확인
           </Typography>
@@ -127,7 +103,6 @@ const OrderConfirmPage = () => {
               주문완료
             </Button>
           </span>
-          {/* </Paper> */}
         </Body>
       </Block>
     </div>

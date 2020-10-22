@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axiosInstance from './axios';
 import { useHistory } from 'react-router-dom';
-//MaterialUI
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,7 +12,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
-import Footer from '../../router/Footer';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -70,7 +68,6 @@ export default function SignIn() {
   };
 
   const classes = useStyles();
-  // 로그인 폼 테마색상 변경
   const theme = createMuiTheme({
     palette: {
       primary: { main: "#FFA7B3" },
@@ -110,11 +107,6 @@ export default function SignIn() {
               autoComplete="current-password"
               onChange={handleChange}
             />
-            {/* 정보기억
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            /> */}
             <Button
               type="submit"
               fullWidth
@@ -127,12 +119,6 @@ export default function SignIn() {
               로그인
             </Button>
             <Grid container>
-              {/* 비밀번호 확읺는 링크
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid> */}
               <Grid item>
                 <Link href="/signup" variant="body2">
                   {"회원가입하기"}

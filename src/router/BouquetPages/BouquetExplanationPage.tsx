@@ -13,7 +13,7 @@ import { insertOrderData } from '../../modules/order';
 
 import { GoShopMain } from '../../components/Shop/GoShopMain';
 const BouquetExplanationPage: React.FC<BouquetType> = () => {
-  // shop/:shop_id/bouquet/:bouquet_id
+
   const { shop_id, bouquet_id } = useParams<{
     shop_id: string;
     bouquet_id: string;

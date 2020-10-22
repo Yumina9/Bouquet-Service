@@ -1,7 +1,5 @@
-import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import { ShopType } from '../../router/Shop/ShopMainPage';
 import Typography from '../common/Typography';

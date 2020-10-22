@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
-import { FlowerType } from '../../flowerImg/Flower';
+import { useState } from 'react';
 import { WrappingPaperType } from '../../flowerImg/WrappingPaper';
 import { RibbonType } from '../../flowerImg/Ribbon';
 import { BouquetType } from '../../flowerImg/Bouquet';
-import Axios from 'axios';
 
 export default function useMakingFlowerStepper() {
   const [flower_count, setFlowerCount] = useState(1);

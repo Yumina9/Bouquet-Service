@@ -1,16 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
-
-import BouquetList from '../../components/flowerImg/BouquetList';
-import Typography from '../../components/common/Typography';
-import palette from '../../lib/styles/palette';
 import { BouquetType } from '../../components/flowerImg/Bouquet';
 import { FlowerType } from '../../components/flowerImg/Flower';
 import ShopInfoBanner from '../../components/Shop/ShopInfoBanner';
 import Header from '../../components/header/Header';
 import useShopMainPage from './hooks/useShopMainPage';
-import { Container, Divider } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import ShopFlowerList from './ShopFlowerList';
 import ShopBouquetList from './ShopBouquetList';
 import { BouquetOrderType } from '../../components/Shop/Panel/CurrentOrderPanel';

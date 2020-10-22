@@ -1,10 +1,8 @@
-import palette from '../../lib/styles/palette';
 import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import {
   AppBar,
   Avatar,
-  Button,
   IconButton,
   makeStyles,
   Menu,
@@ -76,77 +74,6 @@ export default function Header() {
               Flamingo 🌹
             </Link>
           </Typography>
-
-          {/* <Typography variant="h4" color="inherit" noWrap align={'right'}>
-            {user ? (
-              <>
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle className={classes.icon} />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={handleClose}
-                >
-                  <Link
-                    to={'/usermypage'}
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                  >
-                    <MenuItem className={classes.menu} onClick={handleClose}>
-                      마이페이지
-                    </MenuItem>
-                  </Link>
-                  <Link
-                    to={'/logout'}
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                  >
-                    <MenuItem className={classes.menu} onClick={handleClose}>
-                      로그아웃
-                    </MenuItem>
-                  </Link>
-                </Menu>
-              </>
-            ) : (
-              <>
-                <Link
-                  to={'/signup'}
-                  style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                  <Button color="inherit">
-                    <Typography variant="h4" color="inherit">
-                      회원가입
-                    </Typography>
-                  </Button>
-                </Link>
-                <Link
-                  to={'/login'}
-                  style={{ color: 'inherit', textDecoration: 'none' }}
-                >
-                  <Button color="inherit">
-                    <Typography variant="h4" color="inherit">
-                      로그인
-                    </Typography>
-                  </Button>
-                </Link>
-              </>
-            )}
-          </Typography> */}
           {isUserAuthenticated() == true ? (
             <div style={{ fontSize: '15px' }}>
               {userChoice?.username}님 환영합니다.

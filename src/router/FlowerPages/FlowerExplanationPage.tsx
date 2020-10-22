@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import Header from '../../components/header/Header';
 import Button from '../../components/common/Button';
 import palette from '../../lib/styles/palette';
-import ExplanationImage from '../../components/Making/ExplanationImage';
 import Typography from '../../components/common/Typography';
 import { FlowerType } from '../../components/flowerImg/Flower';
 import { Block } from '../../lib/styles/styled';
@@ -13,7 +11,7 @@ import useFlowerMakingPage from './hooks/useFlowerMakingPage';
 import { GoShopMain } from '../../components/Shop/GoShopMain';
 
 const FlowerExplanationPage: React.FC<FlowerType> = () => {
-  const { shop_id, flower_id: flowerId } = useParams<{
+  const { flower_id: flowerId } = useParams<{
     shop_id: string;
     flower_id: string;
   }>();
