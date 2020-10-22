@@ -9,8 +9,9 @@ import {
   MenuItem,
   Toolbar,
 } from '@material-ui/core';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../modules';
+// import { useSelector } from 'react-redux';
+// import { RootState } from '../../modules';
+
 import { Link } from 'react-router-dom';
 import { AccountCircle } from '@material-ui/icons';
 import { isUserAuthenticated } from '../login/authUtils';
@@ -23,7 +24,7 @@ type choiceUserType = {
   profile_img: string;
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((_) => ({
   header: {
     display: 'flex',
     justifyContent: 'center',
@@ -46,7 +47,7 @@ export default function Header() {
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const user = useSelector((state: RootState) => state?.user.user);
+  // const user = useSelector((state: RootState) => state?.user.user);
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -71,10 +72,13 @@ export default function Header() {
             noWrap
           >
             <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
-              Flamingo 🌹
+              Flamingo
+              <span role="img" aria-label="">
+                🌹
+              </span>
             </Link>
           </Typography>
-          {isUserAuthenticated() == true ? (
+          {isUserAuthenticated() === true ? (
             <div style={{ fontSize: '15px' }}>
               {userChoice?.username}님 환영합니다.
             </div>
@@ -111,7 +115,7 @@ export default function Header() {
                 open={open}
                 onClose={handleClose}
               >
-                {isUserAuthenticated() == false ? (
+                {isUserAuthenticated() === false ? (
                   <div>
                     <Link
                       to={'/login'}
@@ -130,7 +134,7 @@ export default function Header() {
                       </MenuItem>
                     </Link>
                   </div>
-                ) : userChoice?.user_choice == 'U' ? (
+                ) : userChoice?.user_choice === 'U' ? (
                   <div>
                     <Link
                       to={'/usermypage'}

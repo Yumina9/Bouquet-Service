@@ -9,7 +9,7 @@ export default function useShopMainPage({ id }: { id: string }) {
     axiosInstance.get(`/shop/${id}/`).then(function (response) {
       setShop(response.data);
     });
-  }, []);
+  }, [id]);
 
   return {
     shop,

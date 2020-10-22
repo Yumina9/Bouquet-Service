@@ -15,7 +15,7 @@ export default function useWrappingPaperDropdown({
     axiosInstance
       .get(`/shop/${shop_id}/wrappingPapers`)
       .then(({ data }) => setWrappingpapers(data));
-  }, []);
+  }, [shop_id]);
 
   const handleChange = (
     event: React.ChangeEvent<{ name?: string; value: unknown }>,

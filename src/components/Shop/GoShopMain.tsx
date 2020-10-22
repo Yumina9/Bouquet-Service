@@ -12,7 +12,8 @@ export const GoShopMain = () => {
   const [shop, setShop] = useState<ShopType>();
   useEffect(() => {
     axiosInstance.get(`/shop/${shop_id}/`).then(({ data }) => setShop(data));
-  }, []);
+  }, [shop_id]);
+
   return (
     <Link
       to={`/shop/${shop_id}`}

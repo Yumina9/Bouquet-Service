@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
 import Typography from '../common/Typography';
 import { BouquetType } from '../flowerImg/Bouquet';
@@ -11,7 +11,6 @@ import { RibbonType } from '../flowerImg/Ribbon';
 import { BouquetDropdown } from '../Dropdown/BouquetDropdown';
 import { WrappingPaperDropdown } from '../Dropdown/WrappingPaperDropdown';
 import { RibbonDropdown } from '../Dropdown/RibbonDropdown';
-import { useDispatch } from 'react-redux';
 
 const MakingFlowerStepper: React.FC<FlowerType> = ({
   img,
@@ -19,8 +18,8 @@ const MakingFlowerStepper: React.FC<FlowerType> = ({
   description,
   price,
 }) => {
-  const { id } = useParams<{ id: string }>();
-  const [bouquet, setBouquet] = useState<BouquetType>();
+  // const { id } = useParams<{ id: string }>();
+  // const [bouquet, setBouquet] = useState<BouquetType>();
   const {
     flower_count,
     setFlowerCount,
@@ -51,13 +50,13 @@ const MakingFlowerStepper: React.FC<FlowerType> = ({
     setReserve({ ...reserve, ribbon });
   };
 
-  const dispatch = useDispatch();
-  
+  // const dispatch = useDispatch();
+
   return (
     <>
       <Block>
         <span>
-          <img src={`${img}`} style={{ width: '600px' }} />
+          <img src={`${img}`} style={{ width: '600px' }} alt="" />
         </span>
 
         <span>
