@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { insertOrderData } from '../../modules/order';
 
 import { GoShopMain } from '../../components/Shop/GoShopMain';
+import { FlowerType } from '../../components/flowerImg/Flower';
 
 const BouquetExplanationPage: React.FC<BouquetType> = () => {
   // shop/:shop_id/bouquet/:bouquet_id
@@ -30,17 +31,17 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
       dispatch(
         insertOrderData({
           bouquet,
-          flower: null,
+          flower: bouquet?.flower,
           flower_count: bouquet?.flower_count,
           resultPrice: bouquet?.resultPrice,
           shop_id: bouquet.shops,
-          ribbon: '',
-          wrappingPaper: '',
+          ribbon: bouquet?.ribbon,
+          wrappingPaper: bouquet?.wrappingpaper,
         }),
       );
     }
   }, [bouquet]);
-
+  console.log(Object.assign({}, bouquet?.flower));
   if (!bouquet) {
     return <h1>Loading..</h1>;
   }
