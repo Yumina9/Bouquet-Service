@@ -74,7 +74,6 @@ const UserMyPage = () => {
       <div className={classes.root}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            {/* <Paper className={classes.paper} style={{ background: '#f1f2f3' }}> */}
             <UserInfo>
               <p>
                 <UserImage src={require('../../image/user.png')} />
@@ -83,7 +82,6 @@ const UserMyPage = () => {
               <p className={classes.paper}>전화 : {userInfo?.user_phone}</p>
               <p className={classes.paper}>이메일 : {userInfo?.email}</p>
             </UserInfo>
-            {/* </Paper> */}
           </Grid>
         </Grid>
         <Divider />

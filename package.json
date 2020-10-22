@@ -1,6 +1,6 @@
 {
   "name": "bouquet-seller",
-  "proxy": "http://localhost:8000",
+  "proxy": "http://20.194.3.133",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

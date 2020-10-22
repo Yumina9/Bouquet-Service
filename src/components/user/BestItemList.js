@@ -45,7 +45,7 @@ const BestItemList = () => {
   const classes = useStyles();
   const [bestShopList, setBestShopList] = useState([]);
   useEffect(() => {
-    const apiUrl = `http://localhost:8000/shops/`;
+    const apiUrl = `http://20.194.3.133/shops/`;
     Axios.get(apiUrl)
       .then((res) => {
         setBestShopList(res.data);
