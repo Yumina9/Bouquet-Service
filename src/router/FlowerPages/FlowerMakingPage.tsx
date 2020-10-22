@@ -10,7 +10,7 @@ import useFlowerMakingPage from './hooks/useFlowerMakingPage';
 import { GoShopMain } from '../../components/Shop/GoShopMain';
 
 const FlowerMakingPage = () => {
-  const { shop_id, flower_id } = useParams<{
+  const { shop_id } = useParams<{
     shop_id: string;
     flower_id: string;
   }>();
