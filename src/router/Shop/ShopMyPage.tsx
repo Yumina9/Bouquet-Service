@@ -71,16 +71,12 @@ export default function ShopMyPage() {
               </Item>
               <Divider />
               <ButtonItem onClick={() => setType(PanelType.BOUQUET)}>
-                <a>
-                  <Icon src={require('../../image/flowers.png')} />
-                  보유 꽃다발
-                </a>
+                <Icon src={require('../../image/flowers.png')} />
+                보유 꽃다발
               </ButtonItem>
               <ButtonItem onClick={() => setType(PanelType.FLOWER)}>
-                <a>
-                  <Icon src={require('../../image/flower.png')} />
-                  보유 꽃
-                </a>
+                <Icon src={require('../../image/flower.png')} />
+                보유 꽃
               </ButtonItem>
               <Divider />
             </>

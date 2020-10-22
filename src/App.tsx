@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     axiosInstance.get(`user/me`).then(({ data }) => dispatch(login(data)));
-  }, []);
+  }, [dispatch]);
 
   return <Router />;
 }

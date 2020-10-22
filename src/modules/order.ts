@@ -44,7 +44,9 @@ export const initialState: OrderType = {
   shop_id: null,
 };
 
-function order(state = initialState, action) {
+type OrderAction = ReturnType<typeof insertOrderData>;
+
+function order(state = initialState, action: OrderAction) {
   switch (action.type) {
     case INSERT_ORDER_DATA:
       return {

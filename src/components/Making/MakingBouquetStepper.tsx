@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import Typography from '../common/Typography';
@@ -45,6 +45,7 @@ const MakingBouquetStepper: React.FC<BouquetStepperProps> = ({
   };
 
   const onFlowerDropdownChange = (flower: FlowerType) => {
+    console.log('FLOWER~', flower);
     setReserve({ ...reserve, flower });
   };
 
@@ -59,6 +60,7 @@ const MakingBouquetStepper: React.FC<BouquetStepperProps> = ({
 
   useEffect(() => {
     // 꽃다발 선택, 꽃 선택
+
     dispatch(
       insertOrderData({
         bouquet,
@@ -70,15 +72,13 @@ const MakingBouquetStepper: React.FC<BouquetStepperProps> = ({
         shop_id: bouquet.shops,
       }),
     );
-  }, [reserve, flower_count, resultPrice]);
-
-  console.log('flower.name', reserve?.flower?.name);
+  }, [reserve, flower_count, resultPrice, bouquet, dispatch]);
 
   return (
     <>
       <Block>
         <span>
-          <img src={`${bouquet.img}`} style={{ width: '600px' }} />
+          <img src={`${bouquet.img}`} style={{ width: '600px' }} alt="" />
         </span>
 
         <div>
@@ -215,10 +215,10 @@ const Block = styled.div`
   }
 `;
 
-const FlowerCountPlusMinus = styled.span`
-  display: flex;
-  justify-content: center;
-`;
+// const FlowerCountPlusMinus = styled.span`
+//   display: flex;
+//   justify-content: center;
+// `;
 
 const ButtonWrapper = styled.div`
   display: flex;

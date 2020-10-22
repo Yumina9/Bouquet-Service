@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
 import Header from '../components/header/Header';
 import MainBouquetList from '../components/bouquet/MainBouquetList';
 import palette from '../lib/styles/palette';
@@ -26,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     height: '100vh',
-    backgroundColor: 'rgba(0, 0, 0, .7)', 
+    backgroundColor: 'rgba(0, 0, 0, .7)',
     padding: theme.spacing(8, 0, 6),
 
     '&::before': {
@@ -121,9 +120,15 @@ export function Album() {
         {/* 인기 꽃다발 섹션 */}
         <Container className={classes.cardGrid} maxWidth="md">
           <Typography variant="h3" align="center" color="textPrimary" paragraph>
-            🌹 인기 꽃다발 🌹
+            <span role="img" aria-label="">
+              🌹
+            </span>{' '}
+            인기 꽃다발{' '}
+            <span role="img" aria-label="">
+              🌹
+            </span>
           </Typography>
-          
+
           <MainBouquetList />
         </Container>
       </main>
@@ -132,15 +137,15 @@ export function Album() {
   );
 }
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+// function Copyright() {
+//   return (
+//     <Typography variant="body2" color="textSecondary" align="center">
+//       {'Copyright © '}
+//       <Link color="inherit" href="https://material-ui.com/">
+//         Your Website
+//       </Link>{' '}
+//       {new Date().getFullYear()}
+//       {'.'}
+//     </Typography>
+//   );
+// }

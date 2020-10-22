@@ -14,7 +14,7 @@ export default function useBouquetMakingPage() {
     axiosInstance
       .get(`/bouquets/${bouquetId}`)
       .then(({ data }) => setBouquet(data));
-  }, []);
+  }, [bouquetId]);
 
   return { shop_id, bouquetId, bouquet };
 }

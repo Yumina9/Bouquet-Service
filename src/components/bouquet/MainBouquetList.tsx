@@ -54,8 +54,7 @@ export default function MainBouquetList() {
     <Grid container spacing={4}>
       {bouquets &&
         bouquets.map((bouquet) => {
-
-          if(bouquet.id < 8) {
+          if (bouquet.id < 8) {
             return (
               <Grid item key={bouquet.id} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
@@ -86,11 +85,10 @@ export default function MainBouquetList() {
                   </CardActions>
                 </Card>
               </Grid>
-            )
+            );
+          } else {
+            return null;
           }
-          
-        
-
         })}
     </Grid>
   );

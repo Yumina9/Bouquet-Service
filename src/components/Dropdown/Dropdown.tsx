@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import palette from '../../lib/styles/palette';
+// import styled from 'styled-components';
+// import palette from '../../lib/styles/palette';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
@@ -49,43 +49,43 @@ export const Dropdown: React.FC<{
   );
 };
 
-const Menu = styled.div`
-  .dropdown-button {
-    background-color: ${palette.color6};
-    padding: 8px;
-    font-size: 15px;
-    border: none;
-  }
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
+// const Menu = styled.div`
+//   .dropdown-button {
+//     background-color: ${palette.color6};
+//     padding: 8px;
+//     font-size: 15px;
+//     border: none;
+//   }
+//   .dropdown {
+//     position: relative;
+//     display: inline-block;
+//   }
 
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: ${palette.white};
-    min-width: 70px;
-    padding: 8px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  }
+//   .dropdown-content {
+//     display: none;
+//     position: absolute;
+//     background-color: ${palette.white};
+//     min-width: 70px;
+//     padding: 8px;
+//     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+//   }
 
-  .dropdown-content a {
-    color: black;
-    padding: 8px;
-    text-decoration: none;
-    display: block;
-  }
+//   .dropdown-content a {
+//     color: black;
+//     padding: 8px;
+//     text-decoration: none;
+//     display: block;
+//   }
 
-  .dropdown-content a:hover {
-    background-color: ${palette.color3};
-  }
+//   .dropdown-content a:hover {
+//     background-color: ${palette.color3};
+//   }
 
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
+//   .dropdown:hover .dropdown-content {
+//     display: block;
+//   }
 
-  .dropdown:hover .dropdown-button {
-    background-color: ${palette.color7};
-  }
-`;
+//   .dropdown:hover .dropdown-button {
+//     background-color: ${palette.color7};
+//   }
+// `;

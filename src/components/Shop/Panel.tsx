@@ -2,7 +2,7 @@ import React from 'react';
 import { MyInfoPanel } from './Panel/MyInfoPanel';
 import { FlowerListPanel } from './Panel/FlowerListPanel';
 import { BouquetListPanel } from './Panel/BouquetListPanel';
-import { CurrentOrderPanel } from './Panel/CurrentOrderPanel';
+// import { CurrentOrderPanel } from './Panel/CurrentOrderPanel';
 import { FinishOrderPanel } from './Panel/FinishOrderPanel';
 import { BouquetAddPanel } from './Panel/BouquetAddPanel';
 import { FlowerAddPanel } from './Panel/FlowerAddPanel';

@@ -5,7 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Typography from '../../components/common/Typography';
 import useBouquetMorePage from './hooks/useBouquetMorePage';
-import { Block } from '../../lib/styles/styled';
+// import { Block } from '../../lib/styles/styled';
 import { Link, useParams } from 'react-router-dom';
 import { Container } from '@material-ui/core';
 

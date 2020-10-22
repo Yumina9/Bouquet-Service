@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { PanelBlock } from '../../../lib/styles/styled';
 import { PanelForm } from '../PanelForm';
 

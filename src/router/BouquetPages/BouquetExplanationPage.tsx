@@ -12,10 +12,8 @@ import { useDispatch } from 'react-redux';
 import { insertOrderData } from '../../modules/order';
 import Footer from '../Footer';
 import { GoShopMain } from '../../components/Shop/GoShopMain';
-import { FlowerType } from '../../components/flowerImg/Flower';
 
 const BouquetExplanationPage: React.FC<BouquetType> = () => {
-
   const { shop_id, bouquet_id } = useParams<{
     shop_id: string;
     bouquet_id: string;
@@ -40,8 +38,8 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
         }),
       );
     }
-  }, [bouquet]);
-  console.log(Object.assign({}, bouquet?.flower));
+  }, [bouquet, dispatch]);
+
   if (!bouquet) {
     return <h1>Loading..</h1>;
   }
@@ -52,7 +50,13 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
         {bouquet && (
           <>
             <GoShopMain />
-            <Box style={{ borderTop: '2px solid gray', borderBottom: '2px solid gray', marginBottom: '50px' }}>
+            <Box
+              style={{
+                borderTop: '2px solid gray',
+                borderBottom: '2px solid gray',
+                marginBottom: '50px',
+              }}
+            >
               <Detail>
                 <Img src={`${bouquet?.img}`} />
                 <Description>
@@ -108,7 +112,6 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
             </Box>
           </>
         )}
-        
       </Block>
       <Footer />
     </>
@@ -177,8 +180,4 @@ const Description = styled.div`
   h4 {
     color: ${palette.color3};
   }
-`;
-
-const Icon = styled.img`
-  width: 25px;
 `;
