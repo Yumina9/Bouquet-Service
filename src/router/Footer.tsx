@@ -14,14 +14,14 @@ const Footer = () => {
     const classes = useStyles();
     return (    
       <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>Footer</Typography>
+        <Typography variant="h6" align="center" gutterBottom>Flamingo</Typography>
         <Typography
             variant="subtitle1"
             align="center"
             color="textSecondary"
             component="p"
         >
-          Something here to give the footer a purpose!
+          그 계절 가장 이쁜 꽃으로 행복을 채워드릴게요.
         </Typography>
         <Copyright />
       </footer>
@@ -34,8 +34,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="/">
+        Flamingo
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
