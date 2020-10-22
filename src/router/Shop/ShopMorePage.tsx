@@ -41,4 +41,5 @@ const List = styled.div`
   flex-wrap: wrap;
   margin: 20px;
   padding: 20px;
+  min-height: 500px;
 `;
