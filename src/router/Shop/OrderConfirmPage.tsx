@@ -4,7 +4,6 @@ import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
 import Button from '../../components/common/Button';
 import { useHistory } from 'react-router-dom';
-import MiniHeader from '../../components/header/MiniHeader';
 import { Block } from '../../lib/styles/styled';
 import { OrderConfirmForm } from '../../components/OrderConfirm/OrderConfirmForm';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
