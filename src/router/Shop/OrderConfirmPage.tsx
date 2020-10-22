@@ -62,7 +62,7 @@ const OrderConfirmPage = () => {
 
   const onOrder = () => {
     axiosInstance
-      .post(`http://localhost:8000/bouquet_order/`, {
+      .post(`/bouquet_order/`, {
         bouquet_id: OrderData.bouquet.id,
         flower_id: OrderData.flower.id,
         shop_id: OrderData.bouquet.shops,
