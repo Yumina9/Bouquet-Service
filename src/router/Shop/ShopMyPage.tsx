@@ -16,21 +16,29 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
+      
     },
     drawer: {
       width: drawerWidth,
       flexShrink: 0,
+      background: 'white',
+      borderRight: '1px solid rgba(0, 0, 0, 0.12)',
     },
     drawerPaper: {
       width: drawerWidth,
       top: 'auto',
+      borderTop: 'none',
+      
     },
     title: {
       flexGrow: 1,
       fontFamily: "'Lobster'",
+      
     },
     drawerContainer: {
       overflow: 'auto',
+      // border: '1px solid red',
+      
     },
     content: {
       flexGrow: 1,
@@ -64,7 +72,7 @@ export default function ShopMyPage() {
             <>
               <Divider />
               <Item>
-                <ButtonItem onClick={() => setType(PanelType.PROFILE)}>
+                <ButtonItem onClick={() => setType(PanelType.PROFILE)} >
                   <Icon src={require('../../image/shop.png')} />
                   Shop 정보
                 </ButtonItem>
