@@ -1,14 +1,16 @@
 import { BouquetType } from '../components/flowerImg/Bouquet';
 import { FlowerType } from '../components/flowerImg/Flower';
+import { RibbonType } from '../components/flowerImg/Ribbon';
+import { WrappingPaperType } from '../components/flowerImg/WrappingPaper';
 
 const INSERT_ORDER_DATA = 'INSERT_ORDER_DATA' as const;
 
 export type OrderType = {
-  bouquet: BouquetType | null;
-  flower: FlowerType | null;
+  bouquet: BouquetType | BouquetType[] | null;
+  flower: FlowerType | FlowerType[] | null;
   flower_count: number;
-  wrappingPaper: string | undefined;
-  ribbon: string | undefined;
+  wrappingPaper: string | WrappingPaperType[] | undefined;
+  ribbon: string | RibbonType[] | undefined;
   resultPrice: number;
   shop_id: number | null;
 };
