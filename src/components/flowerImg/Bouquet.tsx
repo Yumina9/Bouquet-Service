@@ -69,10 +69,9 @@ const Bouquet: React.FC<BouquetType> = ({ id, name, img, description }) => {
 
   return (
     <>
-      <Box >
-        <Card className={classes.root} >
+      <Box>
+        <Card className={classes.root}>
           <CardHeader
-          
             action={
               <IconButton aria-label="settings">
                 <MoreVertIcon />
@@ -80,11 +79,11 @@ const Bouquet: React.FC<BouquetType> = ({ id, name, img, description }) => {
             }
             title={`${name}`}
           />
-          <Link 
+          <Link
             to={`bouquet/${id}/`}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
-            <CardMedia className={classes.media} image={img} title={name}  />
+            <CardMedia className={classes.media} image={img} title={name} />
           </Link>
           <CardActions disableSpacing>
             <IconButton aria-label="add to favorites">

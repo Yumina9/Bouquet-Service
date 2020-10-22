@@ -15,6 +15,7 @@ import styled from 'styled-components';
 const useStyles = makeStyles({
   root: {
     maxWidth: 250,
+    height: 320,
     margin: '30px',
   },
   media: {
@@ -54,4 +55,16 @@ export default function ShopForm({ id, name, img, description }: ShopType) {
   );
 }
 
-const Form = styled.div``;
+const Form = styled.div`
+  Grid {
+    Card {
+      & > :first-child {
+        flex: 8;
+      }
+
+      & > :last-child {
+        flex: 2;
+      }
+    }
+  }
+`;

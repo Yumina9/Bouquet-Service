@@ -104,7 +104,7 @@ export default function SignUp(props) {
   const hasError = (passwordEntered) => (password.length < 5 ? true : false);
 
   const hasNotSameError = (passwordEntered) =>
-    password != confirmPassword ? true : false;
+    password !== confirmPassword ? true : false;
 
 const onSubmitHandler = (event) => {
   event.preventDefault();

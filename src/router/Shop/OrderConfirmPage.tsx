@@ -59,7 +59,7 @@ const OrderConfirmPage = () => {
 
   const onOrder = () => {
     axiosInstance
-      .post(`http://localhost:8000/bouquet_order/`, {
+      .post(`/bouquet_order/`, {
         bouquet_id: OrderData.bouquet.id,
         flower_id: OrderData.flower.id,
         shop_id: OrderData.bouquet.shops,
@@ -120,16 +120,22 @@ const Body = styled.span`
   text-align: center;
   justify-content: center;
   margin: 20px;
-  Button {
+  span {
     display: flex;
     text-align: center;
     justify-content: center;
-    padding: 14px 50px;
     margin: 20px;
-    font-size: 1.5rem;
-    color: inherit;
-    outline: none;
-    margin: 5px;
-    float: left;
+    Button {
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      padding: 14px 50px;
+      margin: 20px;
+      font-size: 1.5rem;
+      color: inherit;
+      outline: none;
+      margin: 5px;
+      float: left;
+    }
   }
 `;

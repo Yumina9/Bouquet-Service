@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dropdown } from './Dropdown';
-import Select from '@material-ui/core/Select';
+import { Select } from '@material-ui/core';
 import useFlowerDropdown from './hooks/useFlowerDropdown';
 import { FlowerType } from '../flowerImg/Flower';
 
@@ -28,8 +28,9 @@ export const FlowerDropdown: React.FC<FlowerDropdownProps> = ({
         }}
       >
         <option aria-label="None" value="" />
-        {flowers?.map(({ id, name, price }) => (
+        {flowers?.map(({ id, name, price, color }) => (
           <option value={id}>
+            {color}
             {name} (+{price})
           </option>
         ))}

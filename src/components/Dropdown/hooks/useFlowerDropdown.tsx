@@ -32,7 +32,7 @@ export default function useFlowerDropdown({
         return flower.id;
       })
       .indexOf(Number(event.target.value));
-
+    console.log('flowers', flowers);
     const selectedFlower = flowers[flowerIndex];
 
     setSelected(event.target.value as string);
@@ -40,7 +40,11 @@ export default function useFlowerDropdown({
     // NOTE: reserve = { flower: xxx, ribbon: xxx, wrapping paper: xxx }
     onFlowerDropdownChange(selectedFlower);
   };
-  console.log(flowers);
+
+  useEffect(() => {
+    console.log('flowerselected', selected);
+  }, [selected]);
+  console.log('flowers', flowers);
 
   return {
     flowers,

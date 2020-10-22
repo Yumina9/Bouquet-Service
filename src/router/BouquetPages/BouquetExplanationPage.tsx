@@ -12,6 +12,8 @@ import { useDispatch } from 'react-redux';
 import { insertOrderData } from '../../modules/order';
 import Footer from '../Footer';
 import { GoShopMain } from '../../components/Shop/GoShopMain';
+import { FlowerType } from '../../components/flowerImg/Flower';
+
 const BouquetExplanationPage: React.FC<BouquetType> = () => {
 
   const { shop_id, bouquet_id } = useParams<{
@@ -29,17 +31,17 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
       dispatch(
         insertOrderData({
           bouquet,
-          flower: null,
+          flower: bouquet?.flower,
           flower_count: bouquet?.flower_count,
           resultPrice: bouquet?.resultPrice,
           shop_id: bouquet.shops,
-          ribbon: '',
-          wrappingPaper: '',
+          ribbon: bouquet?.ribbon,
+          wrappingPaper: bouquet?.wrappingpaper,
         }),
       );
     }
   }, [bouquet]);
-
+  console.log(Object.assign({}, bouquet?.flower));
   if (!bouquet) {
     return <h1>Loading..</h1>;
   }
@@ -54,29 +56,36 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
               <Detail>
                 <Img src={`${bouquet?.img}`} />
                 <Description>
-                  <Typography
-                    type="H4"
-                    color={palette.color4}
-                    fontWeight="bold"
-                  >
-                    {`${bouquet?.name}`}
-                  </Typography>
-                  <Typography
-                    type="H7"
-                    color={palette.color4}
-                    fontWeight="light"
-                  >
-                    {`${bouquet?.description}`}
-                  </Typography>
-
-                  {/* TODO: 컴포넌트로 분리하여 부켓에 사용된 꽃 목록 이쁘게 나타내기 */}
-                  {/* 부켓에 사용된 꽃 목록 */}
-                  <h4>
-                    {bouquet.flower.map((f) => (
-                      <>#{f.name} </>
-                    ))}
-                  </h4>
                   <div>
+                    <p style={{ margin: '10px' }}>
+                      <Typography
+                        type="H4"
+                        color={palette.color4}
+                        fontWeight="bold"
+                      >
+                        {`${bouquet?.name}`}
+                      </Typography>
+                      <Typography
+                        type="H7"
+                        color={palette.color4}
+                        fontWeight="light"
+                      >
+                        {`${bouquet?.description}`}
+                      </Typography>
+                      <h4>
+                        {bouquet.flower.map((f) => (
+                          <>#{f.name} </>
+                        ))}
+                        {bouquet.wrappingpaper.map((w) => (
+                          <>#{w.name}</>
+                        ))}
+                      </h4>
+                    </p>
+                  </div>
+                  <p>
+                    <h2>상품 금액 : {bouquet.resultPrice} 원</h2>
+                  </p>
+                  <span>
                     <Link
                       to={`making`}
                       style={{ color: 'inherit', textDecoration: 'none' }}
@@ -93,7 +102,7 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
                         주문하기
                       </Button>
                     </Link>
-                  </div>
+                  </span>
                 </Description>
               </Detail>
             </Box>
@@ -113,24 +122,19 @@ const Box = styled.div`
   padding: 0, 20px;
   flex-direction: column;
   text-align: center;
-  & > :first-child {
-    flex: 8;
-  }
-
-  & > :last-child {
-    flex: 2;
-  }
   Button {
     padding: 14px 50px;
     font-size: 1.5rem;
     color: inherit;
     outline: none;
-    justify-content: right;
     float: left;
     margin: 5px;
   }
   span {
-    float: left;
+    display: flex;
+    flex-direction: row;
+    /* float: left; */
+    justify-content: center;
   }
 `;
 
@@ -159,14 +163,22 @@ const Description = styled.div`
   padding: 50px;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
   & > :first-child {
-    flex: 2;
+    flex: 8;
   }
 
   & > :last-child {
-    flex: 8;
+    flex: 1;
+    span {
+      justify-content: center;
+    }
   }
   h4 {
     color: ${palette.color3};
   }
+`;
+
+const Icon = styled.img`
+  width: 25px;
 `;
