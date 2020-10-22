@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       flexWrap: 'wrap',
       width: '100%',
+      height: '400px',
       '& > *': {
         margin: theme.spacing(1),
         width: '100%',
@@ -30,7 +31,7 @@ const ShopInfoBanner = ({ shop }: ShopInfoListProps) => {
 
   return (
     <div className={classes.root}>
-      <ShopInfoPanel >
+      <ShopInfoPanel style={{height: '400px'}}>
         <ShopInfo shop={shop} />
         <FlowerGrid flowers={flowers} />
       </ShopInfoPanel>
