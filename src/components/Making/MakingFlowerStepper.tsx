@@ -11,12 +11,17 @@ import { RibbonType } from '../flowerImg/Ribbon';
 import { BouquetDropdown } from '../Dropdown/BouquetDropdown';
 import { WrappingPaperDropdown } from '../Dropdown/WrappingPaperDropdown';
 import { RibbonDropdown } from '../Dropdown/RibbonDropdown';
+import Button from '../common/Button';
+import { Link, useHistory } from 'react-router-dom';
 
-const MakingFlowerStepper: React.FC<FlowerType> = ({
-  img,
-  name,
-  description,
-  price,
+type FlowerStepperProps = {
+  flower: FlowerType;
+  shop_id: string;
+};
+
+const MakingFlowerStepper: React.FC<FlowerStepperProps> = ({
+  flower,
+  shop_id,
 }) => {
   // const { id } = useParams<{ id: string }>();
   // const [bouquet, setBouquet] = useState<BouquetType>();
@@ -27,6 +32,8 @@ const MakingFlowerStepper: React.FC<FlowerType> = ({
     resultPrice,
     reserve,
   } = useMakingFlowerStepper();
+
+  const history = useHistory();
 
   const increaseFlowerCount = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -56,18 +63,18 @@ const MakingFlowerStepper: React.FC<FlowerType> = ({
     <>
       <Block>
         <span>
-          <img src={`${img}`} style={{ width: '600px' }} alt="" />
+          <img src={`${flower?.img}`} style={{ width: '600px' }} alt="" />
         </span>
 
-        <span>
+        <div>
           <div style={{ borderBottom: '1px solid lightgray' }}>
             <Typography type="H4" color={palette.color2} fontWeight="bold">
-              {`${name}`}
+              {`${flower?.name}`}
             </Typography>
           </div>
           <div style={{ borderBottom: '1px solid lightgray' }}>
             <Typography type="H7" color={palette.gray} fontWeight="medium">
-              {`${description}`}
+              {`${flower?.description}`}
             </Typography>
           </div>
           <tbody>
@@ -145,12 +152,31 @@ const MakingFlowerStepper: React.FC<FlowerType> = ({
               </th>
               <th>
                 <Typography type="H6" color={palette.color4} fontWeight="light">
-                  {resultPrice + price * flower_count}원
+                  {resultPrice + flower?.price * flower_count}원
                 </Typography>
               </th>
             </tr>
           </tbody>
-        </span>
+
+          <ButtonWrapper>
+            <Button
+              color={palette.white}
+              bgColor={palette.color3}
+              onClick={() => history.goBack()}
+            >
+              뒤로가기
+            </Button>
+
+            <Link
+              to={`/shop/${shop_id}/orderConfirm`}
+              style={{ color: 'inherit', textDecoration: 'none' }}
+            >
+              <Button color={palette.white} bgColor={palette.color3}>
+                주문하기
+              </Button>
+            </Link>
+          </ButtonWrapper>
+        </div>
       </Block>
     </>
   );
@@ -171,5 +197,19 @@ const Block = styled.div`
 
   & > :last-child {
     flex: 5;
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+
+  Button {
+    padding: 14px 50px;
+    font-size: 1.5rem;
+    color: inherit;
+    outline: none;
+    float: left;
+    margin: 5px;
   }
 `;

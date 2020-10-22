@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Header from '../../components/header/Header';
 import MakingFlowerStepper from '../../components/Making/MakingFlowerStepper';
 import Typography from '../../components/common/Typography';
 import palette from '../../lib/styles/palette';
-import Button from '../../components/common/Button';
 import { Block } from '../../lib/styles/styled';
 import useFlowerMakingPage from './hooks/useFlowerMakingPage';
 import { GoShopMain } from '../../components/Shop/GoShopMain';
@@ -16,9 +15,7 @@ const FlowerMakingPage = () => {
     flower_id: string;
   }>();
 
-  const { flower } = useFlowerMakingPage(flower_id);
-
-  let history = useHistory();
+  const { flower } = useFlowerMakingPage(shop_id);
 
   if (!flower) {
     return <h1>Loading..</h1>;
@@ -33,24 +30,7 @@ const FlowerMakingPage = () => {
           <Typography type="H3" color={palette.color1} fontWeight="bold">
             Bouquet Making
           </Typography>
-          {flower && <MakingFlowerStepper {...flower} />}
-
-          <Button
-            color={palette.white}
-            bgColor={palette.color3}
-            onClick={() => history.goBack()}
-          >
-            뒤로가기
-          </Button>
-
-          <Link
-            to={`/shop/${shop_id}/orderConfirm`}
-            style={{ color: 'inherit', textDecoration: 'none' }}
-          >
-            <Button color={palette.white} bgColor={palette.color3}>
-              주문하기
-            </Button>
-          </Link>
+          {flower && <MakingFlowerStepper flower={flower} shop_id={shop_id} />}
         </Body>
       </Block>
     </>
