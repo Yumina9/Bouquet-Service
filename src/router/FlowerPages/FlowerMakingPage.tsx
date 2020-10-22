@@ -11,7 +11,7 @@ import useFlowerMakingPage from './hooks/useFlowerMakingPage';
 import { GoShopMain } from '../../components/Shop/GoShopMain';
 
 const FlowerMakingPage = () => {
-  const { flower_id } = useParams<{
+  const { shop_id, flower_id } = useParams<{
     shop_id: string;
     flower_id: string;
   }>();
@@ -45,7 +45,7 @@ const FlowerMakingPage = () => {
           </Button>
 
           <Link
-            to={`/orderConfirm`}
+            to={`/shop/${shop_id}/orderConfirm`}
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
             <Button color={palette.white} bgColor={palette.color3}>
