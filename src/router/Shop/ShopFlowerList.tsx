@@ -14,16 +14,19 @@ export default function ShopFlowerList({
   flowers: FlowerType[];
 }) {
   return (
-    <ShopListLayout>
-      <Typography variant="h3" color="textPrimary" align="left">
-        Flower List
-      </Typography>
-      <DividerWrapper />
-      <ShowMoreWrapper>
-        <ShowMore to={`/shop/${id}/flowers`} />
-      </ShowMoreWrapper>
-      <FlowerList flowers={flowers} />
-    </ShopListLayout>
+    <>
+      <ShopListLayout>
+        <Typography variant="h3" color="textPrimary" align="left">
+          Flower List
+        </Typography>
+        <DividerWrapper />
+        <ShowMoreWrapper>
+          <ShowMore to={`/shop/${id}/flowers`} />
+        </ShowMoreWrapper>
+        <FlowerList flowers={flowers} />
+      </ShopListLayout>
+      <div style={{paddingTop: '50px'}}></div>
+    </>
   );
 }
 

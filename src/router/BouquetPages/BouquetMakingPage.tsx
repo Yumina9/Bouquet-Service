@@ -7,6 +7,7 @@ import Typography from '../../components/common/Typography';
 import useBouquetMakingPage from './hooks/useBouquetMakingPage';
 import { Block } from '../../lib/styles/styled';
 import { GoShopMain } from '../../components/Shop/GoShopMain';
+import Footer from '../Footer';
 
 const BouquetMakingPage = () => {
   const { bouquet, shop_id } = useBouquetMakingPage();
@@ -30,6 +31,7 @@ const BouquetMakingPage = () => {
           )}
         </Body>
       </Block>
+      <Footer />
     </>
   );
 };

@@ -30,7 +30,7 @@ const ShopInfoBanner = ({ shop }: ShopInfoListProps) => {
 
   return (
     <div className={classes.root}>
-      <ShopInfoPanel>
+      <ShopInfoPanel >
         <ShopInfo shop={shop} />
         <FlowerGrid flowers={flowers} />
       </ShopInfoPanel>

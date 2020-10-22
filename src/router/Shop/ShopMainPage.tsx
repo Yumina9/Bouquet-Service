@@ -10,7 +10,7 @@ import { Container } from '@material-ui/core';
 import ShopFlowerList from './ShopFlowerList';
 import ShopBouquetList from './ShopBouquetList';
 import { BouquetOrderType } from '../../components/Shop/Panel/CurrentOrderPanel';
-
+import Footer from '../Footer';
 export type ShopType = {
   id: number;
   img: string;
@@ -39,11 +39,14 @@ const ShopMainPage = () => {
             <ShopInfoBanner shop={shop} />
             <ShopBouquetList id={id} bouquets={shop.bouquets} />
             <ShopFlowerList id={id} flowers={shop.flowers} />
+            
           </Block>
         ) : (
           <h1>Loading...</h1>
         )}
+        
       </Container>
+      <Footer />
     </>
   );
 };
