@@ -34,7 +34,6 @@ const FlowerMakingPage = () => {
             Bouquet Making
           </Typography>
           {flower && <MakingFlowerStepper {...flower} />}
-          {/* MakingFlowerStepper에 flower가 처음에 빈 객체이기 때문에 있을 경우에만 렌더링 */}
 
           <Button
             color={palette.white}

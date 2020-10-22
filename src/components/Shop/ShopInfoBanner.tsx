@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme: Theme) =>
       '& > *': {
         margin: theme.spacing(1),
         width: '100%',
-        // height: theme.spacing(16),
       },
     },
   }),
@@ -31,7 +30,7 @@ const ShopInfoBanner = ({ shop }: ShopInfoListProps) => {
 
   return (
     <div className={classes.root}>
-      <ShopInfoPanel>
+      <ShopInfoPanel >
         <ShopInfo shop={shop} />
         <FlowerGrid flowers={flowers} />
       </ShopInfoPanel>

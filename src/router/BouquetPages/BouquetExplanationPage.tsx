@@ -10,12 +10,12 @@ import { Block } from '../../lib/styles/styled';
 import useBouquetExplanation from './hooks/useBouquetExplanation';
 import { useDispatch } from 'react-redux';
 import { insertOrderData } from '../../modules/order';
-
+import Footer from '../Footer';
 import { GoShopMain } from '../../components/Shop/GoShopMain';
 import { FlowerType } from '../../components/flowerImg/Flower';
 
 const BouquetExplanationPage: React.FC<BouquetType> = () => {
-  // shop/:shop_id/bouquet/:bouquet_id
+
   const { shop_id, bouquet_id } = useParams<{
     shop_id: string;
     bouquet_id: string;
@@ -52,7 +52,7 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
         {bouquet && (
           <>
             <GoShopMain />
-            <Box style={{ background: '#f1f2f3' }}>
+            <Box style={{ borderTop: '2px solid gray', borderBottom: '2px solid gray', marginBottom: '50px' }}>
               <Detail>
                 <Img src={`${bouquet?.img}`} />
                 <Description>
@@ -108,7 +108,9 @@ const BouquetExplanationPage: React.FC<BouquetType> = () => {
             </Box>
           </>
         )}
+        
       </Block>
+      <Footer />
     </>
   );
 };

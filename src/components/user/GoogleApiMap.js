@@ -8,7 +8,6 @@ import {
 import styled from 'styled-components';
 
 const GoogleApiMap = () => {
-  //Dynamically showing marker using Geolocation API
   const [currentPosition, setCurrentPosition] = useState({});
 
   const success = (position) => {
@@ -69,7 +68,6 @@ const GoogleApiMap = () => {
         lat: 37.4661635,
         lng: 126.9020374,
       },
-      // 물고기파는꽃집 37.4661635!4d126.9020374
     },
     {
       name: '아미플로라',
@@ -78,7 +76,6 @@ const GoogleApiMap = () => {
         lat: 37.4630783,
         lng: 126.9059344,
       },
-      // 아미플로라 37.4630783!4d126.9059344
     },
     {
       name: '꽃나드리',
@@ -87,7 +84,6 @@ const GoogleApiMap = () => {
         lat: 37.4612126,
         lng: 126.8990913,
       },
-      // 꽃나드리 37.4612126!4d126.8990913
     },
   ];
   const mapStyle = {
@@ -117,7 +113,6 @@ const GoogleApiMap = () => {
               clickable={true}
               onCloseClick={() => setSelected({})}
             >
-              {/* 따로 값을 줄 경우 나오지 않아서 하나에 다 넣은 상태 */}
               <div>
                 Shop : {selected.name}
                 <br />

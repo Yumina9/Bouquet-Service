@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axiosInstance from './axios';
 import { useHistory } from 'react-router-dom';
-//MaterialUI
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,7 +10,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { useDispatch } from 'react-redux';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 
@@ -30,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -54,8 +52,6 @@ export default function SignUp(props) {
     password: '',
     user_choice: '',
     user_phone: '',
-    // zip_code: '',
-    // user_address: '', // 시연을 위해 감춤
   });
 
   const [formData, updateFormData] = useState(initialFormData);
@@ -63,7 +59,6 @@ export default function SignUp(props) {
   const handleChange = (e) => {
     updateFormData({
       ...formData,
-      // Trimming any whitespace
       [e.target.name]: e.target.value.trim(),
     });
   };
@@ -79,8 +74,6 @@ export default function SignUp(props) {
         password: formData.password,
         user_choice: formData.user_choice,
         user_phone: formData.user_phone,
-        // zip_code: formData.zip_code,
-        // user_address: formData.user_address,
       })
       .then((res) => {
         history.push('/login');
@@ -104,28 +97,9 @@ export default function SignUp(props) {
       [event.target.name]: event.target.value.trim(),
     });
   };
-  const { gilad, jason, antoine } = state;
-  const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
+
   const [password, setPassword] = useState('');
-  const [username, setUserName] = useState('');
   const [confirmPassword, setconfirmPassword] = useState('');
-
-  const onEmailHandler = (event) => {
-    setEmail(event.currentTarget.value);
-  };
-
-  const onPasswordHandler = (event) => {
-    setPassword(event.currentTarget.value);
-  };
-
-  const onNameHandler = (event) => {
-    setUserName(event.currentTarget.value);
-  };
-
-  const onconfirmPasswordHandler = (event) => {
-    setconfirmPassword(event.currentTarget.value);
-  };
 
   const hasError = (passwordEntered) => (password.length < 5 ? true : false);
 
@@ -133,7 +107,7 @@ export default function SignUp(props) {
     password !== confirmPassword ? true : false;
 
 const onSubmitHandler = (event) => {
-  event.preventDefault(); // 아무 동작 안하고 버튼만 눌러도 리프레쉬 되는 것을 막는다
+  event.preventDefault();
   
 }  
 
@@ -157,7 +131,6 @@ const theme = createMuiTheme({
 					</Typography>
 					<form className={classes.form} noValidate onSubmit={onSubmitHandler}>
 
-						{/* 유저 타입 선택 */}
 						<Grid container spacing={3}>
               <Grid item xs={6}>
                 <input type="radio" onChange={checkChange} name="user_choice" value="U" />
@@ -182,8 +155,6 @@ const theme = createMuiTheme({
 									name="email"
 									autoComplete="email"
 									onChange={handleChange}
-					// onChange={onEmailHandler}
-					
 								/>
 							</Grid>
 							<Grid item xs={12}>
@@ -195,7 +166,6 @@ const theme = createMuiTheme({
 									label="성함"
 									name="username"
 									autoComplete="username"
-									// onChange={onNameHandler}
 									onChange={handleChange}
 								/>
 							</Grid>
@@ -211,30 +181,6 @@ const theme = createMuiTheme({
 									onChange={handleChange}
 								/>
 							</Grid>
-							{/* <Grid item xs={12}>
-								<TextField
-									variant="outlined"
-									required
-									fullWidth
-									id="zip_code"
-									label="우편번호"
-									name="zip_code"
-									autoComplete="zip_code"
-									onChange={handleChange}
-								/>
-							</Grid>
-							<Grid item xs={12}>
-								<TextField
-									variant="outlined"
-									required
-									fullWidth
-									id="user_address"
-									label="주소"
-									name="user_address"
-									autoComplete="user_address"
-									onChange={handleChange}
-								/>
-							</Grid> */}
 							<Grid item xs={12}>
 								<TextField
 									variant="outlined"
@@ -267,13 +213,6 @@ const theme = createMuiTheme({
 									}
 								/>
 							</Grid>
-							{/* 이메일 프로모션, 업데이트 정보받는 체크박스
-							<Grid item xs={12}>
-								<FormControlLabel
-									control={<Checkbox value="allowExtraEmails" color="primary" />}
-									label="I want to receive inspiration, marketing promotions and updates via email."
-								/>
-							</Grid> */}
             </Grid>
             <Button
               type="submit"

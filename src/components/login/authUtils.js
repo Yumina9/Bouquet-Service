@@ -1,15 +1,11 @@
-import { Cookies } from "react-cookie";
-
 //사용자 브라우저 쿠키에서 인증토큰 조회 반환 재사용 함수
 const getUserToken = () => {
-//   const cookies = new Cookies();
   const userToken = localStorage.getItem("access_token");
   return userToken;
 };
 
 //쿠키 파기하기
 const setCookieExpire = () => {
-//   const cookies = new Cookies();
   localStorage.removeItem("refresh_token");
 };
 
@@ -22,8 +18,7 @@ const isUserAuthenticated = () => {
     //인증이 안된 상태
     return false;
   } else {
-    return true;
-    
+    return true;  
     //인증 완료 상태
   }
 };

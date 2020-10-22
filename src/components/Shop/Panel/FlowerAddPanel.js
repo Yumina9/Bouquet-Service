@@ -1,24 +1,12 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import Typography from '../../common/Typography';
 import palette from '../../../lib/styles/palette';
 import { PanelBlock } from '../../../lib/styles/styled';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '../../common/Button';
-import { FlowerDropdown } from '../../Dropdown/FlowerDropdown';
-import { FlowerType } from '../../flowerImg/Flower';
-import useMakingBouquetStepper from '../../Making/hooks/useMakingBouquetStepper';
-import { WrappingPaperDropdown } from '../../Dropdown/WrappingPaperDropdown';
-import { RibbonDropdown } from '../../Dropdown/RibbonDropdown';
-import { WrappingPaperType } from '../../flowerImg/WrappingPaper';
-import { RibbonType } from '../../flowerImg/Ribbon';
-import Box from '@material-ui/core/Box';
-import InputBase from '@material-ui/core/InputBase';
 import { useBorderedInputBaseStyles } from '@mui-treasury/styles/inputBase/bordered';
 import { PanelForm } from '../PanelForm';
 import useMakingFlowerStepper from '../../Making/hooks/useMakingFlowerStepper';
-import { BouquetType } from '../../flowerImg/Bouquet';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
@@ -35,11 +23,7 @@ export const FlowerAddPanel = () => {
   const classes = useStyles();
   let history = useHistory();
   const {
-    flower_count,
-    setFlowerCount,
-    // setReserve,
-    resultPrice,
-    // reserve,
+    
   } = useMakingFlowerStepper();
   const styles = useBorderedInputBaseStyles();
 
@@ -130,16 +114,6 @@ export const FlowerAddPanel = () => {
               value={reserve.color}
               onChange={(e) => onReserveChange(e)}
             />
-
-            {/* <Typography type="H5" color={palette.color4} fontWeight="bold">꽃 사진 첨부</Typography>
-            <TextField 
-              id="outlined-basic"
-              label="사진첨부"
-              variant="outlined"
-              name="description"
-              value={reserve.description}
-              onChange={(e) => onReserveChange(e)}
-            /> */}
             <Typography type="H5" color={palette.color4} fontWeight="bold">금액</Typography>
             <TextField 
               id="outlined-basic"

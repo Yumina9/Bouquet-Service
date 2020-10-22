@@ -25,10 +25,6 @@ const CustomSelect = () => {
             width: '100%',
           }}
         >
-          {/* <Button color={palette.color4} bgColor={palette.color3}>
-            직접 선택하기
-          </Button> */}
-          {/* Todo 버튼 중앙정렬이 되지 않아 임의로 변경 */}
           <Link to="/">
             <button
               style={{

@@ -52,6 +52,7 @@ const Router = () => {
           path="/shop/:shop_id/orderConfirm"
           component={OrderConfirmPage}
         />
+        {/* 로그인 마이페이지 */}
         <Route path="/usermain" component={UserMain} />
         <Route path="/usermypage" component={UserMyPage} />
         <Route path="/login" component={LoginPage} />

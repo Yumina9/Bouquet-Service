@@ -29,7 +29,7 @@ const ShopInfo = ({ shop }: ShopInfoListProps) => {
             </a>
           )}
           {shop.facebook && (
-            <a href={shop.facebook}>
+            <a href={shop.facebook} >
               <FacebookIcon fontSize="large" />
             </a>
           )}

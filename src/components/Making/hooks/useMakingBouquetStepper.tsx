@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FlowerType } from '../../flowerImg/Flower';
 import { WrappingPaperType } from '../../flowerImg/WrappingPaper';
 import { RibbonType } from '../../flowerImg/Ribbon';
-import { BouquetType } from '../../flowerImg/Bouquet';
 
 export default function useMakingBouquetStepper() {
   const [flower_count, setFlowerCount] = useState(1);

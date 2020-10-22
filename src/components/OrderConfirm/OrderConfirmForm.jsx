@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import palette from '../../lib/styles/palette';
-// import Typography from '../common/Typography';
 import useMakingBouquetStepper from '../Making/hooks/useMakingFlowerStepper';
 import useOrderConfirmForm from './hooks/useOrderConfirmForm';
 import { OrderAction } from '../../modules/order';
@@ -53,9 +52,6 @@ export const OrderConfirmForm = () => {
           <CardHeader title="주문 목록" className={classes.header} />
           <Divider variant="middle" />
           <Divider variant="middle" />
-          {/* <Typography variant="h4" align="center">
-            주문 정보
-          </Typography> */}
 
           <CardContent>
             <div className={classes.list}>
@@ -63,15 +59,6 @@ export const OrderConfirmForm = () => {
             </div>
           </CardContent>
           <Divider variant="middle" />
-          {/* <CardActions className={classes.action}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-            >
-              Buy
-            </Button>
-          </CardActions> */}
         </Card>
       </Body>
     </>

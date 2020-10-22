@@ -14,16 +14,18 @@ export default function ShopBouquetList({
   bouquets: BouquetType[];
 }) {
   return (
-    <ShopListLayout>
-      <Typography variant="h3" color="textPrimary" align="left">
-        Bouquet List
-      </Typography>
-      <DividerWrapper />
-      <ShowMoreWrapper>
-        <ShowMore to={`/shop/${id}/bouquets`} />
-      </ShowMoreWrapper>
-      <BouquetList bouquets={bouquets} />
-    </ShopListLayout>
+    <>
+      <ShopListLayout>
+        <Typography variant="h3" color="textPrimary" align="left">
+          Bouquet List
+        </Typography>
+        <DividerWrapper />
+        <ShowMoreWrapper>
+          <ShowMore to={`/shop/${id}/bouquets`} />
+        </ShowMoreWrapper>
+        <BouquetList bouquets={bouquets} />
+      </ShopListLayout>
+    </>
   );
 }
 

@@ -1,11 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import palette from '../../lib/styles/palette';
 import Typography from '../common/Typography';
-import useMakingBouquetStepper from '../Making/hooks/useMakingFlowerStepper';
 import useOrderConfirmForm from './hooks/useOrderConfirmForm';
-// import { OrderAction } from '../../modules/order';
 import { RootState } from '../../modules';
 
 export const OrderConfirmData = () => {
@@ -61,18 +58,3 @@ export const OrderConfirmData = () => {
     </>
   );
 };
-
-// const Body = styled.div`
-//   display: flex-reverse;
-//   text-align: center;
-//   justify-content: center;
-//   margin: 20px;
-//   Button {
-//     padding: 14px 50px;
-//     font-size: 1.5rem;
-//     color: inherit;
-//     outline: none;
-//     margin: 5px;
-//     float: left;
-//   }
-// `;

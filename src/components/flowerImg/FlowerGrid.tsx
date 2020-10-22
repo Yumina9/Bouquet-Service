@@ -6,7 +6,6 @@ import {
   Theme,
 } from '@material-ui/core';
 import React from 'react';
-import styled from 'styled-components';
 import { FlowerType } from './Flower';
 
 const useStyles = makeStyles((theme: Theme) =>

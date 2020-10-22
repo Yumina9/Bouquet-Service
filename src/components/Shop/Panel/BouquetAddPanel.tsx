@@ -15,8 +15,7 @@ import { RibbonType } from '../../flowerImg/Ribbon';
 import InputBase from '@material-ui/core/InputBase';
 import { useBorderedInputBaseStyles } from '@mui-treasury/styles/inputBase/bordered';
 import { PanelForm } from '../PanelForm';
-// import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
@@ -34,7 +33,6 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 export const BouquetAddPanel = () => {
-  // const styles = useFadedShadowStyles();
   const classes = useStyles();
   const styles = useBorderedInputBaseStyles();
   const {
@@ -63,7 +61,6 @@ export const BouquetAddPanel = () => {
   return (
     <>
       <PanelBlock>
-        {/* <Box width={'80%'} borderRadius={24} height={160} classes={styles} > */}
         <PanelForm title="꽃다발 추가하기">
           <>
             <Typography type="H6" color={palette.color4} fontWeight="bold">
@@ -75,10 +72,6 @@ export const BouquetAddPanel = () => {
                 classes={styles}
                 placeholder={'꽃다발 이름을 입력하세요'}
               />
-              {/* <Input
-            placeholder="꽃다발 이름을 입력하세요"
-            inputProps={{ 'aria-label': 'description' }}
-          /> */}
             </Typography>
             <p />
             <Typography type="H6" color={palette.color4} fontWeight="bold">
@@ -135,7 +128,6 @@ export const BouquetAddPanel = () => {
               추가하기
             </Button>
           </>
-          {/* </Box> */}
         </PanelForm>
       </PanelBlock>
     </>

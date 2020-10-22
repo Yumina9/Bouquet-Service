@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -11,7 +11,6 @@ import Typography from '@material-ui/core/Typography';
 import { ShopType } from '../../router/Shop/ShopMainPage';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Axios from 'axios';
 
 const useStyles = makeStyles({
   root: {
@@ -31,9 +30,6 @@ export default function ShopForm({ id, name, img, description }: ShopType) {
   return (
     <Form>
       <Grid container spacing={4}>
-        {/* {shops &&
-          shops.map((shop) => ( */}
-        {/* <Grid item key={shop.id} xs={12} sm={6} md={4}> */}
         <Card className={classes.root}>
           <CardActionArea>
             <CardMedia className={classes.media} image={img} title={name} />
@@ -54,8 +50,6 @@ export default function ShopForm({ id, name, img, description }: ShopType) {
             </Link>
           </CardActions>
         </Card>
-        {/* </Grid> */}
-        {/* ))} */}
       </Grid>
     </Form>
   );

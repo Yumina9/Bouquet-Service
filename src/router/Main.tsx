@@ -6,19 +6,15 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import UserMain from './User/UserMain';
 import Header from '../components/header/Header';
 import MainBouquetList from '../components/bouquet/MainBouquetList';
 import palette from '../lib/styles/palette';
 import { useHistory } from 'react-router-dom';
-
+import Footer from './Footer';
 const Main = () => {
   return (
     <>
       <Album />
-      {/* <div>
-        <UserMain />
-      </div> */}
     </>
   );
 };
@@ -30,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     height: '100vh',
-    backgroundColor: 'rgba(0, 0, 0, .7)', // theme.palette.background.paper,
+    backgroundColor: 'rgba(0, 0, 0, .7)', 
     padding: theme.spacing(8, 0, 6),
 
     '&::before': {
@@ -127,26 +123,11 @@ export function Album() {
           <Typography variant="h3" align="center" color="textPrimary" paragraph>
             🌹 인기 꽃다발 🌹
           </Typography>
+          
           <MainBouquetList />
         </Container>
       </main>
-
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="textSecondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </footer>
-      {/* End footer */}
+      <Footer />
     </>
   );
 }

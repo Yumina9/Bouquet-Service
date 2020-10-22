@@ -15,6 +15,3 @@ export const PanelBlock = styled.div`
   display: flex-reverse;
   justify-content: center;
 `;
-
-// export const
-// @media(min-width:426px)
