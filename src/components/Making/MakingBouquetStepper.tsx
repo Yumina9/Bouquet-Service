@@ -72,9 +72,11 @@ const MakingBouquetStepper: React.FC<BouquetStepperProps> = ({
     );
   }, [reserve, flower_count, resultPrice]);
 
+  console.log('flower.name', reserve?.flower?.name);
+
   return (
     <>
-      <Block >
+      <Block>
         <span>
           <img src={`${bouquet.img}`} style={{ width: '600px' }} />
         </span>
@@ -181,7 +183,7 @@ const MakingBouquetStepper: React.FC<BouquetStepperProps> = ({
             </Button>
 
             <Link
-              to={'/orderConfirm'}
+              to={`/shop/${shop_id}/orderConfirm`}
               style={{ color: 'inherit', textDecoration: 'none' }}
             >
               <Button color={palette.white} bgColor={palette.color3}>
