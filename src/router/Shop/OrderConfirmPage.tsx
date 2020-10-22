@@ -12,6 +12,7 @@ import { RootState } from '../../modules';
 import axiosInstance from '../../components/login/axios';
 import Header from '../../components/header/Header';
 import { GoShopMain } from '../../components/Shop/GoShopMain';
+import Footer from '../Footer';
 
 const useStylesO = makeStyles((theme: Theme) =>
   createStyles({
@@ -103,8 +104,11 @@ const OrderConfirmPage = () => {
               주문완료
             </Button>
           </span>
+         
         </Body>
+        
       </Block>
+      <Footer />
     </div>
   );
 };
