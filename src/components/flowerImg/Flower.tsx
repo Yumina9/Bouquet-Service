@@ -22,6 +22,7 @@ export interface FlowerType {
   name: string;
   img: string;
   description: string;
+  season: string;
   color: string;
   price: number;
 }
