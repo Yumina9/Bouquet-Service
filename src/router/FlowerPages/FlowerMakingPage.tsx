@@ -10,16 +10,17 @@ import useFlowerMakingPage from './hooks/useFlowerMakingPage';
 import { GoShopMain } from '../../components/Shop/GoShopMain';
 
 const FlowerMakingPage = () => {
-  const { shop_id } = useParams<{
+  const { shop_id, flower_id } = useParams<{
     shop_id: string;
     flower_id: string;
   }>();
 
-  const { flower } = useFlowerMakingPage(shop_id);
+  const { flower } = useFlowerMakingPage(flower_id);
 
   if (!flower) {
     return <h1>Loading..</h1>;
   }
+  console.log('플라워~', flower);
 
   return (
     <>

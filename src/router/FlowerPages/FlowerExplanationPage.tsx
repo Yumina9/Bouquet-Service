@@ -11,12 +11,12 @@ import useFlowerMakingPage from './hooks/useFlowerMakingPage';
 import { GoShopMain } from '../../components/Shop/GoShopMain';
 
 const FlowerExplanationPage: React.FC<FlowerType> = () => {
-  const { flower_id: flowerId } = useParams<{
+  const { flower_id } = useParams<{
     shop_id: string;
     flower_id: string;
   }>();
 
-  const { flower } = useFlowerMakingPage(flowerId);
+  const { flower } = useFlowerMakingPage(flower_id);
   console.log(flower);
 
   return (
@@ -28,6 +28,7 @@ const FlowerExplanationPage: React.FC<FlowerType> = () => {
           <Detail>
             <Img src={`${flower?.img}`} />
             <Description>
+              <p> </p>
               <div>
                 <p style={{ margin: '10px' }}>
                   <Typography
@@ -42,25 +43,26 @@ const FlowerExplanationPage: React.FC<FlowerType> = () => {
                     color={palette.color4}
                     fontWeight="light"
                   >
-                    {`${flower?.description}`}
+                    <p>{`${flower?.description}`}</p>
+                    <p>{`${flower?.season}`}</p>
                   </Typography>
                 </p>
               </div>
               <p>
                 <h2>상품 금액 : {flower?.price} 원</h2>
               </p>
+              <span>
+                <Link
+                  to={`making`}
+                  style={{ color: 'inherit', textDecoration: 'none' }}
+                >
+                  <Button color={palette.white} bgColor={palette.color3}>
+                    만들기
+                  </Button>
+                </Link>
+              </span>
             </Description>
           </Detail>
-          <span>
-            <Link
-              to={`making`}
-              style={{ color: 'inherit', textDecoration: 'none' }}
-            >
-              <Button color={palette.white} bgColor={palette.color3}>
-                만들기
-              </Button>
-            </Link>
-          </span>
         </Box>
       </Block>
     </>
@@ -86,9 +88,9 @@ const Box = styled.div`
     font-size: 1.5rem;
     color: inherit;
     outline: none;
+    margin: auto;
   }
   span {
-    float: left;
   }
 `;
 
@@ -119,11 +121,11 @@ const Description = styled.div`
   text-align: center;
   justify-content: center;
   & > :first-child {
-    flex: 8;
+    flex: 1;
   }
 
   & > :last-child {
-    flex: 1;
+    flex: 2;
     span {
       justify-content: center;
     }

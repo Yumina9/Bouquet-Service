@@ -12,7 +12,7 @@ export type OrderType = {
   wrappingPaper: string | WrappingPaperType[] | undefined;
   ribbon: string | RibbonType[] | undefined;
   resultPrice: number;
-  shop_id: number | null;
+  shop_id: string | null;
 };
 
 export const insertOrderData = ({
