@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 // import { useParams } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
@@ -13,6 +13,8 @@ import { WrappingPaperDropdown } from '../Dropdown/WrappingPaperDropdown';
 import { RibbonDropdown } from '../Dropdown/RibbonDropdown';
 import Button from '../common/Button';
 import { Link, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { insertOrderData } from '../../modules/order';
 
 type FlowerStepperProps = {
   flower: FlowerType;
@@ -57,7 +59,22 @@ const MakingFlowerStepper: React.FC<FlowerStepperProps> = ({
     setReserve({ ...reserve, ribbon });
   };
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // 꽃다발 선택, 꽃 선택
+
+    dispatch(
+      insertOrderData({
+        bouquet: reserve?.bouquet || null,
+        flower: flower,
+        flower_count: flower_count,
+        wrappingPaper: reserve?.wrappingPaper?.name,
+        ribbon: reserve?.ribbon?.name,
+        resultPrice: resultPrice + flower_count * flower?.price,
+        shop_id: shop_id,
+      }),
+    );
+  }, [reserve, flower_count, resultPrice, dispatch, flower, shop_id]);
 
   return (
     <>

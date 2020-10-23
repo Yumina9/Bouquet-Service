@@ -47,11 +47,14 @@ export const OrderConfirmData = () => {
           </Typography>
           <p />
           <Typography type="H7" color={palette.black} fontWeight="light">
-            {/* 리본 :{OrderData?.ribbon.name} | 포장지 : */}
-            {/* {OrderData?.wrappingPaper.name} */}
+            리본 :{' '}
             {Array.isArray(OrderData.ribbon)
               ? OrderData.ribbon.map((r) => r.name)
-              : OrderData.ribbon}
+              : OrderData.ribbon}{' '}
+            | 포장지 :{' '}
+            {Array.isArray(OrderData.wrappingPaper)
+              ? OrderData.wrappingPaper.map((w) => w.name)
+              : OrderData.wrappingPaper}
           </Typography>
           <p />
           <Typography type="H5" color={palette.color4} fontWeight="bold">
