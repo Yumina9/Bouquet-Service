@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../../components/header/Header';
 import './buyerCss.css';
@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Footer from '../Footer';
 import { BouquetOrderType } from '../../components/Shop/Panel/CurrentOrderPanel';
 import Divider from '@material-ui/core/Divider';
+import axiosInstance from '../../components/login/axios';
 
 type userInfoType = {
   id: number;
@@ -43,26 +44,20 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const UserMyPage = () => {
-  const [userInfo] = useState<userInfoType>();
+  const [userInfo, setUserInfo] = useState<userInfoType>();
   const [order] = useState<BouquetOrderType | undefined>();
   const [userOrder] = useState<BouquetOrderType | undefined>();
-  // const userorder = ({ data }: OrderType) =>
+  // const userorder = ({ data }: any) =>
   //   order?.users === userInfo?.id
   //     ? setUserOrder({ data })
   //     : console.log('null');
-  // useEffect(() => {
-  //   axiosInstance.get(`/user/me`).then(({ data }) => {
-  //     setUserInfo(data);
-  //   });
-  // }, []);
+  useEffect(() => {
+    axiosInstance.get(`/user/me`).then(({ data }) => {
+      setUserInfo(data);
+    });
+  }, []);
+
   console.log('userInfo', userInfo);
-
-  // useEffect(() => {
-  //   axiosInstance.get(`/bouquet_order`).then(({ data }) => {
-  //     setOrder(userorder(data));
-  //   });
-  // }, []);
-
   console.log('order', order);
   console.log('userOrder', userOrder);
   const classes = useStyles();
