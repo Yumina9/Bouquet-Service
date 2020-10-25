@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     fontSize: '15px',
     boxShadow: 'none',
+    backgroundColor: 'transparent',
   },
 }));
 
