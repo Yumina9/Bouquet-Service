@@ -31,7 +31,7 @@ export interface BouquetType {
   wrappingpaper: WrappingPaperType[];
   bouquet_paper_price: number;
   resultPrice: number;
-  shops: number; // Shop의 ID
+  shops: string; // Shop의 ID
 }
 
 const useStyles = makeStyles((theme: Theme) =>

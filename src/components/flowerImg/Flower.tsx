@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Typography from '../common/Typography';
 import palette from '../../lib/styles/palette';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
@@ -22,6 +22,7 @@ export interface FlowerType {
   name: string;
   img: string;
   description: string;
+  season: string;
   color: string;
   price: number;
 }
@@ -54,14 +55,15 @@ const useStyles = makeStyles((theme: Theme) =>
 const Flower: React.FC<FlowerType> = ({ ...flowers }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  const { shop_id } = useParams<{ shop_id: string }>();
+  // const { shop_id } = useParams<{ shop_id: string }>();
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   return (
     <>
-      <Box >
+      <Box>
         <Card className={classes.root}>
           <CardHeader
             action={

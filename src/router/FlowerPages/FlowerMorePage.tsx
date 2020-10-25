@@ -17,12 +17,12 @@ const FlowerMorePage = () => {
     axiosInstance
       .get(`/shop/${id}/flowers`)
       .then(({ data }) => setFlowers(data));
-  }, []);
+  }, [id]);
 
   const [shop, setShop] = useState<ShopType>();
   useEffect(() => {
     axiosInstance.get(`/shop/${id}/`).then(({ data }) => setShop(data));
-  }, []);
+  }, [id]);
 
   return (
     <>

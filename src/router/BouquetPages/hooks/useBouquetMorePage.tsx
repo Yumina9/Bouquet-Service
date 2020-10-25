@@ -7,7 +7,7 @@ export default function useBouquetMorePage({ shopId }: { shopId: string }) {
 
   useEffect(() => {
     axiosInstance.get(`/shop/${shopId}/`).then(({ data }) => setShop(data));
-  }, []);
+  }, [shopId]);
 
   return {
     shop,

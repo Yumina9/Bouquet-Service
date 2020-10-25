@@ -12,7 +12,7 @@ export type OrderType = {
   wrappingPaper: string | WrappingPaperType[] | undefined;
   ribbon: string | RibbonType[] | undefined;
   resultPrice: number;
-  shop_id: number | null;
+  shop_id: string | null;
 };
 
 export const insertOrderData = ({
@@ -44,7 +44,9 @@ export const initialState: OrderType = {
   shop_id: null,
 };
 
-function order(state = initialState, action) {
+type OrderAction = ReturnType<typeof insertOrderData>;
+
+function order(state = initialState, action: OrderAction) {
   switch (action.type) {
     case INSERT_ORDER_DATA:
       return {

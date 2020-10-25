@@ -14,7 +14,7 @@ export default function useRibbonDropdown({
     axiosInstance
       .get(`/shop/${shop_id}/ribbons`)
       .then(({ data }) => setRibbons(data));
-  }, []);
+  }, [shop_id]);
 
   console.log(ribbons);
 

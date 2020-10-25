@@ -10,7 +10,7 @@ export default function useBouquetExplanation(bouquetId: string) {
     axiosInstance
       .get(`/bouquets/${bouquetId}`)
       .then(({ data }) => setBouquet(data));
-  }, []);
+  }, [bouquetId]);
 
   return {
     bouquet,

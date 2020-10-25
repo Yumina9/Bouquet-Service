@@ -1,4 +1,3 @@
-import Axios from 'axios';
 import Bouquet, { BouquetType } from '../../flowerImg/Bouquet';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';

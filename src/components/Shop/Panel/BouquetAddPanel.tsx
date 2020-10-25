@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import Typography from '../../common/Typography';
 import palette from '../../../lib/styles/palette';
 import { PanelBlock } from '../../../lib/styles/styled';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+// import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import Button from '../../common/Button';
 import { FlowerDropdown } from '../../Dropdown/FlowerDropdown';
@@ -16,30 +16,31 @@ import InputBase from '@material-ui/core/InputBase';
 import { useBorderedInputBaseStyles } from '@mui-treasury/styles/inputBase/bordered';
 import { PanelForm } from '../PanelForm';
 
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      display: 'flex-reverse',
-      width: 300,
-      textAlign: 'center',
-      backgroundColor: '#ecf0f1',
-    },
-    control: {
-      padding: theme.spacing(2),
-    },
-  }),
-);
+// const useStyles = makeStyles((theme) =>
+//   createStyles({
+//     root: {
+//       flexGrow: 1,
+//     },
+//     paper: {
+//       display: 'flex-reverse',
+//       width: 300,
+//       textAlign: 'center',
+//       backgroundColor: '#ecf0f1',
+//     },
+//     control: {
+//       padding: theme.spacing(2),
+//     },
+//   }),
+// );
+
 export const BouquetAddPanel = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const styles = useBorderedInputBaseStyles();
   const {
-    flower_count,
-    setFlowerCount,
+    // flower_count,
+    // setFlowerCount,
     setReserve,
-    resultPrice,
+    // resultPrice,
     reserve,
   } = useMakingBouquetStepper();
 
@@ -56,8 +57,8 @@ export const BouquetAddPanel = () => {
   };
 
   useEffect(() => {
-    console.log("useEffect TEST");
-  }, [])
+    console.log('useEffect TEST');
+  }, []);
   return (
     <>
       <PanelBlock>

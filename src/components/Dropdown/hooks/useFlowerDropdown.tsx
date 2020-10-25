@@ -18,15 +18,11 @@ export default function useFlowerDropdown({
     axiosInstance.get(`/shop/${shop_id}/flowers`).then(({ data }) => {
       setFlowers(data);
     });
-  }, []);
+  }, [shop_id]);
 
-  // Dropdown의 onChange
   const handleChange = (
     event: React.ChangeEvent<{ name?: string; value: unknown }>,
   ) => {
-    // TODO: selected에는 value id -> flowers 해당 id의 name
-
-    // STEP1.
     const flowerIndex = flowers
       .map(function (flower) {
         return flower.id;

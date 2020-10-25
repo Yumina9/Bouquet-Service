@@ -31,7 +31,7 @@ const GoogleApiMap = () => {
   `;
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success);
-  },[]);
+  }, []);
   // 마커정보 보여주기/사라지기
   const [selected, setSelected] = useState({});
   const onSelect = (item) => {
@@ -46,10 +46,10 @@ const GoogleApiMap = () => {
   };
 
   // 지도 센터
-  const defaultCenter = {
-    lat: 37.4652876,
-    lng: 126.900341,
-  };
+  // const defaultCenter = {
+  //   lat: 37.4652876,
+  //   lng: 126.900341,
+  // };
   // 마커 리스트
   const locations = [
     {

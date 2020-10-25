@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
 import Typography from '../common/Typography';
 import { BouquetType } from '../flowerImg/Bouquet';
@@ -11,16 +11,22 @@ import { RibbonType } from '../flowerImg/Ribbon';
 import { BouquetDropdown } from '../Dropdown/BouquetDropdown';
 import { WrappingPaperDropdown } from '../Dropdown/WrappingPaperDropdown';
 import { RibbonDropdown } from '../Dropdown/RibbonDropdown';
+import Button from '../common/Button';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { insertOrderData } from '../../modules/order';
 
-const MakingFlowerStepper: React.FC<FlowerType> = ({
-  img,
-  name,
-  description,
-  price,
+type FlowerStepperProps = {
+  flower: FlowerType;
+  shop_id: string;
+};
+
+const MakingFlowerStepper: React.FC<FlowerStepperProps> = ({
+  flower,
+  shop_id,
 }) => {
-  const { id } = useParams<{ id: string }>();
-  const [bouquet, setBouquet] = useState<BouquetType>();
+  // const { id } = useParams<{ id: string }>();
+  // const [bouquet, setBouquet] = useState<BouquetType>();
   const {
     flower_count,
     setFlowerCount,
@@ -28,6 +34,8 @@ const MakingFlowerStepper: React.FC<FlowerType> = ({
     resultPrice,
     reserve,
   } = useMakingFlowerStepper();
+
+  const history = useHistory();
 
   const increaseFlowerCount = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -52,23 +60,38 @@ const MakingFlowerStepper: React.FC<FlowerType> = ({
   };
 
   const dispatch = useDispatch();
-  
+  useEffect(() => {
+    // 꽃다발 선택, 꽃 선택
+
+    dispatch(
+      insertOrderData({
+        bouquet: reserve?.bouquet || null,
+        flower: flower,
+        flower_count: flower_count,
+        wrappingPaper: reserve?.wrappingPaper?.name,
+        ribbon: reserve?.ribbon?.name,
+        resultPrice: resultPrice + flower_count * flower?.price,
+        shop_id: shop_id,
+      }),
+    );
+  }, [reserve, flower_count, resultPrice, dispatch, flower, shop_id]);
+
   return (
     <>
       <Block>
         <span>
-          <img src={`${img}`} style={{ width: '600px' }} />
+          <img src={`${flower?.img}`} style={{ width: '600px' }} alt="" />
         </span>
 
-        <span>
+        <div>
           <div style={{ borderBottom: '1px solid lightgray' }}>
             <Typography type="H4" color={palette.color2} fontWeight="bold">
-              {`${name}`}
+              {`${flower?.name}`}
             </Typography>
           </div>
           <div style={{ borderBottom: '1px solid lightgray' }}>
             <Typography type="H7" color={palette.gray} fontWeight="medium">
-              {`${description}`}
+              {`${flower?.description}`}
             </Typography>
           </div>
           <tbody>
@@ -146,12 +169,31 @@ const MakingFlowerStepper: React.FC<FlowerType> = ({
               </th>
               <th>
                 <Typography type="H6" color={palette.color4} fontWeight="light">
-                  {resultPrice + price * flower_count}원
+                  {resultPrice + flower?.price * flower_count}원
                 </Typography>
               </th>
             </tr>
           </tbody>
-        </span>
+
+          <ButtonWrapper>
+            <Button
+              color={palette.white}
+              bgColor={palette.color3}
+              onClick={() => history.goBack()}
+            >
+              뒤로가기
+            </Button>
+
+            <Link
+              to={`/shop/${shop_id}/orderConfirm`}
+              style={{ color: 'inherit', textDecoration: 'none' }}
+            >
+              <Button color={palette.white} bgColor={palette.color3}>
+                주문하기
+              </Button>
+            </Link>
+          </ButtonWrapper>
+        </div>
       </Block>
     </>
   );
@@ -172,5 +214,19 @@ const Block = styled.div`
 
   & > :last-child {
     flex: 5;
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+
+  Button {
+    padding: 14px 50px;
+    font-size: 1.5rem;
+    color: inherit;
+    outline: none;
+    float: left;
+    margin: 5px;
   }
 `;

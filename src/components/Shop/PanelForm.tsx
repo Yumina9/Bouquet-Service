@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Typography from '../common/Typography';
-import { Panel } from './Panel';
+// import { Panel } from './Panel';
 import {
   createStyles,
   Grid,

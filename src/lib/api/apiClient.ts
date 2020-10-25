@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const host = 'http://localhost:8000';
+const host = 'http://20.194.3.133/';
 
 const apiClient = axios.create({
   baseURL: host,

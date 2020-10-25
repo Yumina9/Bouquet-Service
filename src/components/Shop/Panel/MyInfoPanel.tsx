@@ -31,33 +31,48 @@ export const MyInfoPanel = () => {
                     color={palette.black}
                     fontWeight="medium"
                   >
-                    🌷{shop?.name}
+                    <span role="img" aria-label="">
+                      🌷
+                    </span>
+                    {shop?.name}
                   </Typography>
                   <Typography
                     type="H7"
                     color={palette.black}
                     fontWeight="light"
                   >
-                    📖 {shop?.description}
+                    <span role="img" aria-label="">
+                      📖
+                    </span>{' '}
+                    {shop?.description}
                   </Typography>
                 </div>
                 <div>
                   <Typography type="H7" color={palette.gray} fontWeight="light">
-                    👤 {shop?.florist}
+                    <span role="img" aria-label="">
+                      👤
+                    </span>{' '}
+                    {shop?.florist}
                   </Typography>
                   <Typography
                     type="H7"
                     color={palette.black}
                     fontWeight="light"
                   >
-                    🧭 {shop?.location}
+                    <span role="img" aria-label="">
+                      🧭
+                    </span>{' '}
+                    {shop?.location}
                   </Typography>
                   <Typography
                     type="H7"
                     color={palette.black}
                     fontWeight="light"
                   >
-                    📞 {shop?.phone}
+                    <span role="img" aria-label="">
+                      📞
+                    </span>{' '}
+                    {shop?.phone}
                   </Typography>
                 </div>
               </MyInfo>

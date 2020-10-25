@@ -18,7 +18,7 @@ export default function useBouquetDropdown({
     axiosInstance.get(`/shop/${shop_id}/bouquets`).then(({ data }) => {
       setBouquets(data);
     });
-  }, []);
+  }, [shop_id]);
 
   // Dropdown의 onChange
   const handleChange = (
