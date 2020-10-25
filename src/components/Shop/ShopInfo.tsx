@@ -58,7 +58,6 @@ const Box = styled.div`
 const ShopTitle = styled.h1`
   font-size: 4rem;
   font-weight: 800;
-
   &:hover {
     color: ${palette.color3};
   }
