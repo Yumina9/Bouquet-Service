@@ -6,7 +6,10 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Footer from '../Footer';
-import { BouquetOrderType } from '../../components/Shop/Panel/CurrentOrderPanel';
+import {
+  BouquetOrderType,
+  CurrentOrderPanel,
+} from '../../components/Shop/Panel/CurrentOrderPanel';
 import Divider from '@material-ui/core/Divider';
 import axiosInstance from '../../components/login/axios';
 
@@ -45,21 +48,13 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const UserMyPage = () => {
   const [userInfo, setUserInfo] = useState<userInfoType>();
-  const [order] = useState<BouquetOrderType | undefined>();
-  const [userOrder] = useState<BouquetOrderType | undefined>();
-  // const userorder = ({ data }: any) =>
-  //   order?.users === userInfo?.id
-  //     ? setUserOrder({ data })
-  //     : console.log('null');
   useEffect(() => {
     axiosInstance.get(`/user/me`).then(({ data }) => {
       setUserInfo(data);
     });
   }, []);
-
   console.log('userInfo', userInfo);
-  console.log('order', order);
-  console.log('userOrder', userOrder);
+
   const classes = useStyles();
 
   return (
@@ -89,7 +84,9 @@ const UserMyPage = () => {
         </Typography>
 
         <div style={{ height: 400, width: '100%', marginBottom: '50px' }}>
-          {/* <CurrentOrderPanel orders={userInfo}/> */}
+          {userInfo ? (
+            <CurrentOrderPanel orders={userInfo?.bouquet_order} />
+          ) : null}
         </div>
       </div>
       <Footer />

@@ -5,15 +5,15 @@ import { FlowerType } from '../../flowerImg/Flower';
 import styled from 'styled-components';
 
 export type BouquetOrderType = {
-  id?: number | undefined;
-  bouquet?: BouquetType | undefined;
-  flower?: FlowerType | undefined;
-  flower_count?: number | undefined;
-  price?: number | undefined;
-  ribbon?: string | undefined;
-  wrappingPaper?: string | undefined;
-  shops?: number | undefined;
-  users?: number | undefined;
+  id: number;
+  bouquet: BouquetType;
+  flower: FlowerType;
+  flower_count: number;
+  price: number;
+  ribbon: string;
+  wrappingPaper: string;
+  shops: number;
+  users: number;
 };
 
 const columns: ColDef[] = [
