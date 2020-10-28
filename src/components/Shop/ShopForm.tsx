@@ -33,7 +33,7 @@ export default function ShopForm({ id, name, img, description }: ShopType) {
         <Card className={classes.root}>
           <CardActionArea>
             <CardMedia className={classes.media} image={img} title={name} />
-            <CardContent>
+            <CardContent style={{ height: '100px'}}>
               <Typography gutterBottom variant="h5" component="h2">
                 {name}
               </Typography>

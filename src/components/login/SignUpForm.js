@@ -12,7 +12,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
-
 import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
@@ -40,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     fontSize: '15px',
     boxShadow: 'none',
+    backgroundColor: 'transparent',
   },
 }));
 
@@ -92,19 +92,9 @@ export default function SignUp() {
     setState({ ...state, [event.target.name]: event.target.checked });
     updateFormData({
       ...formData,
-      // Trimming any whitespace
       [event.target.name]: event.target.value.trim(),
     });
   };
-
-  // const [password, setPassword] = useState('');
-  const [confirmPassword] = useState('');
-
-  // const hasError = (passwordEntered) =>
-  //   passwordEntered.length < 5 ? true : false;
-
-  const hasNotSameError = (passwordEntered) =>
-    passwordEntered !== confirmPassword ? true : false;
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
@@ -208,14 +198,7 @@ export default function SignUp() {
                   type="password"
                   id="confirmPassword"
                   autoComplete="current-password"
-                  // error={hasError('password')}
-                  error={hasNotSameError('confirmPassword')}
                   onChange={handleChange}
-                  // helperText={
-                  //   hasNotSameError('confirmPassword')
-                  //     ? '입력한 비밀번호와 일치하지 않습니다.'
-                  //     : null
-                  // }
                 />
               </Grid>
             </Grid>
