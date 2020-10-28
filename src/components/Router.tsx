@@ -22,37 +22,16 @@ const Router = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Main} />
-        <Route path="/mypage" component={ShopMyPage} />
-
-        {/* SHOP */}
         <Route exact path="/shops/" component={ShopMorePage} />
+        <Route path="/mypage" component={ShopMyPage} />
         <Route exact path="/shop/:id/" component={ShopMainPage} />
         <Route exact path="/shop/:id/flowers" component={FlowerMorePage} />
         <Route exact path="/shop/:id/bouquets" component={BouquetMorePage} />
-        <Route
-          exact
-          path="/shop/:shop_id/flower/:flower_id/"
-          component={FlowerExplanationPage}
-        />
-        <Route
-          exact
-          path="/shop/:shop_id/bouquet/:bouquet_id/"
-          component={BouquetExplanationPage}
-        />
-        <Route
-          path="/shop/:shop_id/flower/:flower_id/making"
-          component={FlowerMakingPage}
-        />
-        <Route
-          path="/shop/:shop_id/bouquet/:bouquet_id/making"
-          component={BouquetMakingPage}
-        />
-        {/* 주문확인 -> 만들기 -> 주문하기, 주문하기 */}
-        <Route
-          path="/shop/:shop_id/orderConfirm"
-          component={OrderConfirmPage}
-        />
-        {/* 로그인 마이페이지 */}
+        <Route exact path="/shop/:shop_id/flower/:flower_id/" component={FlowerExplanationPage} />
+        <Route exact path="/shop/:shop_id/bouquet/:bouquet_id/" component={BouquetExplanationPage} />
+        <Route path="/shop/:shop_id/flower/:flower_id/making" component={FlowerMakingPage} />
+        <Route path="/shop/:shop_id/bouquet/:bouquet_id/making" component={BouquetMakingPage} />
+        <Route path="/shop/:shop_id/orderConfirm" component={OrderConfirmPage} />
         <Route path="/usermain" component={UserMain} />
         <Route path="/usermypage" component={UserMyPage} />
         <Route path="/login" component={LoginPage} />
