@@ -53,7 +53,6 @@ const UserMyPage = () => {
       setUserInfo(data);
     });
   }, []);
-  console.log('userInfo', userInfo);
 
   const classes = useStyles();
 

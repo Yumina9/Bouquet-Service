@@ -49,7 +49,6 @@ const BestItemList = () => {
     Axios.get(apiUrl)
       .then((res) => {
         setBestShopList(res.data);
-        console.log('조회목록데이터:', res.data);
       })
       .catch((res) => {
         console.error(res);

@@ -53,8 +53,6 @@ export default function ShopMyPage() {
 
   const user = useSelector((state: RootState) => state?.user.user);
 
-  console.log(user);
-
   return (
     <>
       <Header />

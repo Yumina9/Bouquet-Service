@@ -17,7 +17,6 @@ const FlowerExplanationPage: React.FC<FlowerType> = () => {
   }>();
 
   const { flower } = useFlowerMakingPage(flower_id);
-  console.log(flower);
 
   return (
     <>

@@ -16,7 +16,6 @@ export default function useRibbonDropdown({
       .then(({ data }) => setRibbons(data));
   }, [shop_id]);
 
-  console.log(ribbons);
 
   const handleChange = (
     event: React.ChangeEvent<{ name?: string; value: unknown }>,

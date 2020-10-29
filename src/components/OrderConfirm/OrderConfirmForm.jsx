@@ -43,8 +43,6 @@ const useStyles = makeStyles((theme) => ({
 export const OrderConfirmForm = () => {
   const classes = useStyles();
 
-  console.log();
-
   return (
     <>
       <Body>
