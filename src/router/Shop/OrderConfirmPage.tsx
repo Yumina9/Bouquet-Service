@@ -49,6 +49,7 @@ import Footer from '../Footer';
 // );
 
 const OrderConfirmPage = () => {
+  // const { id } = useParams<{ id: string }>();
   let history = useHistory();
   // const classesOrder = useStylesO();
   // const classesTool = useStylesT();
@@ -56,24 +57,19 @@ const OrderConfirmPage = () => {
   const OrderData = useSelector((state: RootState) => state?.order);
 
   console.log(OrderData);
+  // console.log(id);
 
   const onOrder = () => {
     axiosInstance
       .post(`/bouquet_order/`, {
-        bouquet_id: Array.isArray(OrderData.bouquet)
-          ? OrderData.bouquet.map((b) => b.id)[0]
-          : OrderData.bouquet?.id,
-        flower_id: Array.isArray(OrderData.flower)
-          ? OrderData.flower.map((f) => f.id)[0]
-          : OrderData.flower?.id,
+        bouquet_id: Array.isArray(OrderData.bouquet) ? OrderData.bouquet.map((b) => b.id)[0] : OrderData.bouquet?.id,
+        flower_id: Array.isArray(OrderData.flower) ? OrderData.flower.map((f) => f.id)[0] : OrderData.flower?.id,
         shop_id: Array.isArray(OrderData?.bouquet)
           ? OrderData.bouquet.map((b) => b.shops)[0]
           : OrderData.bouquet?.shops,
         flower_count: OrderData.flower_count,
         resultPrice: OrderData.resultPrice,
-        ribbon: Array.isArray(OrderData.ribbon)
-          ? OrderData.ribbon.map((r) => r.name)[0]
-          : OrderData.ribbon,
+        ribbon: Array.isArray(OrderData.ribbon) ? OrderData.ribbon.map((r) => r.name)[0] : OrderData.ribbon,
         wrappingPaper: Array.isArray(OrderData.wrappingPaper)
           ? OrderData.wrappingPaper.map((wp) => wp.name)[0]
           : OrderData.wrappingPaper,
@@ -81,6 +77,7 @@ const OrderConfirmPage = () => {
       .then((response) => {
         console.log('주문완료데이터:', response.data);
         alert('주문완료');
+        history.push(`/shop/${OrderData.shop_id}`);
       })
       .catch((response) => {
         console.error(response);
@@ -99,18 +96,10 @@ const OrderConfirmPage = () => {
           <OrderConfirmForm />
           <br />
           <span style={{ justifyContent: 'center' }}>
-            <Button
-              color={palette.black}
-              bgColor={palette.color3}
-              onClick={() => history.goBack()}
-            >
+            <Button color={palette.black} bgColor={palette.color3} onClick={() => history.goBack()}>
               뒤로가기
             </Button>
-            <Button
-              color={palette.black}
-              bgColor={palette.color3}
-              onClick={() => onOrder()}
-            >
+            <Button color={palette.black} bgColor={palette.color3} onClick={() => onOrder()}>
               주문완료
             </Button>
           </span>
