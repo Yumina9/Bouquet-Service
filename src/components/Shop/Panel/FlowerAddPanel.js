@@ -57,7 +57,6 @@ export const FlowerAddPanel = () => {
     axios
       .post(apiUrl, reserve)
       .then((response) => {
-        console.log('등록완료데이터: ', response.data);
         alert('등록완료');
         history.push('mypage');
       })

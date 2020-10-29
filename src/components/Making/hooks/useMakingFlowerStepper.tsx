@@ -24,8 +24,6 @@ export default function useMakingFlowerStepper() {
   var ribbonPrice = reserve?.ribbon?.price ? reserve?.ribbon?.price : 0;
   var resultPrice = bouquetPrice + wrappingPaperPrice + ribbonPrice;
 
-  console.log('여기는 useMakingFlowerStepper');
-
   return {
     flower_count,
     setFlowerCount,

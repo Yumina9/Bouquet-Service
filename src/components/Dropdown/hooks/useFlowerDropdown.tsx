@@ -28,7 +28,6 @@ export default function useFlowerDropdown({
         return flower.id;
       })
       .indexOf(Number(event.target.value));
-    console.log('flowers', flowers);
     const selectedFlower = flowers[flowerIndex];
 
     setSelected(event.target.value as string);
@@ -38,9 +37,9 @@ export default function useFlowerDropdown({
   };
 
   useEffect(() => {
-    console.log('flowerselected', selected);
+
   }, [selected]);
-  console.log('flowers', flowers);
+
 
   return {
     flowers,

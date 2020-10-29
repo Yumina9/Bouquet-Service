@@ -40,7 +40,6 @@ export default function useBouquetDropdown({
     // NOTE: reserve = { flower: xxx, ribbon: xxx, wrapping paper: xxx }
     onBouquetDropdownChange(selectedBouquet);
   };
-  console.log(bouquets);
 
   return {
     bouquets,

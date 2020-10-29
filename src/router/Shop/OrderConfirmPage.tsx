@@ -55,8 +55,6 @@ const OrderConfirmPage = () => {
 
   const OrderData = useSelector((state: RootState) => state?.order);
 
-  console.log(OrderData);
-
   const onOrder = () => {
     axiosInstance
       .post(`/bouquet_order/`, {
@@ -79,7 +77,6 @@ const OrderConfirmPage = () => {
           : OrderData.wrappingPaper,
       })
       .then((response) => {
-        console.log('주문완료데이터:', response.data);
         alert('주문완료');
       })
       .catch((response) => {

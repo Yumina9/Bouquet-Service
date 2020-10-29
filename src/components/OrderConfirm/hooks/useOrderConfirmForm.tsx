@@ -6,6 +6,5 @@ export default function useOrderConfirmForm() {
     bouquet?: BouquetType;
   }>();
 
-  console.log('useOrderConfirmform');
   return { order, setOrder };
 }

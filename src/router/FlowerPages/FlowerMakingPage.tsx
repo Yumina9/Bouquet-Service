@@ -20,7 +20,6 @@ const FlowerMakingPage = () => {
   if (!flower) {
     return <h1>Loading..</h1>;
   }
-  console.log('플라워~', flower);
 
   return (
     <>
