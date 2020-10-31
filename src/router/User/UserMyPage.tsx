@@ -6,10 +6,7 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Footer from '../Footer';
-import {
-  BouquetOrderType,
-  CurrentOrderPanel,
-} from '../../components/Shop/Panel/CurrentOrderPanel';
+import { BouquetOrderType, CurrentOrderPanel } from '../../components/Shop/Panel/CurrentOrderPanel';
 import Divider from '@material-ui/core/Divider';
 import axiosInstance from '../../components/login/axios';
 
@@ -55,7 +52,7 @@ const UserMyPage = () => {
   }, []);
 
   const classes = useStyles();
-
+  console.log('주문목록 :', userInfo?.bouquet_order);
   return (
     <div>
       <Header />
@@ -74,18 +71,12 @@ const UserMyPage = () => {
         </Grid>
         <Divider />
 
-        <Typography
-          variant="h3"
-          gutterBottom
-          style={{ marginTop: '50px', marginBottom: '50px' }}
-        >
+        <Typography variant="h3" gutterBottom style={{ marginTop: '50px', marginBottom: '50px' }}>
           주문 내역
         </Typography>
 
         <div style={{ height: 400, width: '100%', marginBottom: '50px' }}>
-          {userInfo ? (
-            <CurrentOrderPanel orders={userInfo?.bouquet_order} />
-          ) : null}
+          {userInfo ? <CurrentOrderPanel orders={userInfo?.bouquet_order} /> : null}
         </div>
       </div>
       <Footer />

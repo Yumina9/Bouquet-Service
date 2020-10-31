@@ -3,8 +3,6 @@ import { FlowerType } from '../components/flowerImg/Flower';
 import { RibbonType } from '../components/flowerImg/Ribbon';
 import { WrappingPaperType } from '../components/flowerImg/WrappingPaper';
 
-const INSERT_ORDER_DATA = 'INSERT_ORDER_DATA' as const;
-
 export type OrderType = {
   bouquet: BouquetType | BouquetType[] | null;
   flower: FlowerType | FlowerType[] | null;
@@ -14,6 +12,8 @@ export type OrderType = {
   resultPrice: number;
   shop_id: string | null;
 };
+
+const INSERT_ORDER_DATA = 'INSERT_ORDER_DATA' as const;
 
 export const insertOrderData = ({
   bouquet,
