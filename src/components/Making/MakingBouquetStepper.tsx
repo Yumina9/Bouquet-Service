@@ -20,17 +20,8 @@ type BouquetStepperProps = {
   shop_id: string;
 };
 
-const MakingBouquetStepper: React.FC<BouquetStepperProps> = ({
-  bouquet,
-  shop_id,
-}) => {
-  const {
-    flower_count,
-    setFlowerCount,
-    setReserve,
-    resultPrice,
-    reserve,
-  } = useMakingBouquetStepper();
+const MakingBouquetStepper: React.FC<BouquetStepperProps> = ({ bouquet, shop_id }) => {
+  const { flower_count, setFlowerCount, setReserve, resultPrice, reserve } = useMakingBouquetStepper();
 
   const history = useHistory();
 
@@ -59,8 +50,6 @@ const MakingBouquetStepper: React.FC<BouquetStepperProps> = ({
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // 꽃다발 선택, 꽃 선택
-
     dispatch(
       insertOrderData({
         bouquet,
@@ -96,20 +85,14 @@ const MakingBouquetStepper: React.FC<BouquetStepperProps> = ({
             <tr>
               <th>
                 <div>
-                  <Typography
-                    type="H6"
-                    color={palette.color4}
-                    fontWeight="bold"
-                  >
+                  <Typography type="H6" color={palette.color4} fontWeight="bold">
                     꽃 선택
                   </Typography>
                 </div>
               </th>
               <th>
                 <div style={{ margin: '20px' }}>
-                  <FlowerDropdown
-                    onFlowerDropdownChange={onFlowerDropdownChange}
-                  />
+                  <FlowerDropdown onFlowerDropdownChange={onFlowerDropdownChange} />
                 </div>
               </th>
             </tr>
@@ -137,11 +120,7 @@ const MakingBouquetStepper: React.FC<BouquetStepperProps> = ({
               </th>
               <th>
                 <div style={{ margin: '20px' }}>
-                  <WrappingPaperDropdown
-                    onWrappingPaperDropdownChange={
-                      onWrappingPaperDropdownChange
-                    }
-                  />
+                  <WrappingPaperDropdown onWrappingPaperDropdownChange={onWrappingPaperDropdownChange} />
                 </div>
               </th>
             </tr>
@@ -153,9 +132,7 @@ const MakingBouquetStepper: React.FC<BouquetStepperProps> = ({
               </th>
               <th>
                 <div style={{ margin: '20px' }}>
-                  <RibbonDropdown
-                    onRibbonDropdownChange={onRibbonDropdownChange}
-                  />
+                  <RibbonDropdown onRibbonDropdownChange={onRibbonDropdownChange} />
                 </div>
               </th>
             </tr>
@@ -174,18 +151,11 @@ const MakingBouquetStepper: React.FC<BouquetStepperProps> = ({
           </tbody>
 
           <ButtonWrapper>
-            <Button
-              color={palette.white}
-              bgColor={palette.color3}
-              onClick={() => history.goBack()}
-            >
+            <Button color={palette.white} bgColor={palette.color3} onClick={() => history.goBack()}>
               뒤로가기
             </Button>
 
-            <Link
-              to={`/shop/${shop_id}/orderConfirm`}
-              style={{ color: 'inherit', textDecoration: 'none' }}
-            >
+            <Link to={`/shop/${shop_id}/orderConfirm`} style={{ color: 'inherit', textDecoration: 'none' }}>
               <Button color={palette.white} bgColor={palette.color3}>
                 주문하기
               </Button>

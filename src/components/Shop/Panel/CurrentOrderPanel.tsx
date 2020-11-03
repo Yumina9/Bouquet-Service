@@ -25,11 +25,7 @@ const columns: ColDef[] = [
   { field: 'price', headerName: '금액', width: 150 },
 ];
 
-export const CurrentOrderPanel = ({
-  orders,
-}: {
-  orders: BouquetOrderType[];
-}) => {
+export const CurrentOrderPanel = ({ orders }: { orders: BouquetOrderType[] }) => {
   console.log(orders);
 
   const orderDto = orders.map((order) => ({
@@ -42,18 +38,7 @@ export const CurrentOrderPanel = ({
     price: order.price,
   }));
 
-  return (
-    <Block>
-      {orders && (
-        <DataGrid
-          rows={orderDto}
-          columns={columns}
-          pageSize={5}
-          checkboxSelection
-        />
-      )}
-    </Block>
-  );
+  return <Block>{orders && <DataGrid rows={orderDto} columns={columns} pageSize={5} checkboxSelection />}</Block>;
 };
 
 const Block = styled.div`

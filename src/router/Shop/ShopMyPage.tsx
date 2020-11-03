@@ -7,8 +7,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Divider from '@material-ui/core/Divider';
 import { Panel, PanelType } from '../../components/Shop/Panel';
 import Header from '../../components/header/Header';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../modules';
 
 const drawerWidth = 240;
 
@@ -16,7 +14,6 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
-      
     },
     drawer: {
       width: drawerWidth,
@@ -28,17 +25,14 @@ const useStyles = makeStyles((theme: Theme) =>
       width: drawerWidth,
       top: 'auto',
       borderTop: 'none',
-      
     },
     title: {
       flexGrow: 1,
       fontFamily: "'Lobster'",
-      
     },
     drawerContainer: {
       overflow: 'auto',
       // border: '1px solid red',
-      
     },
     content: {
       flexGrow: 1,
@@ -50,8 +44,6 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function ShopMyPage() {
   const classes = useStyles();
   const [type, setType] = useState<PanelType>(PanelType.PROFILE);
-
-  const user = useSelector((state: RootState) => state?.user.user);
 
   return (
     <>
@@ -70,7 +62,7 @@ export default function ShopMyPage() {
             <>
               <Divider />
               <Item>
-                <ButtonItem onClick={() => setType(PanelType.PROFILE)} >
+                <ButtonItem onClick={() => setType(PanelType.PROFILE)}>
                   <Icon src={require('../../image/shop.png')} />
                   Shop 정보
                 </ButtonItem>

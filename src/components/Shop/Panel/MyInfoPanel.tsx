@@ -26,21 +26,13 @@ export const MyInfoPanel = () => {
             <PanelForm title="내 Shop 정보">
               <MyInfo>
                 <div>
-                  <Typography
-                    type="H4"
-                    color={palette.black}
-                    fontWeight="medium"
-                  >
+                  <Typography type="H4" color={palette.black} fontWeight="medium">
                     <span role="img" aria-label="">
                       🌷
                     </span>
                     {shop?.name}
                   </Typography>
-                  <Typography
-                    type="H7"
-                    color={palette.black}
-                    fontWeight="light"
-                  >
+                  <Typography type="H7" color={palette.black} fontWeight="light">
                     <span role="img" aria-label="">
                       📖
                     </span>{' '}
@@ -54,21 +46,13 @@ export const MyInfoPanel = () => {
                     </span>{' '}
                     {shop?.florist}
                   </Typography>
-                  <Typography
-                    type="H7"
-                    color={palette.black}
-                    fontWeight="light"
-                  >
+                  <Typography type="H7" color={palette.black} fontWeight="light">
                     <span role="img" aria-label="">
                       🧭
                     </span>{' '}
                     {shop?.location}
                   </Typography>
-                  <Typography
-                    type="H7"
-                    color={palette.black}
-                    fontWeight="light"
-                  >
+                  <Typography type="H7" color={palette.black} fontWeight="light">
                     <span role="img" aria-label="">
                       📞
                     </span>{' '}
